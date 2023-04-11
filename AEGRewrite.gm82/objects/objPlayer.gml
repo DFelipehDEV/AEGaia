@@ -489,11 +489,11 @@ applies_to=self
 
 
     // -- Stop when meet a wall/slide pass and isnt sliding
-    if (xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))|| xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll)
+    if ((xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))) || (xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
        xSpeed = 0;
     }
-    if (xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig)) || xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll)
+    if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
        xSpeed = 0;
     }
