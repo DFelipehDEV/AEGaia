@@ -1,0 +1,3 @@
+scrLoadSounds()
+
+parSolid.visible = true;
