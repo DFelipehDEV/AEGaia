@@ -733,11 +733,11 @@ applies_to=self
 
     // -- Energy orb
     scrPlayerHandleEnergyOrb();
-
+*/
 
     // -- Crane
     scrPlayerHandleCrane();
-
+/*
     // -- Walljump
     scrPlayerHandleWallJump();
 /*"/*'/**//* YYD ACTION

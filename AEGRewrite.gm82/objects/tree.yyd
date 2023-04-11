@@ -28,9 +28,11 @@
 		|objPlayerAfterimage
 		|objPlayerTarget
 	+Controllers
+		|objControllerInput
 		|objControllerRender
 		|objControllerStage
 		|objControllerAudio
+		|objControllerQTEKeys
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath
@@ -54,21 +56,26 @@
 			|objDashRingRainbow
 			|objDashPad
 			|objDashRamp
+			|objDashRampRainbow
+		+Handle
+			|objCrane
+			|objHandle
 	+Obstacles
 		+Enemy
+			|objEnemyTurn
 			|objEnemySpinner
 			|objEnemySpinner2
 			|objEnemyEggpawn
 			|objEnemyChopper
 			|objEnemyBuzzer
-		|objEnemyTurn
-		|objSpinnerShock
-		|objProjectileBuzzer
 		+Spikes
 			|objSpikeUp
 			|objSpikeDown
 			|objSpikeLeft
 			|objSpikeRight
+		+Hazards
+			|objProjectileBuzzer
+			|objSpinnerShock
 	|objLaunchSensor
 	|objSlidepassSensor
 	+Water

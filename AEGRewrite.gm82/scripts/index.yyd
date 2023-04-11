@@ -74,3 +74,4 @@ scrPlayerHandleCheckpoint
 scrPlayerHandleBalloons
 scrPlayerHandleSpikes
 scrPlayerHandleDash
+scrPlayerHandleCrane

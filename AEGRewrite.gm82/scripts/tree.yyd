@@ -63,6 +63,7 @@
 		|scrPlayerHandleBalloons
 		|scrPlayerHandleSpikes
 		|scrPlayerHandleDash
+		|scrPlayerHandleCrane
 +Animation
 	+Lists
 		|scrAnimationIndexSonic

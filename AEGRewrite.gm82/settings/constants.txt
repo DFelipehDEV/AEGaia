@@ -50,3 +50,4 @@ rankB=2
 rankA=1
 rankS=0
 audio=objControllerAudio
+input=objControllerInput

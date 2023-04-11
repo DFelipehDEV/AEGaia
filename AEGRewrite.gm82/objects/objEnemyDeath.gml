@@ -1,4 +1,4 @@
-#define Destroy_0
+#define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
