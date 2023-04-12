@@ -1130,45 +1130,45 @@ applies_to=self
     {
         footstep = false;
     }
-/*
+
     // -- Water terrain
     if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon) || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorWater))
     {
         terrainType      = "WATER";
-        terrainSound[terSkid]      = sndPlayerSkidWater;
-        terrainSound[terLand]      = sndPlayerLandWater;
-        terrainSound[terFootstep1] = sndPlayerFootstepWater2;
-        terrainSound[terFootstep2] = sndPlayerFootstepWater2;
+        terrainSound[terSkid]      = "sndPlayerSkidWater";
+        terrainSound[terLand]      = "sndPlayerLandWater";
+        terrainSound[terFootstep1] = "sndPlayerFootstepWater2";
+        terrainSound[terFootstep2] = "sndPlayerFootstepWater2";
     }
 
     // -- Grass terrain
     if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorGrass))
     {
         terrainType      = "GRASS";
-        terrainSound[terSkid]      = sndPlayerSkidGrass;
-        terrainSound[terLand]      = sndPlayerLandGrass;
-        terrainSound[terFootstep1] = sndPlayerFootstepGrass1;
-        terrainSound[terFootstep2] = sndPlayerFootstepGrass2;
+        terrainSound[terSkid]      = "sndPlayerSkidGrass";
+        terrainSound[terLand]      = "sndPlayerLandGrass";
+        terrainSound[terFootstep1] = "sndPlayerFootstepGrass1";
+        terrainSound[terFootstep2] = "sndPlayerFootstepGrass2";
     }
 
     // -- Dirt terrain
     if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorDirt))
     {
         terrainType      = "DIRT";
-        terrainSound[terSkid]      = sndPlayerSkidDirt;
-        terrainSound[terLand]      = sndPlayerLandDirt;
-        terrainSound[terFootstep1] = sndPlayerFootstepDirt1;
-        terrainSound[terFootstep2] = sndPlayerFootstepDirt2;
+        terrainSound[terSkid]      = "sndPlayerSkidDirt";
+        terrainSound[terLand]      = "sndPlayerLandDirt";
+        terrainSound[terFootstep1] = "sndPlayerFootstepDirt1";
+        terrainSound[terFootstep2] = "sndPlayerFootstepDirt2";
     }
 
     // -- Stone terrain
     if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorStone))
     {
         terrainType      = "STONE";
-        terrainSound[terSkid]      = sndPlayerSkidStone;
-        terrainSound[terLand]      = scrPlayerLand;
-        terrainSound[terFootstep1] = sndPlayerFootstepStone1;
-        terrainSound[terFootstep2] = sndPlayerFootstepStone2;
+        terrainSound[terSkid]      = "sndPlayerSkidStone";
+        terrainSound[terLand]      = "scrPlayerLand";
+        terrainSound[terFootstep1] = "sndPlayerFootstepStone1";
+        terrainSound[terFootstep2] = "sndPlayerFootstepStone2";
     }
 
 
@@ -1176,10 +1176,10 @@ applies_to=self
     if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorMetal))
     {
         terrainType      = "METAL";
-        terrainSound[terSkid]      = sndPlayerSkidMetal;
-        terrainSound[terLand]      = sndPlayerLandMetal;
-        terrainSound[terFootstep1] = sndPlayerFootstepMetal1;
-        terrainSound[terFootstep2] = sndPlayerFootstepMetal2;
+        terrainSound[terSkid]      = "sndPlayerSkidMetal";
+        terrainSound[terLand]      = "sndPlayerLandMetal";
+        terrainSound[terFootstep1] = "sndPlayerFootstepMetal1";
+        terrainSound[terFootstep2] = "sndPlayerFootstepMetal2";
     }
 
 
@@ -1187,10 +1187,10 @@ applies_to=self
     if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorWood))
     {
         terrainType      = "WOOD";
-        terrainSound[terSkid]      = sndPlayerSkidWood;
-        terrainSound[terLand]      = sndPlayerLandWood;
-        terrainSound[terFootstep1] = sndPlayerFootstepWood1;
-        terrainSound[terFootstep2] = sndPlayerFootstepWood2;
+        terrainSound[terSkid]      = "sndPlayerSkidWood";
+        terrainSound[terLand]      = "sndPlayerLandWood";
+        terrainSound[terFootstep1] = "sndPlayerFootstepWood1";
+        terrainSound[terFootstep2] = "sndPlayerFootstepWood2";
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1300,4 +1300,4 @@ applies_to=self
         draw_sprite_ext(maskLines, floor(angle), floor(x + cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorRightDistanceX), floor(y - sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorRightDistanceX), 1, 1, 0, c_white, 1)
     }
 
-    draw_text(bbox_left, bbox_top, string(boost))
+    draw_text(bbox_left, bbox_top, string(sound_isplaying("SvD_Sun")))

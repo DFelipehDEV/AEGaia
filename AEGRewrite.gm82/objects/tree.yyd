@@ -33,14 +33,11 @@
 		|objControllerStage
 		|objControllerAudio
 		|objControllerQTEKeys
+		|objControllerMusic
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath
 +Stage object
-	+Layers
-		|objLayer0
-		|objLayerSwitch
-		|objLayer1
 	+Common
 		+Spring
 			|objSpring01
@@ -76,8 +73,20 @@
 		+Hazards
 			|objProjectileBuzzer
 			|objSpinnerShock
-	|objLaunchSensor
-	|objSlidepassSensor
+	+Layers
+		|objLayer0
+		|objLayerSwitch
+		|objLayer1
+	+Sensors
+		+Footstep sensors
+			|objFootstepSensorDirt
+			|objFootstepSensorGrass
+			|objFootstepSensorMetal
+			|objFootstepSensorStone
+			|objFootstepSensorWater
+			|objFootstepSensorWood
+		|objLaunchSensor
+		|objSlidepassSensor
 	+Water
 		|objWaterHorizon
 +VFX

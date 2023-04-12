@@ -11,7 +11,7 @@
 
     // -- Volume variables
     global.volumeSounds = 1;                 // -- Sounds volume
-    global.volumeMusic = 1;                 // -- Music volume
+    global.volumeMusic = 100;                 // -- Music volume
 
 
     // -- Music variables

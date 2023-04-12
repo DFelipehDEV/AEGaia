@@ -90,3 +90,4 @@
 +Sound
 	|scrPlaySound
 	|scrLoadSounds
+	|scrPlayMusic
