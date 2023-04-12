@@ -76,3 +76,8 @@ scrPlayerHandleSpikes
 scrPlayerHandleDash
 scrPlayerHandleCrane
 scrPlayMusic
+scrDrawCircularBar
+scrPlayerHandleWallJump
+scrPlayerHandleWayLauncher
+scrPlayerHandleRails
+scrPlayerHandleLaunch

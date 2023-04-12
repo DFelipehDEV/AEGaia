@@ -48,7 +48,7 @@
             scrAnimationApply("DEAD");
             global.playerRings = 0;
 
-            //objControllerMusic.fadeOut = true;
+            objControllerMusic.fadeOut = true;
             scrPlaySound(voiceline[4], global.volumeSounds, 1, false);
         }
     }

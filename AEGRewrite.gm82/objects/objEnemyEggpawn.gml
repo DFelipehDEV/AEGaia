@@ -83,7 +83,7 @@ applies_to=self
         case "CHASE":
             // -- Set the enemy's speed when in the chase state.
             playerID = instance_nearest(x, y, objPlayer);
-            xSpeed = 6 * image_xscale;
+            xSpeed = 4 * image_xscale;
 
             // -- If the player is too far away or too close to the enemy's turn sensor, switch to the normal state.
             if (distance_to_object(objPlayer) > 130 || distance_to_object(objEnemyTurn) < 8)

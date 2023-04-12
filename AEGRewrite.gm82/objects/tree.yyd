@@ -57,6 +57,17 @@
 		+Handle
 			|objCrane
 			|objHandle
+		+Rails
+			|objRail01
+			|objRail02
+			|objRail03
+			|objRail04
+			|objRail05
+			|objRail06
+		+Walljump
+			|objWalljumpTrigger
+		+Way Launcher
+			|objWayLauncher
 	+Obstacles
 		+Enemy
 			|objEnemyTurn

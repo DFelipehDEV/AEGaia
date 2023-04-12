@@ -11,9 +11,7 @@
 				|sprSonicJog2
 				|sprSonicRun
 				|sprSonicLookUp
-				|sprSonicLookUpReset
 				|sprSonicCrouch
-				|sprSonicCrouchReset
 				|sprSonicRoll
 				|sprSonicJump
 				|sprSonicSkid
@@ -22,7 +20,7 @@
 				|sprSonicSpindashCharge
 				|sprSonicSpring
 				|sprSonicFall
-				|sprSonicLand
+				|sprSonicLanding
 				|sprSonicStomp
 				|sprSonicStompLand
 				|sprSonicWallJump

@@ -41,11 +41,11 @@
     // -- Land animation
     if (ySpeed > 4.5)
     {
-        scrAnimationApply("LAND");
+        scrAnimationApply("LANDING");
     }
 
     // -- Animation speed
-    if (animationIndex != "LAND")
+    if (animationIndex != "LANDING")
     {
         animationFrameSpeed = (0.2 + abs(ySpeed)/7) + abs(xSpeed)/15;
     }

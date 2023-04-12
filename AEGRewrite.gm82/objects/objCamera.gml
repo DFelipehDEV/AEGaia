@@ -151,21 +151,13 @@ applies_to=self
         switch(camTarget.action)
         {
             // -- Shift the camera up while looking up
-            case actionLookUp:
-                // -- Only shift the camera up to a certain point and after a delay
-                if (camYShift > -90 && camTarget.yLookTimer >= 25)
-                {
-                    camYShift -= 10;
-                }
+            case actionLookUp:                
+                camYShift = scrApproach(camYShift, -90, 3);
             break;
             
             // -- Shift the camera down while crouching
             case actionCrouch:                
-                // -- Only shift the camera down to a certain point and after a delay
-                if (camYShift < 90 && camTarget.yLookTimer >= 25)
-                {
-                    camYShift += 10;
-                }
+                camYShift = scrApproach(camYShift, 90, 3);
             break;
             
             // -- Shift the camera in the direction you are pressing while in a way launcher

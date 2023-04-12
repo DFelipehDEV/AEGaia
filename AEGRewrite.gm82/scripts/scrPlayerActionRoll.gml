@@ -84,5 +84,4 @@
     if (ground == false)
     {
         action     = actionJump;
-        jumpDouble = true;
     }

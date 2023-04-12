@@ -1,7 +1,7 @@
 /// scrPlayerActionSpring()
 
     // -- Animations
-    if (animationIndex != "SPRING_TRICK_HORIZONTAL" && animationIndex != "SPRING_TRICK_VERTICAL" && animationIndex != "FLING" && animationIndex != "LAND" && animationIndex != "FALL")
+    if (animationIndex != "SPRING_TRICK_HORIZONTAL" && animationIndex != "SPRING_TRICK_VERTICAL" && animationIndex != "FLING" && animationIndex != "LANDING" && animationIndex != "FALL")
     {
         // -- Spring animation
         if (ySpeed < 0.2)
@@ -12,7 +12,7 @@
         // -- Fall animation
         if (ySpeed >= 0.2)
         {
-            scrAnimationApply("LAND");
+            scrAnimationApply("LANDING");
         }
     }
 
@@ -22,7 +22,7 @@
     }
 
     // -- Spring tricks!
-    if (keySpecial1Pressed == true && (animationIndex == "SPRING" || animationIndex == "LAND"))
+    if (keySpecial1Pressed == true && (animationIndex == "SPRING" || animationIndex == "LANDING"))
     {
         // -- Horizontal trick
         if (keyUp == false && (keyLeft == true || keyRight == true))

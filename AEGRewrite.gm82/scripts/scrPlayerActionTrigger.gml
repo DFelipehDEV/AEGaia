@@ -42,7 +42,6 @@
         scrAnimationApply("JUMP");
 
         ground          =   false;
-        jumpDouble      =   false;
         jumpAirTimer    =   0;
 
         scrPlaySound("sndPlayerJump", global.volumeSounds, 1, false);

@@ -64,6 +64,10 @@
 		|scrPlayerHandleSpikes
 		|scrPlayerHandleDash
 		|scrPlayerHandleCrane
+		|scrPlayerHandleWallJump
+		|scrPlayerHandleWayLauncher
+		|scrPlayerHandleRails
+		|scrPlayerHandleLaunch
 +Animation
 	+Lists
 		|scrAnimationIndexSonic
@@ -83,6 +87,7 @@
 	|scrDummyEffectCreate
 	|scrEasings
 	|scrViewIn
+	|scrDrawCircularBar
 +Camera
 	|scrCameraLag
 	|scrCameraShakeX

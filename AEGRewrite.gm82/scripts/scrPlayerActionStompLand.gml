@@ -13,3 +13,11 @@
 
         scrPlaySound("sndPlayerSlide", global.volumeSounds, 1, false);
     }
+
+    if (animationIndex == "STOMP_LAND")
+    {
+        if (animationFinished == true)
+        {
+            action = actionNormal;
+        }
+    }

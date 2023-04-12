@@ -1,28 +1,32 @@
 /// scrPlayerActionCrouch()
 
-    yLookTimer += 1;
-
     // -- Reset
     if (keyDown == false || keyUp == true)
     {
-        action         = actionCrouchReset;
-        scrAnimationApply("CROUCH_RESET");
+        animationFrame = max(animationFrame - 0.25, animationFrameStart);
+        animationFrameSpeed = 0;
+        if (animationFrame <= 0.25)
+        {
+            action = actionNormal;
+        }
     }
-
-    // -- Spindash!
-    if (keyActionPressed == true)
+    else
     {
-        action           =  actionSpindash;
+        // -- Spindash!
+        if (keyActionPressed == true)
+        {
+            action           =  actionSpindash;
 
-        // -- Reset strength
-        spindashStrength =  0;
+            // -- Reset strength
+            spindashStrength =  0;
 
-        // -- Create charge effect
-        instance_create(x, y, objVFXSpindashCharge);
+            // -- Create charge effect
+            instance_create(x, y, objVFXSpindashCharge);
 
-        // -- Camera lag
-        scrCameraLag(10);
+            // -- Camera lag
+            scrCameraLag(10);
 
-        sound_stop("sndPlayerSpindashRelease");
-        scrPlaySound("sndPlayerSpindashCharge", global.volumeSounds, 1, false);
+            sound_stop("sndPlayerSpindashRelease");
+            scrPlaySound("sndPlayerSpindashCharge", global.volumeSounds, 1, false);
+        }
     }

@@ -23,7 +23,7 @@
     // -- Look up!
     if (xSpeed == 0 && ground == true && keyUp == true && keyDown == false)
     {
-        yLookTimer = 0;
+        scrCameraLag(20)
         action     = actionLookUp;
         scrAnimationApply("LOOK_UP");
     }
@@ -31,7 +31,7 @@
     // -- Crouch!
     if (xSpeed == 0 && ground == true && keyDown == true && keyUp == false)
     {
-        yLookTimer = 0;
+        scrCameraLag(20)
         action     = actionCrouch;
         scrAnimationApply("CROUCH");
     }

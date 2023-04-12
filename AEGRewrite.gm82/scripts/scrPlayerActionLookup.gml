@@ -1,10 +1,17 @@
 /// scrPlayerActionLookup()
 
-	    yLookTimer += 1;
+    // -- Reset
+    if (keyUp == false || keyDown == true)
+    {
+        // -- Skip frames to reset faster
+        if (keyUpReleased == true)
+        {
+            animationFrame = 2;
+        }
+        animationFrame = max(animationFrame - 0.3, animationFrameStart);
 
-	    // -- Reset
-	    if (keyUp == false || keyDown == true)
-	    {
-	        action         = actionLookUpReset;
-	        scrAnimationApply("LOOK_UP_RESET");
-	    }
+        if (floor(animationFrame) == 0)
+        {
+            action = actionNormal;
+        }
+    }

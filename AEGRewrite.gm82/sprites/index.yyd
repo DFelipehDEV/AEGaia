@@ -24,12 +24,12 @@ sprSonicStompLand
 sprSonicTurn
 sprSonicWallJump
 sprSonicFall
-sprSonicLand
+sprSonicLanding
 sprSonicLaunch
 sprSonicCrouch
-sprSonicCrouchReset
+
 sprSonicLookUp
-sprSonicLookUpReset
+
 sprSonicHomed1
 sprSonicHomed2
 sprSonicHurtFall
