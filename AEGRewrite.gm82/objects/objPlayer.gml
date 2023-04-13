@@ -1197,10 +1197,10 @@ applies_to=self
 /// -- Draw character and debug
 
     trailAlpha = 1;
-    /*draw_set_blend_mode(bm_add)
+    draw_set_blend_mode(bm_add)
     scrDrawTrail(16, 18, c_blue, 0, 0, trailAlpha);
     draw_set_blend_mode(bm_normal)
-    */
+
 
     // -- Draw grind effect
     if (action == actionGrind)
