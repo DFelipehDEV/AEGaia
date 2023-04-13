@@ -1,3 +1,8 @@
++Fades
+	|objFadeIn
+	|objFadeNext
+	|objFadeRoom
+	|objFadeGoal
 +Main
 	+Parents
 		|parActivate
@@ -22,6 +27,7 @@
 		|parRailLayer0
 		|parRailLayer1
 		|parSpring
+		|parParallax
 	+Player
 		|objPlayerSpawn
 		|objPlayer
@@ -32,6 +38,7 @@
 		+Miscellaneous
 			|objPlayerTarget
 			|objPlayerAfterimage
+			|objPlayerDead
 	+Controllers
 		|objControllerInput
 		|objControllerRender
@@ -153,8 +160,5 @@
 		|objSolidMask14
 	+Platform
 		|objPlatformMask01
-+Fades
-	|objFadeIn
-	|objFadeNext
-	|objFadeRoom
-	|objFadeGoal
++Parallax
+	|objTZBG

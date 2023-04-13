@@ -3,7 +3,7 @@
     scrLoadSounds();
 
     // -- Fonts
-    global.fontTitleCard = font_add_sprite(sprFontTitleCard, ord("0"), true, 0);
+    global.fontTitleCard = font_add_sprite(sprFontTitleCard, ord("0"), true, 3);
     global.fontHUD = font_add_sprite(sprFontHUD, ord("0"), false, -2);
     global.fontResults = font_add_sprite(sprFontResults, ord("0"), false, -1);
 
@@ -13,7 +13,7 @@
 
     // -- Volume variables
     global.volumeSounds = 1;                 // -- Sounds volume
-    global.volumeMusic = 100;                 // -- Music volume
+    global.volumeMusic = 1;                 // -- Music volume
 
 
     // -- Music variables

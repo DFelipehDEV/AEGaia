@@ -193,9 +193,13 @@ applies_to=self
 
     if (action == actionDead)
     {
-        y         += ySpeed;
-        ySpeed    += 0.18;
+        xSpeed = 0;
+        ySpeed = 0;
         global.playerRings = 0;
+        visible = false;
+        invincibilityTimer = 300;
+        invincibility = invincibilityHurt;
+
         // -- Decrease restart time
         if (deadTimer > 0)
         {
@@ -212,14 +216,22 @@ applies_to=self
     // -- Die if the player is on the room bottom
     if (y >= room_height)
     {
-        xSpeed = 0;
-        ySpeed = -6;
         ground = false;
-        action = actionDead;
         scrAnimationApply("DEAD");
+        scrAnimationUpdate()
+        action = actionDead;
 
         objControllerMusic.fadeOut = true;
         scrPlaySound("sndPlayerHurt", global.volumeSounds, 1, false);
+
+        with (instance_create(x, y, objPlayerDead))
+        {
+            sprite_index = other.animationSprite;
+            image_speed = other.animationFrameSpeed;
+            animationFrameLoop = other.animationFrameLoop;
+        }
+        x = 0;
+        y = 0;
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -854,10 +866,6 @@ applies_to=self
             // -- Check if we have drowned
             if (underwaterDrownFrame >= 5.9 && sound_isplaying("sndPlayerDrown") == false)
             {
-                // -- Drown
-                xSpeed = 0;
-                ySpeed = -5;
-                ground = false;
                 action = actionDead;
                 scrAnimationApply("DEAD");
                 global.playerRings = 0;
@@ -865,6 +873,17 @@ applies_to=self
                 scrPlaySound("sndPlayerDrown", global.volumeSounds, 1, false);
                 scrPlaySound("sndPlayerHurt", global.volumeSounds, 1, false);
                 objControllerMusic.fadeOut = true;
+                scrAnimationApply("DEAD");
+                scrAnimationUpdate()
+
+                with (instance_create(x, y, objPlayerDead))
+                {
+                    sprite_index = other.animationSprite;
+                    image_speed = other.animationFrameSpeed;
+                    animationFrameLoop = other.animationFrameLoop;
+                }
+                x = 0;
+                y = 0;
             }
         }
     }
@@ -995,15 +1014,15 @@ applies_to=self
 /// -- Footsteps
 
     if (animationIndex == "WALK_1" || animationIndex == "WALK_2" || animationIndex == "JOG_1" || animationIndex == "JOG_2"
-    || animationIndex == "RUN" || animationIndex == "WALLRUN_STRAIGHT") && (floor(animationFrame) == 3 || floor(animationFrame) == 7)
+    || animationIndex == "RUN") && (floor(animationFrame) == 3 || floor(animationFrame) == 7)
     {
         if (footstep == false)
         {
             footstep = true;
             // -- Create water splash if the player is running in the water
-            if (terrainType == "WATER" && scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon) == true)
+            if (terrainType == "WATER" && scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon))
             {
-                scrDummyEffectCreate(x, y, sprVFXWaterSplash, 0.45, 0, 1, bm_add, 1, animationDirection, 1,  0);
+                scrDummyEffectCreate(x, y, sprVFXWaterSplash, 0.45, 0, 1, bm_add, 1, animationDirection, 1, 0);
             }
 
             // -- Create dust effect

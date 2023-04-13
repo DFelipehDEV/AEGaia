@@ -41,15 +41,22 @@
         //Die
         else
         {
-            xSpeed = 0;
-            ySpeed = -6;
             ground = false;
-            action = actionDead;
             scrAnimationApply("DEAD");
+            scrAnimationUpdate()
+            action = actionDead;
             global.playerRings = 0;
 
             objControllerMusic.fadeOut = true;
             scrPlaySound(voiceline[4], global.volumeSounds, 1, false);
+            with (instance_create(x, y, objPlayerDead))
+            {
+                sprite_index = other.animationSprite;
+                image_speed = other.animationFrameSpeed;
+                animationFrameLoop = other.animationFrameLoop;
+            }
+            x = 0;
+            y = 0;
         }
     }
     scrPlayerAngleSet(0);

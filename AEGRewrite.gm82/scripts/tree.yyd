@@ -93,6 +93,9 @@
 	|scrEasings
 	|scrViewIn
 	|scrDrawCircularBar
+	|scrDrawSpriteTiledHorizontalPart
+	|scrDrawSpriteTiledVerticalPart
+	|scrDrawSpriteTiledPart
 +Camera
 	|scrCameraLag
 	|scrCameraShakeX
@@ -101,4 +104,6 @@
 	|scrPlaySound
 	|scrLoadSounds
 	|scrPlayMusic
++Parallax
+	|scrParallaxAddNode
 |scrInit

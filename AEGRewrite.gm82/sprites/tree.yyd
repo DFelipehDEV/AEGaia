@@ -219,3 +219,7 @@
 		|sprSolidMask14
 	+Platform
 		|sprPlatformMask01
++Parallax
+	|sprTZBG1
+	|sprTZBG2
+	|sprTZBG3

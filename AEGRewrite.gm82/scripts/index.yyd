@@ -87,3 +87,7 @@ scrPlayerHandleFling
 scrPlayerHandleGimmicks
 scrPlayerGlobalsReset
 scrInit
+scrParallaxAddNode
+scrDrawSpriteTiledHorizontalPart
+scrDrawSpriteTiledVerticalPart
+scrDrawSpriteTiledPart
