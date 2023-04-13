@@ -81,3 +81,7 @@ scrPlayerHandleWallJump
 scrPlayerHandleWayLauncher
 scrPlayerHandleRails
 scrPlayerHandleLaunch
+scrPlayerHandleWater
+scrPlayerShieldSet
+scrPlayerHandleFling
+scrPlayerHandleGimmicks

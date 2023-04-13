@@ -26,7 +26,12 @@
         }
 
         // -- Create charge effect
-        instance_create(x, y, objVFXSpindashCharge);
+        with (instance_create(x, y, objVFXSpindashCharge))
+        {
+            image_xscale = 0.0006;
+            image_yscale = 0.0006;
+            scalespeed = max(0.2, 0.2 + objPlayer.spindashStrength/50);
+        }
 
         scrPlaySound("sndPlayerSpindashCharge", global.volumeSounds, 1 + (spindashStrength * 0.041), false);
     }

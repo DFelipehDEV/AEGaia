@@ -92,6 +92,9 @@
 	+Miscellaneous
 		|sprEmpty
 		|sprEnemyMetal
+	+Splash
+		|sprAstralLogo
+		|sprAstralLogo2
 +Stage objects
 	+Layers
 		|sprLayer0
@@ -214,3 +217,5 @@
 		|sprSolidMask12
 		|sprSolidMask13
 		|sprSolidMask14
+	+Platform
+		|sprPlatformMask01

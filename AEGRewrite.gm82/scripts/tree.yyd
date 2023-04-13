@@ -27,6 +27,7 @@
 		|scrPlayerVoicelines
 		|scrPlayerHurtSet
 		|scrRingsDrop
+		|scrPlayerShieldSet
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet
@@ -68,6 +69,9 @@
 		|scrPlayerHandleWayLauncher
 		|scrPlayerHandleRails
 		|scrPlayerHandleLaunch
+		|scrPlayerHandleWater
+		|scrPlayerHandleFling
+		|scrPlayerHandleGimmicks
 +Animation
 	+Lists
 		|scrAnimationIndexSonic

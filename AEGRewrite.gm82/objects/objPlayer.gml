@@ -556,6 +556,65 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+/// -- Object handle
+ // -- Handle collisions with objects
+
+    // -- Launch sensor
+    scrPlayerHandleLaunch();
+
+    // -- Layers
+    scrPlayerHandleLayers();
+
+    // -- Rings
+    scrPlayerHandleRings();
+
+    // -- Enemies
+    scrPlayerHandleEnemy();
+
+    // -- Projectiles
+    scrPlayerHandleProjectile();
+
+    // -- Checkpoint
+    scrPlayerHandleCheckpoint();
+
+    // -- Balloons
+    scrPlayerHandleBalloons();
+
+    // -- Springs
+    scrPlayerHandleSprings();
+
+    // -- Spikes
+    scrPlayerHandleSpikes();
+
+    // -- Dash (Pads, rings and ramps)
+    scrPlayerHandleDash();
+
+    // -- Rails
+    scrPlayerHandleRails();
+
+    // -- Way launcher
+    scrPlayerHandleWayLauncher();
+
+    // -- Water
+    scrPlayerHandleWater();
+
+
+    // -- Fling ramp
+    scrPlayerHandleFling();
+
+    // -- Gimmicks
+    scrPlayerHandleGimmicks();
+
+    // -- Crane
+    scrPlayerHandleCrane();
+
+    // -- Walljump
+    scrPlayerHandleWallJump();
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
 /// -- Actions
 
     // -- Execute the appropriate action function based on the current action/state
@@ -669,69 +728,6 @@ applies_to=self
 
     // -- Trigger actions
     scrPlayerActionTrigger();
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Object handle
- // -- Handle collisions with objects
-
-
-    // -- Layers
-    scrPlayerHandleLayers();
-
-    // -- Rings
-    scrPlayerHandleRings();
-
-    // -- Enemies
-    scrPlayerHandleEnemy();
-
-    // -- Projectiles
-    scrPlayerHandleProjectile();
-
-    // -- Checkpoint
-    scrPlayerHandleCheckpoint();
-
-    // -- Balloons
-    scrPlayerHandleBalloons();
-
-    // -- Springs
-    scrPlayerHandleSprings();
-
-    // -- Spikes
-    scrPlayerHandleSpikes();
-
-    // -- Dash (Pads, rings and ramps)
-    scrPlayerHandleDash();
-
-    // -- Rails
-    scrPlayerHandleRails();
-
-    // -- Way launcher
-    scrPlayerHandleWayLauncher();
-
-/*
-    // -- Water
-    scrPlayerHandleWater();
-
-
-    // -- Fling ramp
-    scrPlayerHandleFling();
-
-
-    // -- Gimmicks
-    scrPlayerHandleGimmicks();
-
-
-    // -- Energy orb
-    scrPlayerHandleEnergyOrb();
-*/
-    // -- Crane
-    scrPlayerHandleCrane();
-
-    // -- Walljump
-    scrPlayerHandleWallJump();
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -1088,7 +1084,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Effects(Trail, Afterimage, invincibility)
+/// -- Effects(Trail, Afterimage)
 
     trailTimer -= 1;
     trailAlpha = lerp(trailAlpha, trailTimer/110, 0.08);
@@ -1099,14 +1095,6 @@ applies_to=self
         {
             instance_create(x, y, objPlayerAfterimage)
         }
-    }
-
-    // -- Stars
-    if (invincibility == invincibilityMonitor && invincibilityTimer mod 8 == 4)
-    {
-        var star1;
-        star1             = instance_create(xprevious + random_range(-20, 20), yprevious + random_range(-20, 20), objVFXStar1);
-        star1.starID      = id;
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1147,18 +1135,25 @@ applies_to=self
         if (invincibilityTimer > 0)
         {
             invincibilityTimer -= 1;
+
+            // -- Stars
+            if (invincibility == invincibilityMonitor && invincibilityTimer mod 5 == 1)
+            {
+                scrDummyEffectCreate(x + irandom_range(-25, 25), y + irandom_range(-25, 25), sprVFXStar1, 0.25, 0, choose(1, -2), bm_normal, 1, 1, 1, 0);
+            }
         }
         // -- End invincibility
         else
         {
             if (invincibility == invincibilityMonitor)
             {
+
                 if (instance_exists(objControllerMusic))
                 {
                     with (objControllerMusic)
                     {
-                        sound_stop(bgmInvincibility);
-                        playTempMusic = -1;
+                        sound_stop("bgmInvincibility");
+                        playTempMusic = "A";
                         fadeOut = false;
                         fadeIn = true;
                     }
@@ -1244,3 +1239,5 @@ applies_to=self
         draw_sprite_ext(maskLines, floor(angle), floor(x - cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorLeftDistanceX), floor(y + sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorLeftDistanceY), 1, 1, 0, c_white, 1)
         draw_sprite_ext(maskLines, floor(angle), floor(x + cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorRightDistanceX), floor(y - sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorRightDistanceX), 1, 1, 0, c_white, 1)
     }
+
+    draw_text(bbox_right, bbox_top, string(ySpeed))

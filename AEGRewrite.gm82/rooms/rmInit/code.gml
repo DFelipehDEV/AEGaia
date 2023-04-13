@@ -1,5 +1,6 @@
 /// -- Init
 
+    scrLoadSounds()
     // -- Fonts
     global.fontTitleCard = font_add_sprite(sprFontTitleCard, ord("0"), true, 0);
     global.fontHUD = font_add_sprite(sprFontHUD, ord("0"), false, -2);

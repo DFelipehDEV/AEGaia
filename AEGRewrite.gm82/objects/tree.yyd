@@ -27,6 +27,9 @@
 		|objPlayer
 		|objPlayerAfterimage
 		|objPlayerTarget
+		+Shields
+			|objPlayerShieldNormal
+			|objPlayerShieldElectricity
 	+Controllers
 		|objControllerInput
 		|objControllerRender
@@ -34,9 +37,12 @@
 		|objControllerAudio
 		|objControllerQTEKeys
 		|objControllerMusic
+		|objControllerTitleCard
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath
+	+Splash
+		|objAstralPowered
 +Stage object
 	+Common
 		+Spring
@@ -68,6 +74,16 @@
 			|objWalljumpTrigger
 		+Way Launcher
 			|objWayLauncher
+		+Monitor
+			|objMonitorEnergy
+			|objMonitorHurt
+			|objMonitorInvincibility
+			|objMonitorRings5
+			|objMonitorRings10
+			|objMonitorRingsRandom
+			|objMonitorShieldElectro
+			|objMonitorShieldNormal
+			|objMonitorIcon
 	+Obstacles
 		+Enemy
 			|objEnemyTurn
@@ -98,14 +114,24 @@
 			|objFootstepSensorWood
 		|objLaunchSensor
 		|objSlidepassSensor
+		|objFlingSensor
 	+Water
 		|objWaterHorizon
+		|objWater
+		|objWaterBubbleGenerator
+		+Don't use
+			|objWaterBubble
+			|objWaterBubbleSmall
+	+Gimmicks
+		|objCorkscrew
+		|objCorkscrewDepth
 +VFX
 	|objDummy
 	|objVFXBoost
 	|objVFXBoostShockwave
 	|objVFXSpindashCharge
 	|objVFXRing
+	|objVFXRainbow
 +Collision
 	+Main
 		|objSolidMask01
@@ -122,3 +148,10 @@
 		|objSolidMask12
 		|objSolidMask13
 		|objSolidMask14
+	+Platform
+		|objPlatformMask01
++Fades
+	|objFadeIn
+	|objFadeNext
+	|objFadeRoom
+	|objFadeGoal

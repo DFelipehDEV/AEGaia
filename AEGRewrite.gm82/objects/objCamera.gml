@@ -127,7 +127,7 @@ applies_to=self
         {
             // -- Shift the camera forward while spindashing
             case actionSpindash:
-                camXShift = scrApproach(camXShift, 90 * camTarget.animationDirection, 7);
+                camXShift = scrApproach(camXShift, 120 * camTarget.animationDirection, 6);
             break;
 
             // -- Shift the camera in the direction you are pressing while in a way launcher

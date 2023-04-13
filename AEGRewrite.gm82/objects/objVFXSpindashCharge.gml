@@ -7,12 +7,14 @@ applies_to=self
 /// -- Size/scale, color and alpha
 
     image_blend  = make_color_rgb(0, 160, 255);
-    image_xscale = 0.47;
-    image_yscale = 0.47;
 
-    image_angle  = random_range(0,360);
+    //image_angle  = random_range(0,360);
 
     depth        = -1;
+    image_index = 1
+    image_speed = 0;
+
+    scalespeed = 0.2;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -27,15 +29,19 @@ applies_to=self
         instance_destroy();
     }
 
-    // -- Fade
-    image_alpha -= 0.13;
+    if (image_xscale > 0.5)
+    {
+        // -- Fade
+        image_alpha -= 0.15;
+    }
 
     // -- Increase size/scale
-    image_xscale += 0.12;
-    image_yscale += 0.12;
+    image_xscale += scalespeed;
+    image_yscale += scalespeed;
+
 
     // -- Rotate
-    image_angle  += scrAngleWrap(20);
+    //image_angle  += 12;
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1

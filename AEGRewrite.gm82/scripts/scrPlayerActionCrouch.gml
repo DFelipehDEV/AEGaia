@@ -21,10 +21,11 @@
             spindashStrength =  0;
 
             // -- Create charge effect
-            instance_create(x, y, objVFXSpindashCharge);
-
-            // -- Camera lag
-            scrCameraLag(10);
+            with (instance_create(x, y, objVFXSpindashCharge))
+            {
+                image_xscale = 0.47;
+                image_yscale = 0.47;
+            }
 
             sound_stop("sndPlayerSpindashRelease");
             scrPlaySound("sndPlayerSpindashCharge", global.volumeSounds, 1, false);
