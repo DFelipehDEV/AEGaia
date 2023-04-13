@@ -1154,8 +1154,7 @@ applies_to=self
                     {
                         sound_stop("bgmInvincibility");
                         playTempMusic = "A";
-                        fadeOut = false;
-                        fadeIn = true;
+                        sound_resume(global.bgmSound);
                     }
                 }
             }

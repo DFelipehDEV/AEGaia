@@ -142,7 +142,7 @@ applies_to=self
 
         if (instance_exists(objPlayer) && cardTimer > 0 && global.playerCheckX == 0)
         {
-            objPlayer.xSpeed = 10.4;
+            objPlayer.xSpeed = 8;
         }
     }
 

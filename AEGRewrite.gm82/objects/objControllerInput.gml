@@ -82,3 +82,20 @@ applies_to=self
         inputLeft  = false;
         inputRight = false;
     }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Activate debug mode
+
+    if (keyboard_check_pressed(vk_caps))
+    {
+        if (DEBUG == 1 && global.debug = 0)
+        {
+            global.debug = 1;
+            global.debugIsAThing = 1;
+            scrPlaySound("sndRing", global.volumeSounds, 1, false);
+            instance_create(0, 0, objControllerDebug);
+        }
+    }

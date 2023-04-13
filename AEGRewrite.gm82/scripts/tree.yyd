@@ -26,8 +26,9 @@
 		|scrPlayerPhysicsSonic
 		|scrPlayerVoicelines
 		|scrPlayerHurtSet
-		|scrRingsDrop
 		|scrPlayerShieldSet
+		|scrPlayerGlobalsReset
+		|scrRingsDrop
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet
@@ -100,3 +101,4 @@
 	|scrPlaySound
 	|scrLoadSounds
 	|scrPlayMusic
+|scrInit

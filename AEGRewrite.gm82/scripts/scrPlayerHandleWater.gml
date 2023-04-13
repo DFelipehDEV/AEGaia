@@ -43,7 +43,7 @@
     else
     {
         //Water mode
-        if (waterTrigger != noone)
+        if (waterTrigger != noone && !waterHorizon)
         {
             //Enter in water mode
             physicMode = 1;

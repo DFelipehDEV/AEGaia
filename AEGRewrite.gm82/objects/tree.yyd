@@ -23,13 +23,15 @@
 		|parRailLayer1
 		|parSpring
 	+Player
-		|objCamera
+		|objPlayerSpawn
 		|objPlayer
-		|objPlayerAfterimage
-		|objPlayerTarget
+		|objCamera
 		+Shields
 			|objPlayerShieldNormal
 			|objPlayerShieldElectricity
+		+Miscellaneous
+			|objPlayerTarget
+			|objPlayerAfterimage
 	+Controllers
 		|objControllerInput
 		|objControllerRender
@@ -38,6 +40,7 @@
 		|objControllerQTEKeys
 		|objControllerMusic
 		|objControllerTitleCard
+		|objControllerDebug
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath

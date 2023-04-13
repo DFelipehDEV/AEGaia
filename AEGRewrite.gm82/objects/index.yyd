@@ -127,3 +127,5 @@ objFadeIn
 objFadeNext
 objFadeRoom
 objFadeGoal
+objPlayerSpawn
+objControllerDebug

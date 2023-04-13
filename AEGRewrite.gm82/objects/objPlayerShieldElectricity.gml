@@ -29,13 +29,13 @@ applies_to=self
     }
 
     // -- Depth
-    if (floor(image_index) == 1 || floor(image_index) == 3 || floor(image_index) == 5 || floor(image_index) == 7)
+    if (floor(image_index) mod 2 == 0)
     {
-        depth = 0;
+        depth = -2;
     }
     else
     {
-        depth = -1;
+        depth = 1;
     }
 #define Draw_0
 /*"/*'/**//* YYD ACTION

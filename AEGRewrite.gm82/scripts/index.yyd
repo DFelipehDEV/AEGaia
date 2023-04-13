@@ -85,3 +85,5 @@ scrPlayerHandleWater
 scrPlayerShieldSet
 scrPlayerHandleFling
 scrPlayerHandleGimmicks
+scrPlayerGlobalsReset
+scrInit

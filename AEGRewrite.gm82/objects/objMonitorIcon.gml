@@ -121,6 +121,8 @@ applies_to=self
             {
                 playTempMusic  = "bgmInvincibility";
                 fadeOut = true;
+
+                sound_pause(global.bgmSound)
             }
         break;
     }
