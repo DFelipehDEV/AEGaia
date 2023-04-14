@@ -172,10 +172,13 @@ applies_to=self
     scrPlayerVoicelines("SONIC");
 
     // -- Trail
-    trailAlpha = 0;
+    trailx = ds_list_create()
+    traily = ds_list_create()
+    trailal= ds_list_create()
+    trailLength = 19;
     trailTimer = 0;
-
-    Height = 1;
+    trailColor = make_color_rgb(25,100,255);
+    trailAlpha = 0;
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1117,6 +1120,13 @@ applies_to=self
             instance_create(x, y, objPlayerAfterimage)
         }
     }
+
+    // -- Trail
+    scrTrailUpdate(
+    floor(x)+cos(degtorad(angle+90))+cos(degtorad(angle))*xSpeed,
+    floor(y)-sin(degtorad(angle+90))+ySpeed-sin(degtorad(angle))*xSpeed,
+    trailAlpha > 0
+    )
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -1198,9 +1208,13 @@ applies_to=self
 */
 /// -- Draw character and debug
 
-    trailAlpha = 1;
+    //trailAlpha = 1;
     draw_set_blend_mode(bm_add)
-    scrDrawTrail(16, 18, c_blue, -1, 0, 1);
+    draw_set_color(trailColor)
+    draw_set_alpha(trailAlpha)
+    scrDrawTrail(sprVFXTrail, 20, false);
+    draw_set_alpha(1)
+    draw_set_color(c_white)
     draw_set_blend_mode(bm_normal)
 
     // -- Draw grind effect

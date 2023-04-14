@@ -202,6 +202,7 @@
 	|sprVFXStomp
 	|sprVFXWaterDrop
 	|sprVFXWaterSplash
+	|sprVFXTrail
 +Solids
 	+Main
 		|sprSolidMask01

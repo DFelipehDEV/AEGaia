@@ -94,3 +94,5 @@ scrDrawSpriteTiledPart
 scrStringNumberFormat
 scrDrawBackgroundRepeatHorizontal
 scrDrawBackgroundRepeatVertical
+
+scrTrailUpdate

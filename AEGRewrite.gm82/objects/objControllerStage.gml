@@ -70,10 +70,10 @@ applies_to=self
 
     // -- Draw energy bar
     // --draw_rectangle_colour(view_xview + 16+25, view_yview + view_hborder[0] - 16, view_xview + 16+objPlayer.energyAmount, view_yview +16+view_hborder[0] -28, c_orange, c_orange, c_orange, c_orange, 0);
-    gaugeIndex = inch(gaugeIndex, objPlayer.energyAmount*1.21, 3);
+    gaugeIndex = inch(gaugeIndex, objPlayer.energyAmount/4, 1);
     draw_sprite(sprHUDEnergy, 0, view_xview[0] + 8, view_yview[0] + screenHeight - 40)
     // -- Draw gauge
-    draw_sprite_part(sprHUDGauge, 1, 0, 0, round(gaugeIndex/3)*3, 13, view_xview[0] + 30, view_yview[0] + screenHeight - 27)
+    draw_sprite(sprHUDGauge, floor(gaugeIndex), view_xview[0] + 30, view_yview[0] + screenHeight - 27)
 
 /*
     // -- Warn pop up buttons
