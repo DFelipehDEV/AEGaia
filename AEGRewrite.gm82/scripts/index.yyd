@@ -47,7 +47,7 @@ scrPlayerActionWalljump
 scrPlayerActionGrind
 scrPlayerActionSlide
 scrPlayerActionStomp
-scrApproach
+
 scrCameraShakeX
 scrCameraShakeY
 scrPlayerActionStompLand
@@ -91,3 +91,6 @@ scrParallaxAddNode
 scrDrawSpriteTiledHorizontalPart
 scrDrawSpriteTiledVerticalPart
 scrDrawSpriteTiledPart
+scrStringNumberFormat
+scrDrawBackgroundRepeatHorizontal
+scrDrawBackgroundRepeatVertical

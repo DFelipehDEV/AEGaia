@@ -1,4 +1,4 @@
-/// scrParallaxAddNode(Repeat, Background, XFactor, XSpeed, XScroll, XOffset, XSeparation, YFactor, YSpeed, YScroll, YOffset, YSeparation, Left, Top, Width, Height)
+/// scrParallaxAddNode(TileDirection, Background, XFactor, XSpeed, XScroll, XOffset, XSeparation, YFactor, YSpeed, YScroll, YOffset, YSeparation, Left, Top, Width, Height)
 
 
     // Create or resize grid if needed

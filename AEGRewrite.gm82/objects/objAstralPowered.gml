@@ -31,7 +31,7 @@ applies_to=self
 /// -- Movement
 
     timer += 1;
-    backOffset = scrApproach(backOffset, backOffsetV, 3);
+    backOffset = inch(backOffset, backOffsetV, 3);
 
     if (timer mod 30 == 7)
     {

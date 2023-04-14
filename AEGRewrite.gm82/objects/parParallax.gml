@@ -100,28 +100,40 @@ applies_to=self
         // Draw
         switch(tileDir)
         {
-            case 0:
+            case parallaxSpritePart:
                 draw_sprite_part(backg, image_index, Left, Top, Width, Height, xFinal, yFinal);
             break;
 
-            case 1:
+            case parallaxSpriteHorizontal:
                 scrDrawSpriteTiledHorizontalPart(backg, image_index, Left, Top, Width, Height, xFinal, yFinal, xSeparation);
             break;
 
-            case 2:
+            case parallaxSpriteVertical:
                 scrDrawSpriteTiledVerticalPart(backg, image_index, Left, Top, Width, Height, xFinal, yFinal, ySeparation);
             break;
 
-            case 3:
+            case parallaxSpriteTiled:
                 scrDrawSpriteTiledPart(backg, Left, Top, Width, Height, xFinal, yFinal, xSeparation, ySeparation);
             break;
 
-            case 4:
+            case parallaxSprite:
                 draw_sprite(backg, image_index, xFinal, yFinal);
+            break;
+
+            case parallaxBGHorizontal:
+                scrDrawBackgroundRepeatHorizontal(backg, xFinal, yFinal, 1, 1, xSeparation, Width);
+            break;
+
+            case parallaxBGVertical:
+                scrDrawBackgroundRepeatVertical(backg, xFinal, yFinal, 1, 1, ySeparation, Height);
+            break;
+
+            case parallaxBG:
+                draw_background(backg, xFinal, yFinal);
             break;
         }
     }
-   draw_text(view_xview + 16, view_yview + 16, string(tileDir))
+   //draw_text(view_xview + 16, view_yview + 16, string(tileDir))
 
 /*    var nodeCurrent, tileDir, backg, xFactor, xSpeed, xScroll, xOffset, xSeparation;
     var yFactor, ySpeed, yScroll, yOffset, ySeparation, Left, Top, Width, Height, xFinal, yFinal;

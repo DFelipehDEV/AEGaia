@@ -51,6 +51,18 @@ applies_to=self
             scrPlayerGlobalsReset();
         }
     }
+
+
+    if (mouse_check_button(mb_right))
+    {
+        if (instance_exists(objPlayer))
+        {
+            objPlayer.x = lerp(objPlayer.x, mouse_x, 0.2);
+            objPlayer.y = lerp(objPlayer.y, mouse_y, 0.2);
+            objPlayer.xSpeed = 0;
+            objPlayer.ySpeed = 0;
+        }
+    }
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -76,7 +88,7 @@ applies_to=self
             draw_text(view_xview[0] + 333, view_yview[0] + 87+48, string("DIR- " + string(objPlayer.animationDirection)))
             draw_text(view_xview[0] + 333, view_yview[0] + 97+48, string("ACTION- " + string(objPlayer.action)))
             draw_text(view_xview[0] + 333, view_yview[0] + 107+48, string("ANGLE- " + string(objPlayer.angle)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 117+48, string("FPS- " + string(fps)))
+            draw_text(view_xview[0] + 333, view_yview[0] + 117+48, string("FPS- " + string(fps) + "  " + string(fps_real)))
             draw_text(view_xview[0] + 333, view_yview[0] + 127+48, string("SFXVOLUME- " + string(global.volumeSounds)))
             draw_text(view_xview[0] + 333, view_yview[0] + 137+48, string("VOLUMEREAL- " + string(objControllerMusic.musicVolumeReal)))
             draw_text(view_xview[0] + 333, view_yview[0] + 147+48, string("FADEIN- " + string(objControllerMusic.fadeIn)))

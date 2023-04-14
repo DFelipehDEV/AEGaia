@@ -48,6 +48,7 @@
 		|objControllerMusic
 		|objControllerTitleCard
 		|objControllerDebug
+		|objControllerResults
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath
@@ -94,6 +95,8 @@
 			|objMonitorShieldElectro
 			|objMonitorShieldNormal
 			|objMonitorIcon
+		+Goal
+			|objGoalRing
 	+Obstacles
 		+Enemy
 			|objEnemyTurn

@@ -1,6 +1,6 @@
 /// scrPlayerActionStomp()
 
-    xSpeed = scrApproach(xSpeed, 0, 10)
+    xSpeed = inch(xSpeed, 0, 10)
 
     // -- Land
     if (ground == true)

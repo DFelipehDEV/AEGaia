@@ -15,7 +15,7 @@ applies_to=self
 */
 /// -- Movement
 
-    vspeed = scrApproach(vspeed, -0.9, 0.17);
+    vspeed = inch(vspeed, -0.9, 0.17);
 
     if (image_index > 7)
     {

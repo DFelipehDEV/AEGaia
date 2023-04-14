@@ -1,4 +1,4 @@
-/// scrDrawSpriteTiledVerticalPart(sprite, frame, left, top, width, height, x, y);
+/// scrDrawSpriteTiledVerticalPart(sprite, frame, left, top, width, height, x, y, ySeperation);
 
     var spriteStart, spriteEnd, spriteCurrent, spriteStep;
 

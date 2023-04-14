@@ -45,7 +45,7 @@ applies_to=self
     // -- Vertical Shake
     if (camYShakeTimer > 0)
     {
-        camYShift      = scrApproach(camYShift, camYShakeValue - round(camYShakeTimer/2)*2, 12)
+        camYShift      = inch(camYShift, camYShakeValue - round(camYShakeTimer/2)*2, 12)
         y = lerp(y, y + camYShift, 0.17);
 
         if (camYShakeTimer mod 6 == 4)
@@ -127,24 +127,24 @@ applies_to=self
         {
             // -- Shift the camera forward while spindashing
             case actionSpindash:
-                camXShift = scrApproach(camXShift, 120 * camTarget.animationDirection, 6);
+                camXShift = inch(camXShift, 120 * camTarget.animationDirection, 6);
             break;
 
             // -- Shift the camera in the direction you are pressing while in a way launcher
             case actionWayLauncher:
                 if (camTarget.keyLeft == true)
                 {
-                    camXShift = scrApproach(camXShift, -80, 10);
+                    camXShift = inch(camXShift, -80, 10);
                 }
                 else if (camTarget.keyRight == true)
                 {
-                    camXShift = scrApproach(camXShift, 80, 10);
+                    camXShift = inch(camXShift, 80, 10);
                 }
             break;
 
             // -- Shift the camera based on the player's speed and angle in all other states
             default:
-                camXShift = scrApproach(camXShift, ((camTarget.xSpeed) * 15) * lengthdir_x(1, round(camTarget.angle)), 7);
+                camXShift = inch(camXShift, ((camTarget.xSpeed) * 15) * lengthdir_x(1, round(camTarget.angle)), 7);
         }
         
         // -- Shift y-axis camera position
@@ -152,23 +152,23 @@ applies_to=self
         {
             // -- Shift the camera up while looking up
             case actionLookUp:                
-                camYShift = scrApproach(camYShift, -90, 3);
+                camYShift = inch(camYShift, -90, 3);
             break;
             
             // -- Shift the camera down while crouching
             case actionCrouch:                
-                camYShift = scrApproach(camYShift, 90, 3);
+                camYShift = inch(camYShift, 90, 3);
             break;
             
             // -- Shift the camera in the direction you are pressing while in a way launcher
             case actionWayLauncher:
                 if (camTarget.keyUp == true)
                 {
-                    camYShift = scrApproach(camYShift, -80, 10);
+                    camYShift = inch(camYShift, -80, 10);
                 }            
                 else if (camTarget.keyDown == true)
                 {
-                    camYShift = scrApproach(camYShift, 80, 10);
+                    camYShift = inch(camYShift, 80, 10);
                 }
             break;
             
@@ -177,7 +177,7 @@ applies_to=self
                 // -- Only shift the camera if the y-shake timer is not active
                 if (camYShakeTimer == 0)
                 {
-                    camYShift = scrApproach(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 9, round(camTarget.angle)), 9);
+                    camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 9, round(camTarget.angle)), 9);
                 }
         }
     }

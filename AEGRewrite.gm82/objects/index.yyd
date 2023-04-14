@@ -132,3 +132,5 @@ objControllerDebug
 objTZBG
 parParallax
 objPlayerDead
+objGoalRing
+objControllerResults

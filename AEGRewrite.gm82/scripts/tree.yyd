@@ -87,15 +87,17 @@
 		|scrCollisionCheckBasic
 	|scrAngleTowards
 	|scrAngleWrap
-	|scrApproach
-	|scrDrawTrail
 	|scrDummyEffectCreate
 	|scrEasings
 	|scrViewIn
+	|scrDrawTrail
 	|scrDrawCircularBar
 	|scrDrawSpriteTiledHorizontalPart
 	|scrDrawSpriteTiledVerticalPart
 	|scrDrawSpriteTiledPart
+	|scrDrawBackgroundRepeatHorizontal
+	|scrDrawBackgroundRepeatVertical
+	|scrStringNumberFormat
 +Camera
 	|scrCameraLag
 	|scrCameraShakeX

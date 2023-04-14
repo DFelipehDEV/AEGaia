@@ -33,7 +33,7 @@ applies_to=self
     x += xSpeed;
     y += ySpeed;
 
-    ySpeed = scrApproach(ySpeed, 12, 0.45);
+    ySpeed = inch(ySpeed, 12, 0.45);
 
 
     // -- Invert direction

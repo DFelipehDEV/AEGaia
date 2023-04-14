@@ -95,7 +95,7 @@
 
     if(ground == false && allowY == true)
     {
-       ySpeed = scrApproach(ySpeed, 12, 0.2);
+       ySpeed = inch(ySpeed, 12, 0.2);
     }
 
 

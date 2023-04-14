@@ -1198,7 +1198,7 @@ applies_to=self
 
     trailAlpha = 1;
     draw_set_blend_mode(bm_add)
-    scrDrawTrail(16, 18, c_blue, 0, 0, trailAlpha);
+    //scrDrawTrail(16, 18, c_blue, 0, 0, trailAlpha);
     draw_set_blend_mode(bm_normal)
 
 
@@ -1257,5 +1257,3 @@ applies_to=self
         draw_sprite_ext(maskLines, floor(angle), floor(x - cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorLeftDistanceX), floor(y + sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorLeftDistanceY), 1, 1, 0, c_white, 1)
         draw_sprite_ext(maskLines, floor(angle), floor(x + cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorRightDistanceX), floor(y - sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorRightDistanceX), 1, 1, 0, c_white, 1)
     }
-
-    draw_text(bbox_right, bbox_top, string(ySpeed))
