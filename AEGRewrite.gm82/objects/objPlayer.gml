@@ -174,6 +174,8 @@ applies_to=self
     // -- Trail
     trailAlpha = 0;
     trailTimer = 0;
+
+    Height = 1;
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1198,9 +1200,8 @@ applies_to=self
 
     trailAlpha = 1;
     draw_set_blend_mode(bm_add)
-    //scrDrawTrail(16, 18, c_blue, 0, 0, trailAlpha);
+    scrDrawTrail(16, 18, c_blue, -1, 0, 1);
     draw_set_blend_mode(bm_normal)
-
 
     // -- Draw grind effect
     if (action == actionGrind)

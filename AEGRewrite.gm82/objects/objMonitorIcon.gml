@@ -85,7 +85,7 @@ applies_to=self
         case 5:
             with (objPlayer)
             {
-                energyAmount += min(80, energyAmountMax);
+                energyAmount = min(energyAmount + 80, energyAmountMax)
                 scrPlaySound("sndTrick", global.volumeSounds, 1, false);
             }
         break;

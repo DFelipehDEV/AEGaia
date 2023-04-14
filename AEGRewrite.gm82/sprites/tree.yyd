@@ -81,6 +81,7 @@
 			|sprHUDRings
 			|sprHUDTime
 			|sprHUDSpeedlines
+			|sprHUDGauge
 	+Sensors
 		|sprFootstepSensorDirt
 		|sprFootstepSensorGrass
