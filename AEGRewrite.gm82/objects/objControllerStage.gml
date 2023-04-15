@@ -75,7 +75,7 @@ applies_to=self
     // -- Draw gauge
     draw_sprite(sprHUDGauge, floor(gaugeIndex), view_xview[0] + 30, view_yview[0] + screenHeight - 27)
 
-/*
+
     // -- Warn pop up buttons
     switch (hudButton)
     {
@@ -86,7 +86,7 @@ applies_to=self
 
         case "BOOST":
             // -- Keyboard input
-            if (gamepad_is_connected(0) == false)
+            if (joystick_found() == false)
             {
                 // -- Draw input key
                 draw_sprite_ext(sprKeyboardKeys, 18, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
@@ -119,7 +119,7 @@ applies_to=self
             // -- Check if the button timer is avaiable to show the button
             if (hudButtonTimer > 0)
             {
-                hudButtonTimer--;
+                hudButtonTimer -= 1;
                 hudButtonAlpha[0] = min(hudButtonAlpha[0] + 0.2, 1);
 
                 // -- Play warning sound effect
@@ -151,7 +151,7 @@ applies_to=self
 
 
         case "JUMP":
-            if (gamepad_is_connected(0) == false)
+            if (joystick_found() == false)
             {
                 // -- Draw input key
                 draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
@@ -185,7 +185,7 @@ applies_to=self
             // -- Check if the button timer is avaiable to show the button
             if (hudButtonTimer > 0)
             {
-                hudButtonTimer--;
+                hudButtonTimer -= 1;
                 hudButtonAlpha[0] = min(hudButtonAlpha[0] + 0.2, 1);
 
                 // -- Play warning sound effect

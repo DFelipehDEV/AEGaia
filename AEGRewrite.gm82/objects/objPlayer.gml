@@ -1212,7 +1212,7 @@ applies_to=self
     draw_set_blend_mode(bm_add)
     draw_set_color(trailColor)
     draw_set_alpha(trailAlpha)
-    scrDrawTrail(sprVFXTrail, 20, false);
+    scrDrawTrail(sprVFXTrail, 20, 1);
     draw_set_alpha(1)
     draw_set_color(c_white)
     draw_set_blend_mode(bm_normal)

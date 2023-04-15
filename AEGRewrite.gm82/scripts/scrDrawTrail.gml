@@ -28,7 +28,7 @@ size = ds_list_size(trailx)
 
         //Alpha is either as set, or automatic
         a = draw_get_alpha()
-        if (argument2==1) then a = (i-1)/size
+        if (argument2==1) then a = ((i-1)/size) * draw_get_alpha()
 
         xt = (i-1)/size
         draw_vertex_texture_color(px+dx, py+dy, xt, 0,col,a*ds_list_find_value(trailal,i));

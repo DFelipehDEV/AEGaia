@@ -128,6 +128,7 @@
 		|objLaunchSensor
 		|objSlidepassSensor
 		|objFlingSensor
+		|objButtonSensor
 	+Water
 		|objWaterHorizon
 		|objWater
