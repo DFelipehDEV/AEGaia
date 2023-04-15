@@ -57,14 +57,14 @@
 
 
     // -- Physics
-    if (sign(xSpeed) == sign(sin(degtorad(angle))))
+    if (sign(xSpeed) == sign(angleSin))
     {
-        xSpeed -= rollDecSlopeUp * sin(degtorad(angle));
+        xSpeed -= rollDecSlopeUp * angleSin;
     }
 
-    if (sign(xSpeed) != sign(sin(degtorad(angle))))
+    if (sign(xSpeed) != sign(angleSin))
     {
-        xSpeed -= rollDecSlopeDown * sin(degtorad(angle));
+        xSpeed -= rollDecSlopeDown * angleSin;
     }
 
 

@@ -32,8 +32,8 @@
     if ((ground == true || action == actionCorkscrew) && !scrPlayerCollisionTop(x, y, angle, maskBig) && keyActionPressed == true && action != actionCrouch && action != actionSpindash && action != actionHurt)
     {
         // -- Set speed depending on the angle
-        ySpeed  =   cos(degtorad(angleRelative))*(jumpStrength/2) - sin(degtorad(angleRelative)) * xSpeed/2;
-        xSpeed  =   cos(degtorad(angleRelative))*xSpeed + sin(degtorad(angleRelative))*jumpStrength;
+        ySpeed  =   angleCos*(jumpStrength/2) - angleSin * xSpeed/2;
+        xSpeed  =   angleCos*xSpeed + angleSin*jumpStrength;
 
 
         scrPlayerAngleSet(global.playerAngleGravity);

@@ -89,6 +89,8 @@ applies_to=self
     angle = 0;                  // -- Current player angle
     angleRelative = 0;          // -- Current player angle relative to the gravity angle
     angleHolder = 0;
+    angleCos = 0;
+    angleSin = 0;
     layerIndex = 0;             // -- Current terrain layer
     boundariesNear = 0;         // -- Flag if the player is near of the camera boundaries
 
@@ -245,8 +247,10 @@ applies_to=self
 */
 /// -- Main movement
 
-    x   +=  (cos(degtorad(angle)) * xSpeed) * global.deltaMultiplier;
-    y   -=  (sin(degtorad(angle)) * xSpeed) * global.deltaMultiplier;
+    angleCos = dcos(angle)
+    angleSin = dsin(angle)
+    x   +=  (angleCos * xSpeed) * global.deltaMultiplier;
+    y   -=  (angleSin * xSpeed) * global.deltaMultiplier;
 
     var repFactor;
     repFactor = 1;
@@ -255,30 +259,29 @@ applies_to=self
     {
         repFactor = round(abs(xSpeed)/9)
     }
-
-    repeat (repFactor)
+    while (xSpeed > 0 && scrPlayerCollisionRight(x, y, angle, maskMid) == true)
     {
-        while (xSpeed > 0 && scrPlayerCollisionRight(x, y, angle, maskMid) == true)
-        {
-            x   -=  cos(degtorad(angle));
-            y   +=  sin(degtorad(angle));
-        }
+        x   -=  angleCos;
+        y   +=  angleSin;
+    }
 
-        while (xSpeed < 0 && scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
+    while (xSpeed < 0 && scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
+    {
+        x   +=  angleCos;
+        y   -=  angleSin;
+    }
+    // -- Check if the player is on the ground
+    if (ground == true)
+    {
+        repeat (repFactor)
         {
-            x   +=  cos(degtorad(angle));
-            y   -=  sin(degtorad(angle));
-        }
 
-        // -- Slopes
-        if (ground == true)
-        {
             if (scrPlayerCollisionMain(x, y))
             {
                 do
                 {
-                    x   -=  sin(degtorad(angle));
-                    y   -=  cos(degtorad(angle));
+                    x   -=  angleSin;
+                    y   -=  angleCos;
                 }
                 until(!scrPlayerCollisionMain(x, y))
             }
@@ -287,19 +290,18 @@ applies_to=self
             {
                 do
                 {
-                    x   +=  sin(degtorad(angle));
-                    y   +=  cos(degtorad(angle));
+                    x   +=  angleSin;
+                    y   +=  angleCos;
                 }until(scrPlayerCollisionMain(x, y))
             }
-
 
             // -- Fall if there is not enough speed.
             if (angle >= 75 && angle <= 285 && abs(xSpeed) < 4)
             {
                 if (action != actionGrind)
                 {
-                    ySpeed =   -sin(degtorad(angle))*xSpeed;
-                    xSpeed =   cos(degtorad(angle))*xSpeed;
+                    ySpeed =   -angleSin*xSpeed;
+                    xSpeed =   angleCos*xSpeed;
                     ground =   false;
                 }
             }
@@ -307,8 +309,8 @@ applies_to=self
             // -- Fall off the ground if the edges aren't colliding
             if (angle != global.playerAngleGravity && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
             {
-                ySpeed =   -sin(degtorad(angleRelative))*xSpeed;
-                xSpeed =   cos(degtorad(angleRelative))*xSpeed;
+                ySpeed =   -angleSin*xSpeed;
+                xSpeed =   angleCos*xSpeed;
                 ground =   false;
             } 
             
@@ -350,7 +352,7 @@ applies_to=self
                                        
                 if (angle < 140 || angle > 220)
                 {
-                    xSpeed =   -sin(degtorad(angle)) * (ySpeed*1.5);
+                    xSpeed =   -angleSin * (ySpeed*1.5);
                     ySpeed =    0;     
                     ground =   true;               
                 }
@@ -378,14 +380,14 @@ applies_to=self
         // -- Wall collision (yeah, again, we should perform that since the y axys has recently changed)
         while (scrPlayerCollisionRight(x, y, angle, maskMid) == true)
         {
-            x   -=  cos(degtorad(angle));
-            y   +=  sin(degtorad(angle));
+            x   -=  angleCos;
+            y   +=  angleSin;
         }
         
         while (scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
         {
-            x   +=  cos(degtorad(angle));
-            y   -=  sin(degtorad(angle));
+            x   +=  angleCos;
+            y   -=  angleSin;
         }
     }
  
@@ -492,7 +494,7 @@ applies_to=self
         {
             if (angleRelative > 40 && angleRelative < 320)
             {
-                xSpeed -= sin(degtorad(angleRelative)) * xSlopeFactor;
+                xSpeed -= angleSin * xSlopeFactor;
             }
         }
     }
@@ -546,7 +548,7 @@ applies_to=self
             {
                 angle   =   scrPlayerAngleGet(x, y, global.playerAngleGravity);
             }
-            xSpeed       -= sin(degtorad(angle)) * ySpeed;
+            xSpeed       -= angleSin * ySpeed;
             // -- Play landing sound effect
             if (abs(ySpeed) > 2)
             {
@@ -1123,8 +1125,8 @@ applies_to=self
 
     // -- Trail
     scrTrailUpdate(
-    floor(x)+cos(degtorad(angle+90))+cos(degtorad(angle))*xSpeed,
-    floor(y)-sin(degtorad(angle+90))+ySpeed-sin(degtorad(angle))*xSpeed,
+    floor(x)+cos(degtorad(angle+90))+angleCos*xSpeed,
+    floor(y)-sin(degtorad(angle+90))+ySpeed-angleSin*xSpeed,
     trailAlpha > 0
     )
 /*"/*'/**//* YYD ACTION
@@ -1261,14 +1263,14 @@ applies_to=self
 
     if (global.debugIsAThing == true)
     {
-        draw_sprite_ext(maskEdge, 0, x + sin(degtorad(angle)) * 11, y + cos(degtorad(angle)) * 11, 1, 1, 0, c_white, 0.6);
-        draw_sprite_ext(maskBig, 0, x + sin(degtorad(angle)) * sensorBottomDistance, y + cos(degtorad(angle)) * sensorBottomDistance, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x - sin(degtorad(angle)) * sensorTopDistance, y - cos(degtorad(angle)) * sensorTopDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskEdge, 0, x + angleSin * 11, y + angleCos * 11, 1, 1, 0, c_white, 0.6);
+        draw_sprite_ext(maskBig, 0, x + angleSin * sensorBottomDistance, y + angleCos * sensorBottomDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x - angleSin * sensorTopDistance, y - angleCos * sensorTopDistance, image_xscale, image_yscale, 0, c_white, 1);
 
-        draw_sprite_ext(maskBig, 0, x - cos(degtorad(angle)) * sensorLeftDistanceX, y + sin(degtorad(angle)) * sensorLeftDistanceY, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x + cos(degtorad(angle)) * sensorRightDistanceX, y - sin(degtorad(angle)) * sensorRightDistanceY, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x - angleCos * sensorLeftDistanceX, y + angleSin * sensorLeftDistanceY, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x + angleCos * sensorRightDistanceX, y - angleSin * sensorRightDistanceY, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskHitbox, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskMain, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskLines, floor(angle), floor(x - cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorLeftDistanceX), floor(y + sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorLeftDistanceY), 1, 1, 0, c_white, 1)
-        draw_sprite_ext(maskLines, floor(angle), floor(x + cos(degtorad(angle)) * 8 + sin(degtorad(angle)) * sensorRightDistanceX), floor(y - sin(degtorad(angle)) * 8 + cos(degtorad(angle)) * sensorRightDistanceX), 1, 1, 0, c_white, 1)
+        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistanceX), floor(y + angleSin * 8 + angleCos * sensorLeftDistanceY), 1, 1, 0, c_white, 1)
+        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistanceX), floor(y - angleSin * 8 + angleCos * sensorRightDistanceX), 1, 1, 0, c_white, 1)
     }
