@@ -36,7 +36,7 @@
         xSpeed  =   angleCos*xSpeed + angleSin*jumpStrength;
 
 
-        scrPlayerAngleSet(global.playerAngleGravity);
+        scrPlayerAngleSet(0);
         airdash         =   true;
         action          =   actionJump;
         scrAnimationApply("JUMP");
@@ -49,7 +49,7 @@
     }
 
     // -- Stomp!
-    if (keyDownPressed == true && ground == false && (action == actionJump|| action == actionBoostAir || action == actionNormal || action == actionSpring && ySpeed > -2))
+    if (keyDown == true && ground == false && (action == actionJump|| action == actionBoostAir || action == actionNormal || action == actionSpring && ySpeed > -2))
     {
         scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.6, 0, -0.01, bm_add, 1, 0.6, 0.6, 270);
         action = actionStomp;

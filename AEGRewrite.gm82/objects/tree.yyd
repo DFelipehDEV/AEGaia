@@ -14,6 +14,7 @@
 		|parLayer1
 		|parLayer1NoAngle
 		|parPlatform
+		|parPlatformMove
 		|parPlatformNoAngle
 		|parDashPad
 		|parDashRail
@@ -28,6 +29,16 @@
 		|parRailLayer1
 		|parSpring
 		|parParallax
+	+Controllers
+		|objControllerRender
+		|objControllerInput
+		|objControllerStage
+		|objControllerAudio
+		|objControllerQTEKeys
+		|objControllerMusic
+		|objControllerTitleCard
+		|objControllerDebug
+		|objControllerResults
 	+Player
 		|objPlayerSpawn
 		|objPlayer
@@ -39,21 +50,12 @@
 			|objPlayerTarget
 			|objPlayerAfterimage
 			|objPlayerDead
-	+Controllers
-		|objControllerInput
-		|objControllerRender
-		|objControllerStage
-		|objControllerAudio
-		|objControllerQTEKeys
-		|objControllerMusic
-		|objControllerTitleCard
-		|objControllerDebug
-		|objControllerResults
+	+Splash
+		|objAstralPowered
+		|objAstralTitle
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath
-	+Splash
-		|objAstralPowered
 +Stage object
 	+Common
 		+Spring
@@ -61,6 +63,7 @@
 		+Ring
 			|objRing
 			|objRingDrop
+			|objRingMagnetic
 		+Balloon
 			|objBalloon
 		+Checkpoint
@@ -129,6 +132,7 @@
 		|objSlidepassSensor
 		|objFlingSensor
 		|objButtonSensor
+		|objPlatformAngle
 	+Water
 		|objWaterHorizon
 		|objWater
@@ -162,7 +166,22 @@
 		|objSolidMask12
 		|objSolidMask13
 		|objSolidMask14
+		|objSolidMask15
 	+Platform
 		|objPlatformMask01
+		|objPlatformMask01Move
+		|objPlatformMask01Spin
+	+Layer0
+		|objLayer0Mask01
+		|objLayer0Mask02
+		|objLayer0Mask03
+		|objLayer0Mask04
+		|objLayer0Mask05
+	+Layer1
+		|objLayer1Mask01
+		|objLayer1Mask02
+		|objLayer1Mask03
+		|objLayer1Mask04
+		|objLayer1Mask05
 +Parallax
 	|objTZBG

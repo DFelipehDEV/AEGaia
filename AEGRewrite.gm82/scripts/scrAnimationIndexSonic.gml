@@ -113,11 +113,6 @@
             scrAnimationSet(sprSonicLanding, 0, -1, 1, 0.28, 1, 1, -1, "");
         break;
 
-        // -- Landed animation
-        case "LANDED":
-            scrAnimationSet(sprSonicCrouch, 2, 3, 0, -0.15, 1, 0, -1, "");
-        break;
-
         // -- Fall animation
         case "FALL":
             scrAnimationSet(sprSonicFall, 0, -1, 2, 0.3, 1, 1, -1, "");

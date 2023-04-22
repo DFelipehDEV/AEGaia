@@ -90,12 +90,15 @@
 		|sprFootstepSensorWater
 		|sprFootstepSensorWood
 		|sprTrigger
+		|sprPlatformAngle
 	+Miscellaneous
 		|sprEmpty
 		|sprEnemyMetal
 	+Splash
 		|sprAstralLogo
 		|sprAstralLogo2
+		|sprAstralTitleBG
+		|sprPressStart
 +Stage objects
 	+Layers
 		|sprLayer0
@@ -219,8 +222,22 @@
 		|sprSolidMask12
 		|sprSolidMask13
 		|sprSolidMask14
+		|sprSolidMask15
 	+Platform
 		|sprPlatformMask01
+		|sprPlatformMask01Spin
+	+Layer0
+		|sprLayer0Mask01
+		|sprLayer0Mask02
+		|sprLayer0Mask03
+		|sprLayer0Mask04
+		|sprLayer0Mask05
+	+Layer1
+		|sprLayer1Mask01
+		|sprLayer1Mask02
+		|sprLayer1Mask03
+		|sprLayer1Mask04
+		|sprLayer1Mask05
 +Parallax
 	|sprTZBG1
 	|sprTZBG2

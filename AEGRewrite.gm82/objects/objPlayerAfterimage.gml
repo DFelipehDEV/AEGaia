@@ -7,7 +7,7 @@ applies_to=self
 /// Animation sprite, frame, angle, direction, alpha and color
 
     // -- Check if the player exists
-    if (instance_exists(objPlayer))
+    if (global.player == true)
     {
         sprite_index = objPlayer.animationSprite;     //Animation sprite
         image_single = objPlayer.animationFrame;      //Animation frame

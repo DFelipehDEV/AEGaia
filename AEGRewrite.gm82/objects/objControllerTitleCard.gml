@@ -8,8 +8,8 @@ applies_to=self
 
     cardZoneScale  = 1;            //Scale of the zone card (when it starts to fade it it starts to split)
 
-    cardCenterX    = screenWidth/2;          //X screen center
-    cardCenterY    = screenHeight/2;         //Y screen center
+    cardCenterX    = screenWidthMid;          //X screen center
+    cardCenterY    = screenHeightMid;         //Y screen center
 
     cardColor1     = make_color_rgb(21,153,224);   //Main color used
     cardColor2     = make_color_rgb(120,228,225);  //Second main color used
@@ -38,16 +38,26 @@ applies_to=self
 
     delay = 30;
     shapeTimer = 0;
+#define Step_1
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Disable player input
 
-    // -- Remove player control
-    if (instance_exists(objPlayer))
+
+    if (delay == 29)
     {
-        with (objPlayer)
+        // -- Disable player control
+        if (global.player == true)
         {
-            allowKeys = false;
+            with (objPlayer)
+            {
+                allowKeys = false;
+            }
         }
     }
-#define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -75,8 +85,6 @@ applies_to=self
             cardCharSpeed -= 0.1;
         }
     }
-
-
 
     if (cardTimer < 210)
     {
@@ -109,6 +117,12 @@ applies_to=self
         {
             cardReturnOffset += 4;
             cardResultOffset = lerp(cardResultOffset, cardReturnOffset, 0.1);
+            // -- Give player control
+            if (global.player == true)
+            {
+                objPlayer.allowKeys  = true;
+                global.gameTimeAllow = true;
+            }
         }
 
 
@@ -123,14 +137,6 @@ applies_to=self
         {
             instance_destroy();
         }
-
-
-        // -- Give player control
-        if (instance_exists(objPlayer))
-        {
-            objPlayer.allowKeys  = true;
-            global.gameTimeAllow = true;
-        }
     }
 
 
@@ -143,7 +149,7 @@ applies_to=self
             cardBackAlpha -= 0.02;
         }
 
-        if (instance_exists(objPlayer) && cardTimer > 0 && global.playerCheckX == 0)
+        if (global.player == true && cardTimer > 0 && global.playerCheckX == 0)
         {
             objPlayer.xSpeed = 8;
         }

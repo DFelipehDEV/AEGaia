@@ -55,7 +55,7 @@ applies_to=self
 
     if (mouse_check_button(mb_right))
     {
-        if (instance_exists(objPlayer))
+        if (global.player == true)
         {
             objPlayer.x = lerp(objPlayer.x, mouse_x, 0.2);
             objPlayer.y = lerp(objPlayer.y, mouse_y, 0.2);
@@ -73,7 +73,7 @@ applies_to=self
 
     if (global.debugIsAThing == true)
     {
-        if (instance_exists(objPlayer))
+        if (global.player == true)
         {
             draw_sprite_ext(sprTrigger, 0, view_xview[0] + 333, view_yview[0] + 103, 179, 185, 0, c_black, 1);
             draw_set_color(c_white)
@@ -94,5 +94,6 @@ applies_to=self
             draw_text(view_xview[0] + 333, view_yview[0] + 147+48, string("FADEIN- " + string(objControllerMusic.fadeIn)))
             draw_text(view_xview[0] + 333, view_yview[0] + 157+48, string("FADEOUT- " + string(objControllerMusic.fadeOut)))
             draw_text(view_xview[0] + 333, view_yview[0] + 167+48, string("BGMVOLUME- " + string(global.volumeMusic)))
+            draw_text(view_xview[0] + 333, view_yview[0] + 177+48, string("INSTANCE COUNT- " + string(instance_count)))
         }
     }

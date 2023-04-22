@@ -4,10 +4,9 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Animation alpha, animation angle, depth and sounds
+/// -- Animation alpha, animation angle and sounds
 
     image_alpha = 0.1; // -- Animation alpha
-
 
     // -- Play boost sounds
     scrPlaySound("sndPlayerBoostContinue", global.volumeSounds, 1, false)

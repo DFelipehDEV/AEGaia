@@ -1,0 +1,1 @@
+global.stageName = "TEMPLATE ZONE"

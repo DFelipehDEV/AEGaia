@@ -9,9 +9,9 @@
     if (allowKeyTimer == 0)
     {
         // -- Trigger trick
-        if (keyLeftPressed == true || keyRightPressed == true || keyUpPressed == true || keyDownPressed == true)
+        if (keyLeft == true || keyRight == true || keyUp == true || keyDown == true)
         {
-            allowKeyTimer     = 15;
+            allowKeyTimer     = 20;
 
             // -- Increase combo amount
             if (trickCombo < 9)
@@ -24,7 +24,6 @@
 
             // -- Get energy
             energyAmount += 7;
-
 
             // -- Create rainbow effect
             instance_create(x, y, objVFXRainbow);

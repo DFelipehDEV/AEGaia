@@ -44,7 +44,7 @@ applies_to=self
 
     if (pull = 0)
     {
-        y = lerp(y, ystart, 0.04);
+        y = inch(y, ystart, 6);
     }
 #define Draw_0
 /*"/*'/**//* YYD ACTION

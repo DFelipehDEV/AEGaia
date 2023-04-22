@@ -21,5 +21,5 @@
 
         action = actionCorkscrew;
         ground = false;
-        scrPlayerAngleSet(global.playerAngleGravity);
+        scrPlayerAngleSet(0);
     }

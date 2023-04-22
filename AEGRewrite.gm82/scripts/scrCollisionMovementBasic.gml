@@ -1,7 +1,7 @@
 /// scrCollisionMovementBasic()
  // -- Ground Collision
 
-    // -- Base additional code by PVic, improved by Zazon Filipe
+    // -- Base additional code by PVic
     var g;
     g = scrCollisionCheckBasic();
 

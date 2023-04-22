@@ -86,17 +86,17 @@ applies_to=self
 
         case "BOOST":
             // -- Keyboard input
-            if (joystick_found() == false)
+            if (joystick_count() == 0)
             {
                 // -- Draw input key
-                draw_sprite_ext(sprKeyboardKeys, 18, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
+                draw_sprite_ext(sprKeyboardKeys, 18, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
 
                 // -- Highlight
                 if (hudButtonAlpha[1] > 0)
                 {
                     // -- White version
                     d3d_set_fog(1, c_white, 0, 0)
-                    draw_sprite_ext(sprKeyboardKeys, 18, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
+                    draw_sprite_ext(sprKeyboardKeys, 18, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
                     d3d_set_fog(0, c_white, 0, 0)
                 }
             }
@@ -104,14 +104,14 @@ applies_to=self
             // -- Gamepad input
             {
                 // -- Draw input key
-                draw_sprite_ext(sprGamepadKeys, 2, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
+                draw_sprite_ext(sprGamepadKeys, 2, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
 
                 // -- Highlight
                 if (hudButtonAlpha[1] > 0)
                 {
                     // -- White version
                     d3d_set_fog(1, c_white, 0, 0)
-                    draw_sprite_ext(sprGamepadKeys, 2, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
+                    draw_sprite_ext(sprGamepadKeys, 2, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
                     d3d_set_fog(0, c_white, 0, 0)
                 }
             }
@@ -151,17 +151,17 @@ applies_to=self
 
 
         case "JUMP":
-            if (joystick_found() == false)
+            if (joystick_count() == 0)
             {
                 // -- Draw input key
-                draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
+                draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
 
                 // -- Highlight
                 if (hudButtonAlpha[1] > 0)
                 {
                     // -- White version
                     d3d_set_fog(1, c_white, 0, 0)
-                    draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
+                    draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
                     d3d_set_fog(0, c_white, 0, 0)
                 }
             }
@@ -169,14 +169,14 @@ applies_to=self
             // -- Gamepad input
             {
                 // -- Draw input key
-                draw_sprite_ext(sprGamepadKeys, 0, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
+                draw_sprite_ext(sprGamepadKeys, 0, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[0]);
 
                 // -- Highlight
                 if (hudButtonAlpha[1] > 0)
                 {
                     // -- White version
                     d3d_set_fog(1, c_white, 0, 0)
-                    draw_sprite_ext(sprGamepadKeys, 0, view_xview[0] + screenWidth/2, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
+                    draw_sprite_ext(sprGamepadKeys, 0, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
                     d3d_set_fog(0, c_white, 0, 0)
                 }
             }

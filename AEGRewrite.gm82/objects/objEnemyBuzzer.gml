@@ -80,7 +80,7 @@ applies_to=self
         event_inherited();
     }
 
-    if (action == actionNormal && place_meeting(x, y, objEnemyTurn) == false && instance_exists(objPlayer) == true)
+    if (action == actionNormal && place_meeting(x, y, objEnemyTurn) == false && global.player == true)
     {
         playerID = instance_nearest(x, y, objPlayer);
 

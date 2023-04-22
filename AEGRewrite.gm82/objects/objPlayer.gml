@@ -87,7 +87,6 @@ applies_to=self
     terrainPlatform = 0;
     footstep = 0;               // -- Checks if the footstep sound can play
     angle = 0;                  // -- Current player angle
-    angleRelative = 0;          // -- Current player angle relative to the gravity angle
     angleHolder = 0;
     angleCos = 0;
     angleSin = 0;
@@ -247,8 +246,8 @@ applies_to=self
 */
 /// -- Main movement
 
-    angleCos = dcos(angle)
-    angleSin = dsin(angle)
+    angleCos = dcos(angle);
+    angleSin = dsin(angle);
     x   +=  (angleCos * xSpeed) * global.deltaMultiplier;
     y   -=  (angleSin * xSpeed) * global.deltaMultiplier;
 
@@ -307,7 +306,7 @@ applies_to=self
             }
 
             // -- Fall off the ground if the edges aren't colliding
-            if (angle != global.playerAngleGravity && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
+            if (angle != 0 && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
             {
                 ySpeed =   -angleSin*xSpeed;
                 xSpeed =   angleCos*xSpeed;
@@ -332,7 +331,7 @@ applies_to=self
             }  
             else
             {
-                scrPlayerAngleSet(global.playerAngleGravity);
+                scrPlayerAngleSet(0);
             }                                      
         }
     }                    
@@ -341,10 +340,11 @@ applies_to=self
     if (ground == false)
     {           
         angle = 0;           
-        y += ySpeed * global.deltaMultiplier;
+        x += (ySpeed * angleSin) * global.deltaMultiplier;
+        y += (ySpeed * angleCos) * global.deltaMultiplier;
             
         // -- Ceiling
-        if (ySpeed < 0 && scrPlayerCollisionTop(x, y, global.playerAngleGravity, maskBig))
+        if (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskBig))
         {
             if (scrPlayerCollisionLeftEdge(x, y, 180) && scrPlayerCollisionRightEdge(x, y, 180))
             {
@@ -359,7 +359,7 @@ applies_to=self
                 // -- Reset angle
                 else
                 {
-                    scrPlayerAngleSet(global.playerAngleGravity);
+                    scrPlayerAngleSet(0);
                 }
             }
         }
@@ -367,11 +367,11 @@ applies_to=self
         
         
         // -- Move the player outside in case he has got stuck into the floor or the ceiling           
-        while (ySpeed < 0 && scrPlayerCollisionTop(x, y, global.playerAngleGravity, maskMid))
+        while (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskMid))
         {
             y   +=  1;
         }            
-        while (ySpeed > 0 && scrPlayerCollisionBottom(x, y, global.playerAngleGravity, maskMid))
+        while (ySpeed > 0 && scrPlayerCollisionBottom(x, y, 0, maskMid))
         {
             y   -=  1;
         }
@@ -490,9 +490,9 @@ applies_to=self
     if (action != actionRoll)
     {
         // -- Deceleration on slopes
-        if (ground == true && angleRelative > 35 && angleRelative < 325)
+        if (ground == true && angle > 35 && angle < 325)
         {
-            if (angleRelative > 40 && angleRelative < 320)
+            if (angle > 40 && angle < 320)
             {
                 xSpeed -= angleSin * xSlopeFactor;
             }
@@ -529,7 +529,7 @@ applies_to=self
         if (scrPlayerCollisionBottom(x, y, angle, maskBig) == false)
         {
             ground = false;
-            scrPlayerAngleSet(global.playerAngleGravity);
+            scrPlayerAngleSet(0);
         }
     }
     else
@@ -542,11 +542,11 @@ applies_to=self
         }
 
         // -- Land
-        if (ySpeed >= 0 && (scrPlayerCollisionBottom(x, y, global.playerAngleGravity, maskBig)))
+        if (ySpeed >= 0 && (scrPlayerCollisionBottom(x, y, 0, maskBig)))
         {
-            if (scrPlayerCollisionLeftEdge(x, y, global.playerAngleGravity) && scrPlayerCollisionRightEdge(x, y, global.playerAngleGravity))
+            if (scrPlayerCollisionLeftEdge(x, y, 0) && scrPlayerCollisionRightEdge(x, y, 0))
             {
-                angle   =   scrPlayerAngleGet(x, y, global.playerAngleGravity);
+                angle   =   scrPlayerAngleGet(x, y, 0);
             }
             xSpeed       -= angleSin * ySpeed;
             // -- Play landing sound effect
@@ -559,7 +559,7 @@ applies_to=self
         }
 
         // -- Check if we're on the air but we collided with the ceiling
-        if (ySpeed < 0 && scrPlayerCollisionTop(x, y, global.playerAngleGravity, maskBig))
+        if (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskBig))
         {
             ySpeed = 0;
         }
@@ -776,32 +776,32 @@ applies_to=self
 
     allowKeyTimer = max(allowKeyTimer - 1, 0);
     if (allowKeys == false) exit;
-    keyLeft                 = keyboard_check(vk_left)
-    keyRight                = keyboard_check(vk_right)
-    keyUp                   = keyboard_check(vk_up)
-    keyDown                 = keyboard_check(vk_down)
-    keyAction               = keyboard_check(ord("A"))
-    keySpecial1             = keyboard_check(ord("S"))
-    keySpecial2             = keyboard_check(ord("D"))
-    keySpecial3             = keyboard_check(ord("F"))
+    keyLeft                 = input.inputLeft;
+    keyRight                = input.inputRight;
+    keyUp                   = input.inputUp;
+    keyDown                 = input.inputDown;
+    keyAction               = input.inputAction;
+    keySpecial1             = input.inputSpecial1;
+    keySpecial2             = input.inputSpecial2;
+    keySpecial3             = input.inputSpecial3;
 
-    keyLeftPressed          = keyboard_check_pressed(vk_left)
-    keyRightPressed         = keyboard_check_pressed(vk_right)
-    keyUpPressed            = keyboard_check_pressed(vk_up)
-    keyDownPressed          = keyboard_check_pressed(vk_down)
-    keyActionPressed        = keyboard_check_pressed(ord("A"))
-    keySpecial1Pressed      = keyboard_check_pressed(ord("S"))
-    keySpecial2Pressed      = keyboard_check_pressed(ord("D"))
-    keySpecial3Pressed      = keyboard_check_pressed(ord("F"))
+    keyLeftPressed          = input.inputLeftPressed;
+    keyRightPressed         = input.inputRightPressed;
+    keyUpPressed            = input.inputUpPressed;
+    keyDownPressed          = input.inputDownPressed;
+    keyActionPressed        = input.inputActionPressed;
+    keySpecial1Pressed      = input.inputSpecial1Pressed;
+    keySpecial2Pressed      = input.inputSpecial2Pressed;
+    keySpecial3Pressed      = input.inputSpecial3Pressed;
 
-    keyLeftReleased         = keyboard_check_released(vk_left)
-    keyRightReleased        = keyboard_check_released(vk_right)
-    keyUpReleased           = keyboard_check_released(vk_up)
-    keyDownReleased         = keyboard_check_released(vk_down)
-    keyActionReleased       = keyboard_check_released(ord("A"))
-    keySpecial1Released     = keyboard_check_released(ord("S"))
-    keySpecial2Released     = keyboard_check_released(ord("D"))
-    keySpecial3Released     = keyboard_check_released(ord("F"))
+    keyLeftReleased         = input.inputLeftReleased;
+    keyRightReleased        = input.inputRightReleased;
+    keyUpReleased           = input.inputUpReleased;
+    keyDownReleased         = input.inputDownReleased;
+    keyActionReleased       = input.inputActionReleased;
+    keySpecial1Released     = input.inputSpecial1Released;
+    keySpecial2Released     = input.inputSpecial2Released;
+    keySpecial3Released     = input.inputSpecial3Released;
 
     if (allowKeyTimer > 0)
     {
@@ -998,19 +998,19 @@ applies_to=self
     || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parLayer0NoAngle) || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parLayer1NoAngle)
     || action == actionRoll)
     {
-        animationAngle = global.playerAngleGravity;
+        animationAngle = 0;
     }
     else
     {
         if (ground == true)
         {
             // -- Rotate while moving on the ground
-            animationAngle = angle;
+            animationAngle = scrAngleTowards(round(angle/7.5)*7.5, animationAngle, 4 + abs(floor(xSpeed))/8);
         }
         // -- Rotate until reaches to the normal angle
         else
         {
-            animationAngle = scrAngleTowards(global.playerAngleGravity, animationAngle, 4);
+            animationAngle = scrAngleTowards(0, animationAngle, 4);
         }
     }
 /*"/*'/**//* YYD ACTION

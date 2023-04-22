@@ -6,7 +6,6 @@ applies_to=self
 */
 /// -- Variables
 
-    //FMODinit(100);
     loopPart        = -1;
     loopStart       = -1;
     loopEnd       = -1;

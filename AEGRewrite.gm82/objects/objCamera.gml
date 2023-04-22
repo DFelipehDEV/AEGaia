@@ -8,8 +8,8 @@ applies_to=self
 
 
     view_object[0] = id;
-    view_hborder[0] = screenWidth/2;
-    view_vborder[0] = screenHeight/2;
+    view_hborder[0] = screenWidthMid;
+    view_vborder[0] = screenHeightMid;
 
     camTarget       =   objPlayer;      // -- Camera target to follow the object
     camStuck        =   0;              // -- Check if the camera is "stuck" or not
@@ -92,8 +92,8 @@ applies_to=self
 
     if (camStuck == true || instance_exists(camTarget) == false) exit;
 
-    x = clamp(x, camBorderLeft + screenWidth/2, camBorderRight + screenWidth/2);
-    y = clamp(y, camBorderTop + screenHeight/2, camBorderBottom - screenHeight/2);
+    x = clamp(x, camBorderLeft + screenWidthMid, camBorderRight + screenWidthMid);
+    y = clamp(y, camBorderTop + screenHeightMid, camBorderBottom - screenHeightMid);
 
     if (camTarget != objPlayer)
     {
@@ -120,7 +120,7 @@ applies_to=self
 /// -- Camera Shift
 
     // -- Check if the player exists and is the current camera target
-    if (instance_exists(objPlayer) && camTarget == objPlayer)
+    if (global.player == true && camTarget == objPlayer)
     {
         // -- Shift x-axis camera position
         switch(camTarget.action)

@@ -4,7 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// @description  Create player
+/// -- Create player
 
     if (global.playerCheckX == 0 && global.playerCheckY == 0)
     {
@@ -14,3 +14,5 @@ applies_to=self
     {
         instance_create(global.playerCheckX, global.playerCheckY - 28, objPlayer);
     }
+
+    instance_destroy();

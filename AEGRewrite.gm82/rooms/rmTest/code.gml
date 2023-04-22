@@ -1,4 +1,4 @@
-parSolid.visible = true;
+parTerrain.visible = true;
 
 	with (objControllerMusic)
 	{
