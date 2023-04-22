@@ -1,8 +1,8 @@
-parTerrain.visible = true;
+//parTerrain.visible = true;
 
 	with (objControllerMusic)
 	{
-          scrPlayMusic("bgmTest", 1, 191.9, 33.7, true)
+          scrPlayMusic("bgmTest", global.volumeMusic, 191.9, 33.7, true)
 	fadeIn =true;
 musicVolumeReal = 0
 	}

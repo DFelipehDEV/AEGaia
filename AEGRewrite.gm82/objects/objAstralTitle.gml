@@ -38,6 +38,8 @@ applies_to=self
     menuOption = 1;
 
     delay = 0;
+    logoAlpha = 1;
+    returnDelay = 0;
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -48,6 +50,8 @@ applies_to=self
     optionY[0] = screenHeight;
     optionY[1] = screenHeight + 32;
     optionY[2] = screenHeight + 64;
+
+    optionMainAlpha = 1;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -60,8 +64,9 @@ applies_to=self
     {
         // -- Press start menu
         case 0:
+            returnDelay -= 1;
             // -- Check if the player has pressed the start button
-            if (input.inputAction)
+            if (input.inputAction && returnDelay < 0)
             {
                 menu = 1;
                 echoAlpha = 1;
@@ -131,6 +136,7 @@ applies_to=self
                                 {
                                     color = c_white;
                                 }
+                                scrPlaySound("sndMenuAccept", global.volumeSounds, 1, false);
                             }
                         }
                     break;
@@ -154,6 +160,13 @@ applies_to=self
                                 menuOption = 3;
                                 delay = 25;
                                 scrPlaySound("sndMenuSelect", global.volumeSounds, 1, false);
+                            }
+
+                            // -- Go to options menu
+                            if (input.inputAction)
+                            {
+                                menu = 3;
+                                scrPlaySound("sndMenuAccept", global.volumeSounds, 1, false);
                             }
                         }
                     break;
@@ -182,6 +195,19 @@ applies_to=self
                 }
             }
         break;
+
+        // -- Options menu
+        case 3:
+            cardY -= 4;
+            cardYScale += 1;
+            logoAlpha -= 0.05;
+            optionMainAlpha -= 0.07;
+
+            if (instance_exists(objAstralOptions) == false)
+            {
+                instance_create(x, y, objAstralOptions)
+            }
+        break;
     }
 
     // -- Move up and down
@@ -205,42 +231,42 @@ applies_to=self
 /// Draw logo, shapes and text
 
 
-    // Draw card
+    // -- Draw card
     draw_sprite_ext(sprTitleCardZoneCard, 0, cardX, cardY, cardXScale, cardYScale, 0, image_blend, image_alpha);
 
 
-    // Draw dash sign
+    // -- Draw dash sign
     draw_sprite_ext(sprTitleCardDash, 0, view_xview + cardDashX, cardDashY, 1, 1, 0, image_blend, image_alpha);
 
 
-    // Draw press start text
+    // -- Draw press start text
     draw_sprite_ext(sprPressStart, 0, view_xview+ screenWidthMid, view_yview + 10 + screenHeight - 65, 1, 1, 0, c_white, startAlpha);
 
-    // -- Selected press start text
+    // -- Selected press start text echo
     draw_sprite_ext(sprPressStart, 0, view_xview + screenWidthMid, view_yview + 10 + screenHeight - 65, echoScale, echoScale, 0, c_gray, echoAlpha);
 
-    // Draw earth
+    // -- Draw earth
     draw_sprite_ext(sprAstralTitleBG, 0, view_xview + titleOffset, view_yview + titleOffset, 1, 1, 0, image_blend, image_alpha);
 
-    // Draw moon
+    // -- Draw moon
     draw_sprite_ext(sprAstralTitleBG, 1, view_xview - titleOffset, view_yview - titleOffset, 1, 1, 0, image_blend, image_alpha);
 
-    // Draw shape bottom
+    // -- Draw shape bottom
     draw_sprite_ext(sprAstralTitleBG, 2, view_xview - titleOffset, view_yview + titleOffset, 1, 1, 0, image_blend, image_alpha);
 
-    // Draw shape top
+    // -- Draw shape top
     draw_sprite_ext(sprAstralTitleBG, 3, view_xview + titleOffset, view_yview - titleOffset, 1, 1, 0, image_blend, image_alpha);
 
-    // Draw logo
-    draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, image_blend, image_alpha);
+    // -- Draw logo
+    draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, image_blend, logoAlpha);
 
 
-    // Draw glow
+    // -- Draw glow
     draw_set_blend_mode(bm_add)
-    draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, c_white, abs(sin(current_time/340)*0.3));
+    draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, c_white, (abs(sin(current_time/340)*0.3))*logoAlpha);
     draw_set_blend_mode(bm_normal)
 
-
+    draw_set_alpha(optionMainAlpha)
     draw_set_font(global.fontTitleCard)
     draw_set_halign(fa_center);
     // -- Draw options
@@ -249,3 +275,4 @@ applies_to=self
     draw_text(screenWidthMid, optionY[2], "EXIT");
     draw_set_halign(-1);
     draw_set_font(1)
+    draw_set_alpha(1)

@@ -39,6 +39,7 @@
 		|objControllerTitleCard
 		|objControllerDebug
 		|objControllerResults
+		|objControllerResolution
 	+Player
 		|objPlayerSpawn
 		|objPlayer
@@ -53,6 +54,7 @@
 	+Splash
 		|objAstralPowered
 		|objAstralTitle
+		|objAstralOptions
 	+Miscellaneous
 		|objEnemyMetal
 		|objEnemyDeath
