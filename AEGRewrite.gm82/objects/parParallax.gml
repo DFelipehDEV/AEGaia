@@ -105,7 +105,7 @@ applies_to=self
             break;
 
             case parallaxSpriteHorizontal:
-                scrDrawSpriteTiledHorizontalPart(backg, image_index, Left, Top, Width, Height, xFinal, yFinal, xSeparation);
+                scrDrawSpriteTiledHorizontalPart(backg, image_index * global.deltaMultiplier, Left, Top, Width, Height, xFinal, yFinal, xSeparation);
             break;
 
             case parallaxSpriteVertical:

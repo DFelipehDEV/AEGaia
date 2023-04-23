@@ -109,7 +109,7 @@ applies_to=self
             // -- Shift to the player position
             // -- I could just have used lerp
             x = lerp(x, (camTarget.x + camXShift), 0.2);
-            y = lerp(y, (camTarget.y + camYShift), 0.16);
+            y = lerp(y, (camTarget.y + camYShift), 0.2); //0.16
         }
     }
 /*"/*'/**//* YYD ACTION
@@ -122,6 +122,8 @@ applies_to=self
     // -- Check if the player exists and is the current camera target
     if (global.player == true && camTarget == objPlayer)
     {
+        var angle;
+        angle = round(camTarget.angle/8)*8
         // -- Shift x-axis camera position
         switch(camTarget.action)
         {
@@ -144,7 +146,7 @@ applies_to=self
 
             // -- Shift the camera based on the player's speed and angle in all other states
             default:
-                camXShift = inch(camXShift, ((camTarget.xSpeed) * 15) * lengthdir_x(1, round(camTarget.angle)), 7);
+                camXShift = inch(camXShift, ((camTarget.xSpeed) * 15) * lengthdir_x(1, floor(angle)), 7);
         }
         
         // -- Shift y-axis camera position
@@ -177,7 +179,7 @@ applies_to=self
                 // -- Only shift the camera if the y-shake timer is not active
                 if (camYShakeTimer == 0)
                 {
-                    camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 9, round(camTarget.angle)), 9);
+                    camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 9, floor(angle)), 9); // *5, *9
                 }
         }
     }

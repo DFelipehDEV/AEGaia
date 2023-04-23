@@ -55,6 +55,7 @@
 			|sprFontTitleCard
 			|sprFontHUD
 			|sprFontResults
+			|sprFontText
 		+Input
 			|sprGamepadKeys
 			|sprKeyboardKeys
@@ -82,6 +83,8 @@
 			|sprHUDTime
 			|sprHUDSpeedlines
 			|sprHUDGauge
+		+Dialogue
+			|sprDialogueBG
 	+Sensors
 		|sprFootstepSensorDirt
 		|sprFootstepSensorGrass
@@ -179,6 +182,8 @@
 		|sprWaterBubbleSmall
 		|sprWaterHorizon
 		|sprDrownTimer
+	+Navigator
+		|sprNavigator
 +VFX
 	|sprVFXBoost
 	|sprVFXBoostShockwave

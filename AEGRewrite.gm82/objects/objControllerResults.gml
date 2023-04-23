@@ -85,7 +85,7 @@ applies_to=self
     if (resultsTimer > 110)
     {
         // -- Skip everything
-        if (input.inputAction) && scoreFinished == 0
+        if (input.inputAction && scoreFinished == 0)
         {
             sound_stop("bgmVictory");
 
@@ -163,13 +163,14 @@ applies_to=self
                     }
                 }
 
-
-                // -- Play the results music after victory music ended
-                if (sound_isplaying("bgmVictory") == false && sound_isplaying("bgmResults") == false)
+                if (resultsTimer > 370)
                 {
-                    scrPlaySound("bgmResults", global.volumeMusic, 1, false);
+                    // -- Play the results music after victory music ended
+                    if (!sound_isplaying("bgmResults"))
+                    {
+                        scrPlaySound("bgmResults", global.volumeMusic, 1, false);
+                    }
                 }
-
 
                 // -- Ranking
                 if (resultsTimer > 300
@@ -261,6 +262,7 @@ applies_to=self
                         }
 
                     }
+
 
                 }
             }

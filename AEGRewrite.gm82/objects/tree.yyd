@@ -55,9 +55,6 @@
 		|objAstralPowered
 		|objAstralTitle
 		|objAstralOptions
-	+Miscellaneous
-		|objEnemyMetal
-		|objEnemyDeath
 +Stage object
 	+Common
 		+Spring
@@ -110,6 +107,9 @@
 			|objEnemyEggpawn
 			|objEnemyChopper
 			|objEnemyBuzzer
+			+Miscellaneous
+				|objEnemyMetal
+				|objEnemyDeath
 		+Spikes
 			|objSpikeUp
 			|objSpikeDown
@@ -145,6 +145,8 @@
 	+Gimmicks
 		|objCorkscrew
 		|objCorkscrewDepth
+	+Navigator
+		|objNavigator
 +VFX
 	|objDummy
 	|objVFXBoost

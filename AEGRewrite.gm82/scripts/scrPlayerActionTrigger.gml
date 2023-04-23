@@ -149,7 +149,7 @@
                     boostVFX.playerID    = id;
                 }
 
-                energyAmount -= 0.4;
+                energyAmount -= 0.35;
 
                 scrPlayerPhysicsSonic();
             }

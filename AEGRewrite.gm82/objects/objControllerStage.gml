@@ -19,6 +19,10 @@ applies_to=self
     hudButtonAlpha[0] = 0;
     hudButtonAlpha[1] = 1;
     hudButtonScale = 5;
+
+    // -- Flags when the HUD is supossed to dissapear from the screen
+    hudOffset = 0;
+    hudGone = false;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -30,6 +34,23 @@ applies_to=self
     if (global.gameTimeAllow == true)
     {
         global.gameTime += (1000 / 60 * global.deltaMultiplier);
+    }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- HUD Control
+
+    switch (hudGone)
+    {
+        case false:
+            hudOffset = lerp(floor(hudOffset), 0, 0.05);
+        break;
+
+        case true:
+            hudOffset = lerp(floor(hudOffset), 300, 0.05);
+        break;
     }
 #define Draw_0
 /*"/*'/**//* YYD ACTION
@@ -51,18 +72,18 @@ applies_to=self
 
 
     // -- Draw time
-    draw_sprite(sprHUDTime, 0, view_xview[0] + 16, view_yview[0] + 8);
-    draw_text(view_xview[0] + 100, view_yview[0] + 16, string(string(floor(global.gameTime/60000))+":"+scrStringNumberFormat(floor(global.gameTime/1000) mod 60,2)+":"+scrStringNumberFormat(floor(global.gameTime/10) mod 100,2)));
+    draw_sprite(sprHUDTime, 0, view_xview[0] - hudOffset, view_yview[0] + 8);
+    draw_text((view_xview[0] - hudOffset) + 100, view_yview[0] + 16, string(string(floor(global.gameTime/60000))+":"+scrStringNumberFormat(floor(global.gameTime/1000) mod 60,2)+":"+scrStringNumberFormat(floor(global.gameTime/10) mod 100,2)));
 
 
     // -- Draw rings
     draw_set_halign(fa_left);
-    draw_sprite(sprHUDRings, 0, view_xview[0] + 16, view_yview[0] + 32);
-    draw_text(view_xview[0] + 37, view_yview[0] + 40, string(string(global.playerRings)));
+    draw_sprite(sprHUDRings, 0, (view_xview[0] - hudOffset), view_yview[0] + 32);
+    draw_text((view_xview[0] - hudOffset) + 37, view_yview[0] + 40, string(string(global.playerRings)));
     // -- Red counter
     if (global.playerRings == 0)
     {
-        draw_text_color(view_xview[0] + 37, view_yview[0] + 40, string(string(global.playerRings)), c_red, c_red, c_red, c_red, min(cos(global.gameTime/200), 1));
+        draw_text_color((view_xview[0] - hudOffset) + 37, view_yview[0] + 40, string(string(global.playerRings)), c_red, c_red, c_red, c_red, min(cos(global.gameTime/200), 1));
     }
     draw_set_halign(fa_right);
 
@@ -71,9 +92,9 @@ applies_to=self
     // -- Draw energy bar
     // --draw_rectangle_colour(view_xview + 16+25, view_yview + view_hborder[0] - 16, view_xview + 16+objPlayer.energyAmount, view_yview +16+view_hborder[0] -28, c_orange, c_orange, c_orange, c_orange, 0);
     gaugeIndex = inch(gaugeIndex, objPlayer.energyAmount/4, 1);
-    draw_sprite(sprHUDEnergy, 0, view_xview[0] + 8, view_yview[0] + screenHeight - 40)
+    draw_sprite(sprHUDEnergy, 0, view_xview[0] - hudOffset, view_yview[0] + screenHeight - 40)
     // -- Draw gauge
-    draw_sprite(sprHUDGauge, floor(gaugeIndex), view_xview[0] + 30, view_yview[0] + screenHeight - 27)
+    draw_sprite(sprHUDGauge, floor(gaugeIndex), (view_xview[0] - hudOffset), view_yview[0] + screenHeight - 27)
 
 
     // -- Warn pop up buttons
