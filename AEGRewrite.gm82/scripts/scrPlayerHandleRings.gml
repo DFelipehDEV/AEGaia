@@ -2,10 +2,10 @@
  // -- Handle rings collision
 
 
-    var ringNormal, ringDrop;
-    ringNormal  =   scrPlayerCollisionHitbox(x, y, objRing);
-    ringDrop    =   scrPlayerCollisionHitbox(x, y, objRingDrop);
-    ringMagnetic    =   scrPlayerCollisionHitbox(x, y, objRingMagnetic);
+    var ringNormal, ringDrop, ringMagnetic;
+    ringNormal = scrPlayerCollisionHitbox(x, y, objRing);
+    ringDrop = scrPlayerCollisionHitbox(x, y, objRingDrop);
+    ringMagnetic = scrPlayerCollisionHitbox(x, y, objRingMagnetic);
 
     // -- Collect normal ring
     if (ringNormal != noone)

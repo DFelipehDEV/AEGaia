@@ -8,7 +8,7 @@
         if (boost == false)
         {
             xSpeedTop     =  10;
-            xSpeedMax     =  11;
+            xSpeedMax     =  12;
             xAcc          =  0.081;
             xDec          =  0.1;
         }

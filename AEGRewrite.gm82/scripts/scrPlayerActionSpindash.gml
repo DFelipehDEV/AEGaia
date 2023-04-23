@@ -50,7 +50,7 @@
         {
             scrDummyEffectCreate(floor(x), floor(y), sprVFXSpindashHighRelease, 0.35, 0, 0.1, bm_normal, image_alpha, animationDirection, 1, animationAngle);
         }
-        xSpeed           =   (8 + spindashStrength) * animationDirection;
+        xSpeed           =   (8.2 + spindashStrength) * animationDirection;
         action           =   actionRoll;
         scrAnimationApply("ROLL");
 

@@ -23,14 +23,14 @@ applies_to=self
 
     // -- Spindash
     spindashStrength = 0;
-    spindashStrengthMax = 8;
+    spindashStrengthMax = 10;
 
     // -- Roll
     rollDec = 0.05;             // -- Roll deceleration
     rollDecLight = 0.04;        // -- Roll deceleration while holding the forward direction
     rollDecFric = 0.07;         // -- Roll deceleration while holding the opposite direction
-    rollDecSlopeUp = 0.08;      // -- Roll deceleration while going up a slope
-    rollDecSlopeDown = 0.2;     // -- Roll deceleration while going down a slope
+    rollDecSlopeUp = 0.06;      // -- Roll deceleration while going up a slope
+    rollDecSlopeDown = 0.25;     // -- Roll deceleration while going down a slope
 
     // -- Boost
     boost = 0;                  // -- Checks if is boosting or not
@@ -484,7 +484,7 @@ applies_to=self
     // -- Limit speed
     if (abs(xSpeed) > xSpeedMax)
     {
-        xSpeed -= (xDecTemp * 2) * sign(xSpeed);
+        xSpeed -= (xDecTemp * 1.2) * sign(xSpeed);
     }
 
     if (action != actionRoll)

@@ -147,6 +147,9 @@
 		|objCorkscrewDepth
 	+Navigator
 		|objNavigator
+	+Level Specific
+		+Decoration
+			|objTestFlower
 +VFX
 	|objDummy
 	|objVFXBoost

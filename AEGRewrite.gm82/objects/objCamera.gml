@@ -146,9 +146,9 @@ applies_to=self
 
             // -- Shift the camera based on the player's speed and angle in all other states
             default:
-                camXShift = inch(camXShift, ((camTarget.xSpeed) * 15) * lengthdir_x(1, floor(angle)), 7);
+                camXShift = inch(camXShift, ((camTarget.xSpeed) * 13) * lengthdir_x(1, floor(angle)), 7);
         }
-        
+
         // -- Shift y-axis camera position
         switch(camTarget.action)
         {
@@ -179,7 +179,7 @@ applies_to=self
                 // -- Only shift the camera if the y-shake timer is not active
                 if (camYShakeTimer == 0)
                 {
-                    camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 9, floor(angle)), 9); // *5, *9
+                    camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 8, floor(angle)), 9); // *5, *9
                 }
         }
     }

@@ -232,6 +232,7 @@ applies_to=self
                 textTotal = string_insert(lettertofind, string(textTotal), letter)
                 if (letterSoundTimer == 0)
                 {
+                    sound_stop("sndDialogueType")
                     scrPlaySound("sndDialogueType", global.volumeSounds, 1, false)
                     letterSoundTimer = 4;
                 }

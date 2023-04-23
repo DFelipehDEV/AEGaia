@@ -72,6 +72,8 @@ applies_to=self
     viewX = view_xview[view_current];
     viewY = view_yview[view_current];
 
+    var frame;
+    frame = image_index * global.deltaMultiplier;
     for (nodeCurrent = 0; nodeCurrent < nodeNumParallax; nodeCurrent += 1)
     {
         // Retrieve values and store them in temporary variables
@@ -101,15 +103,15 @@ applies_to=self
         switch(tileDir)
         {
             case parallaxSpritePart:
-                draw_sprite_part(backg, image_index, Left, Top, Width, Height, xFinal, yFinal);
+                draw_sprite_part(backg, frame, Left, Top, Width, Height, xFinal, yFinal);
             break;
 
             case parallaxSpriteHorizontal:
-                scrDrawSpriteTiledHorizontalPart(backg, image_index * global.deltaMultiplier, Left, Top, Width, Height, xFinal, yFinal, xSeparation);
+                scrDrawSpriteTiledHorizontalPart(backg, frame, Left, Top, Width, Height, xFinal, yFinal, xSeparation);
             break;
 
             case parallaxSpriteVertical:
-                scrDrawSpriteTiledVerticalPart(backg, image_index, Left, Top, Width, Height, xFinal, yFinal, ySeparation);
+                scrDrawSpriteTiledVerticalPart(backg, frame, Left, Top, Width, Height, xFinal, yFinal, ySeparation);
             break;
 
             case parallaxSpriteTiled:
@@ -117,7 +119,7 @@ applies_to=self
             break;
 
             case parallaxSprite:
-                draw_sprite(backg, image_index, xFinal, yFinal);
+                draw_sprite(backg, frame, xFinal, yFinal);
             break;
 
             case parallaxBGHorizontal:

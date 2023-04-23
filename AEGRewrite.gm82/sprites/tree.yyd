@@ -184,6 +184,8 @@
 		|sprDrownTimer
 	+Navigator
 		|sprNavigator
+	+Level Specific
+		|sprTestFlower
 +VFX
 	|sprVFXBoost
 	|sprVFXBoostShockwave
