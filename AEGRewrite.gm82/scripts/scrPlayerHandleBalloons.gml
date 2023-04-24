@@ -9,13 +9,7 @@
     // -- Check if is meeting the balloon
     if (balloon != noone)
     {
-        // -- Stop homing if the player was homing
-        if (action == actionHoming)
-        {
-            action = actionJump;
-
-            xSpeed = 4 * sign(xSpeed);
-        }
+        scrPlayerHomingReset(actionJump, 4*sign(xSpeed), 0, 0, x, y);
 
         ySpeed = -6;
         // -- Explode balloon

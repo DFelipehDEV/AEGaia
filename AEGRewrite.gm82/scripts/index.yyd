@@ -97,3 +97,6 @@ scrDrawBackgroundRepeatVertical
 
 scrTrailUpdate
 
+scrPlayerHomingReset
+
+scrPlayerHandleBox

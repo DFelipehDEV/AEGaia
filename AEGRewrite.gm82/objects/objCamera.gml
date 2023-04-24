@@ -142,6 +142,10 @@ applies_to=self
                 {
                     camXShift = inch(camXShift, 80, 10);
                 }
+                else
+                {
+                    camXShift = inch(camXShift, 0, 10);
+                }
             break;
 
             // -- Shift the camera based on the player's speed and angle in all other states
@@ -171,6 +175,10 @@ applies_to=self
                 else if (camTarget.keyDown == true)
                 {
                     camYShift = inch(camYShift, 80, 10);
+                }
+                else
+                {
+                    camYShift = inch(camYShift, 0, 10);
                 }
             break;
             

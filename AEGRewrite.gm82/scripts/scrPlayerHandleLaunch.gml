@@ -8,14 +8,14 @@
         if (ground == true && (angle >= 10 || angle <= 350) && abs(xSpeed) >= 1)
         {
             // -- Launch into the air
-            ySpeed = -sin(degtorad(angle))*xSpeed;
+            ySpeed = -angleSin*xSpeed;
             if (angle > 30 && angle < 150)
             {
                 xSpeed = 0;
             }
             else
             {
-                xSpeed = cos(degtorad(angle))*xSpeed;
+                xSpeed = angleCos*xSpeed;
             }
             ground = false;
         }

@@ -97,6 +97,12 @@
 			|objMonitorShieldElectro
 			|objMonitorShieldNormal
 			|objMonitorIcon
+		+Navigator
+			|objNavigator
+		+Box
+			|objBox1
+			+Miscellaneous
+				|objBoxPart
 		+Goal
 			|objGoalRing
 	+Obstacles
@@ -145,8 +151,6 @@
 	+Gimmicks
 		|objCorkscrew
 		|objCorkscrewDepth
-	+Navigator
-		|objNavigator
 	+Level Specific
 		+Decoration
 			|objTestFlower

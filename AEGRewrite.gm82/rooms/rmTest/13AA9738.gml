@@ -1,0 +1,1 @@
+springStrength = 13;

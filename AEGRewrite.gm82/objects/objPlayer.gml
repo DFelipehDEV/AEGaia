@@ -617,7 +617,6 @@ applies_to=self
     // -- Water
     scrPlayerHandleWater();
 
-
     // -- Fling ramp
     scrPlayerHandleFling();
 
@@ -629,6 +628,9 @@ applies_to=self
 
     // -- Walljump
     scrPlayerHandleWallJump();
+
+    // -- Box
+    scrPlayerHandleBox();
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -966,7 +968,7 @@ applies_to=self
         }
         else
         {
-            if (animationIndex != "HOMED_1" && animationIndex != "HOMED_2" && animationIndex != "FALL" && animationIndex != "LAUNCH" && animationIndex != "FLING")
+            if (animationIndex != "HOMED_1" && animationIndex != "HOMED_2" && animationIndex != "SPRING_TRICK_VERTICAL" && animationIndex != "FALL" && animationIndex != "LAUNCH" && animationIndex != "FLING")
             {
                 // -- Fall animation
                 if (abs(ySpeed) >= 0.2)

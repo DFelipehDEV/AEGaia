@@ -5,7 +5,7 @@ action_id=603
 applies_to=self
 */
 action_inherited();
-//Variables
+/// Variables
 
 
     turnTimer     = 15;           //How long it takes to turn

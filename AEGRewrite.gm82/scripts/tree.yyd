@@ -29,6 +29,7 @@
 		|scrPlayerShieldSet
 		|scrPlayerGlobalsReset
 		|scrRingsDrop
+		|scrPlayerHomingReset
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet
@@ -73,6 +74,7 @@
 		|scrPlayerHandleWater
 		|scrPlayerHandleFling
 		|scrPlayerHandleGimmicks
+		|scrPlayerHandleBox
 +Animation
 	+Lists
 		|scrAnimationIndexSonic

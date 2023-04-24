@@ -27,14 +27,9 @@ applies_to=self
     {
         other.ySpeed *= -0.9;
     }
-    if (other.action == actionHoming)
+    with (other)
     {
-        other.action             = actionNormal;
-
-        other.animationIndex     = choose("HOMED_1", "HOMED_2");
-        other.allowKeyTimer      = 15;
-        other.xSpeed             = 0;
-        other.ySpeed             = -5.8;
+        scrPlayerHomingReset(actionNormal, 0, -5.8, 0, x, y);
     }
 
     // -- Create explosion

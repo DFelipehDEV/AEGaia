@@ -94,6 +94,8 @@
 		|sprFootstepSensorWood
 		|sprTrigger
 		|sprPlatformAngle
+		|sprEnemyTurn
+		|sprFlingSensor
 	+Miscellaneous
 		|sprEmpty
 		|sprEnemyMetal
@@ -122,8 +124,6 @@
 			|sprDashRampRainbow
 			|sprDashRing
 			|sprDashRingRainbow
-		+Goal
-			|sprGoalRing
 		+Handle
 			|sprCrane
 			|sprHandle
@@ -146,6 +146,11 @@
 			|sprWayLauncherLeft
 			|sprWayLauncherRight
 			|sprWayLauncherUp
+		+Box
+			|sprBox1
+			|sprBoxPart
+		+Goal
+			|sprGoalRing
 	+Gimmicks
 		+Corkscrew
 			|sprCorkscrew
@@ -157,7 +162,6 @@
 			|sprSpikeLeft
 			|sprSpikeRight
 		+Enemies
-			|sprEnemyTurn
 			+Spinner
 				|sprEnemySpinner
 				|sprEnemySpinner2

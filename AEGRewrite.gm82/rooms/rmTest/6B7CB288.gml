@@ -1,7 +1,7 @@
 
-    npcString[0] = "HI SHADOW";
-    npcString[1] = "CHING CHENG HANJI CHANG CHOUG #######CHONOU KITCHEN IN A DUNGEON #######I SWEAR TO BANG COW";
-    npcString[2] = "SUS.";
+    npcString[0] = "HELLO";
+    npcString[1] = "MY NAME IS NAVIGATOR #######FEEL FREE TO TALK WITH ME#######WHEN YOU NEED HELP#######BY PRESSING F.";
+    npcString[2] = "BYEE.";
 	npcStringLength = 2;
 
     dialogueColor[0] = c_blue;
