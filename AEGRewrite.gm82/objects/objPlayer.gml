@@ -758,13 +758,18 @@ applies_to=self
 
     if (instance_exists(parHome) && ground == false)
     {
-        if (homingPossible = true && instance_exists(objPlayerTarget) == false)
+        if (homingPossible == true && instance_exists(objPlayerTarget) == false)
         {
             var homeenemy;
-            homeenemy = instance_nearest(x + animationDirection*2, y + 2, parHome);
-            with (instance_create(homeenemy.x, homeenemy.y, objPlayerTarget))
+            homeenemy = instance_nearest(x + animationDirection, y + 4, parHome);
+
+            // -- Check if there is no terrain in the trajectory
+            if (!collision_line(x, y, homeenemy.x, homeenemy.y, parTerrain, 1, 1))
             {
-                target = instance_nearest(objPlayer.x + objPlayer.animationDirection*2, objPlayer.y + 2, parHome);
+                // -- Create reticle at the nearest target
+                var playerTarget;
+                playerTarget = instance_create(homeenemy.x, homeenemy.y, objPlayerTarget)
+                playerTarget.target = homeenemy;
             }
         }
     }
@@ -1202,6 +1207,20 @@ applies_to=self
         if (action != actionHurt)
         {
             invincibility = invincibilityNoone;
+        }
+    }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Shields
+
+    if (shield == shieldElectricity)
+    {
+        if (physicMode == 1)
+        {
+            shield = 0;
         }
     }
 #define Draw_0

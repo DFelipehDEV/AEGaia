@@ -36,3 +36,10 @@ applies_to=self
     {
         instance_activate_region(objPlayer.x - 64, objPlayer.y - 64, 128, 128, 1);
     }
+#define Other_5
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+global.player = false;

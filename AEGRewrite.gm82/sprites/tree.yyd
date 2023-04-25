@@ -85,6 +85,8 @@
 			|sprHUDGauge
 		+Dialogue
 			|sprDialogueBG
+			|sprDialogueAvatarNavigator
+			|sprDialogueAvatarSonic
 	+Sensors
 		|sprFootstepSensorDirt
 		|sprFootstepSensorGrass

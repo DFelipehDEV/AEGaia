@@ -2,10 +2,10 @@
  // -- Start actions
 
     // -- Homing attack!
-    if ((action == actionJump || action == actionSpring && abs(ySpeed) > 0.1 || action == actionNormal) && distance_to_object(parHome) <= homingDistance
+    if ((action == actionJump || action == actionSpring || action == actionNormal) && distance_to_object(parHome) <= homingDistance
     && ground == false)
     {
-        if (sign(instance_nearest(x, y, parHome).x - x) == animationDirection && y < instance_nearest(x, y, parHome).y + 5)
+        if ((sign(instance_nearest(x, y, parHome).x - x) == animationDirection || sign(instance_nearest(x, y, parHome).x - x) == 0) && y < instance_nearest(x, y, parHome).y + 4)
         {
             homingPossible = true;
             if (keyActionPressed == true && instance_exists(objPlayerTarget))

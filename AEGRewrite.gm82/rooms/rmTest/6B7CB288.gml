@@ -1,11 +1,6 @@
-
-    npcString[0] = "HELLO";
-    npcString[1] = "MY NAME IS NAVIGATOR #######FEEL FREE TO TALK WITH ME#######WHEN YOU NEED HELP#######BY PRESSING F.";
-    npcString[2] = "BYEE.";
-	npcStringLength = 2;
-
-    dialogueColor[0] = c_blue;
-    dialogueColor[1] = c_blue;
-    dialogueColor[2] = c_red;
-
-    drawOffsetY = 65
+ // scrDialogueSetup(DialIndex, Text, DialogueColor, DialSprite, DialFrame)
+    scrDialogueSetup(0, "WHAT IS THIS...", c_blue, sprDialogueAvatarSonic, 4);
+    scrDialogueSetup(1, "HELLO!", c_yellow, sprDialogueAvatarNavigator, 0);
+    scrDialogueSetup(2, "WHY IS THERE A QUESTION MARK TALKING TO ME", c_blue, sprDialogueAvatarSonic, 1);
+    scrDialogueSetup(3, "HAHA, GOOD QUESTION#######I GUESS THAT'S JUST HOW I WAS DESIGNED.", c_yellow, sprDialogueAvatarNavigator, 0);
+    scrDialogueSetup(4, "FEEL FREE TO TALK WITH ME#######WHEN YOU NEED HELP#######BY PRESSING F", c_yellow, sprDialogueAvatarNavigator, 0);

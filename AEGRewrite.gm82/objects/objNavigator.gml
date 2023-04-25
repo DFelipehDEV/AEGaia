@@ -9,7 +9,7 @@ applies_to=self
     ended = 0;
     npcChatting = false;
 
-    npcString[0] = "NO STRING";
+    npcString[0] = "NO TEXT";
     npcStringLength = 0;
 
     npcStringCurrent = 0;
@@ -28,6 +28,9 @@ applies_to=self
     dialogueOffsetY = 400;
 
     drawOffsetY  = 0;
+    avatarSprite[0] = sprDialogueAvatarNavigator;
+    avatarIndex[0] = 0;  // Avatar Image Index
+
 
     inputAlpha = 0;
 #define Step_0
@@ -166,7 +169,7 @@ applies_to=self
                 }
 
 
-                objCamera.camYShift = -30;
+                objCamera.camYShift = -50;
                 objCamera.camTarget = id;
                 scrPlaySound("sndDialogueOpen", global.volumeSounds, 1, false);
 
@@ -203,11 +206,11 @@ applies_to=self
     }
 
     // -- Check if the player is touching the navigator
-    if (distance_to_object(objPlayer) < 40)
+    if (distance_to_object(objPlayer) < 40 && npcChatting == false)
     {
         inputAlpha = lerp(inputAlpha, 1, 0.2);
     }
-    else
+    if (distance_to_object(objPlayer) >= 40 || npcChatting)
     {
         inputAlpha = lerp(inputAlpha, 0, 0.2);
     }
@@ -243,7 +246,7 @@ applies_to=self
         draw_set_font(global.fontText);
         draw_sprite_ext(sprDialogueBG, 0, view_xview[0] + 16 - dialogueOffsetX, view_yview[0] + 70 - dialogueOffsetY, 1, 1, 0, dialogueColor[npcStringCurrent], dialogueAlpha);
         draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + 157 - dialogueOffsetX, view_yview[0] + 168 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
-        //draw_sprite_ext(avatarSprite[npcStringCurrent], avatarIndex[npcStringCurrent], view_xview[0] + 28 - dialogueOffsetX, view_yview[0] + 177 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
+        draw_sprite_ext(avatarSprite[npcStringCurrent], avatarIndex[npcStringCurrent], view_xview[0] + 28 - dialogueOffsetX, view_yview[0] + 177 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
 
         draw_set_alpha(dialogueAlpha);
         draw_set_halign(fa_left);

@@ -7,7 +7,7 @@
     // -- Fonts
     global.fontTitleCard = font_add_sprite(sprFontTitleCard, ord("0"), true, 3);
     global.fontHUD = font_add_sprite(sprFontHUD, ord("0"), false, -2);
-    global.fontText = font_add_sprite(sprFontText, ord("0"), true, 0);
+    global.fontText = font_add_sprite(sprFontText, ord(","), true, 0);
     global.fontResults = font_add_sprite(sprFontResults, ord("0"), false, -1);
 
     // -- Screen variables
