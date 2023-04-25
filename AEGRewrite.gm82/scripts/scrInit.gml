@@ -42,7 +42,6 @@
 
     // -- Create permanent controllers
     instance_create(0, 0, objControllerRender);
-    instance_create(0, 0, objControllerAudio);
     instance_create(0, 0, objControllerMusic);
     instance_create(0, 0, objControllerResolution);
 

@@ -1,6 +1,7 @@
 /// scrPlayerActionStomp()
 
     xSpeed = inch(xSpeed, 0, 10)
+    ySpeed = 18;
 
     // -- Land
     if (ground == true)
@@ -14,4 +15,5 @@
 
 
         scrDummyEffectCreate(x, y, sprVFXStomp, 0.45, 0, -0.1, bm_normal, image_alpha, 1, 1, animationAngle)
+        ySpeed = 0;
     }

@@ -21,7 +21,9 @@
                     wood = instance_create(x, y, objBoxPart);
                     wood.hspeed = random_range(-3, 3);
                     wood.vspeed = random_range(-6, -3);
+                    scrDummyEffectCreate(x + random_range(-32, 32), y + random_range(-32, 32), sprVFXExplosion2, 0.3, 0, -3, bm_normal, 1, 1, 1, 0)
                 }
+
             }
         }
     }

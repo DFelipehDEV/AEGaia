@@ -120,7 +120,6 @@ applies_to=self
             with (objControllerMusic)
             {
                 playTempMusic  = "bgmInvincibility";
-                fadeOut = true;
 
                 sound_pause(global.bgmSound)
             }

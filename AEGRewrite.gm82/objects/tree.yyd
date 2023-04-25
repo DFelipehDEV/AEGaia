@@ -33,13 +33,12 @@
 		|objControllerRender
 		|objControllerInput
 		|objControllerStage
-		|objControllerAudio
-		|objControllerQTEKeys
 		|objControllerMusic
-		|objControllerTitleCard
-		|objControllerDebug
-		|objControllerResults
 		|objControllerResolution
+		|objControllerDebug
+		|objControllerTitleCard
+		|objControllerResults
+		|objControllerQTEKeys
 	+Player
 		|objPlayerSpawn
 		|objPlayer

@@ -221,6 +221,10 @@ applies_to=self
                 delay = 0;
                 logoAlpha = 1;
                 returnDelay = 50;
+                optionY[0] = screenHeight;
+                optionY[1] = screenHeight + 32;
+                optionY[2] = screenHeight + 64;
+
                 optionMainAlpha = 1;
             }
         }

@@ -101,6 +101,7 @@
 	|scrDrawBackgroundRepeatVertical
 	|scrStringNumberFormat
 	|scrTrailUpdate
+	|scrEnemyInvincibility
 +Camera
 	|scrCameraLag
 	|scrCameraShakeX

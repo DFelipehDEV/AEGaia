@@ -9,7 +9,7 @@
 
 
     // -- Check for platform
-    if (place_meeting(argument0, argument1, parPlatform) && (ground == true || ySpeed > 16))
+    if (place_meeting(argument0, argument1, parPlatform) && (ground == true))
     {
         terrainPlatform = 1;
         return true;

@@ -140,7 +140,7 @@
 
         // -- Spring trick horizontal animation
         case "SPRING_TRICK_HORIZONTAL":
-            scrAnimationSet(sprSonicTrickHor, 0, -1, 3, 0.58, 1, 1, 2, "FALL");
+            scrAnimationSet(sprSonicTrickHor, 0, -1, 3, 0.77, 1, 1, 4, "FALL");
         break;
 
         // -- Spring trick vertical animation

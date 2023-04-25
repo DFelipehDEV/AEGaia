@@ -1,3 +1,3 @@
 
-    enemyHP       = 4;
+    enemyHP       = 7;
     enemyHPMax    = 7;

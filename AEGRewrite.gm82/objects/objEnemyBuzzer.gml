@@ -184,10 +184,7 @@ applies_to=self
 */
 /// -- Handle invincibility
 
-    if (enemyBlinkTimer > 0)
-    {
-        enemyBlinkTimer -= 1;
-    }
+    scrEnemyInvincibility();
 #define Other_7
 /*"/*'/**//* YYD ACTION
 lib_id=1

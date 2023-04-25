@@ -51,7 +51,6 @@ applies_to=self
     {
         if (sound_isplaying(playTempMusic) == false)
         {
-            fadeOut = true;
             scrPlaySound(playTempMusic, global.volumeMusic, 1, false);
         }
     }

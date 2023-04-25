@@ -54,7 +54,7 @@
         scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.6, 0, -0.01, bm_add, 1, 0.6, 0.6, 270);
         action = actionStomp;
         scrAnimationApply("STOMP");
-        ySpeed = 14;
+        ySpeed = 13;
 
         trailTimer = 80;
         scrPlaySound("sndPlayerStompStart", global.volumeSounds, 1, false);

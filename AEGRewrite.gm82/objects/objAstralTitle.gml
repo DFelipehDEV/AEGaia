@@ -266,13 +266,16 @@ applies_to=self
     draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, c_white, (abs(sin(current_time/340)*0.3))*logoAlpha);
     draw_set_blend_mode(bm_normal)
 
-    draw_set_alpha(optionMainAlpha)
-    draw_set_font(global.fontTitleCard)
-    draw_set_halign(fa_center);
-    // -- Draw options
-    draw_text(screenWidthMid, optionY[0], "START");
-    draw_text(screenWidthMid, optionY[1], "OPTIONS");
-    draw_text(screenWidthMid, optionY[2], "EXIT");
-    draw_set_halign(-1);
-    draw_set_font(1)
-    draw_set_alpha(1)
+    if (menu > 0)
+    {
+        draw_set_alpha(optionMainAlpha)
+        draw_set_font(global.fontTitleCard)
+        draw_set_halign(fa_center);
+        // -- Draw options
+        draw_text(screenWidthMid, optionY[0], "START");
+        draw_text(screenWidthMid, optionY[1], "OPTIONS");
+        draw_text(screenWidthMid, optionY[2], "EXIT");
+        draw_set_halign(-1);
+        draw_set_font(1)
+        draw_set_alpha(1)
+    }

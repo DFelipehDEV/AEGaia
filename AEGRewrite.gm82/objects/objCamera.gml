@@ -182,6 +182,10 @@ applies_to=self
                 }
             break;
             
+            case actionStomp:
+                camYShift = inch(camYShift, 220, 3);
+            break;
+            
             // -- Shift the camera based on the player's speed and angle in all other states
             default:
                 // -- Only shift the camera if the y-shake timer is not active

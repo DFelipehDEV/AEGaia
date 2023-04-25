@@ -51,7 +51,6 @@ rankC=3
 rankB=2
 rankA=1
 rankS=0
-audio=objControllerAudio
 input=objControllerInput
 parallaxSpritePart=0
 parallaxSpriteHorizontal=1

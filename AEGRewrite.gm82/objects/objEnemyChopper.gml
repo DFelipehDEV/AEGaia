@@ -45,3 +45,5 @@ applies_to=self
     }
 
     image_angle = point_direction(xprevious, yprevious, x, y);
+
+    scrEnemyInvincibility();

@@ -36,8 +36,6 @@ applies_to=self
 */
 /// -- Shock
 
-
-
     if (scrViewIn(id))
     {
         shockTimer += 1;
@@ -62,6 +60,8 @@ applies_to=self
             sound_stop("sndEnemySpinnerShockActive")
         }
     }
+
+    scrEnemyInvincibility();
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
