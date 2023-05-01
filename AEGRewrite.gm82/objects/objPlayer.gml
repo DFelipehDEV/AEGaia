@@ -6,11 +6,6 @@ applies_to=self
 */
 /// -- Main variables
 
-    // -- Position
-    floorX = floor(x);
-    floorY = floor(y);
-
-
     // -- Actions
     action = 0;
 
@@ -248,9 +243,6 @@ applies_to=self
 
     scrPlayerAngleLocals();
 
-    floorX = floor(x);
-    floorY = floor(y);
-
     x += (angleCos * xSpeed) * global.deltaMultiplier;
     y -= (angleSin * xSpeed) * global.deltaMultiplier;
 
@@ -398,9 +390,6 @@ applies_to=self
     {   
         scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
     }
-    
-    floorX = floor(x);
-    floorY = floor(y);
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -1155,7 +1144,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Stop action sounds
+/// -- Sound managment
 
     // -- Stop grinding sound
     if (action != actionGrind && sound_isplaying("sndPlayerGrindContinue") == true)
@@ -1258,7 +1247,7 @@ applies_to=self
     if (invincibility != invincibilityBlink || (invincibility == invincibilityBlink && ((global.gameTime div 60) mod 3)))
     {
         // -- Draw character
-        draw_sprite_ext(animationSprite, floor(animationFrame), floorX, floorY, animationDirection , image_yscale, animationAngle, image_blend, image_alpha);
+        draw_sprite_ext(animationSprite, floor(animationFrame), floor(x), floor(y), animationDirection , image_yscale, animationAngle, image_blend, image_alpha);
     }
 
     // -- Spindash normal dust

@@ -32,8 +32,8 @@
             image_yscale = 0.0006;
             scalespeed = max(0.2, 0.2 + objPlayer.spindashStrength/50);
         }
-
-        scrPlaySound("sndPlayerSpindashCharge", global.volumeSounds, 1 + (spindashStrength * 0.041), false);
+        sound_stop("sndPlayerSpindashCharge");
+        scrPlaySound("sndPlayerSpindashCharge", global.volumeSounds, 1 + (spindashStrength * 0.043), false);
     }
 
     // -- Decrease strength while doing nothing

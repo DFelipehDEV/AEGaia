@@ -133,7 +133,7 @@ applies_to=self
     }
     else
     {
-        if (keyboard_check_pressed(vk_enter) || joystick_check_button_pressed(0, 4))
+        if (keyboard_check_pressed(vk_enter)) //|| joystick_check_button_pressed(0, 4))
         {
             // -- Create a "print screen" of the screen before pausing
             gamescreen = background_create_from_screen(0, 0, screenWidth, screenHeight, 0, 0);

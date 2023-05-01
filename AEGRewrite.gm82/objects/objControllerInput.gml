@@ -68,10 +68,10 @@ applies_to=self
     inputRightReleased = keyboard_check_released(vk_right);
     inputUpReleased = keyboard_check_released(vk_up);
     inputDownReleased = keyboard_check_released(vk_down);
-    inputActionReleased = keyboard_check_released(ord("A")) || joystick_check_button_pressed(0, 0);
-    inputSpecial1Released = keyboard_check_released(ord("S")) || joystick_check_button_pressed(0, 1);
-    inputSpecial2Released = keyboard_check_released(ord("D")) || joystick_check_button_pressed(0, 2);
-    inputSpecial3Released = keyboard_check_released(ord("F")) || joystick_check_button_pressed(0, 3);
+    inputActionReleased = keyboard_check_released(ord("A")) || joystick_check_button_released(0, 0);
+    inputSpecial1Released = keyboard_check_released(ord("S")) || joystick_check_button_released(0, 1);
+    inputSpecial2Released = keyboard_check_released(ord("D")) || joystick_check_button_released(0, 2);
+    inputSpecial3Released = keyboard_check_released(ord("F")) || joystick_check_button_released(0, 3);
 
     // -- Disable inputs
     if (inputLeft == true && inputRight == true)
