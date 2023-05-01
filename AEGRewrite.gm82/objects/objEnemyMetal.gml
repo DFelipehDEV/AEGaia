@@ -23,7 +23,7 @@ applies_to=self
     // -- Check if the flame timer is 0
     if (flameTimer == 0)
     {
-        flameTimer = 30;
+        flameTimer = 25;
         // -- Create explosion
         scrDummyEffectCreate(x, y, sprVFXExplosion2, 0.45, 0, -0.1, bm_normal, 1, 1, 1, 0);
     }
@@ -33,7 +33,7 @@ applies_to=self
     }
 
     // -- Rotate
-    image_angle += 2;
+    image_angle += 2 + abs(vspeed);
 #define Other_40
 /*"/*'/**//* YYD ACTION
 lib_id=1

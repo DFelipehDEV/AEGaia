@@ -2,21 +2,15 @@
  // -- Handle collision with launch sensors
 
     // -- Check if the player is touching with a sensor
-    if (scrPlayerCollisionObjectMain(x, y, objLaunchSensor))
+    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objLaunchSensor))
     {
         // -- Check if the player is not in flat terrain
-        if (ground == true && (angle >= 10 || angle <= 350) && abs(xSpeed) >= 1)
+        if (ground == true && abs(xSpeed) >= 3)
         {
             // -- Launch into the air
-            ySpeed = -angleSin*xSpeed;
-            if (angle > 30 && angle < 150)
-            {
-                xSpeed = 0;
-            }
-            else
-            {
-                xSpeed = angleCos*xSpeed;
-            }
-            ground = false;
+            ySpeed =   -angleSin*xSpeed;
+            xSpeed =   angleCos*xSpeed;
+            ground =   false;
+            scrPlayerAngleSet(0);
         }
     }

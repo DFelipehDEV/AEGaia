@@ -14,6 +14,7 @@
         with (ringNormal)
         {
             instance_create(x, y, objVFXRing);
+            sound_stop("sndRing");
             scrPlaySound("sndRing", global.volumeSounds, 1, false);
             instance_destroy();
         }
@@ -34,6 +35,7 @@
         with (ringDrop)
         {
             instance_create(x, y, objVFXRing);
+            sound_stop("sndRing");
             scrPlaySound("sndRing", global.volumeSounds, 1, false);
             instance_destroy();
         }
@@ -47,6 +49,7 @@
         with (ringMagnetic)
         {
             instance_create(x, y, objVFXRing);
+            sound_stop("sndRing");
             scrPlaySound("sndRing", global.volumeSounds, 1, false);
             instance_destroy();
         }

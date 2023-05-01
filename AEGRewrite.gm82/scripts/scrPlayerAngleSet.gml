@@ -2,3 +2,4 @@
 
     //Set player angle
     angle          = argument0;
+    scrPlayerAngleLocals();

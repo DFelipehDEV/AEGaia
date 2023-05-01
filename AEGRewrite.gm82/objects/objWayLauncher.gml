@@ -8,7 +8,9 @@ applies_to=self
 
     image_speed = 0;
     dir         = "";          // -- Direction of the launcher
-    timerExit   = 140;         // -- How long it takes to exit of the launcher
+    timerExit   = 0;         // -- How long it takes to exit of the launcher
+    radius = 3;
+    thickness = 10;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -21,9 +23,9 @@ applies_to=self
     // -- Check if is colliding with the player
     if (objPlayer.action == actionWayLauncher && place_meeting(x, y, objPlayer) == true)
     {
-        if (timerExit > 0)
+        if (timerExit < 140)
         {
-            timerExit -= 1;
+            timerExit += 1;
         }
         else
         {
@@ -65,6 +67,7 @@ applies_to=self
                         action = actionSpring;
                         ySpeed = -9.5;
                         visible = true;
+                        starTimer = 50;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -103,6 +106,7 @@ applies_to=self
                         action = actionNormal;
                         ySpeed = 9.5;
                         visible = true;
+                        starTimer = 50;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -144,6 +148,7 @@ applies_to=self
                         yStuckTimer        = 16;
                         xSpeed             = -9;
                         visible = true;
+                        starTimer = 50;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -185,6 +190,7 @@ applies_to=self
                         yStuckTimer        = 16;
                         xSpeed             = 9;
                         visible        = true;
+                        starTimer = 50;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -196,9 +202,9 @@ applies_to=self
     }
     else
     {
-        if (timerExit < 140)
+        if (timerExit > 0)
         {
-            timerExit += 2;
+            timerExit -= 2;
         }
     }
 
@@ -226,8 +232,12 @@ applies_to=self
 /// -- Draw launcher
 
     // -- Draw timer
-    draw_circle_color(x - 1, y - 1, 10, c_gray, c_gray, 0);
-    //scrDrawCircularBar(x, y , timerExit, 140, c_aqua, 10, 1, 6);
+    draw_circle_color(x - 1, y - 1, 13, c_gray, c_gray, 0);
+    /// scrDrawCircularBar(x,y,radius,thickness,maxsegments,segments,startangle,totalangle,direction,colour)
+    // scrDrawCircularBar(x, y, value, max, colour, radius, transparency, width)
+    scrDrawCircularBar(x, y, radius, thickness, 40, 40 - timerExit*0.285, 0, 360, 1, c_aqua);
 
     // -- Draw launcher
     draw_self();
+
+    draw_sprite_ext(sprWayLauncher, 1, x, y, image_xscale, image_yscale, round((image_angle + timerExit*4)/8)*8, image_blend, image_alpha);

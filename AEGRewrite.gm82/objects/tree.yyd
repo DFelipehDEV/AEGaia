@@ -39,6 +39,7 @@
 		|objControllerTitleCard
 		|objControllerResults
 		|objControllerQTEKeys
+		|objControllerPause
 	+Player
 		|objPlayerSpawn
 		|objPlayer
@@ -82,8 +83,6 @@
 			|objRail04
 			|objRail05
 			|objRail06
-		+Walljump
-			|objWalljumpTrigger
 		+Way Launcher
 			|objWayLauncher
 		+Monitor
@@ -140,6 +139,7 @@
 		|objFlingSensor
 		|objButtonSensor
 		|objPlatformAngle
+		|objWalljumpTrigger
 	+Water
 		|objWaterHorizon
 		|objWater

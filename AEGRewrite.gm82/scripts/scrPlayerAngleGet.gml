@@ -9,11 +9,11 @@
     argument2   = round(argument2 / 12) * 12;
 
     //Set the starting position of the sensors (depending on angle)
-    pointLeftX   =   floor(argument0) - cos(degtorad(argument2)) * 8;
-    pointLeftY   =   floor(argument1) + sin(degtorad(argument2)) * 8;
+    pointLeftX = floor(argument0) - cos(degtorad(argument2)) * 8;
+    pointLeftY = floor(argument1) + sin(degtorad(argument2)) * 8;
 
-    pointRightX  =   floor(argument0) + cos(degtorad(argument2)) * 8;
-    pointRightY  =   floor(argument1) - sin(degtorad(argument2)) * 8;
+    pointRightX = floor(argument0) + cos(degtorad(argument2)) * 8;
+    pointRightY = floor(argument1) - sin(degtorad(argument2)) * 8;
 
 
     //Check if is meeting the ground
@@ -24,13 +24,13 @@
         {
             if (scrPlayerCollision(floor(pointLeftX), floor(pointLeftY), layerIndex) == false)
             {
-                pointLeftX   +=  sin(degtorad(argument2));
-                pointLeftY   +=  cos(degtorad(argument2));
+                pointLeftX += sin(degtorad(argument2));
+                pointLeftY += cos(degtorad(argument2));
             }
             if (scrPlayerCollision(floor(pointRightX), floor(pointRightY), layerIndex) == false)
             {
-                pointRightX   +=  sin(degtorad(argument2));
-                pointRightY   +=  cos(degtorad(argument2));
+                pointRightX += sin(degtorad(argument2));
+                pointRightY += cos(degtorad(argument2));
             }
         }
     }

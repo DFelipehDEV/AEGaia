@@ -6,6 +6,11 @@ applies_to=self
 */
 /// -- Main variables
 
+    // -- Position
+    floorX = floor(x);
+    floorY = floor(y);
+
+
     // -- Actions
     action = 0;
 
@@ -49,7 +54,7 @@ applies_to=self
 
     // -- Homing attack
     homingSpeed = 12;           // -- Speed while homing
-    homingDistance = 200;       // -- Max distance that the player can homing attack
+    homingDistance = 220;       // -- Max distance that the player can homing attack
     homingPossible = false;     // -- Weather the player can use homing attack or not
     homingTimer = 0;            // -- Time has passed since the homing attack was triggered
 
@@ -107,14 +112,6 @@ applies_to=self
 */
 /// -- Input variables
 
-    /*if (instance_exists(objControllerTitleCard))
-    {
-        allowKeys = 0;  // -- If can control the character or not
-    }
-    else
-    {
-        allowKeys = 1;  // -- If can control the character or not
-    }*/
     allowKeys = 1;
 
     allowKeyTimer = 0;
@@ -180,6 +177,9 @@ applies_to=self
     trailTimer = 0;
     trailColor = make_color_rgb(25,100,255);
     trailAlpha = 0;
+
+    // -- Stars
+    starTimer = 0;
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -246,10 +246,13 @@ applies_to=self
 */
 /// -- Main movement
 
-    angleCos = dcos(angle);
-    angleSin = dsin(angle);
-    x   +=  (angleCos * xSpeed) * global.deltaMultiplier;
-    y   -=  (angleSin * xSpeed) * global.deltaMultiplier;
+    scrPlayerAngleLocals();
+
+    floorX = floor(x);
+    floorY = floor(y);
+
+    x += (angleCos * xSpeed) * global.deltaMultiplier;
+    y -= (angleSin * xSpeed) * global.deltaMultiplier;
 
     var repFactor;
     repFactor = 1;
@@ -260,27 +263,26 @@ applies_to=self
     }
     while (xSpeed > 0 && scrPlayerCollisionRight(x, y, angle, maskMid) == true)
     {
-        x   -=  angleCos;
-        y   +=  angleSin;
+        x -= angleCos;
+        y += angleSin;
     }
 
     while (xSpeed < 0 && scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
     {
-        x   +=  angleCos;
-        y   -=  angleSin;
+        x += angleCos;
+        y -= angleSin;
     }
     // -- Check if the player is on the ground
     if (ground == true)
     {
         repeat (repFactor)
         {
-
             if (scrPlayerCollisionMain(x, y))
             {
                 do
                 {
-                    x   -=  angleSin;
-                    y   -=  angleCos;
+                    x -= angleSin;
+                    y -= angleCos;
                 }
                 until(!scrPlayerCollisionMain(x, y))
             }
@@ -289,8 +291,8 @@ applies_to=self
             {
                 do
                 {
-                    x   +=  angleSin;
-                    y   +=  angleCos;
+                    x += angleSin;
+                    y += angleCos;
                 }until(scrPlayerCollisionMain(x, y))
             }
 
@@ -299,18 +301,20 @@ applies_to=self
             {
                 if (action != actionGrind)
                 {
-                    ySpeed =   -angleSin*xSpeed;
-                    xSpeed =   angleCos*xSpeed;
-                    ground =   false;
+                    ySpeed = -angleSin*xSpeed;
+                    xSpeed = angleCos*xSpeed;
+                    ground = false;
+                    scrPlayerAngleSet(0);
                 }
             }
 
             // -- Fall off the ground if the edges aren't colliding
             if (angle != 0 && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
             {
-                ySpeed =   -angleSin*xSpeed;
-                xSpeed =   angleCos*xSpeed;
-                ground =   false;
+                ySpeed = -angleSin*xSpeed;
+                xSpeed = angleCos*xSpeed;
+                ground = false;
+                scrPlayerAngleSet(0);
             } 
             
             // -- Get new angle
@@ -326,7 +330,7 @@ applies_to=self
                 }
                 else 
                 {
-                    angle = angleHolder;
+                    scrPlayerAngleSet(angleHolder);
                 }
             }  
             else
@@ -338,10 +342,8 @@ applies_to=self
 
     // -- Vertical movement        
     if (ground == false)
-    {           
-        angle = 0;           
-        x += (ySpeed * angleSin) * global.deltaMultiplier;
-        y += (ySpeed * angleCos) * global.deltaMultiplier;
+    {                   
+        y += ySpeed * global.deltaMultiplier;
             
         // -- Ceiling
         if (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskBig))
@@ -352,9 +354,9 @@ applies_to=self
                                        
                 if (angle < 140 || angle > 220)
                 {
-                    xSpeed =   -angleSin * (ySpeed*1.5);
-                    ySpeed =    0;     
-                    ground =   true;               
+                    xSpeed = -angleSin * (ySpeed*1.5);
+                    ySpeed = 0;     
+                    ground = true;               
                 }
                 // -- Reset angle
                 else
@@ -369,25 +371,25 @@ applies_to=self
         // -- Move the player outside in case he has got stuck into the floor or the ceiling           
         while (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskMid))
         {
-            y   +=  1;
+            y += 1;
         }            
         while (ySpeed > 0 && scrPlayerCollisionBottom(x, y, 0, maskMid))
         {
-            y   -=  1;
+            y -= 1;
         }
             
 
         // -- Wall collision (yeah, again, we should perform that since the y axys has recently changed)
         while (scrPlayerCollisionRight(x, y, angle, maskMid) == true)
         {
-            x   -=  angleCos;
-            y   +=  angleSin;
+            x -= angleCos;
+            y += angleSin;
         }
         
         while (scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
         {
-            x   +=  angleCos;
-            y   -=  angleSin;
+            x += angleCos;
+            y -= angleSin;
         }
     }
  
@@ -396,6 +398,9 @@ applies_to=self
     {   
         scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
     }
+    
+    floorX = floor(x);
+    floorY = floor(y);
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -407,8 +412,8 @@ applies_to=self
     // -- Accelerations/Deceleration
     if (ground == true || action == actionCorkscrew)
     {
-        xAccTemp  = xAcc * global.deltaMultiplier;
-        xDecTemp  = xDec * global.deltaMultiplier;
+        xAccTemp = xAcc * global.deltaMultiplier;
+        xDecTemp = xDec * global.deltaMultiplier;
         xFricTemp = (xDec * 1.7) * global.deltaMultiplier;
     }else
     {
@@ -489,7 +494,7 @@ applies_to=self
 
     if (action != actionRoll)
     {
-        // -- Deceleration on slopes
+        // -- Acceleration and deceleration on slopes
         if (ground == true && angle > 35 && angle < 325)
         {
             if (angle > 40 && angle < 320)
@@ -546,16 +551,17 @@ applies_to=self
         {
             if (scrPlayerCollisionLeftEdge(x, y, 0) && scrPlayerCollisionRightEdge(x, y, 0))
             {
-                angle   =   scrPlayerAngleGet(x, y, 0);
+                scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
             }
-            xSpeed       -= angleSin * ySpeed;
+
+            xSpeed -= angleSin * ySpeed;
             // -- Play landing sound effect
             if (abs(ySpeed) > 2)
             {
                 scrPlaySound(terrainSound[terLand], global.volumeSounds, 1, false);
             }
-            ySpeed        = 0;
-            ground        = true;
+            ySpeed = 0;
+            ground = true;
         }
 
         // -- Check if we're on the air but we collided with the ceiling
@@ -997,7 +1003,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Animation speed and animation angle
+/// -- Animation angle
 
     // -- Rotate Sprites
     if (xSpeed == 0 && ground == true
@@ -1012,7 +1018,7 @@ applies_to=self
         if (ground == true)
         {
             // -- Rotate while moving on the ground
-            animationAngle = scrAngleTowards(round(angle/7.5)*7.5, animationAngle, 4 + abs(floor(xSpeed))/8);
+            animationAngle = scrAngleTowards(round(angle/7.5)*7.5, animationAngle, 5 + abs(floor(xSpeed))/3);
         }
         // -- Rotate until reaches to the normal angle
         else
@@ -1044,7 +1050,8 @@ applies_to=self
             {
                 alarm[0] = 1;
             }
-
+            sound_stop(terrainSound[terFootstep1])
+            sound_stop(terrainSound[terFootstep2])
             scrPlaySound(choose(terrainSound[terFootstep1],terrainSound[terFootstep2]), global.volumeSounds, 1, false);
         }
     }
@@ -1117,7 +1124,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Effects(Trail, Afterimage)
+/// -- Effects(Trail, Afterimage, Stars)
 
     trailTimer -= 1;
     trailAlpha = lerp(trailAlpha, trailTimer/110, 0.08);
@@ -1132,10 +1139,17 @@ applies_to=self
 
     // -- Trail
     scrTrailUpdate(
-    floor(x)+cos(degtorad(angle+90))+angleCos*xSpeed,
-    floor(y)-sin(degtorad(angle+90))+ySpeed-angleSin*xSpeed,
+    floor(x)+dcos(angle+90)+angleCos*xSpeed,
+    floor(y)-dsin(angle+90)+ySpeed-angleSin*xSpeed,
     trailAlpha > 0
     )
+
+    starTimer = max(starTimer - 1, 0);
+    // -- Stars
+    if (starTimer > 0 && starTimer mod 5 == 1)
+    {
+        scrDummyEffectCreate(x + irandom_range(-25, 25), y + irandom_range(-25, 25), sprVFXStar1, 0.25, 0, choose(1, -2), bm_normal, 1, 1, 1, 0);
+    }
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -1175,12 +1189,6 @@ applies_to=self
         if (invincibilityTimer > 0)
         {
             invincibilityTimer -= 1;
-
-            // -- Stars
-            if (invincibility == invincibilityMonitor && invincibilityTimer mod 5 == 1)
-            {
-                scrDummyEffectCreate(x + irandom_range(-25, 25), y + irandom_range(-25, 25), sprVFXStar1, 0.25, 0, choose(1, -2), bm_normal, 1, 1, 1, 0);
-            }
         }
         // -- End invincibility
         else
@@ -1250,7 +1258,7 @@ applies_to=self
     if (invincibility != invincibilityBlink || (invincibility == invincibilityBlink && ((global.gameTime div 60) mod 3)))
     {
         // -- Draw character
-        draw_sprite_ext(animationSprite, floor(animationFrame), floor(x), floor(y), animationDirection , image_yscale, animationAngle, image_blend, image_alpha);
+        draw_sprite_ext(animationSprite, floor(animationFrame), floorX, floorY, animationDirection , image_yscale, animationAngle, image_blend, image_alpha);
     }
 
     // -- Spindash normal dust

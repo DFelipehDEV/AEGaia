@@ -52,6 +52,47 @@ applies_to=self
             hudOffset = lerp(floor(hudOffset), 300, 0.05);
         break;
     }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Buttons
+
+    if (hudButton != "")
+    {
+        // -- Check if the button timer is avaiable to show the button
+        if (hudButtonTimer > 0)
+        {
+            hudButtonTimer -= 1;
+            hudButtonAlpha[0] = min(hudButtonAlpha[0] + 0.2, 1);
+
+            // -- Play warning sound effect
+            if (hudButtonAlpha[0] == 0.4)
+            {
+                scrPlaySound("sndMenuWarn", global.volumeSounds, 1, false);
+            }
+            // -- Decrease button scale
+            hudButtonScale = lerp(hudButtonScale, 2, 0.2);
+            hudButtonAlpha[1] = lerp(hudButtonAlpha[1], 0, 0.2);
+        }
+        else
+        {
+            hudButtonScale = lerp(hudButtonScale, 0, 0.2);
+            hudButtonAlpha[0] = max(hudButtonAlpha[0] - 0.2, 0);
+
+
+            // -- Reset variables after dissapearing
+            if (hudButtonAlpha[0] == 0)
+            {
+                hudButton = "";
+                hudButtonTimer = 0;
+                hudButtonAlpha[0] = 0;
+                hudButtonAlpha[1] = 1;
+                hudButtonScale = 5;
+            }
+        }
+    }
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -59,7 +100,6 @@ action_id=603
 applies_to=self
 */
 /// -- Draw HUD
-
 
     // -- Speedlines
     if (instance_exists(objVFXBoost) == true)
@@ -70,11 +110,9 @@ applies_to=self
     draw_set_color(c_white);
     draw_set_halign(fa_right);
 
-
     // -- Draw time
     draw_sprite(sprHUDTime, 0, view_xview[0] - hudOffset, view_yview[0] + 8);
     draw_text((view_xview[0] - hudOffset) + 100, view_yview[0] + 16, string(string(floor(global.gameTime/60000))+":"+scrStringNumberFormat(floor(global.gameTime/1000) mod 60,2)+":"+scrStringNumberFormat(floor(global.gameTime/10) mod 100,2)));
-
 
     // -- Draw rings
     draw_set_halign(fa_left);
@@ -87,10 +125,7 @@ applies_to=self
     }
     draw_set_halign(fa_right);
 
-
-
     // -- Draw energy bar
-    // --draw_rectangle_colour(view_xview + 16+25, view_yview + view_hborder[0] - 16, view_xview + 16+objPlayer.energyAmount, view_yview +16+view_hborder[0] -28, c_orange, c_orange, c_orange, c_orange, 0);
     gaugeIndex = inch(gaugeIndex, objPlayer.energyAmount/4, 1);
     draw_sprite(sprHUDEnergy, 0, view_xview[0] - hudOffset, view_yview[0] + screenHeight - 40)
     // -- Draw gauge
@@ -103,7 +138,6 @@ applies_to=self
         case "":
 
         break;
-
 
         case "BOOST":
             // -- Keyboard input
@@ -134,38 +168,6 @@ applies_to=self
                     d3d_set_fog(1, c_white, 0, 0)
                     draw_sprite_ext(sprGamepadKeys, 2, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
                     d3d_set_fog(0, c_white, 0, 0)
-                }
-            }
-
-            // -- Check if the button timer is avaiable to show the button
-            if (hudButtonTimer > 0)
-            {
-                hudButtonTimer -= 1;
-                hudButtonAlpha[0] = min(hudButtonAlpha[0] + 0.2, 1);
-
-                // -- Play warning sound effect
-                if (hudButtonAlpha[0] == 0.4)
-                {
-                    scrPlaySound("sndMenuWarn", global.volumeSounds, 1, false);
-                }
-                // -- Decrease button scale
-                hudButtonScale = lerp(hudButtonScale, 2, 0.2)
-                hudButtonAlpha[1] = lerp(hudButtonAlpha[1], 0, 0.2);
-            }
-            else
-            {
-                hudButtonScale = lerp(hudButtonScale, 0, 0.2)
-                hudButtonAlpha[0] = max(hudButtonAlpha[0] - 0.2, 0)
-
-
-                // -- Reset variables after dissapearing
-                if (hudButtonAlpha[0] == 0 && hudButtonAlpha[1] = 0)
-                {
-                    hudButton = "";
-                    hudButtonTimer = 0;
-                    hudButtonAlpha[0] = 0;
-                    hudButtonAlpha[1] = 1;
-                    hudButtonScale = 5;
                 }
             }
         break;
@@ -199,39 +201,6 @@ applies_to=self
                     d3d_set_fog(1, c_white, 0, 0)
                     draw_sprite_ext(sprGamepadKeys, 0, view_xview[0] + screenWidthMid, view_yview[0] + 64, hudButtonScale, hudButtonScale, 0, c_white, hudButtonAlpha[1]);
                     d3d_set_fog(0, c_white, 0, 0)
-                }
-            }
-
-
-            // -- Check if the button timer is avaiable to show the button
-            if (hudButtonTimer > 0)
-            {
-                hudButtonTimer -= 1;
-                hudButtonAlpha[0] = min(hudButtonAlpha[0] + 0.2, 1);
-
-                // -- Play warning sound effect
-                if (hudButtonAlpha[0] == 0.4)
-                {
-                    scrPlaySound("sndMenuWarn", global.volumeSounds, 1, false);
-                }
-                // -- Decrease button scale
-                hudButtonScale = lerp(hudButtonScale, 2, 0.2)
-                hudButtonAlpha[1] = lerp(hudButtonAlpha[1], 0, 0.2);
-            }
-            else
-            {
-                hudButtonScale = lerp(hudButtonScale, 0, 0.2)
-                hudButtonAlpha[0] = max(hudButtonAlpha[0] - 0.2, 0)
-
-
-                // -- Reset variables after dissapearing
-                if (hudButtonAlpha[0] == 0 && hudButtonAlpha[1] = 0)
-                {
-                    hudButton = "";
-                    hudButtonTimer = 0;
-                    hudButtonAlpha[0] = 0;
-                    hudButtonAlpha[1] = 1;
-                    hudButtonScale = 5;
                 }
             }
         break;

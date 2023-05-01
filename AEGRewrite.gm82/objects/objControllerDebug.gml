@@ -30,6 +30,12 @@ applies_to=self
         room_restart();
     }
 
+    // -- Stop all sounds
+    if (keyboard_check_pressed(vk_pause))
+    {
+        sound_stop_all();
+    }
+
     // -- Go to next room
     if (keyboard_check_pressed(vk_pageup))
     {

@@ -36,7 +36,7 @@ applies_to=self
     // -- Fade out music
     if (fadeOut == true && musicVolumeReal > 0)
     {
-        musicVolumeReal -= 0.03;
+        musicVolumeReal -= 0.02;
         sound_volume(global.bgmSound, musicVolumeReal);
     }
 /*"/*'/**//* YYD ACTION

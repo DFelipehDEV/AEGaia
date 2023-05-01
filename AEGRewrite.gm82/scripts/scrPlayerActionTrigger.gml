@@ -59,6 +59,7 @@
         trailTimer = 80;
         scrPlaySound("sndPlayerStompStart", global.volumeSounds, 1, false);
         sound_stop("sndPlayerStompLand");
+        sensorBottomDistance = 15;
     }
 
     // -- Boost!

@@ -116,6 +116,7 @@ applies_to=self
             {
                 invincibility = invincibilityMonitor;
                 invincibilityTimer = 1150;
+                starTimer = 1130;
             }
             with (objControllerMusic)
             {

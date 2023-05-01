@@ -20,7 +20,7 @@
 
             with(waylauncher)
             {
-                timerExit = 140;
+                timerExit = 0;
             }
 
             scrPlaySound("sndWayLauncherWait", global.volumeSounds, 1, true);

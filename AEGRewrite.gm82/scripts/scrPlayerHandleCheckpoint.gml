@@ -9,26 +9,29 @@
     //Check if the player is meeting the checkpoint
     if (checkpoint != noone)
     {
-        //Check if the player hadnt passed the checkpoint before
-        if (global.playerCheckX != checkpoint.x && global.playerCheckY != checkpoint.y)
+        if (checkpoint.activated == false)
         {
-            //Respawn point
-            global.playerCheckTime = global.gameTime;
-            global.playerCheckX = checkpoint.x;
-            global.playerCheckY = checkpoint.y;
-
-
-            with (checkpoint)
+            //Check if the player hadnt passed the checkpoint before
+            if (global.playerCheckX != checkpoint.x && global.playerCheckY != checkpoint.y)
             {
-                activated = true;
-                scrPlaySound("sndCheckpoint", global.volumeSounds, 1, 0);
+                //Respawn point
+                global.playerCheckTime = global.gameTime;
+                global.playerCheckX = checkpoint.x;
+                global.playerCheckY = checkpoint.y;
+
+
+                with (checkpoint)
+                {
+                    activated = true;
+                    scrPlaySound("sndCheckpoint", global.volumeSounds, 1, 0);
+                }
             }
-        }
-        else
-        {
-            with (checkpoint)
+            else
             {
-                activated = true;
+                with (checkpoint)
+                {
+                    activated = true;
+                }
             }
         }
     }

@@ -28,7 +28,7 @@ applies_to=self
     playerID = instance_place(x, y - 5, objPlayer);
     if (playerID != noone)
     {
-        if (playerID.ySpeed >= 0)
+        if (playerID.ySpeed >= 0 && playerID.ground == true)
         {
             playerID.x += x - xprevious;
             playerID.y = bbox_top - 12;

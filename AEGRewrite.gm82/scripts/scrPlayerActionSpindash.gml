@@ -52,6 +52,7 @@
         }
         xSpeed           =   (8.2 + spindashStrength) * animationDirection;
         action           =   actionRoll;
+        trailTimer = 120;
         scrAnimationApply("ROLL");
 
         sound_stop("sndPlayerSpindashCharge");

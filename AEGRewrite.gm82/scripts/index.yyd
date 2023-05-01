@@ -102,3 +102,4 @@ scrPlayerHomingReset
 scrPlayerHandleBox
 scrEnemyInvincibility
 scrDialogueSetup
+scrPlayerAngleLocals

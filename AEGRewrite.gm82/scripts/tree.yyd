@@ -30,6 +30,7 @@
 		|scrPlayerGlobalsReset
 		|scrRingsDrop
 		|scrPlayerHomingReset
+		|scrPlayerAngleLocals
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet

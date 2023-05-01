@@ -133,6 +133,7 @@
                     qteFailedYSpeed = other.dashrnear.dashRampQTEFailedYSpeed
                 }
             }
+            scrPlayerAngleSet(0);
             animationIndex = "LAUNCH";
             animationDirection = dashRamp.image_xscale;
 
