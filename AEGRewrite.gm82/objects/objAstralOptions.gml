@@ -56,7 +56,7 @@ applies_to=self
 
                 if (input.inputRight)
                 {
-                    with (objControllerResolution)
+                    with (objControllerRoom)
                     {
                         global.screenSize += 1;
                         event_user(0);
@@ -66,7 +66,7 @@ applies_to=self
 
                 if (input.inputLeft && global.screenSize > 1)
                 {
-                    with (objControllerResolution)
+                    with (objControllerRoom)
                     {
                         global.screenSize -= 1;
                         event_user(0);

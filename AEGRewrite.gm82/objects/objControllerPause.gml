@@ -142,7 +142,7 @@ applies_to=self
             instance_deactivate_all(1)
             instance_activate_object(objControllerInput);
             instance_activate_object(objControllerMusic);
-            instance_activate_object(objControllerResolution);
+            instance_activate_object(objControllerRoom);
 
             with (objControllerMusic)
             {

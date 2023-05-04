@@ -40,9 +40,6 @@ applies_to=self
 */
 /// -- Draw shield
 
-    if (playerID.invincibility == invincibilityNoone)
-    {
-        draw_set_blend_mode(bm_add);
-        draw_self();
-        draw_set_blend_mode(bm_normal);
-    }
+    draw_set_blend_mode(bm_add);
+    draw_self();
+    draw_set_blend_mode(bm_normal);

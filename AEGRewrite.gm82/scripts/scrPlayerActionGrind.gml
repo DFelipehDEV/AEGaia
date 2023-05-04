@@ -23,7 +23,7 @@
     var grindsnd;
     grindsnd = "sndPlayerGrindContinue";
     // -- Play sounds
-    if (sound_isplaying("sndPlayerGrindContinue") == false)
+    if (!sound_isplaying("sndPlayerGrindContinue"))
     {
         grindsnd = scrPlaySound("sndPlayerGrindContinue", global.volumeSounds, max(0.6, abs(xSpeed)/8), true);
     }

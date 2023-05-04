@@ -34,9 +34,9 @@ applies_to=self
     }
 
     // -- Fade out music
-    if (fadeOut == true && musicVolumeReal > 0)
+    if (fadeOut == true && musicVolumeReal >= 0)
     {
-        musicVolumeReal -= 0.02;
+        musicVolumeReal = inch(musicVolumeReal, 0, 0.02);
         sound_volume(global.bgmSound, musicVolumeReal);
     }
 /*"/*'/**//* YYD ACTION

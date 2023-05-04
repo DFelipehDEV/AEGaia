@@ -57,8 +57,9 @@ applies_to=self
 /// -- Destroy
 
     // -- Destroy if the ring has faded
-    if (image_alpha <= 0)
+    if (image_alpha <= 0) //|| scrViewInOffset(id, 32) == true)
     {
+        show_debug_message("whereareyou :()")
         instance_destroy();
     }
 

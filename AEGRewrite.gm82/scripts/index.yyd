@@ -103,3 +103,6 @@ scrPlayerHandleBox
 scrEnemyInvincibility
 scrDialogueSetup
 scrPlayerAngleLocals
+scrViewInOffset
+scrMusicSetFade
+scrPlayerAnimationNormal

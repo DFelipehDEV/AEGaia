@@ -15,7 +15,7 @@
 
         scrPlaySound("sndPlayerHome", global.volumeSounds, 1, false);
 
-        scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_add, 1, animationDirection/1.5, 0.6, 0);
+        scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection/1.5, 0.6, 0);
     }
 
 

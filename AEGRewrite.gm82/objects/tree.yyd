@@ -34,7 +34,7 @@
 		|objControllerInput
 		|objControllerStage
 		|objControllerMusic
-		|objControllerResolution
+		|objControllerRoom
 		|objControllerDebug
 		|objControllerTitleCard
 		|objControllerResults

@@ -11,4 +11,5 @@
         action         = actionNormal;
         animationIndex = "FLING";
         scrPlaySound("sndPlayerJump", global.volumeSounds, 1, false);
+        scrPlayerAngleSet(0);
     }

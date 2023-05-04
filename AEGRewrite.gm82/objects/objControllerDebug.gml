@@ -102,5 +102,7 @@ applies_to=self
             draw_text(view_xview[0] + 333, view_yview[0] + 167+48, string("BGMVOLUME " + string(global.volumeMusic)))
             draw_text(view_xview[0] + 333, view_yview[0] + 177+48, string("INSTANCE COUNT " + string(instance_count)))
             draw_text(view_xview[0] + 333, view_yview[0] + 187+48, string("SOUND COUNT " + string(sound_get_count())))
+
+            draw_text(mouse_x, mouse_y, objPlayer.animationFrameSpeed);
         }
     }

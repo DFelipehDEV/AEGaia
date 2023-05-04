@@ -2,7 +2,7 @@
 
     // -- Animations
     // -- Normal animation
-    if (spindashStrength <= 1)
+    if (spindashStrength <= 0.9)
     {
         scrAnimationApply("SPINDASH");
     }

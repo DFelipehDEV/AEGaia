@@ -121,9 +121,8 @@ applies_to=self
             with (objControllerMusic)
             {
                 playTempMusic  = "bgmInvincibility";
-
-                sound_pause(global.bgmSound)
             }
+            scrMusicSetFade(true);
         break;
     }
 

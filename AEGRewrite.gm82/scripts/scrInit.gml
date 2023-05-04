@@ -43,11 +43,11 @@
     // -- Create permanent controllers
     instance_create(0, 0, objControllerRender);
     instance_create(0, 0, objControllerMusic);
-    instance_create(0, 0, objControllerResolution);
+    instance_create(0, 0, objControllerRoom);
 
     /*
     // -- Load configurations
-    with (objControllerResolution)
+    with (objControllerRoom)
     {
         ini_open("configf.ini");
         global.screenSize = ini_read_real("config", "screen", 1);

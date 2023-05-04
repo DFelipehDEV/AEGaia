@@ -2,13 +2,12 @@
 
     // -- Animation speed while moving on normal action
     if ((ground == true && (animationIndex == "WALK_1" || animationIndex == "WALK_2" || animationIndex == "JOG_1"
-    || animationIndex == "JOG_2" || animationIndex == "RUN")) || animationIndex == "WALLRUN_STRAIGHT" || animationIndex == "WALLRUN_UP/DOWN")
+    || animationIndex == "JOG_2" || animationIndex == "RUN")))
     {
-        animationFrameSpeed = 0.13 + abs(xSpeed)/25;
+        animationFrameSpeed = min(0.13 + abs(xSpeed)/25, 0.63);
     }
-
     // -- Turn!
-    if (abs(xSpeed) < 1 && ground)
+    if (abs(xSpeed) < 1 && ground == true)
     {
         if ((animationDirection == -1 && keyRight == true) || (animationDirection == 1 && keyLeft == true))
         {
@@ -16,7 +15,7 @@
             keyLeft = false;
             xSpeed = 0;
             action = actionTurn;
-            animationIndex = "TURN";
+            scrAnimationApply("TURN");
         }
     }
 

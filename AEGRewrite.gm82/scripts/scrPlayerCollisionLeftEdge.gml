@@ -31,9 +31,9 @@
 
     //Test collision
     collisionTest = scrPlayerCollision(floor(argument0 - cos(degtorad(argument2)) * 8 +
-                                                     sin(degtorad(argument2)) * sensorLeftDistanceX),
+                                                     sin(degtorad(argument2)) * sensorLeftDistance),
                                                    floor(argument1 + sin(degtorad(argument2)) * 8 +
-                                                     cos(degtorad(argument2)) * sensorLeftDistanceY),
+                                                     cos(degtorad(argument2)) * sensorLeftDistance),
                                                    layerIndex);
 
     //Set to the old mask

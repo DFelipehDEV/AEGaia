@@ -864,16 +864,16 @@ applies_to=self
         if (underwaterAir < 120)
         {
             // -- Animate visual drown counter
-            underwaterDrownFrame += 0.011;
+            underwaterDrownFrame += 0.009;
 
             // -- Play sound effect until you drown
-            if (sound_isplaying("sndPlayerLossingAir") == false && action != actionDead)
+            if (!sound_isplaying("sndPlayerLossingAir") && action != actionDead)
             {
                 scrPlaySound("sndPlayerLossingAir", global.volumeSounds, 1, false);
             }
 
             // -- Check if we have drowned
-            if (underwaterDrownFrame >= 5.9 && sound_isplaying("sndPlayerDrown") == false)
+            if (underwaterDrownFrame >= 5.9 && !sound_isplaying("sndPlayerDrown"))
             {
                 action = actionDead;
                 scrAnimationApply("DEAD");
@@ -918,65 +918,7 @@ applies_to=self
     // -- Normal action animations
     if (action == actionNormal)
     {
-        if (ground == true)
-        {
-            // -- Idle animation
-            if (xSpeed == 0 && animationIndex != "IDLE_WAIT")
-            {
-                // -- Check if its not been waiting for a long time
-                if (animationTime < 300)
-                {
-                    // -- Idle animation
-                    scrAnimationApply("IDLE");
-                }
-                else
-                {
-                    // -- Idle waiting animation
-                    scrAnimationApply("IDLE_WAIT");
-                }
-            }
-
-            // -- Walk animation
-            if abs(xSpeed) > 0 && abs(xSpeed) < 2.4
-            {
-                scrAnimationApply("WALK_1");
-            }
-
-            // -- Walk 2 animation
-            if (abs(xSpeed) >= 2.4 && abs(xSpeed) < 4)
-            {
-                scrAnimationApply("WALK_2");
-            }
-
-            // -- Jog animation
-            if (abs(xSpeed) >= 4 && abs(xSpeed) < 6.1)
-            {
-                scrAnimationApply("JOG_1");
-            }
-
-            // -- Jog 2 animation
-            if (abs(xSpeed) >= 6.1 && abs(xSpeed) < 10)
-            {
-                scrAnimationApply("JOG_2");
-            }
-
-            // -- Run animation
-            if (abs(xSpeed) >= 10)
-            {
-                scrAnimationApply("RUN");
-            }
-        }
-        else
-        {
-            if (animationIndex != "HOMED_1" && animationIndex != "HOMED_2" && animationIndex != "SPRING_TRICK_VERTICAL" && animationIndex != "FALL" && animationIndex != "LAUNCH" && animationIndex != "FLING")
-            {
-                // -- Fall animation
-                if (abs(ySpeed) >= 0.2)
-                {
-                    scrAnimationApply("LANDING");
-                }
-            }
-        }
+        scrPlayerAnimationNormal()
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1007,7 +949,7 @@ applies_to=self
         if (ground == true)
         {
             // -- Rotate while moving on the ground
-            animationAngle = scrAngleTowards(round(angle/7.5)*7.5, animationAngle, 5 + abs(floor(xSpeed))/3);
+            animationAngle = scrAngleTowards(round(angle/7.5)*7.5, animationAngle, 5 + abs(floor(xSpeed))/2);
         }
         // -- Rotate until reaches to the normal angle
         else
@@ -1118,9 +1060,9 @@ applies_to=self
     trailTimer -= 1;
     trailAlpha = lerp(trailAlpha, trailTimer/110, 0.08);
     // -- AfterImage
-    if (abs(xSpeed) >= 11 || action == actionTricks || action == actionStomp || action == actionLightspeed || action == actionAirdash || action == actionHoming)
+    if abs(xSpeed) >= 11 || action == actionTricks || action == actionStomp || action == actionLightspeed || action == actionAirdash || action == actionHoming
     {
-        if (global.gameTime mod 4 == 2)
+        if (global.roomTime mod 6 == 1)
         {
             instance_create(x, y, objPlayerAfterimage)
         }
@@ -1147,13 +1089,13 @@ applies_to=self
 /// -- Sound managment
 
     // -- Stop grinding sound
-    if (action != actionGrind && sound_isplaying("sndPlayerGrindContinue") == true)
+    if (action != actionGrind && sound_isplaying("sndPlayerGrindContinue"))
     {
         sound_stop("sndPlayerGrindContinue");
     }
 
     // -- Stop sliding sound
-    if (action != actionSlide && sound_isplaying("sndPlayerSlide") == true)
+    if (action != actionSlide && sound_isplaying("sndPlayerSlide"))
     {
         sound_stop("sndPlayerSlide");
     }
@@ -1184,16 +1126,15 @@ applies_to=self
         {
             if (invincibility == invincibilityMonitor)
             {
-
                 if (instance_exists(objControllerMusic))
                 {
                     with (objControllerMusic)
                     {
                         sound_stop("bgmInvincibility");
                         playTempMusic = "A";
-                        sound_resume(global.bgmSound);
                     }
                 }
+                scrMusicSetFade(false);
             }
             invincibility = invincibilityNoone;
 
@@ -1218,6 +1159,23 @@ applies_to=self
         if (physicMode == 1)
         {
             shield = 0;
+        }
+    }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Attraction
+
+    var nearRing;
+    nearRing = instance_nearest(x, y, objRing);
+
+    if ((distance_to_object(nearRing) < 32 && boost == true) || (distance_to_object(nearRing) < 65 && shield == shieldElectricity))
+    {
+        with (nearRing)
+        {
+            instance_change(objRingMagnetic, 1)
         }
     }
 #define Draw_0
@@ -1269,7 +1227,7 @@ applies_to=self
         if (underwaterAir < 120 && action != actionDead)
         {
             // -- If drowning, show time till you drown
-            draw_sprite(sprDrownTimer, underwaterDrownFrame, floor(x) + 16, floor(y) - 12);
+            draw_sprite(sprDrownTimer, floor(underwaterDrownFrame), floor(x) + 16, floor(y) - 12);
         }
     }
 /*"/*'/**//* YYD ACTION
@@ -1285,10 +1243,10 @@ applies_to=self
         draw_sprite_ext(maskBig, 0, x + angleSin * sensorBottomDistance, y + angleCos * sensorBottomDistance, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskBig, 0, x - angleSin * sensorTopDistance, y - angleCos * sensorTopDistance, image_xscale, image_yscale, 0, c_white, 1);
 
-        draw_sprite_ext(maskBig, 0, x - angleCos * sensorLeftDistanceX, y + angleSin * sensorLeftDistanceY, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x + angleCos * sensorRightDistanceX, y - angleSin * sensorRightDistanceY, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x - angleCos * sensorLeftDistance, y + angleSin * sensorLeftDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x + angleCos * sensorRightDistance, y - angleSin * sensorRightDistance, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskHitbox, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskMain, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistanceX), floor(y + angleSin * 8 + angleCos * sensorLeftDistanceY), 1, 1, 0, c_white, 1)
-        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistanceX), floor(y - angleSin * 8 + angleCos * sensorRightDistanceX), 1, 1, 0, c_white, 1)
+        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistance), floor(y + angleSin * 8 + angleCos * sensorLeftDistance), 1, 1, 0, c_white, 1)
+        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistance), floor(y - angleSin * 8 + angleCos * sensorRightDistance), 1, 1, 0, c_white, 1)
     }

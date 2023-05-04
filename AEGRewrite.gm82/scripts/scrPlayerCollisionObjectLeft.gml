@@ -18,8 +18,8 @@
     sine        = sin(argument2);
 
     //Test collision
-    collisionTest  =   instance_place(floor(argument0 - cosines * sensorLeftDistanceX),
-                                        floor(argument1 + sine * sensorLeftDistanceY),
+    collisionTest  =   instance_place(floor(argument0 - cosines * sensorLeftDistance),
+                                        floor(argument1 + sine * sensorLeftDistance),
                                         argument4);
 
     //Set to the old mask

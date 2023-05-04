@@ -31,6 +31,7 @@
 		|scrRingsDrop
 		|scrPlayerHomingReset
 		|scrPlayerAngleLocals
+		|scrPlayerAnimationNormal
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet
@@ -93,6 +94,7 @@
 	|scrDummyEffectCreate
 	|scrEasings
 	|scrViewIn
+	|scrViewInOffset
 	|scrDrawTrail
 	|scrDrawCircularBar
 	|scrDrawSpriteTiledHorizontalPart
@@ -112,6 +114,7 @@
 	|scrPlaySound
 	|scrLoadSounds
 	|scrPlayMusic
+	|scrMusicSetFade
 +Parallax
 	|scrParallaxAddNode
 |scrInit

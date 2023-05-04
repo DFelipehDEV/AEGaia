@@ -6,4 +6,5 @@
         //Set animation
         animationFinished = false;
         animationIndex = argument0;
+        animationTime = 0;
     }

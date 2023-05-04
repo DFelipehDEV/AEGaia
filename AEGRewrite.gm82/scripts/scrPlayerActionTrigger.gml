@@ -5,11 +5,14 @@
     if ((action == actionJump || action == actionSpring || action == actionNormal) && distance_to_object(parHome) <= homingDistance
     && ground == false)
     {
-        if ((sign(instance_nearest(x, y, parHome).x - x) == animationDirection || sign(instance_nearest(x, y, parHome).x - x) == 0) && y < instance_nearest(x, y, parHome).y + 4)
+        var homeNear;
+        homeNear = instance_nearest(x, y, parHome);
+        if ((sign(homeNear.x - x) == animationDirection || sign(homeNear.x - x) == 0) && y < homeNear.y + 4)
         {
             homingPossible = true;
             if (keyActionPressed == true && instance_exists(objPlayerTarget))
             {
+                scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, 0.5, 0.6, point_direction(x, y, homeNear.x, homeNear.y));
                 scrPlaySound(choose("sndNoone", voiceline[0]), global.volumeSounds, 1, false);
                 homingTimer = 0;
                 action = actionHoming;
@@ -51,7 +54,7 @@
     // -- Stomp!
     if (keyDown == true && ground == false && (action == actionJump|| action == actionBoostAir || action == actionNormal || action == actionSpring && ySpeed > -2))
     {
-        scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.6, 0, -0.01, bm_add, 1, 0.6, 0.6, 270);
+        scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.6, 0, -0.01, bm_normal, 1, 0.6, 0.6, 270);
         action = actionStomp;
         scrAnimationApply("STOMP");
         ySpeed = 13;
@@ -90,7 +93,8 @@
             if (keySpecial1Pressed == true && boost == false)
             {
                 scrPlaySound(choose("sndNoone", voiceline[0], voiceline[1]), global.volumeSounds, 1, false);
-                scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_add, 1, animationDirection, 1, animationAngle);
+                scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
+                scrDummyEffectCreate(x, y, sprVFXDustDash, 0.35, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
 
                 energyAmount -= 1.5;
 
