@@ -13,7 +13,7 @@
         angleInCorkscrew = degtorad((relativePosition)*360);
 
         //Set position acording to relative position to corkscrew
-        y = corkscrewObject.y + 26 + (1+cos(angleInCorkscrew/sprite_get_width(corkscrewObject.sprite_index)))*(55*0.5);
+        y = lerp(y, corkscrewObject.y + 26 + (1+cos(angleInCorkscrew/sprite_get_width(corkscrewObject.sprite_index)))*(55*0.5), 0.1 + abs(xSpeed)/15)
 
 
         if (animationIndex == "CORKSCREW")

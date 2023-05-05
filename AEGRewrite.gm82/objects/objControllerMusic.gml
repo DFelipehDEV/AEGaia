@@ -29,14 +29,16 @@ applies_to=self
     // -- Fade out music
     if (fadeIn == true && musicVolumeReal < global.volumeMusic)
     {
-        musicVolumeReal += 0.01;
-        sound_volume(global.bgmSound, musicVolumeReal);
+        musicVolumeReal += 0.02;
     }
 
     // -- Fade out music
     if (fadeOut == true && musicVolumeReal >= 0)
     {
         musicVolumeReal = inch(musicVolumeReal, 0, 0.02);
+    }
+    if (global.bgmSound != -1)
+    {
         sound_volume(global.bgmSound, musicVolumeReal);
     }
 /*"/*'/**//* YYD ACTION
@@ -46,7 +48,6 @@ applies_to=self
 */
 /// -- Temp music
 
-
     if (playTempMusic != "A")
     {
         if (sound_isplaying(playTempMusic) == false)
@@ -54,8 +55,6 @@ applies_to=self
             scrPlaySound(playTempMusic, global.volumeMusic, 1, false);
         }
     }
-
-    room_caption = string(fps);
 #define Other_5
 /*"/*'/**//* YYD ACTION
 lib_id=1

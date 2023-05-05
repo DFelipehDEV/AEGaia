@@ -100,14 +100,22 @@ applies_to=self
 
             if (input.inputRight)
             {
-                global.volumeMusic = inch(global.volumeMusic, 1, 0.01);
-                sound_volume(global.bgmSound, global.volumeMusic)
+                with (objControllerMusic)
+                {
+                    global.volumeMusic = inch(global.volumeMusic, 1, 0.01);
+                    musicVolumeReal = global.volumeMusic;
+                    sound_volume(global.bgmSound, global.volumeMusic)
+                }
             }
 
             if (input.inputLeft)
             {
-                global.volumeMusic = inch(global.volumeMusic, 0, 0.01);
-                sound_volume(global.bgmSound, global.volumeMusic)
+                with (objControllerMusic)
+                {
+                    global.volumeMusic = inch(global.volumeMusic, 0, 0.01);
+                    musicVolumeReal = global.volumeMusic;
+                    sound_volume(global.bgmSound, global.volumeMusic)
+                }
             }
         break;
 

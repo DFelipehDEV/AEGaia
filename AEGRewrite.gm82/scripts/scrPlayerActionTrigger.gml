@@ -78,7 +78,10 @@
     {
         if (ground = false)
         {
-            boostAir -= 1;
+            if (action != actionCorkscrew)
+            {
+                boostAir -= 1;
+            }
         }
     }
 

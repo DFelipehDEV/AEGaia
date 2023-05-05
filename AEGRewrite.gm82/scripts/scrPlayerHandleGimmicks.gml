@@ -14,7 +14,6 @@
             // -- If is not rolling, walk on the corkscrew
             animationIndex = "CORKSCREW";
         }
-
         action = actionCorkscrew;
         ground = false;
         scrPlayerAngleSet(0);

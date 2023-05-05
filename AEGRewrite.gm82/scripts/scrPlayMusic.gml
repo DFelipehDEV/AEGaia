@@ -14,6 +14,7 @@
         sound_set_loop(argument0, loopStart, loopEnd, false);
         // -- Loop music
         global.bgmSound = sound_loop(argument0);
+        sound_volume(global.bgmSound, musicVolumeReal);
 
     }
     else
