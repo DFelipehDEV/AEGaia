@@ -38,7 +38,6 @@ applies_to=self
 */
 /// -- Start following the player
 
-
     nearPlayer = true;
 #define Alarm_2
 /*"/*'/**//* YYD ACTION
@@ -47,7 +46,6 @@ action_id=603
 applies_to=self
 */
 /// -- Shoot
-
 
     // -- Release projectile
     if (action == actionNormal)
@@ -60,9 +58,8 @@ applies_to=self
         playerID = instance_nearest(x, y, objPlayer);
         // -- Create projectile
         proj        = instance_create(x + 9 * image_xscale, y + 9, objProjectileBuzzer);
-        proj.hspeed = 3 * dcos(point_direction(x, y, playerID.x, playerID.y));
-        proj.vspeed = -3 * dsin(point_direction(x, y, playerID.x, playerID.y));
-
+        proj.hspeed = 5 * dcos(point_direction(x, y, playerID.x, playerID.y));
+        proj.vspeed = -5 * dsin(point_direction(x, y, playerID.x, playerID.y));
 
         scrPlaySound("sndShot", global.volumeSounds, 1, false);
     }
@@ -83,9 +80,7 @@ applies_to=self
     if (action == actionNormal && place_meeting(x, y, objEnemyTurn) == false && global.player == true)
     {
         playerID = instance_nearest(x, y, objPlayer);
-
         xSpeed     = 2 * image_xscale;
-
 
         // -- Trigger shot
         if (distance_to_object(playerID) < 235 && sign(playerID.x - x) == image_xscale)
@@ -101,7 +96,6 @@ applies_to=self
                     alarm[2] = 20;
                 }
             }
-
 
             // -- Warn enemy
             if (nearPlayer == false)
@@ -159,12 +153,12 @@ applies_to=self
     if (action == actionNormal)
     {
         sprite_index = sprEnemyBuzzerMove;
-        image_speed  = 0.35;
+        image_speed  = 0.32;
     }
 
 
     // -- Attack animation
-    if (action == actionNormal && alarm[2] < 10 && alarm[2] > 0)
+    if (action == actionNormal && alarm[2] < 30 && alarm[2] > 0)
     {
         sprite_index = sprEnemyBuzzerAttack;
         image_speed  = 0.15;

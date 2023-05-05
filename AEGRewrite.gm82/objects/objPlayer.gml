@@ -413,7 +413,7 @@ applies_to=self
 
     // -- Only allow normal control while in these actions
     if (action == actionNormal || action == actionTurn || action == actionJump || action == actionSpring || action == actionCorkscrew || action == actionSkydive
-    || action == actionBoostAir || action == actionWallrun)
+    || action == actionBoostAir)
     {
         // -- Acceleration
         // -- Accelerate to the left

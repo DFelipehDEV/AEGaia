@@ -87,7 +87,7 @@
     || animationDirection == -1 && (!scrPlayerCollisionLeft(x, y, angle, maskBig)))
     {
         // -- Check if the player can boost
-        if (energyAmount > 0 && (action == actionNormal || action == actionCorkscrew || action == actionGrind || action == actionWallrun || action == actionJump) && boundariesNear == false)
+        if (energyAmount > 0 && (action == actionNormal || action == actionCorkscrew || action == actionGrind || action == actionJump) && boundariesNear == false)
         {
             // -- Trigger boost dash
             if (keySpecial1Pressed == true && boost == false)
