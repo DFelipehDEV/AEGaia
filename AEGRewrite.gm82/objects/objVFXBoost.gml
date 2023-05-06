@@ -36,7 +36,7 @@ applies_to=self
     }
 
     // -- Increase alpha if the player started to boost
-    if (image_alpha < 0.9 && playerID.boost == true)
+    if (image_alpha < 0.8 && playerID.boost == true)
     {
         image_alpha += 0.05;
     }

@@ -1,1 +1,1 @@
-springStrength = 13;
+scrSetupSpring(13)

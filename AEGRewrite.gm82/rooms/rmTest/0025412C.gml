@@ -1,3 +1,2 @@
-    dashXStrength  = 8;            // -- X Strength
-    dashYStrength  = -8;           // -- Y Strength
-    dashRampPAct   = actionNormal; // -- Player action when he meets the dash ramp
+//scrSetupDashRamp(XStrength, YStrength, PlayerAction, [QTEfailXspeed], [QTEfailYspeed])
+scrSetupDashRamp(8, -8, actionNormal)

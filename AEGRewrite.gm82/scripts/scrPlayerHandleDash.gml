@@ -50,7 +50,7 @@
             xSpeed = dashRing.dashStrength * dcos(dashRing.image_angle+90);
             ySpeed = -dashRing.dashStrength * dsin(dashRing.image_angle+90);
 
-            allowKeyTimer = 25;
+            allowKeyTimer = 20;
             if (abs(xSpeed) >= 1)
             {
                 animationDirection = sign(xSpeed);

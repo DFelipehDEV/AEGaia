@@ -84,4 +84,5 @@
     if (ground == false)
     {
         action     = actionJump;
+        scrPlayerAirdashReset();
     }

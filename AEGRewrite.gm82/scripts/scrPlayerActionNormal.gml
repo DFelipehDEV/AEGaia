@@ -55,3 +55,6 @@
 
         scrPlaySound("sndPlayerSlide", global.volumeSounds, 1, false);
     }
+
+    // -- Airdash
+    scrPlayerAirdash();

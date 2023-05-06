@@ -1,7 +1,7 @@
 /// scrPlayerActionStomp()
 
     xSpeed = inch(xSpeed, 0, 10)
-    ySpeed = 18;
+    ySpeed = 16;
 
     // -- Land
     if (ground == true)
@@ -18,3 +18,6 @@
         ySpeed = 0;
         sensorBottomDistance = 10;
     }
+
+    // -- Airdash
+    scrPlayerAirdash();

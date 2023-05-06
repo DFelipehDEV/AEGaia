@@ -1,3 +1,4 @@
+|scrInit
 +Player
 	+Collision
 		+Top
@@ -32,6 +33,8 @@
 		|scrPlayerHomingReset
 		|scrPlayerAngleLocals
 		|scrPlayerAnimationNormal
+		|scrPlayerAirdash
+		|scrPlayerAirdashReset
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet
@@ -105,7 +108,6 @@
 	|scrStringNumberFormat
 	|scrTrailUpdate
 	|scrEnemyInvincibility
-	|scrDialogueSetup
 +Camera
 	|scrCameraLag
 	|scrCameraShakeX
@@ -117,4 +119,9 @@
 	|scrMusicSetFade
 +Parallax
 	|scrParallaxAddNode
-|scrInit
++Level
+	|scrSetupDashRing
+	|scrSetupDashPad
+	|scrSetupDashRamp
+	|scrSetupSpring
+	|scrSetupDialogue

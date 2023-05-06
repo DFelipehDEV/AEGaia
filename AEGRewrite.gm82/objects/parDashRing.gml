@@ -26,7 +26,7 @@ applies_to=self
         {
             dashAllowTimer -= 1;
         }
-        //Allow the player to be able to dash
+        // -- Allow the player to be able to dash
         else
         {
             dashAllow = true;
@@ -39,9 +39,9 @@ applies_to=self
 */
 /// -- Animation
 
-    //Pog
+    // -- Deshrink animation
     if (image_xscale < 1 && image_yscale < 1)
     {
-        image_xscale += 0.04;
-        image_yscale += 0.04;
+        image_xscale = min(image_xscale + 0.04, 1);
+        image_yscale = image_xscale;
     }

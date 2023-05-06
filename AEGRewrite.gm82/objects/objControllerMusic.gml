@@ -16,8 +16,6 @@ applies_to=self
     fadeOut         = false;
     soundIndex = -1;
     playTempMusic   = "A";
-
-    //loadDelay = 30;
 #define Step_2
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -37,6 +35,7 @@ applies_to=self
     {
         musicVolumeReal = inch(musicVolumeReal, 0, 0.02);
     }
+
     if (global.bgmSound != -1)
     {
         sound_volume(global.bgmSound, musicVolumeReal);
@@ -50,7 +49,7 @@ applies_to=self
 
     if (playTempMusic != "A")
     {
-        if (sound_isplaying(playTempMusic) == false)
+        if (!sound_isplaying(playTempMusic))
         {
             scrPlaySound(playTempMusic, global.volumeMusic, 1, false);
         }

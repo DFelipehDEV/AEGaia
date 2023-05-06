@@ -8,6 +8,9 @@
         break;
 
         case true:
-            sound_loop(argument0)
+            var sound;
+            sound = sound_loop(argument0);
+            sound_volume(sound, argument1);
+            sound_pitch(sound, argument2);
         break;
     }

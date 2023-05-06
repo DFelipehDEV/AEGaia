@@ -40,6 +40,7 @@
 
             animationIndex = "SPRING_TRICK_HORIZONTAL";
             scrPlaySound("sndPlayerSpringTrick", global.volumeSounds, 1, false);
+            animationAngle = 0;
         }
 
 
@@ -52,5 +53,9 @@
             animationIndex = "SPRING_TRICK_VERTICAL";
 
             scrPlaySound("sndPlayerSpringTrick", global.volumeSounds, 1, false);
+            animationAngle = 0;
         }
     }
+
+    // -- Airdash
+    scrPlayerAirdash();

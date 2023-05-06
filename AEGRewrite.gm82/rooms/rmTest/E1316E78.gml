@@ -1,1 +1,1 @@
-dashStrength   = 30;            //X Strength
+scrSetupDashRing(30, actionSpring)

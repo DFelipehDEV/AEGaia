@@ -68,6 +68,7 @@ applies_to=self
                         ySpeed = -9.5;
                         visible = true;
                         starTimer = 50;
+                        allowKeyTimer = 17;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -107,6 +108,7 @@ applies_to=self
                         ySpeed = 9.5;
                         visible = true;
                         starTimer = 50;
+                        allowKeyTimer = 17;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -149,6 +151,7 @@ applies_to=self
                         xSpeed             = -9;
                         visible = true;
                         starTimer = 50;
+                        allowKeyTimer = 17;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);
@@ -191,6 +194,7 @@ applies_to=self
                         xSpeed             = 9;
                         visible        = true;
                         starTimer = 50;
+                        allowKeyTimer = 17;
 
                         sound_stop("sndWayLauncherWait");
                         scrPlaySound("sndTrick", global.volumeSounds, 1, false);

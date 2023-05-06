@@ -16,6 +16,7 @@
                 scrPlaySound(choose("sndNoone", voiceline[0]), global.volumeSounds, 1, false);
                 homingTimer = 0;
                 action = actionHoming;
+                scrPlayerAirdashReset();
                 scrAnimationApply("JUMP");
                 trailTimer = 60;
                 scrPlaySound("sndPlayerHome", global.volumeSounds, 1, false);
@@ -40,7 +41,7 @@
 
 
         scrPlayerAngleSet(0);
-        airdash         =   true;
+        scrPlayerAirdashReset();
         action          =   actionJump;
         scrAnimationApply("JUMP");
 
@@ -63,6 +64,7 @@
         scrPlaySound("sndPlayerStompStart", global.volumeSounds, 1, false);
         sound_stop("sndPlayerStompLand");
         sensorBottomDistance = 15;
+        animationAngle = 0;
     }
 
     // -- Boost!

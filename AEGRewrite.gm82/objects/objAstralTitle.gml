@@ -268,6 +268,13 @@ applies_to=self
 
     if (menu > 0)
     {
+        // -- Draw card
+        draw_sprite_ext(sprTitleCardZoneCard, 0, 0, optionY[menuOption - 1] - 6, screenWidth, 0.8, 0, make_color_rgb(120, 228, 228), image_alpha);
+
+        // -- Draw dash sign
+        draw_sprite_ext(sprTitleCardDash, 0, view_xview + cardDashX, cardDashY, 1, 1, 0, image_blend, image_alpha);
+
+
         draw_set_alpha(optionMainAlpha)
         draw_set_font(global.fontTitleCard)
         draw_set_halign(fa_center);
@@ -278,4 +285,6 @@ applies_to=self
         draw_set_halign(-1);
         draw_set_font(1)
         draw_set_alpha(1)
+
+
     }

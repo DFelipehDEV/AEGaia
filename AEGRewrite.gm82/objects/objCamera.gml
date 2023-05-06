@@ -45,7 +45,7 @@ applies_to=self
     // -- Vertical Shake
     if (camYShakeTimer > 0)
     {
-        camYShift      = inch(camYShift, camYShakeValue - round(camYShakeTimer/2)*2, 12)
+        camYShift      = inch(camYShift, camYShakeValue - round(camYShakeTimer/2)*2, 10)
         y = lerp(y, y + camYShift, 0.17);
 
         if (camYShakeTimer mod 6 == 4)
@@ -123,7 +123,7 @@ applies_to=self
     if (global.player == true && camTarget == objPlayer)
     {
         var angle;
-        angle = round(camTarget.angle/8)*8
+        angle = round(camTarget.angle/5)*5
         // -- Shift x-axis camera position
         switch(camTarget.action)
         {
@@ -150,7 +150,9 @@ applies_to=self
 
             // -- Shift the camera based on the player's speed and angle in all other states
             default:
-                camXShift = inch(camXShift, ((camTarget.xSpeed) * 13) * lengthdir_x(1, floor(angle)), 7);
+                var targetSpeed;
+                targetSpeed = ((camTarget.xSpeed) * 12) * lengthdir_x(1, floor(angle));
+                camXShift = inch(camXShift, floor(targetSpeed), 6);
         }
 
         // -- Shift y-axis camera position
@@ -183,7 +185,7 @@ applies_to=self
             break;
             
             case actionStomp:
-                camYShift = inch(camYShift, 220, 3);
+                camYShift = inch(camYShift, 210, 3);
             break;
             
             // -- Shift the camera based on the player's speed and angle in all other states

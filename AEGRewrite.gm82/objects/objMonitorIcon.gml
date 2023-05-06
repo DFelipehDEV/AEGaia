@@ -120,7 +120,7 @@ applies_to=self
             }
             with (objControllerMusic)
             {
-                playTempMusic  = "bgmInvincibility";
+                playTempMusic = "bgmInvincibility";
             }
             scrMusicSetFade(true);
         break;

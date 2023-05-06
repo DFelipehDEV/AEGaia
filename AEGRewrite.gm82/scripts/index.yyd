@@ -101,8 +101,14 @@ scrPlayerHomingReset
 
 scrPlayerHandleBox
 scrEnemyInvincibility
-scrDialogueSetup
+scrSetupDialogue
 scrPlayerAngleLocals
 scrViewInOffset
 scrMusicSetFade
 scrPlayerAnimationNormal
+scrPlayerAirdash
+scrPlayerAirdashReset
+scrSetupDashRing
+scrSetupDashPad
+scrSetupDashRamp
+scrSetupSpring
