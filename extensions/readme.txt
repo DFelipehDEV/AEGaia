@@ -6,6 +6,7 @@ You can find the links to their repositories and license information below:
 https://github.com/GM82Project
 https://github.com/GM82Project/gm82snd
 https://github.com/GM82Project/gm82core
+https://github.com/GM82Project/gm82joy
 
 License information: 
 https://github.com/GM82Project/gm82core/blob/main/LICENSE.txt
