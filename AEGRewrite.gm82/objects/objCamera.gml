@@ -108,8 +108,8 @@ applies_to=self
         {
             // -- Shift to the player position
             // -- I could just have used lerp
-            x = lerp(x, (camTarget.x + camXShift), 0.2);
-            y = lerp(y, (camTarget.y + camYShift), 0.2); //0.16
+            x = lerp(x, floor(camTarget.x + camXShift), 0.2);
+            y = lerp(y, floor(camTarget.y + camYShift), 0.2); //0.16
         }
     }
 /*"/*'/**//* YYD ACTION
@@ -152,7 +152,7 @@ applies_to=self
             default:
                 var targetSpeed;
                 targetSpeed = ((camTarget.xSpeed) * 12) * lengthdir_x(1, floor(angle));
-                camXShift = inch(camXShift, floor(targetSpeed), 6);
+                camXShift = inch(camXShift, targetSpeed, 6);
         }
 
         // -- Shift y-axis camera position

@@ -94,7 +94,7 @@ applies_to=self
 
 
     //Check if we didn't won the event yet
-    if (qteWon == 0)
+    if (qteWon == 0 && image_alpha > 0.7)
     {
         //Which input you are currently on
         switch (hudInputCounter)
