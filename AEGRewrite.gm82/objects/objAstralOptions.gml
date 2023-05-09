@@ -173,6 +173,14 @@ applies_to=self
                     scrPlaySound("sndMenuAccept", global.volumeSounds, 1, false);
                     delay = 120;
                     leaved = true;
+
+                    // -- Save configurations
+                    ini_open("configf.ini");
+                    ini_write_real("config", "screen", global.screenSize);
+                    ini_write_real("config", "sfxvolume", global.volumeSounds);
+                    ini_write_real("config", "bgmvolume", global.volumeMusic);
+                    ini_close();
+
                 }
             }
         break;

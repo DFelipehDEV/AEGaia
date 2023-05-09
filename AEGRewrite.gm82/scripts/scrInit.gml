@@ -45,7 +45,7 @@
     instance_create(0, 0, objControllerMusic);
     instance_create(0, 0, objControllerRoom);
 
-    /*
+
     // -- Load configurations
     with (objControllerRoom)
     {
@@ -58,8 +58,6 @@
     global.volumeSounds = ini_read_real("config", "sfxvolume", 1);
     global.volumeMusic = ini_read_real("config", "bgmvolume", 1);
     ini_close();
-
-    */
 
     // -- Finish initialization and start the rest of the game
     room_goto_next();
