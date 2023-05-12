@@ -1,1 +1,0 @@
-global.stageName = "TEMPLATE ZONE"
