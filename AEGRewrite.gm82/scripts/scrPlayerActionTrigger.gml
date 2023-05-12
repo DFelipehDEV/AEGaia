@@ -7,7 +7,7 @@
     {
         var homeNear;
         homeNear = instance_nearest(x, y, parHome);
-        if ((sign(homeNear.x - x) == animationDirection || sign(homeNear.x - x) == 0) && y < homeNear.y + 4)
+        if ((sign(homeNear.x - x) == animationDirection || sign(homeNear.x - x) == 0) && y < homeNear.y + 9)
         {
             homingPossible = true;
             if (keyActionPressed == true && instance_exists(objPlayerTarget))
@@ -18,7 +18,7 @@
                 action = actionHoming;
                 scrPlayerAirdashReset();
                 scrAnimationApply("JUMP");
-                trailTimer = 60;
+                trailTimer = 80;
                 scrPlaySound("sndPlayerHome", global.volumeSounds, 1, false);
             }
         }
@@ -36,7 +36,7 @@
     if ((ground == true || action == actionCorkscrew) && !scrPlayerCollisionTop(x, y, angle, maskBig) && keyActionPressed == true && action != actionCrouch && action != actionSpindash && action != actionHurt)
     {
         // -- Set speed depending on the angle
-        ySpeed  =   angleCos*(jumpStrength/2) - angleSin * xSpeed/2;
+        ySpeed  =   angleCos*(jumpStrength/2) - angleSin * xSpeed/1.8;
         xSpeed  =   angleCos*xSpeed + angleSin*jumpStrength;
 
 
@@ -91,77 +91,80 @@
     if (animationDirection == 1 && (!scrPlayerCollisionRight(x,y, angle, maskBig))
     || animationDirection == -1 && (!scrPlayerCollisionLeft(x, y, angle, maskBig)))
     {
-        // -- Check if the player can boost
-        if (energyAmount > 0 && (action == actionNormal || action == actionCorkscrew || action == actionGrind || action == actionJump) && boundariesNear == false)
+        if (action == actionNormal || action == actionCorkscrew || action == actionGrind || action == actionJump)
         {
-            // -- Trigger boost dash
-            if (keySpecial1Pressed == true && boost == false)
+            // -- Check if the player can boost
+            if (energyAmount > 0)
             {
-                scrPlaySound(choose("sndNoone", voiceline[0], voiceline[1]), global.volumeSounds, 1, false);
-                scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
-                scrDummyEffectCreate(x, y, sprVFXDustDash, 0.35, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
-
-                energyAmount -= 1.5;
-
-                // -- Speed up the player
-                if abs(xSpeed) < boostSpeed
+                // -- Trigger boost dash
+                if (keySpecial1Pressed == true && boost == false)
                 {
-                    xSpeed = boostSpeed * animationDirection;
+                    scrPlaySound(choose("sndNoone", voiceline[0], voiceline[1]), global.volumeSounds, 1, false);
+                    scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
+                    scrDummyEffectCreate(x, y, sprVFXDustDash, 0.35, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
+
+                    energyAmount -= 1.5;
+
+                    // -- Speed up the player
+                    if abs(xSpeed) < boostSpeed
+                    {
+                        xSpeed = boostSpeed * animationDirection;
+                    }
+
+                    scrCameraLag(20);
+                    scrCameraShakeY(20);
+
+                    // -- Create shockwave
+                    instance_create(x, y, objVFXBoostShockwave);
+
+                    scrPlaySound("sndPlayerBoostStart", global.volumeSounds, 1, false)
+
+
+                    // -- Check if the player is in the air
+                    if (ground == false && (action == actionNormal || action == actionJump))
+                    {
+                        // -- Air boost dash
+                        boost= true;
+                        action= actionBoostAir;
+                        animationIndex= "LAUNCH";
+                        boostAir= 40;
+                        boostPossible = true;
+
+                        var boostVFX;
+                        boostVFX             = instance_create(x, y, objVFXBoost);
+                        boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
+                        boostVFX.playerID    = id;
+                        boostVFX.image_alpha = 0.7;
+                        scrPlayerPhysicsSonic();
+                    }
+                    else
+                    {
+                        boostPossible = true;
+                    }
                 }
 
-                scrCameraLag(20);
-                scrCameraShakeY(20);
 
-                // -- Create shockwave
-                instance_create(x, y, objVFXBoostShockwave);
-
-                scrPlaySound("sndPlayerBoostStart", global.volumeSounds, 1, false)
-
-
-                // -- Check if the player is in the air
-                if (ground == false && (action == actionNormal || action == actionJump))
+                // -- Keep boosting
+                if (keySpecial1 == true && boostPossible == true)
                 {
-                    // -- Air boost dash
-                    boost= true;
-                    action= actionBoostAir;
-                    animationIndex= "LAUNCH";
-                    boostAir= 40;
-                    boostPossible = true;
+                    boost = true;
 
-                    var boostVFX;
-                    boostVFX             = instance_create(x, y, objVFXBoost);
-                    boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
-                    boostVFX.playerID    = id;
-                    boostVFX.image_alpha = 0.7;
+                    trailTimer = 120;
+
+
+                    // -- Create boost aura
+                    if (instance_exists(objVFXBoost) == false)
+                    {
+                        var boostVFX;
+                        boostVFX             = instance_create(x, y, objVFXBoost);
+                        boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
+                        boostVFX.playerID    = id;
+                    }
+
+                    energyAmount -= 0.35;
+
                     scrPlayerPhysicsSonic();
                 }
-                else
-                {
-                    boostPossible = true;
-                }
-            }
-
-
-            // -- Keep boosting
-            if (keySpecial1 == true && boostPossible == true)
-            {
-                boost = true;
-
-                trailTimer = 120;
-
-
-                // -- Create boost aura
-                if (instance_exists(objVFXBoost) == false)
-                {
-                    var boostVFX;
-                    boostVFX             = instance_create(x, y, objVFXBoost);
-                    boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
-                    boostVFX.playerID    = id;
-                }
-
-                energyAmount -= 0.35;
-
-                scrPlayerPhysicsSonic();
             }
         }
     }

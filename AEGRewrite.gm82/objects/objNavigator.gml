@@ -83,7 +83,6 @@ applies_to=self
                     objCamera.camTarget = objPlayer;
                 }
             }
-            global.deltaMultiplier = 1;
             ended = 0;
         break;
     }
@@ -164,8 +163,6 @@ applies_to=self
                     keySpecial1Released     = 0;
                     keySpecial2Released     = 0;
                     keySpecial3Released     = 0;
-
-                    global.deltaMultiplier = 0.2;
                 }
 
 
@@ -193,7 +190,7 @@ applies_to=self
     if (inputAlpha > 0)
     {
         // -- Check if there is no gamepad connected
-        if (joystick_count() == 0)
+        if (global.gamepad == false)
         {
             // -- Draw keyboard input
             draw_sprite_ext(sprKeyboardKeys, 5, x, bbox_top - 16, inputAlpha, inputAlpha, 0, image_blend, inputAlpha);
@@ -245,7 +242,14 @@ applies_to=self
         draw_set_valign(fa_top)
         draw_set_font(global.fontText);
         draw_sprite_ext(sprDialogueBG, 0, view_xview[0] + 16 - dialogueOffsetX, view_yview[0] + 70 - dialogueOffsetY, 1, 1, 0, dialogueColor[npcStringCurrent], dialogueAlpha);
-        draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + 157 - dialogueOffsetX, view_yview[0] + 168 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
+        if (global.gamepad == false)
+        {
+            draw_sprite_ext(sprKeyboardKeys, 0, view_xview[0] + 157 - dialogueOffsetX, view_yview[0] + 168 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
+        }
+        else
+        {
+            draw_sprite_ext(sprGamepadKeys, 0, view_xview[0] + 157 - dialogueOffsetX, view_yview[0] + 168 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
+        }
         draw_sprite_ext(avatarSprite[npcStringCurrent], avatarIndex[npcStringCurrent], view_xview[0] + 28 - dialogueOffsetX, view_yview[0] + 177 - dialogueOffsetY, 1, 1, 0, c_white, dialogueAlpha);
 
         draw_set_alpha(dialogueAlpha);

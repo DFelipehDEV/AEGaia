@@ -14,10 +14,9 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// Render optimization
+/// -- Render optimization
  // -- "Disable offset" views objects
 
-    global.player = instance_exists(objPlayer);
     // -- Deactivate all objects
     instance_deactivate_all(true);
     // -- Activate the main objects
@@ -36,10 +35,22 @@ applies_to=self
     {
         instance_activate_region(objPlayer.x - 64, objPlayer.y - 64, 128, 128, 1);
     }
+#define Step_1
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Variable updating
+
+    global.player = instance_exists(objPlayer);
+    global.gamepad = joystick_count() == 1;
 #define Other_5
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
 applies_to=self
 */
-global.player = false;
+/// -- Reset player existance
+
+    global.player = false;

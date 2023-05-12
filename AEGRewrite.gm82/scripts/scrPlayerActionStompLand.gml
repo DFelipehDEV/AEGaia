@@ -7,7 +7,7 @@
         {
             xSpeed = 8 * sign(xSpeed);
         }
-        slideResetTimer = 35;
+        slideResetTimer = 17;
         action = actionSlide;
         scrAnimationApply("SLIDE");
 

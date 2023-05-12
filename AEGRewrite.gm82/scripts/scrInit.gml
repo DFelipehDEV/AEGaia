@@ -13,7 +13,7 @@
     // -- Screen variables
     global.screenSize = 1; // -- Screen size multiplier
 
-
+    global.gamepad = joystick_count();
     // -- Volume variables
     global.volumeSounds = 1; // -- Sounds volume
     global.volumeMusic = 1; // -- Music volume

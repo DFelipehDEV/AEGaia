@@ -46,7 +46,7 @@ applies_to=self
     if (camYShakeTimer > 0)
     {
         camYShift      = inch(camYShift, camYShakeValue - round(camYShakeTimer/2)*2, 10)
-        y = lerp(y, y + camYShift, 0.17);
+        y = lerp(y, floor(y + camYShift), 0.17);
 
         if (camYShakeTimer mod 6 == 4)
         {

@@ -259,7 +259,7 @@ applies_to=self
         switch(hudInput[i + 1])
         {
             case 0:
-                if (joystick_count() > 0 == false)
+                if (global.gamepad == false)
                 {
                     draw_sprite_ext(sprKeyboardKeys, 0, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
@@ -270,7 +270,7 @@ applies_to=self
             break;
 
             case 1:
-                if (joystick_count() > 0 == false)
+                if (global.gamepad == false)
                 {
                     draw_sprite_ext(sprKeyboardKeys, 18, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
@@ -281,7 +281,7 @@ applies_to=self
             break;
 
             case 2:
-                if (joystick_count() > 0 == false)
+                if (global.gamepad == false)
                 {
                     draw_sprite_ext(sprKeyboardKeys, 3, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
