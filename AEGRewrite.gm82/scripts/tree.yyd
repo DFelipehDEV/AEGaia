@@ -35,6 +35,7 @@
 		|scrPlayerAnimationNormal
 		|scrPlayerAirdash
 		|scrPlayerAirdashReset
+		|scrPlayerEnergyAdd
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet

@@ -123,7 +123,7 @@
                 // -- Play sound
                 scrPlaySound(choose("sndPlayerEnemyHit1", "sndPlayerEnemyHit2", "sndPlayerEnemyHit3"), global.volumeSounds, 1, false);
 
-                energyAmount += 8;
+                scrPlayerEnergyAdd(8);
             }
         }
         else

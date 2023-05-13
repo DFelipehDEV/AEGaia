@@ -357,9 +357,7 @@ applies_to=self
                 }
             }
         }
-
-        
-        
+                
         // -- Move the player outside in case he has got stuck into the floor or the ceiling           
         while (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskMid))
         {
@@ -368,8 +366,7 @@ applies_to=self
         while (ySpeed > 0 && scrPlayerCollisionBottom(x, y, 0, maskMid))
         {
             y -= 1;
-        }
-            
+        }            
 
         // -- Wall collision (yeah, again, we should perform that since the y axys has recently changed)
         while (scrPlayerCollisionRight(x, y, angle, maskMid) == true)
@@ -397,7 +394,6 @@ applies_to=self
 */
 /// -- Horizontal movement
 
-
     // -- Accelerations/Deceleration
     if (ground == true || action == actionCorkscrew)
     {
@@ -412,68 +408,74 @@ applies_to=self
     }
 
     // -- Only allow normal control while in these actions
-    if (action == actionNormal || action == actionTurn || action == actionJump || action == actionSpring || action == actionCorkscrew || action == actionSkydive
-    || action == actionBoostAir)
+    switch (action)
     {
-        // -- Acceleration
-        // -- Accelerate to the left
-        if (keyLeft == true && keyRight == false)
-        {
-            if xSpeed > -xSpeedTop
+        case actionNormal:
+        case actionTurn:
+        case actionJump:
+        case actionSpring:
+        case actionCorkscrew:
+        case actionSkydive:
+        case actionBoostAir:
+            // -- Acceleration
+            // -- Accelerate to the left
+            if (keyLeft == true && keyRight == false)
             {
-                xSpeed -= xAccTemp;
-            }
+                if xSpeed > -xSpeedTop
+                {
+                    xSpeed -= xAccTemp;
+                }
 
 
-            // -- Friction
-            if xSpeed > 0
-            {
-                xSpeed -= xFricTemp;
-            }
-        }
-        // -- Accelerate to the right
-        else
-        if (keyRight == true && keyLeft == false)
-        {
-            if xSpeed < xSpeedTop
-            {
-                xSpeed += xAccTemp;
-            }
-
-
-            // -- Friction
-            if xSpeed < 0
-            {
-                xSpeed += xFricTemp;
-            }
-        }
-        // -- Decelerate when you are not pressing the right or left key
-        else
-        {
-            if xSpeed < 0
-            {
-                xSpeed += xDecTemp;
-
-                // -- Set to 0 when we stop
+                // -- Friction
                 if xSpeed > 0
                 {
-                    xSpeed = 0;
+                    xSpeed -= xFricTemp;
                 }
             }
-
-            if xSpeed > 0
+            // -- Accelerate to the right
+            else
+            if (keyRight == true && keyLeft == false)
             {
-                xSpeed -= xDecTemp;
+                if xSpeed < xSpeedTop
+                {
+                    xSpeed += xAccTemp;
+                }
 
-                // -- Set to 0 when we stop
+
+                // -- Friction
                 if xSpeed < 0
                 {
-                    xSpeed = 0;
+                    xSpeed += xFricTemp;
                 }
             }
-        }
-    }
+            // -- Decelerate when you are not pressing the right or left key
+            else
+            {
+                if xSpeed < 0
+                {
+                    xSpeed += xDecTemp;
 
+                    // -- Set to 0 when we stop
+                    if xSpeed > 0
+                    {
+                        xSpeed = 0;
+                    }
+                }
+
+                if xSpeed > 0
+                {
+                    xSpeed -= xDecTemp;
+
+                    // -- Set to 0 when we stop
+                    if xSpeed < 0
+                    {
+                        xSpeed = 0;
+                    }
+                }
+            }
+        break;
+    }
 
     // -- Limit speed
     if (abs(xSpeed) > xSpeedMax)
@@ -492,7 +494,6 @@ applies_to=self
             }
         }
     }
-
 
     // -- Stop when meet a wall/slide pass and isnt sliding
     if ((xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))) || (xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
@@ -992,7 +993,7 @@ applies_to=self
     }
 
     // -- Water terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon) || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorWater))
+    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon) || scrPlayerCollisionObjectMain(x, y, objFootstepSensorWater))
     {
         terrainType      = "WATER";
         terrainSound[terSkid]      = "sndPlayerSkidWater";
@@ -1002,7 +1003,7 @@ applies_to=self
     }
 
     // -- Grass terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorGrass))
+    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorGrass))
     {
         terrainType      = "GRASS";
         terrainSound[terSkid]      = "sndPlayerSkidGrass";
@@ -1012,7 +1013,7 @@ applies_to=self
     }
 
     // -- Dirt terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorDirt))
+    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorDirt))
     {
         terrainType      = "DIRT";
         terrainSound[terSkid]      = "sndPlayerSkidDirt";
@@ -1022,7 +1023,7 @@ applies_to=self
     }
 
     // -- Stone terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorStone))
+    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorStone))
     {
         terrainType      = "STONE";
         terrainSound[terSkid]      = "sndPlayerSkidStone";
@@ -1032,7 +1033,7 @@ applies_to=self
     }
 
     // -- Metal terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorMetal))
+    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorMetal))
     {
         terrainType      = "METAL";
         terrainSound[terSkid]      = "sndPlayerSkidMetal";
@@ -1042,7 +1043,7 @@ applies_to=self
     }
 
     // -- Wood terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objFootstepSensorWood))
+    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorWood))
     {
         terrainType      = "WOOD";
         terrainSound[terSkid]      = "sndPlayerSkidWood";
@@ -1099,14 +1100,6 @@ applies_to=self
     {
         sound_stop("sndPlayerSlide");
     }
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Energy handle
-
-    energyAmount = clamp(energyAmount, 0, energyAmountMax);
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -1239,14 +1232,18 @@ applies_to=self
 
     if (global.debugIsAThing == true)
     {
+        // -- Draw main masks
         draw_sprite_ext(maskEdge, 0, x + angleSin * 11, y + angleCos * 11, 1, 1, 0, c_white, 0.6);
-        draw_sprite_ext(maskBig, 0, x + angleSin * sensorBottomDistance, y + angleCos * sensorBottomDistance, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x - angleSin * sensorTopDistance, y - angleCos * sensorTopDistance, image_xscale, image_yscale, 0, c_white, 1);
-
-        draw_sprite_ext(maskBig, 0, x - angleCos * sensorLeftDistance, y + angleSin * sensorLeftDistance, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x + angleCos * sensorRightDistance, y - angleSin * sensorRightDistance, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskHitbox, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
         draw_sprite_ext(maskMain, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistance), floor(y + angleSin * 8 + angleCos * sensorLeftDistance), 1, 1, 0, c_white, 1)
-        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistance), floor(y - angleSin * 8 + angleCos * sensorRightDistance), 1, 1, 0, c_white, 1)
+
+        // -- Draw sensor masks
+        draw_sprite_ext(maskBig, 0, x + angleSin * sensorBottomDistance, y + angleCos * sensorBottomDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x - angleSin * sensorTopDistance, y - angleCos * sensorTopDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x - angleCos * sensorLeftDistance, y + angleSin * sensorLeftDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, x + angleCos * sensorRightDistance, y - angleSin * sensorRightDistance, image_xscale, image_yscale, 0, c_white, 1);
+
+        // -- Draw lines masks
+        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistance), floor(y + angleSin * 8 + angleCos * sensorLeftDistance), 1, 1, 0, c_white, 1);
+        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistance), floor(y - angleSin * 8 + angleCos * sensorRightDistance), 1, 1, 0, c_white, 1);
     }

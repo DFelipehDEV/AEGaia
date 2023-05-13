@@ -23,7 +23,7 @@
         if (action != actionLightspeed)
         {
             // -- Get energy
-            energyAmount += 4;
+            scrPlayerEnergyAdd(4);
         }
     }
 

@@ -103,7 +103,7 @@
                     scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
                     scrDummyEffectCreate(x, y, sprVFXDustDash, 0.35, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
 
-                    energyAmount -= 1.5;
+                    scrPlayerEnergyAdd(-1.5);
 
                     // -- Speed up the player
                     if abs(xSpeed) < boostSpeed
@@ -127,7 +127,7 @@
                         boost= true;
                         action= actionBoostAir;
                         animationIndex= "LAUNCH";
-                        boostAir= 40;
+                        boostAir = 40;
                         boostPossible = true;
 
                         var boostVFX;
@@ -148,9 +148,7 @@
                 if (keySpecial1 == true && boostPossible == true)
                 {
                     boost = true;
-
                     trailTimer = 120;
-
 
                     // -- Create boost aura
                     if (instance_exists(objVFXBoost) == false)
@@ -161,8 +159,7 @@
                         boostVFX.playerID    = id;
                     }
 
-                    energyAmount -= 0.35;
-
+                    scrPlayerEnergyAdd(-0.35);
                     scrPlayerPhysicsSonic();
                 }
             }

@@ -23,7 +23,7 @@
             animationIndex = choose("HOMED_1", "HOMED_2", "SPRING_TRICK_HORIZONTAL", "SPRING_TRICK_VERTICAL");
 
             // -- Get energy
-            energyAmount += 7;
+            scrPlayerEnergyAdd(7);
 
             // -- Create rainbow effect
             instance_create(x, y, objVFXRainbow);
@@ -42,7 +42,7 @@
     if (keySpecial3Pressed == true)
     {
         trickCombo     = 0;
-        energyAmount  += 21;
+        scrPlayerEnergyAdd(21);
 
         animationIndex = "SPRING_TRICK_HORIZONTAL";
 

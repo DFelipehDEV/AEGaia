@@ -75,7 +75,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Debug
+/// -- Debug overlay
 
     if (global.debugIsAThing == true)
     {
@@ -85,6 +85,14 @@ applies_to=self
             draw_set_color(c_white)
             draw_set_font(fontDebug)
             draw_set_halign(fa_left)
+            draw_set_color(c_aqua)
+            draw_text(view_xview[0] + 333, view_yview[0] + 1, "TAB:TOGGLE OVERLAY");
+            draw_text(view_xview[0] + 333, view_yview[0] + 11, "MOUSE RIGHT:LERP PLAYER POSITION");
+            draw_text(view_xview[0] + 333, view_yview[0] + 21, "R:RESTART ROOM");
+            draw_text(view_xview[0] + 333, view_yview[0] + 31, "PGUP:NEXT ROOM");
+            draw_text(view_xview[0] + 333, view_yview[0] + 41, "PGDN:PREVIOUS ROOM");
+            draw_text(view_xview[0] + 333, view_yview[0] + 51, "PAUSE:STOP AUDIO");
+            draw_set_color(c_white)
             draw_text(view_xview[0] + 403, view_yview[0] + 57+48, string(string(floor(objPlayer.x))))
             draw_text(view_xview[0] + 403, view_yview[0] + 67+48, string(string(floor(objPlayer.y))))
             draw_text(view_xview[0] + 403, view_yview[0] + 77+48, string(objPlayer.terrainPlatform))
@@ -102,7 +110,5 @@ applies_to=self
             draw_text(view_xview[0] + 333, view_yview[0] + 167+48, string("BGMVOLUME " + string(global.volumeMusic)))
             draw_text(view_xview[0] + 333, view_yview[0] + 177+48, string("INSTANCE COUNT " + string(instance_count)))
             draw_text(view_xview[0] + 333, view_yview[0] + 187+48, string("SOUND COUNT " + string(sound_get_count())))
-
-            draw_text(mouse_x, mouse_y, objPlayer.animationFrameSpeed);
         }
     }

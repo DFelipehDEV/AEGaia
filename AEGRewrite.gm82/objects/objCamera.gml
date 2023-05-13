@@ -98,8 +98,8 @@ applies_to=self
     if (camTarget != objPlayer)
     {
         // -- Shift to the target position
-        x += floor(camTarget.x + camXShift - x) * 0.2;
-        y += floor(camTarget.y + camYShift - y) * 0.1;
+        x = floor(lerp(x, camTarget.x + camXShift, 0.2));
+        y = floor(lerp(y, camTarget.y + camYShift, 0.1));
     }
     // -- Follow the player
     else
@@ -108,8 +108,8 @@ applies_to=self
         {
             // -- Shift to the player position
             // -- I could just have used lerp
-            x = lerp(x, floor(camTarget.x + camXShift), 0.2);
-            y = lerp(y, floor(camTarget.y + camYShift), 0.2); //0.16
+            x = floor(lerp(x, camTarget.x + camXShift, 0.2));
+            y = floor(lerp(y, camTarget.y + camYShift, 0.2)); //0.16
         }
     }
 /*"/*'/**//* YYD ACTION
