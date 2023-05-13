@@ -1,6 +1,6 @@
 /// scrPlayerActionStomp()
 
-    xSpeed = inch(xSpeed, 0, 10)
+    xSpeed = inch(xSpeed, 0, 7)
     ySpeed = 16;
 
     // -- Land
