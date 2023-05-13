@@ -17,6 +17,6 @@
             action = actionSpring;
             ground = false;
             spring.image_speed = 0.3;
-            animationIndex = "SPRING";
+            scrAnimationApply("SPRING");
         }
     }

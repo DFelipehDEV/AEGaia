@@ -1,4 +1,4 @@
-/// @description  scrPlayerActionSkid()
+/// scrPlayerActionSkid()
 
     // -- Decelerate while going to the left
     if (xSpeed < 0)

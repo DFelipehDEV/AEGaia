@@ -1,4 +1,4 @@
-/// @description  scrPlayerActionWalljump()
+/// scrPlayerActionWalljump()
 
     ySpeed = 1.5;
 
@@ -8,7 +8,7 @@
         ySpeed = -6;
 
         action         = actionNormal;
-        animationIndex = "LAUNCH";
+        scrAnimationApply("LAUNCH");
         scrPlaySound("sndPlayerJump", global.volumeSounds, 1, false);
     }
 

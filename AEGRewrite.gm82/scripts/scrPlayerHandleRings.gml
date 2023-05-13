@@ -29,7 +29,7 @@
 
 
     // -- Collect dropped ring
-    if (ringDrop != noone && (action != actionHurt))
+    if (ringDrop != noone && (action != actionHurt && invincibilityTimer < 100))
     {
         // -- Destroy ring and create effect
         with (ringDrop)
@@ -43,7 +43,7 @@
     }
 
     // -- Collect magnetic ring
-    if (ringMagnetic != noone && (action != actionHurt))
+    if (ringMagnetic != noone)
     {
         // -- Destroy ring and create effect
         with (ringMagnetic)

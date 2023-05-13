@@ -1,12 +1,9 @@
 /// scrPlayerHandleDash()
  // -- Handle dash pads, rings and ramps collision
 
-
-
     // -- Dash pads
     var dashPad, dashRing, dashRamp, dashRail;
     dashPad  = scrPlayerCollisionHitbox(x, y, parDashPad);
-
 
     if (dashPad != noone && ground == true)
     {
@@ -16,27 +13,21 @@
             {
                 xSpeed = dashPad.dashStrength * dashPad.image_xscale;
             }
-
             // -- Prevent spam
             with (dashPad)
             {
                 dashAllow = false;
                 dashAllowTimer = 15;
             }
-
             // -- Create dust
             scrDummyEffectCreate(x, y, sprVFXDustDash, 0.25, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
-
-
             // -- Play sound
             scrPlaySound("sndDashPad", global.volumeSounds, 1, false);
         }
     }
 
-
     // -- Dash ring
     dashRing = scrPlayerCollisionHitbox(x, y, parDashRing);
-
 
     // -- Check if the player is meeting the dash ring
     if (dashRing != noone)
@@ -46,7 +37,6 @@
             ground = false
             x = dashRing.x;
             y = dashRing.y;
-
             xSpeed = dashRing.dashStrength * dcos(dashRing.image_angle+90);
             ySpeed = -dashRing.dashStrength * dsin(dashRing.image_angle+90);
 
@@ -59,7 +49,6 @@
             yStuckTimer = 18;
             animationAngle     = -dashRing.image_angle;
 
-
             // -- Set slow motion
             if (dashRing.dashRingPAct == actionTricks)
             {
@@ -67,12 +56,8 @@
                 trickCombo     = 0;
             }
 
-
             action         = dashRing.dashRingPAct;
-            if (animationIndex != "SPRING")
-            {
-                animationIndex = "SPRING";
-            }
+            scrAnimationApply("SPRING");
 
             // -- Prevent spam
             with (dashRing)
@@ -83,9 +68,6 @@
                 image_xscale = 0.5;
                 image_yscale = 0.5;
             }
-
-
-
 
             // -- Play sound
             switch(dashRing.dashRingType)
@@ -101,7 +83,6 @@
             }
         }
     }
-
 
 
     // -- Dash ramps
@@ -134,7 +115,7 @@
                 }
             }
             scrPlayerAngleSet(0);
-            animationIndex = "LAUNCH";
+            scrAnimationApply("LAUNCH");
             animationDirection = dashRamp.image_xscale;
 
             allowKeyTimer = 40;
@@ -145,7 +126,6 @@
                 dashAllow = false;
                 dashAllowTimer = 15;
             }
-
 
             // -- Play sound
             scrPlaySound("sndDashRamp", global.volumeSounds, 1, false);

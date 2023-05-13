@@ -9,7 +9,7 @@
         }
 
         action             = argument0;
-        animationIndex     = choose("HOMED_1", "HOMED_2", "SPRING_TRICK_VERTICAL");
+        scrAnimationApply(choose("HOMED_1", "HOMED_2", "SPRING_TRICK_VERTICAL"));
         allowKeyTimer      = 20;
         xSpeed             = argument1;
         ySpeed             = argument2;

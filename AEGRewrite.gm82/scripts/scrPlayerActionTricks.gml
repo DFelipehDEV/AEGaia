@@ -1,4 +1,4 @@
-/// @description  scrPlayerActionTricks()
+/// scrPlayerActionTricks()
 
     if (animationIndex == "SPRING")
     {
@@ -20,7 +20,7 @@
             }
 
             animationFrame = 0;
-            animationIndex = choose("HOMED_1", "HOMED_2", "SPRING_TRICK_HORIZONTAL", "SPRING_TRICK_VERTICAL");
+            scrAnimationApply(choose("HOMED_1", "HOMED_2", "SPRING_TRICK_HORIZONTAL", "SPRING_TRICK_VERTICAL"));
 
             // -- Get energy
             scrPlayerEnergyAdd(7);
@@ -43,8 +43,7 @@
     {
         trickCombo     = 0;
         scrPlayerEnergyAdd(21);
-
-        animationIndex = "SPRING_TRICK_HORIZONTAL";
+        scrAnimationApply("SPRING_TRICK_HORIZONTAL");
 
         action         = actionSpring;
         global.deltaMultiplier = 1;
@@ -55,7 +54,6 @@
     if (ground == true)
     {
         global.deltaMultiplier = 1;
-        action        = actionCrouchReset;
+        action        = actionNormal;
         allowKeyTimer = 0;
-        scrAnimationApply("CROUCH_RESET");
     }

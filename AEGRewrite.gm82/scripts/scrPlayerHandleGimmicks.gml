@@ -12,7 +12,7 @@
         if (animationIndex != "ROLL" && animationIndex != "CORKSCREW")
         {
             // -- If is not rolling, walk on the corkscrew
-            animationIndex = "CORKSCREW";
+            scrAnimationApply("CORKSCREW");
         }
         action = actionCorkscrew;
         ground = false;

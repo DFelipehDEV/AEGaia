@@ -4,7 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// @description  Variables
+/// -- Variables
 
     image_speed = 0;
     dir         = "";          // -- Direction of the launcher
@@ -146,7 +146,7 @@ applies_to=self
                     {
                         action             = actionNormal;
                         animationDirection = -1;
-                        animationIndex     = "LAUNCH";
+                        scrAnimationApply("LAUNCH");
                         yStuckTimer        = 16;
                         xSpeed             = -9;
                         visible = true;
@@ -189,7 +189,7 @@ applies_to=self
                     {
                         action             = actionNormal;
                         animationDirection = 1;
-                        animationIndex     = "LAUNCH";
+                        scrAnimationApply("LAUNCH");
                         yStuckTimer        = 16;
                         xSpeed             = 9;
                         visible        = true;

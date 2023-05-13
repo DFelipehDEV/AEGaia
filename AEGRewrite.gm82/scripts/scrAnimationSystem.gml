@@ -1,26 +1,6 @@
 /// scrAnimationSystem()
  //Animation system
 
-    //Check if the animation has changed
-    if (animationIndex != animationIndexPrevious)
-    {
-        //Keep the last animation in track
-        animationIndexPrevious = animationIndex;
-
-        //Update animation
-        scrAnimationUpdate();
-
-        //Reset frame
-        if (animationFrameReset == true)
-        {
-            animationFrame = animationFrameStart;
-        }
-
-        animationFinished   = false;
-        animationTime       = 0;
-    }
-
-
     //Increase timer since the animation started
     animationTime += 1;
 
@@ -54,7 +34,17 @@
                 //When the animation ends, if the animation is linked to other animation, set that animation
                 {
                     animationFrame = animationFrameEnd;
+
+                    animationIndexPrevious = animationIndex;
                     animationIndex = animationLinkedTo;
+                    scrAnimationUpdate();
+                    animationTime       = 0;
+                    animationFinished   =   false;
+                    // -- Reset frame
+                    if (animationFrameReset == true)
+                    {
+                        animationFrame = animationFrameStart;
+                    }
                 }
             }
         }

@@ -15,7 +15,7 @@
             keyLeft = false;
             xSpeed = 0;
             action = actionTurn;
-            animationIndex = "TURN";
+            scrAnimationApply("TURN");
         }
     }
 

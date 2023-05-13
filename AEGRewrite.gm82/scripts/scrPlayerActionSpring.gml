@@ -38,7 +38,7 @@
             }
             ySpeed = -2;
 
-            animationIndex = "SPRING_TRICK_HORIZONTAL";
+            scrAnimationApply("SPRING_TRICK_HORIZONTAL")
             scrPlaySound("sndPlayerSpringTrick", global.volumeSounds, 1, false);
             animationAngle = 0;
         }
@@ -50,8 +50,7 @@
             xSpeed = 0;
             ySpeed = -7;
 
-            animationIndex = "SPRING_TRICK_VERTICAL";
-
+            scrAnimationApply("SPRING_TRICK_VERTICAL")
             scrPlaySound("sndPlayerSpringTrick", global.volumeSounds, 1, false);
             animationAngle = 0;
         }

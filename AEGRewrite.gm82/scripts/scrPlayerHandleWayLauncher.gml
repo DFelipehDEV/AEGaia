@@ -16,7 +16,7 @@
             xSpeed = 0;
             ySpeed = 0;
             action = actionWayLauncher;
-            animationIndex = "";
+            scrAnimationApply("");
 
             with(waylauncher)
             {

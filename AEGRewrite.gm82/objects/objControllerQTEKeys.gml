@@ -186,9 +186,12 @@ applies_to=self
                             qteWon = 1;
                             scrPlaySound("sndQTEWin", global.volumeSounds, 1, false);
                             
-                            objPlayer.action = actionNormal;
-                            objPlayer.animationIndex = "HOMED_1";
-                            objPlayer.allowKeyTimer = 60;
+                            with (objPlayer)
+                            {
+                                action = actionNormal;
+                                scrAnimationApply("HOMED_1");
+                                allowKeyTimer = 60;
+                            }
                             scrPlaySound(objPlayer.voiceline[8], global.volumeSounds, 1, false);
                             hudInputScale[3] = 0.5;
                         }
@@ -204,9 +207,12 @@ applies_to=self
                             qteWon = 1;
                             scrPlaySound("sndQTEWin", global.volumeSounds, 1, false);
                             
-                            objPlayer.action = actionNormal;
-                            objPlayer.animationIndex = "HOMED_1";
-                            objPlayer.allowKeyTimer = 60;
+                            with (objPlayer)
+                            {
+                                action = actionNormal;
+                                scrAnimationApply("HOMED_1");
+                                allowKeyTimer = 60;
+                            }
                             scrPlaySound(objPlayer.voiceline[8], global.volumeSounds, 1, false);
                             hudInputScale[3] = 0.5;
                         }
@@ -222,9 +228,12 @@ applies_to=self
                             qteWon = 1;
                             scrPlaySound("sndQTEWin", global.volumeSounds, 1, false);
                             
-                            objPlayer.action = actionNormal;
-                            objPlayer.animationIndex = "HOMED_1";
-                            objPlayer.allowKeyTimer = 60;
+                            with (objPlayer)
+                            {
+                                action = actionNormal;
+                                scrAnimationApply("HOMED_1");
+                                allowKeyTimer = 60;
+                            }
                             scrPlaySound(objPlayer.voiceline[8], global.volumeSounds, 1, false);
                             hudInputScale[3] = 0.5;
                         }

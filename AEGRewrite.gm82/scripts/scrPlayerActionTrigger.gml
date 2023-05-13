@@ -124,9 +124,9 @@
                     if (ground == false && (action == actionNormal || action == actionJump))
                     {
                         // -- Air boost dash
-                        boost= true;
-                        action= actionBoostAir;
-                        animationIndex= "LAUNCH";
+                        boost = true;
+                        action = actionBoostAir;
+                        scrAnimationApply("LAUNCH");
                         boostAir = 40;
                         boostPossible = true;
 
@@ -172,5 +172,5 @@
         ySpeed              = -1;
         ground              = false;
         action              = actionLightspeed;
-        animationIndex      = "SPRING";
+        scrAnimationApply("SPRING");
     }

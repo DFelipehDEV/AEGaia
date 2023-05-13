@@ -168,11 +168,6 @@
             scrAnimationSet(sprSonicHurtFall, 0, -1, -1, 0.2, 1, 0, -1, "");
         break;
 
-        // -- Hurt land animation
-        case "HURT_LAND":
-            scrAnimationSet(sprSonicHurtLand, 0, -1, -1, 0.26, 1, 0, -1, "");
-        break;
-
         // -- Dead animation
         case "DEAD":
             scrAnimationSet(sprSonicDie, 0, -1, 3, 0.26, 1, 1, -1, "");

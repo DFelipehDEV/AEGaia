@@ -266,7 +266,7 @@ applies_to=self
     draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, c_white, (abs(sin(current_time/340)*0.3))*logoAlpha);
     draw_set_blend_mode(bm_normal)
 
-    if (menu > 0)
+    if (menu > 0 && menuTimer > 180)
     {
         // -- Draw card
         draw_sprite_ext(sprTitleCardZoneCard, 0, 0, optionY[menuOption - 1] - 6, screenWidth, 0.8, 0, make_color_rgb(120, 228, 228), image_alpha);
