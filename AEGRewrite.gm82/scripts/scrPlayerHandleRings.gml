@@ -54,4 +54,6 @@
             instance_destroy();
         }
         global.playerRings  +=  1;
+        // -- Get energy
+        scrPlayerEnergyAdd(4);
     }

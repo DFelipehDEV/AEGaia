@@ -33,7 +33,7 @@ applies_to=self
 
     if (global.gameTimeAllow == true)
     {
-        global.gameTime += (1000 / 60 * global.deltaMultiplier);
+        global.gameTime += 1000 / 60 * global.deltaMultiplier;
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1

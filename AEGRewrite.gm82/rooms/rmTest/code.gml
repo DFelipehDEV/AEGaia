@@ -6,4 +6,4 @@
 	fadeIn =true;
 musicVolumeReal = 0
 	}
-global.stageName = "RAT ZONE"
+global.stageName = "SPACE COLONY ZONE"

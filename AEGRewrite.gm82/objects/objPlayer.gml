@@ -91,7 +91,6 @@ applies_to=self
     angleCos = 0;
     angleSin = 0;
     layerIndex = 0;             // -- Current terrain layer
-    boundariesNear = 0;         // -- Flag if the player is near of the camera boundaries
 
     // -- Interaction
     physicMode = 0;             // -- 0 - Normal physics   1 - Underwater physics

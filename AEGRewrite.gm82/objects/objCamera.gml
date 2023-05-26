@@ -129,7 +129,7 @@ applies_to=self
         {
             // -- Shift the camera forward while spindashing
             case actionSpindash:
-                camXShift = inch(camXShift, 120 * camTarget.animationDirection, 6);
+                camXShift = inch(camXShift, 100 * camTarget.animationDirection, 5);
             break;
 
             // -- Shift the camera in the direction you are pressing while in a way launcher
@@ -151,8 +151,9 @@ applies_to=self
             // -- Shift the camera based on the player's speed and angle in all other states
             default:
                 var targetSpeed;
-                targetSpeed = ((camTarget.xSpeed) * 12) * lengthdir_x(1, floor(angle));
-                camXShift = inch(camXShift, targetSpeed, 6);
+                //targetSpeed = ((camTarget.xSpeed) * 12) * lengthdir_x(1, floor(angle));
+                targetSpeed = (((camTarget.x - camTarget.xprevious)/global.deltaMultiplier) * 12);
+                camXShift = inch(camXShift, targetSpeed, 5);
         }
 
         // -- Shift y-axis camera position
@@ -193,7 +194,8 @@ applies_to=self
                 // -- Only shift the camera if the y-shake timer is not active
                 if (camYShakeTimer == 0)
                 {
-                    camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 8, floor(angle)), 9); // *5, *9
+                    //camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 8, floor(angle)), 9); // *5, *9
+                    camYShift = inch(camYShift, floor(((camTarget.y - camTarget.yprevious)/global.deltaMultiplier) * 6), 9); // *5, *9
                 }
         }
     }
