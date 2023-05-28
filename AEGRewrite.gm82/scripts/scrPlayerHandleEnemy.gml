@@ -27,7 +27,7 @@
                     // -- Decrease enemy HP and give him small invincibility
                     with (enemy)
                     {
-                        enemyBlinkTimer = 25;
+                        enemyBlinkTimer = 20;
                         enemyHP        -= 1;
                     }
 

@@ -10,7 +10,7 @@
             xSpeedTop     =  10;
             xSpeedMax     =  12;
             xAcc          =  0.081;
-            xDec          =  0.1;
+            xDec          =  0.09;
         }
         // -- Boost
         else
@@ -18,7 +18,7 @@
             xSpeedTop     =  13.7;
             xSpeedMax     =  15.1;
             xAcc          =  0.188;
-            xDec          =  0.1;
+            xDec          =  0.09;
         }
 
         yAcc          =  0.24;

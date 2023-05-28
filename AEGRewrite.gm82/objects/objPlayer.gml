@@ -949,7 +949,7 @@ applies_to=self
         if (ground == true)
         {
             // -- Rotate while moving on the ground
-            animationAngle = scrAngleTowards(round(angle/7.5)*7.5, animationAngle, 5 + abs(floor(xSpeed))/2);
+            animationAngle = scrAngleTowards(round(angle/8.25)*8.25, animationAngle, 5 + abs(floor(xSpeed))*0.7);
         }
         // -- Rotate until reaches to the normal angle
         else

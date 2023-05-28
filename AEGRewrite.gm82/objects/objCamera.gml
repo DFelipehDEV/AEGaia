@@ -88,35 +88,6 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Shift to the target position
-
-    if (camStuck == true || instance_exists(camTarget) == false) exit;
-
-    x = clamp(x, camBorderLeft + screenWidthMid, camBorderRight + screenWidthMid);
-    y = clamp(y, camBorderTop + screenHeightMid, camBorderBottom - screenHeightMid);
-
-    if (camTarget != objPlayer)
-    {
-        // -- Shift to the target position
-        x = floor(lerp(x, camTarget.x + camXShift, 0.2));
-        y = floor(lerp(y, camTarget.y + camYShift, 0.1));
-    }
-    // -- Follow the player
-    else
-    {
-        if (camTarget.action != actionDead)
-        {
-            // -- Shift to the player position
-            // -- I could just have used lerp
-            x = floor(lerp(x, camTarget.x + camXShift, 0.2));
-            y = floor(lerp(y, camTarget.y + camYShift, 0.2)); //0.16
-        }
-    }
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
 /// -- Camera Shift
 
     // -- Check if the player exists and is the current camera target
@@ -153,7 +124,7 @@ applies_to=self
                 var targetSpeed;
                 //targetSpeed = ((camTarget.xSpeed) * 12) * lengthdir_x(1, floor(angle));
                 targetSpeed = (((camTarget.x - camTarget.xprevious)/global.deltaMultiplier) * 12);
-                camXShift = inch(camXShift, targetSpeed, 5);
+                camXShift = inch(camXShift, round(targetSpeed), 5);
         }
 
         // -- Shift y-axis camera position
@@ -195,7 +166,36 @@ applies_to=self
                 if (camYShakeTimer == 0)
                 {
                     //camYShift = inch(camYShift, ((camTarget.ySpeed) * 5) + lengthdir_y(camTarget.xSpeed * 8, floor(angle)), 9); // *5, *9
-                    camYShift = inch(camYShift, floor(((camTarget.y - camTarget.yprevious)/global.deltaMultiplier) * 6), 9); // *5, *9
+                    camYShift = inch(camYShift, floor(((camTarget.y - camTarget.yprevious)/global.deltaMultiplier) * 5), 6); // *5, *9
                 }
+        }
+    }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Shift to the target position
+
+    if (camStuck == true || instance_exists(camTarget) == false) exit;
+
+    x = clamp(x, camBorderLeft + screenWidthMid, camBorderRight + screenWidthMid);
+    y = clamp(y, camBorderTop + screenHeightMid, camBorderBottom - screenHeightMid);
+
+    if (camTarget != objPlayer)
+    {
+        // -- Shift to the target position
+        x = floor(lerp(x, camTarget.x + camXShift, 0.2));
+        y = floor(lerp(y, camTarget.y + camYShift, 0.1));
+    }
+    // -- Follow the player
+    else
+    {
+        if (camTarget.action != actionDead)
+        {
+            // -- Shift to the player position
+            // -- I could just have used lerp
+            x = floor(lerp(x, camTarget.x + camXShift, 0.2));
+            y = floor(lerp(y, camTarget.y + camYShift, 0.2)); //0.16
         }
     }

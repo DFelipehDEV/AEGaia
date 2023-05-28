@@ -130,11 +130,14 @@
                         boostAir = 40;
                         boostPossible = true;
 
-                        var boostVFX;
-                        boostVFX             = instance_create(x, y, objVFXBoost);
-                        boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
-                        boostVFX.playerID    = id;
-                        boostVFX.image_alpha = 0.7;
+                        if (instance_exists(objVFXBoost) == false)
+                        {
+                            var boostVFX;
+                            boostVFX             = instance_create(x, y, objVFXBoost);
+                            boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
+                            boostVFX.playerID    = id;
+                            boostVFX.image_alpha = 0.7;
+                        }
                         scrPlayerPhysicsSonic();
                     }
                     else
@@ -161,6 +164,21 @@
 
                     scrPlayerEnergyAdd(-0.35);
                     scrPlayerPhysicsSonic();
+                }
+            }
+            else
+            {
+                if (keySpecial1Pressed == true && boost == false)
+                {
+                    // -- Create charge effect
+                    with (instance_create(x, y, objVFXSpindashCharge))
+                    {
+                        image_xscale = 0.0006;
+                        image_yscale = 0.0006;
+                        scalespeed = 0.2;
+                    }
+                    objControllerStage.hudShakeTimer = 30;
+                    scrPlaySound(voiceline[2], global.volumeSounds, 1, false);
                 }
             }
         }

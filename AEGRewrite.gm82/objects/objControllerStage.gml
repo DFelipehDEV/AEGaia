@@ -6,7 +6,8 @@ applies_to=self
 */
 /// -- Variables
 
-
+    hudShakeTimer = 0;
+    hudShakeOffset = 0;
     global.gameTimeAllow = true;
 
     global.gameTime      = global.playerCheckTime;
@@ -51,6 +52,11 @@ applies_to=self
         case true:
             hudOffset = lerp(floor(hudOffset), 300, 0.05);
         break;
+    }
+
+    if (hudShakeTimer)
+    {
+        hudShakeTimer -= 1;
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -127,9 +133,11 @@ applies_to=self
 
     // -- Draw energy bar
     gaugeIndex = inch(gaugeIndex, objPlayer.energyAmount/4, 1);
-    draw_sprite(sprHUDEnergy, 0, view_xview[0] - hudOffset, view_yview[0] + screenHeight - 40)
+    var shake;
+    shake = sin(hudShakeTimer)*3;
+    draw_sprite(sprHUDEnergy, 0, (view_xview[0] - hudOffset), (view_yview[0] + screenHeight - 40) + shake)
     // -- Draw gauge
-    draw_sprite(sprHUDGauge, floor(gaugeIndex), (view_xview[0] - hudOffset), view_yview[0] + screenHeight - 27)
+    draw_sprite(sprHUDGauge, floor(gaugeIndex), (view_xview[0] - hudOffset), (view_yview[0] + screenHeight - 27) + shake)
 
 
     // -- Warn pop up buttons
