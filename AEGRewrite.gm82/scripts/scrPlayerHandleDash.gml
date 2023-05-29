@@ -3,12 +3,17 @@
 
     // -- Dash pads
     var dashPad, dashRing, dashRamp, dashRail;
-    dashPad  = scrPlayerCollisionHitbox(x, y, parDashPad);
-
-    if (dashPad != noone && ground == true)
+    dashPad  = scrPlayerCollisionObjectMain(x, y, parDashPad);
+    if (dashPad != noone)
     {
         if (dashPad.dashAllow == true)
         {
+            if (terrainPushing && ground == false)
+            {
+                ground = true;
+                scrPlayerAngleSet(dashPad.image_angle);
+                ySpeed = 0;
+            }
             if (dashPad.dashStrength != 0)
             {
                 xSpeed = dashPad.dashStrength * dashPad.image_xscale;
@@ -28,7 +33,6 @@
 
     // -- Dash ring
     dashRing = scrPlayerCollisionHitbox(x, y, parDashRing);
-
     // -- Check if the player is meeting the dash ring
     if (dashRing != noone)
     {
@@ -84,11 +88,8 @@
         }
     }
 
-
     // -- Dash ramps
     dashRamp = scrPlayerCollisionHitbox(x, y, parDashRamp);
-
-
     if (dashRamp != noone && ground == true)
     {
         if (dashRamp.dashAllow == true && ((x >= dashRamp.x - 45 && dashRamp.image_xscale == 1) || (x <= dashRamp.x + 45 && dashRamp.image_xscale == -1)))
@@ -132,11 +133,8 @@
         }
     }
 
-
     // -- Dash rail
     dashRail = scrPlayerCollisionHitbox(x, y, parDashRail);
-
-
     if (dashRail != noone && ground == true && action == actionGrind)
     {
         if (dashRail.dashAllow == true)

@@ -78,6 +78,7 @@ applies_to=self
             allowKeys = false;
             keyRight = true;
             action = actionNormal;
+            goal = true;
         }
 
         objCamera.camTarget = id;

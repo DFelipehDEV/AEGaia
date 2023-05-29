@@ -85,6 +85,7 @@ applies_to=self
     terrainSound[terLand] = "scrPlayerLand"; // -- Land sound effect on a certain terrain
     terrainSound[terSkid] = "sndPlayerSkidStone"; // -- Land sound effect on a certain terrain
     terrainPlatform = 0;
+    terrainPushing = false;     // -- Whether the player is pushing into a wall or not
     footstep = 0;               // -- Checks if the footstep sound can play
     angle = 0;                  // -- Current player angle
     angleHolder = 0;
@@ -99,6 +100,7 @@ applies_to=self
     invincibility = 0;          // -- Checks whether the player is invincible or not
     invincibilityTimer = 0;     // -- Size in frames of how long the invincibility remains
     shield = 0;                 // -- Check which shield the player has
+    goal = false;
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -183,6 +185,17 @@ applies_to=self
 /// -- Create dust effect
 
     scrDummyEffectCreate(x, y, sprVFXDust1, 0.3, 0, -1, bm_normal, 1, 1, 1, animationAngle);
+#define Alarm_1
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Reset player speed
+
+    xSpeed = 0;
+    ySpeed = 0;
+    alarm[1] = 1;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -498,10 +511,16 @@ applies_to=self
     if ((xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))) || (xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
        xSpeed = 0;
+       terrainPushing = true;
     }
-    if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
+    else if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
        xSpeed = 0;
+       terrainPushing = true;
+    }
+    else
+    {
+        terrainPushing = false;
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -893,6 +912,24 @@ applies_to=self
                 }
                 x = 0;
                 y = 0;
+            }
+        }
+    }
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Goal
+
+
+    if (goal == true)
+    {
+        if scrViewIn(id) == false
+        {
+            if (alarm[1] == -1)
+            {
+                alarm[1] = 60;
             }
         }
     }
