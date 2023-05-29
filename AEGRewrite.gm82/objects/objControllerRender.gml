@@ -23,6 +23,7 @@ applies_to=self
     instance_activate_object(parActivate);
     instance_activate_object(parPlatformMove);
     instance_activate_object(objHandle);
+    instance_activate_object(gm82core_object)
     // -- Activate deactivated objects if they are in the view
     instance_activate_region(view_xview[0] - 64, view_yview[0] - 64, screenWidth + 128, screenHeight + 128, 1);
 

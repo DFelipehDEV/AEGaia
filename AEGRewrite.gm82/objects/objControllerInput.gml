@@ -46,6 +46,7 @@ applies_to=self
 
     if (inputs == false) exit;
 
+    // A B X Y LB RB Back Start LS RS
     inputLeft = keyboard_check(vk_left) || joystick_axis(0, 0) < 0
     inputRight = keyboard_check(vk_right) || joystick_axis(0, 0) > 0
     inputUp = keyboard_check(vk_up) || joystick_axis(0, 1) < 0
@@ -96,3 +97,35 @@ applies_to=self
             instance_create(0, 0, objControllerDebug);
         }
     }
+#define Other_4
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+    inputLeft                 = 0
+    inputRight                = 0
+    inputUp                   = 0
+    inputDown                 = 0
+    inputAction               = 0
+    inputSpecial1             = 0
+    inputSpecial2             = 0
+    inputSpecial3             = 0
+
+    inputLeftPressed          = 0
+    inputRightPressed         = 0
+    inputUpPressed            = 0
+    inputDownPressed          = 0
+    inputActionPressed        = 0
+    inputSpecial1Pressed      = 0
+    inputSpecial2Pressed      = 0
+    inputSpecial3Pressed      = 0
+
+    inputLeftReleased         = 0
+    inputRightReleased        = 0
+    inputUpReleased           = 0
+    inputDownReleased         = 0
+    inputActionReleased       = 0
+    inputSpecial1Released     = 0
+    inputSpecial2Released     = 0
+    inputSpecial3Released     = 0
