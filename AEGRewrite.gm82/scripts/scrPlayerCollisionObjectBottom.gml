@@ -12,9 +12,9 @@
     mask_index = argument3;
 
     //Transform angle to radians and precalculate cosine and sine
-    argument2   = degtorad(argument2);
-    cosines      = cos(argument2);
-    sine        = sin(argument2);
+    var cosines, sine;
+    cosines = dcos(argument2);
+    sine = dsin(argument2);
 
     //Test collision
     collisionTest  =   instance_place(floor(argument0 + sine * sensorBottomDistance),

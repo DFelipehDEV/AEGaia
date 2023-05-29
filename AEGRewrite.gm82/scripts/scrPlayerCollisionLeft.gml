@@ -25,8 +25,8 @@
     mask_index      =   argument3;
 
     //Test collision
-    collisionTest  =   scrPlayerCollision(floor(argument0 - cos(degtorad(argument2)) * sensorLeftDistance),
-                                          floor(argument1 + sin(degtorad(argument2)) * sensorLeftDistance),
+    collisionTest  =   scrPlayerCollision(floor(argument0 - dcos(argument2) * sensorLeftDistance),
+                                          floor(argument1 + dsin(argument2) * sensorLeftDistance),
                                           layerIndex);
 
     //Set to the old mask

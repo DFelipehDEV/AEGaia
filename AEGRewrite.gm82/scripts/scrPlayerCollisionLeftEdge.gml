@@ -30,10 +30,10 @@
     image_index     =   floor(argument2);  //0 to 359 possible images
 
     //Test collision
-    collisionTest = scrPlayerCollision(floor(argument0 - cos(degtorad(argument2)) * 8 +
-                                                     sin(degtorad(argument2)) * sensorLeftDistance),
-                                                   floor(argument1 + sin(degtorad(argument2)) * 8 +
-                                                     cos(degtorad(argument2)) * sensorLeftDistance),
+    collisionTest = scrPlayerCollision(floor(argument0 - dcos(argument2) * 8 +
+                                                     dsin(argument2) * sensorLeftDistance),
+                                                   floor(argument1 + dsin(argument2) * 8 +
+                                                     dcos(argument2) * sensorLeftDistance),
                                                    layerIndex);
 
     //Set to the old mask

@@ -3,11 +3,10 @@
     if (action == actionHoming)
     {
         // -- Give player invincibility to avoid death after homing
-        if (invincibilityTimer == 0)
+        if (invincibilityTimer < argument3)
         {
             invincibilityTimer = argument3;
         }
-
         action             = argument0;
         scrAnimationApply(choose("HOMED_1", "HOMED_2", "SPRING_TRICK_VERTICAL"));
         allowKeyTimer      = 20;

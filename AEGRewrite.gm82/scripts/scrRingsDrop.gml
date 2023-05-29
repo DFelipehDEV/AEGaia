@@ -18,8 +18,8 @@
     {
         var ring;
         ring           = instance_create(x, y, objRingDrop);
-        ring.xSpeed    = cos(degtorad(ringAngle)) * ringSpeed;
-        ring.ySpeed    = -sin(degtorad(ringAngle)) * ringSpeed*1.15;
+        ring.xSpeed    = dcos(ringAngle) * ringSpeed;
+        ring.ySpeed    = -dsin(ringAngle) * ringSpeed*1.15;
         ring.dropTimer = 300;
 
         ringAngle     += 23;

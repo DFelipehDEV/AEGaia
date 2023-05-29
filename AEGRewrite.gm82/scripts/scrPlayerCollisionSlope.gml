@@ -33,8 +33,8 @@
     mask_index      =   argument3;
 
     //Test collision
-    collisionTest  =   scrPlayerCollision(floor(argument0 + sin(degtorad(argument2)) * 23),
-                                          floor(argument1 + cos(degtorad(argument2)) * 23),
+    collisionTest  =   scrPlayerCollision(floor(argument0 + dsin(argument2) * 23),
+                                          floor(argument1 + dcos(argument2) * 23),
                                           layerIndex);
 
     //Set to the old mask

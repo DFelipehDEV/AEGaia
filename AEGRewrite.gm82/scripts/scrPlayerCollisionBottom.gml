@@ -29,15 +29,15 @@
     mask_index  =   argument3;
 
     //Test collision
-    collisionTest  =   scrPlayerCollision(floor(argument0 + sin(degtorad(argument2)) * sensorBottomDistance),
-                                          floor(argument1 + cos(degtorad(argument2)) * sensorBottomDistance),
+    collisionTest  =   scrPlayerCollision(floor(argument0 + dsin(argument2) * sensorBottomDistance),
+                                          floor(argument1 + dcos(argument2) * sensorBottomDistance),
                                           layerIndex);
 
     //Test platform collision
     if (!collisionTest && ySpeed >= 0 && ground == false)
     {
-        collisionTest  =   place_meeting(floor(argument0 + sin(degtorad(argument2)) * sensorBottomDistance),
-                                          floor(argument1 + cos(degtorad(argument2)) * sensorBottomDistance),
+        collisionTest  =   place_meeting(floor(argument0 + dsin(argument2) * sensorBottomDistance),
+                                          floor(argument1 + dcos(argument2) * sensorBottomDistance),
                                           parPlatform) && !place_meeting(floor(argument0), floor(argument1), parPlatform);
 
     }
