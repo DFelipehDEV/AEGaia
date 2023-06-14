@@ -1,1 +1,1 @@
-If you are using this framework, keep in mind that this is only a Port of the original SAE: GAIA.
+Modern Sonic Framework for GameMaker 8.2
