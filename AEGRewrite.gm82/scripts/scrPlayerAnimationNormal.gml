@@ -3,18 +3,51 @@
     if (ground == true)
     {
         // -- Idle animation
-        if (xSpeed == 0 && animationIndex != "IDLE_WAIT")
+        if (xSpeed == 0)
         {
-            // -- Check if its not been waiting for a long time
-            if (animationTime < 300)
+            // -- Check if we are in the edge of a solid
+            if (scrPlayerCollisionLeftEdge(x, y, angle) && !scrPlayerCollisionRightEdge(x, y, angle))
             {
-                // -- Idle animation
-                scrAnimationApply("IDLE");
+                switch (animationDirection)
+                {
+                    case 1:
+                        scrAnimationApply("LEDGE_1");
+                    break;
+
+                    case -1:
+                        scrAnimationApply("LEDGE_2");
+                    break;
+                }
             }
-            else
+            else if (!scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
             {
-                // -- Idle waiting animation
-                scrAnimationApply("IDLE_WAIT");
+                switch (animationDirection)
+                {
+                    case 1:
+                        scrAnimationApply("LEDGE_2");
+                    break;
+
+                    case -1:
+                        scrAnimationApply("LEDGE_1");
+                    break;
+                }
+            }
+            else // -- We are not in the edge of a solid
+            {
+                if (animationIndex != "IDLE_WAIT")
+                {
+                    // -- Check if its not been waiting for a long time
+                    if (animationTime < 300)
+                    {
+                        // -- Idle animation
+                        scrAnimationApply("IDLE");
+                    }
+                    else
+                    {
+                        // -- Idle waiting animation
+                        scrAnimationApply("IDLE_WAIT");
+                    }
+                }
             }
         }
 

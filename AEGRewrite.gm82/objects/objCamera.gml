@@ -98,11 +98,6 @@ applies_to=self
         // -- Shift x-axis camera position
         switch(camTarget.action)
         {
-            // -- Shift the camera forward while spindashing
-            case actionSpindash:
-                camXShift = inch(camXShift, 100 * camTarget.animationDirection, 5);
-            break;
-
             // -- Shift the camera in the direction you are pressing while in a way launcher
             case actionWayLauncher:
                 if (camTarget.keyLeft == true)

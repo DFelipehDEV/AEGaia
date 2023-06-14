@@ -265,84 +265,91 @@ applies_to=self
     {
         repFactor = round(abs(xSpeed)/9)
     }
-    while (xSpeed > 0 && scrPlayerCollisionRight(x, y, angle, maskMid) == true)
+
+    if (xSpeed > 0)
     {
-        x -= angleCos;
-        y += angleSin;
+        while (scrPlayerCollisionRight(x, y, angle, maskMid) == true)
+        {
+            x -= angleCos;
+            y += angleSin;
+        }
     }
 
-    while (xSpeed < 0 && scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
+    if (xSpeed < 0)
     {
-        x += angleCos;
-        y -= angleSin;
+        while (scrPlayerCollisionLeft(x, y, angle, maskMid) == true)
+        {
+            x += angleCos;
+            y -= angleSin;
+        }
     }
+
     // -- Check if the player is on the ground
     if (ground == true)
     {
         repeat (repFactor)
         {
-            if (scrPlayerCollisionMain(x, y))
+            if (scrPlayerCollisionMain(x, y) && scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
             {
-                do
+                while (scrPlayerCollisionMain(x, y))
                 {
                     x -= angleSin;
                     y -= angleCos;
                 }
-                until(!scrPlayerCollisionMain(x, y))
             }
 
-            if (scrPlayerCollisionSlope(x, y, angle, maskMid) && scrPlayerCollisionMain(x, y) == false)
+            if (scrPlayerCollisionSlope(x, y, angle, maskMid) && !scrPlayerCollisionMain(x, y))
             {
-                do
+                while(!scrPlayerCollisionMain(x, y))
                 {
                     x += angleSin;
                     y += angleCos;
-                }until(scrPlayerCollisionMain(x, y))
-            }
-
-            // -- Fall if there is not enough speed.
-            if (angle >= 75 && angle <= 285 && abs(xSpeed) < 4)
-            {
-                if (action != actionGrind)
-                {
-                    ySpeed = -angleSin*xSpeed;
-                    xSpeed = angleCos*xSpeed;
-                    ground = false;
-                    scrPlayerAngleSet(0);
                 }
             }
+        }
 
-            // -- Fall off the ground if the edges aren't colliding
-            if (angle != 0 && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
+        // -- Fall if there is not enough speed.
+        if (angle >= 75 && angle <= 285 && abs(xSpeed) < 4)
+        {
+            if (action != actionGrind)
             {
                 ySpeed = -angleSin*xSpeed;
                 xSpeed = angleCos*xSpeed;
                 ground = false;
                 scrPlayerAngleSet(0);
-            } 
-            
-            // -- Get new angle
-            if (scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
-            {
-                // -- Store the new angle
-                angleHolder   =   scrPlayerAngleGet(x, y, angle);
-            
-                // -- Smooth angle
-                if (abs(angle - angleHolder)<45)
-                {
-                    angle += (angleHolder-angle)*0.5;
-                }
-                else 
-                {
-                    scrPlayerAngleSet(angleHolder);
-                }
-            }  
-            else
-            {
-                scrPlayerAngleSet(0);
-            }                                      
+            }
         }
-    }                    
+
+        // -- Fall off the ground if the edges aren't colliding
+        if (angle != 0 && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
+        {
+            ySpeed = -angleSin*xSpeed;
+            xSpeed = angleCos*xSpeed;
+            ground = false;
+            scrPlayerAngleSet(0);
+        } 
+        
+        // -- Get new angle
+        if (scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
+        {
+            // -- Store the new angle
+            angleHolder   =   scrPlayerAngleGet(x, y, angle);
+        
+            // -- Smooth angle
+            if (abs(angle - angleHolder)<45)
+            {
+                angle += (angleHolder-angle)*0.5;
+            }
+            else 
+            {
+                scrPlayerAngleSet(angleHolder);
+            }
+        }  
+        else
+        {
+            scrPlayerAngleSet(0);
+        }                                      
+    }                   
 
     // -- Vertical movement        
     if (ground == false)
@@ -566,6 +573,7 @@ applies_to=self
             // -- Play landing sound effect
             if (abs(ySpeed) > 2)
             {
+                scrPlayerTerrainSndUpdate();
                 scrPlaySound(terrainSound[terLand], global.volumeSounds, 1, false);
             }
             ySpeed = 0;
@@ -1006,6 +1014,7 @@ applies_to=self
     {
         if (footstep == false)
         {
+            scrPlayerTerrainSndUpdate();
             footstep = true;
             // -- Create water splash if the player is running in the water
             if (terrainType == "WATER" && scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon))
@@ -1026,66 +1035,6 @@ applies_to=self
     else
     {
         footstep = false;
-    }
-
-    // -- Water terrain
-    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon) || scrPlayerCollisionObjectMain(x, y, objFootstepSensorWater))
-    {
-        terrainType      = "WATER";
-        terrainSound[terSkid]      = "sndPlayerSkidWater";
-        terrainSound[terLand]      = "sndPlayerLandWater";
-        terrainSound[terFootstep1] = "sndPlayerFootstepWater2";
-        terrainSound[terFootstep2] = "sndPlayerFootstepWater2";
-    }
-
-    // -- Grass terrain
-    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorGrass))
-    {
-        terrainType      = "GRASS";
-        terrainSound[terSkid]      = "sndPlayerSkidGrass";
-        terrainSound[terLand]      = "sndPlayerLandGrass";
-        terrainSound[terFootstep1] = "sndPlayerFootstepGrass1";
-        terrainSound[terFootstep2] = "sndPlayerFootstepGrass2";
-    }
-
-    // -- Dirt terrain
-    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorDirt))
-    {
-        terrainType      = "DIRT";
-        terrainSound[terSkid]      = "sndPlayerSkidDirt";
-        terrainSound[terLand]      = "sndPlayerLandDirt";
-        terrainSound[terFootstep1] = "sndPlayerFootstepDirt1";
-        terrainSound[terFootstep2] = "sndPlayerFootstepDirt2";
-    }
-
-    // -- Stone terrain
-    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorStone))
-    {
-        terrainType      = "STONE";
-        terrainSound[terSkid]      = "sndPlayerSkidStone";
-        terrainSound[terLand]      = "scrPlayerLand";
-        terrainSound[terFootstep1] = "sndPlayerFootstepStone1";
-        terrainSound[terFootstep2] = "sndPlayerFootstepStone2";
-    }
-
-    // -- Metal terrain
-    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorMetal))
-    {
-        terrainType      = "METAL";
-        terrainSound[terSkid]      = "sndPlayerSkidMetal";
-        terrainSound[terLand]      = "sndPlayerLandMetal";
-        terrainSound[terFootstep1] = "sndPlayerFootstepMetal1";
-        terrainSound[terFootstep2] = "sndPlayerFootstepMetal2";
-    }
-
-    // -- Wood terrain
-    if (scrPlayerCollisionObjectMain(x, y, objFootstepSensorWood))
-    {
-        terrainType      = "WOOD";
-        terrainSound[terSkid]      = "sndPlayerSkidWood";
-        terrainSound[terLand]      = "sndPlayerLandWood";
-        terrainSound[terFootstep1] = "sndPlayerFootstepWood1";
-        terrainSound[terFootstep2] = "sndPlayerFootstepWood2";
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1269,15 +1218,16 @@ applies_to=self
     if (global.debugIsAThing == true)
     {
         // -- Draw main masks
-        draw_sprite_ext(maskEdge, 0, x + angleSin * 11, y + angleCos * 11, 1, 1, 0, c_white, 0.6);
-        draw_sprite_ext(maskHitbox, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskMain, 0, x, y, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskEdge, 0, floor(x + angleSin * 11), floor(y + angleCos * 11), 1, 1, 0, c_white, 0.6);
+        draw_sprite_ext(maskHitbox, 0, floor(x), floor(y), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskMain, 0, floor(x), floor(y), image_xscale, image_yscale, 0, c_white, 1);
 
         // -- Draw sensor masks
-        draw_sprite_ext(maskBig, 0, x + angleSin * sensorBottomDistance, y + angleCos * sensorBottomDistance, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x - angleSin * sensorTopDistance, y - angleCos * sensorTopDistance, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x - angleCos * sensorLeftDistance, y + angleSin * sensorLeftDistance, image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, x + angleCos * sensorRightDistance, y - angleSin * sensorRightDistance, image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, floor(x + angleSin * sensorBottomDistance), floor(y + angleCos * sensorBottomDistance), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskMid, 0, floor(x + angleSin * 22), floor(y + angleCos * 22), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, floor(x - angleSin * sensorTopDistance), floor(y - angleCos * sensorTopDistance), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, floor(x - angleCos * sensorLeftDistance), floor(y + angleSin * sensorLeftDistance), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, floor(x + angleCos * sensorRightDistance), floor(y - angleSin * sensorRightDistance), image_xscale, image_yscale, 0, c_white, 1);
 
         // -- Draw lines masks
         draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistance), floor(y + angleSin * 8 + angleCos * sensorLeftDistance), 1, 1, 0, c_white, 1);

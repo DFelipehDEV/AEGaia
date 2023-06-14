@@ -11,14 +11,9 @@
     maskTemp = mask_index;
     mask_index = argument3;
 
-    //Transform angle to radians and precalculate cosine and sine
-    var cosines, sine;
-    cosines = dcos(argument2);
-    sine = dsin(argument2);
-
     //Test collision
-    collisionTest  =   instance_place(floor(argument0 + sine * sensorBottomDistance),
-                                        floor(argument1 + cosines * sensorBottomDistance),
+    collisionTest  =   instance_place(floor(argument0 + dsin(argument2) * sensorBottomDistance),
+                                        floor(argument1 + dcos(argument2) * sensorBottomDistance),
                                         argument4);
 
     //Set to the old mask

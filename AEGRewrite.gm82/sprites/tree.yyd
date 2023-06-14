@@ -35,6 +35,8 @@
 				|sprSonicDie
 				|sprSonicGrab1
 				|sprSonicGrab2
+				|sprSonicLedge1
+				|sprSonicLedge2
 		+Masks
 			|maskMain
 			|maskBig

@@ -101,7 +101,7 @@ applies_to=self
             draw_text(view_xview[0] + 333, view_yview[0] + 77+48, string("GROUND " + string(objPlayer.ground)))
             draw_text(view_xview[0] + 333, view_yview[0] + 87+48, string("DIR " + string(objPlayer.animationDirection)))
             draw_text(view_xview[0] + 333, view_yview[0] + 97+48, string("ACTION " + string(objPlayer.action)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 107+48, string("ANGLE " + string(objPlayer.angle)))
+            draw_text(view_xview[0] + 333, view_yview[0] + 107+48, string("ANGLE " + string(objPlayer.angle) + "  " + string(objPlayer.angleCos) + "  " + string(objPlayer.angleSin)))
             draw_text(view_xview[0] + 333, view_yview[0] + 117+48, string("FPS " + string(fps) + "  " + string(fps_real)))
             draw_text(view_xview[0] + 333, view_yview[0] + 127+48, string("SFXVOLUME " + string(global.volumeSounds)))
             draw_text(view_xview[0] + 333, view_yview[0] + 137+48, string("VOLUMEREAL " + string(objControllerMusic.musicVolumeReal)))

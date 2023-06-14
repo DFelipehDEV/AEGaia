@@ -38,6 +38,7 @@
     // -- Skid!
     if (ground == true && ((xSpeed >= skidSpeed && keyLeft == true) || (xSpeed <= -skidSpeed && keyRight == true)))
     {
+        scrPlayerTerrainSndUpdate();
         action = actionSkid;
         scrPlaySound(terrainSound[terSkid], global.volumeSounds, 1, false);
         scrAnimationApply("SKID");

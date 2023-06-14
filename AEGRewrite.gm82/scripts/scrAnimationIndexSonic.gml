@@ -172,4 +172,14 @@
         case "DEAD":
             scrAnimationSet(sprSonicDie, 0, -1, 3, 0.26, 1, 1, -1, "");
         break;
+
+        // -- Ledge 1 animation
+        case "LEDGE_1":
+            scrAnimationSet(sprSonicLedge1, 0, -1, 1, 0.2, 1, 1, -1, "");
+        break;
+
+        // -- Ledge 1 animation
+        case "LEDGE_2":
+            scrAnimationSet(sprSonicLedge2, 0, -1, 1, 0.23, 1, 1, -1, "");
+        break;
     }
