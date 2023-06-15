@@ -192,7 +192,7 @@ applies_to=self
                                 scrAnimationApply("HOMED_1");
                                 allowKeyTimer = 60;
                             }
-                            scrPlaySound(objPlayer.voiceline[8], global.volumeSounds, 1, false);
+                            scrPlaySound(objPlayer.voiceline[8], global.volumeVoice, 1, false);
                             hudInputScale[3] = 0.5;
                         }
                     break;
@@ -213,7 +213,7 @@ applies_to=self
                                 scrAnimationApply("HOMED_1");
                                 allowKeyTimer = 60;
                             }
-                            scrPlaySound(objPlayer.voiceline[8], global.volumeSounds, 1, false);
+                            scrPlaySound(objPlayer.voiceline[8], global.volumeVoice, 1, false);
                             hudInputScale[3] = 0.5;
                         }
                     break;
@@ -234,7 +234,7 @@ applies_to=self
                                 scrAnimationApply("HOMED_1");
                                 allowKeyTimer = 60;
                             }
-                            scrPlaySound(objPlayer.voiceline[8], global.volumeSounds, 1, false);
+                            scrPlaySound(objPlayer.voiceline[8], global.volumeVoice, 1, false);
                             hudInputScale[3] = 0.5;
                         }
                     break;

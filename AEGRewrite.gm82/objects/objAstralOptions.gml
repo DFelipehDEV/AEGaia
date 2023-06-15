@@ -9,7 +9,7 @@ applies_to=self
     image_alpha = 0;
 
     var i;
-    for (i = 0; i < 4; i += 1)
+    for (i = 0; i < 5; i += 1)
     {
         optionX[i] = -400;
         optionY[i] = 32*(i + 1);
@@ -31,7 +31,7 @@ applies_to=self
     image_alpha = inch(image_alpha, 0.9, 0.05);
 
     var i;
-    for (i = 0; i < 4; i += 1)
+    for (i = 0; i < 5; i += 1)
     {
         optionX[i] = lerp(optionX[i], 30, 0.2);
     }
@@ -148,8 +148,36 @@ applies_to=self
             }
         break;
 
-
         case 3:
+            // -- Change option
+            if (input.inputUp && delay == 0)
+            {
+                optionSelected -= 1;
+                scrPlaySound("sndMenuSelect", global.volumeSounds, 1, false);
+                scale = 0;
+                delay = 20;
+            }
+            // -- Change option
+            if (input.inputDown && delay == 0)
+            {
+                optionSelected += 1;
+                scrPlaySound("sndMenuSelect", global.volumeSounds, 1, false);
+                scale = 0;
+                delay = 20;
+            }
+
+            if (input.inputRight)
+            {
+                global.volumeVoice = inch(global.volumeVoice, 1, 0.01);
+            }
+
+            if (input.inputLeft)
+            {
+                global.volumeVoice = inch(global.volumeVoice, 0, 0.01);
+            }
+        break;
+
+        case 4:
             if (delay == 0)
             {
                 if (input.inputUp)
@@ -179,6 +207,7 @@ applies_to=self
                     ini_write_real("config", "screen", global.screenSize);
                     ini_write_real("config", "sfxvolume", global.volumeSounds);
                     ini_write_real("config", "bgmvolume", global.volumeMusic);
+                    ini_write_real("config", "voicevolume", global.volumeVoice);
                     ini_close();
 
                 }
@@ -256,9 +285,10 @@ applies_to=self
     draw_sprite_ext(sprTrigger, 0, view_xview, view_yview, screenWidth, screenHeight, 0, c_blue, image_alpha);
 
     // -- Draw options
-    var volMusic, volSound;
+    var volMusic, volSound, volVoice;
     volMusic = floor(global.volumeMusic * 100);
     volSound = floor(global.volumeSounds * 100);
+    volVoice = floor(global.volumeVoice * 100);
     draw_set_alpha(image_alpha)
     draw_line_width_color(view_xview, optionY[optionSelected] + 10, view_xview + scale, optionY[optionSelected] + 10, 27, make_color_rgb(21,153,224), make_color_rgb(21,153,224));
     draw_set_font(global.fontTitleCard)
@@ -267,7 +297,8 @@ applies_to=self
     draw_text(optionX[0], view_yview + optionY[0], "SCREEN RESOLUTION: " + string(window_get_width()) + "X" + string(window_get_height()));
     draw_text(optionX[1], view_yview + optionY[1], "MUSIC VOLUME: " + string(volMusic));
     draw_text(optionX[2], view_yview + optionY[2], "SOUND VOLUME: " + string(volSound));
-    draw_text(optionX[3], view_yview + optionY[3], "SAVE AND EXIT");
+    draw_text(optionX[3], view_yview + optionY[3], "VOICE VOLUME: " + string(volVoice));
+    draw_text(optionX[4], view_yview + optionY[4], "SAVE AND EXIT");
     draw_set_halign(-1);
     draw_set_font(1)
     draw_set_alpha(1)

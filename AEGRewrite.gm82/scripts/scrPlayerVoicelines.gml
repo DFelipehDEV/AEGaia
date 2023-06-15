@@ -15,5 +15,7 @@
             voiceline[8] = "sndVoiceSonic8";
             voiceline[9] = "sndVoiceSonic9";
             voiceline[10] = "sndVoiceSonic10";
+            voiceline[11] = "sndVoiceSonic11";
+            voiceline[12] = "sndVoiceSonic12";
         break;
     }

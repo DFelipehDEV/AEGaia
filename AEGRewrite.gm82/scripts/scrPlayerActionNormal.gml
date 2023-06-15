@@ -47,7 +47,7 @@
     // -- Slide!
     if (ground == true && abs(xSpeed) > 1 && keyDown == true)
     {
-        scrPlaySound(choose(voiceline[3], voiceline[2]), global.volumeSounds, 1, false);
+        scrPlaySound(choose(voiceline[3], voiceline[2]), global.volumeVoice, 1, false);
         slideResetTimer = 35;
         action          = actionSlide;
         trailTimer = 30;

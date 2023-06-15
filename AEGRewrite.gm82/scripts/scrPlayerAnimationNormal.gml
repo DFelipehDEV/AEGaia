@@ -8,6 +8,10 @@
             // -- Check if we are in the edge of a solid
             if (scrPlayerCollisionLeftEdge(x, y, angle) && !scrPlayerCollisionRightEdge(x, y, angle))
             {
+                if (animationIndex != "LEDGE_1" && animationIndex != "LEDGE_2")
+                {
+                    scrPlaySound(choose(voiceline[11], voiceline[12], "sndNoone"), global.volumeVoice, 1, false);
+                }
                 switch (animationDirection)
                 {
                     case 1:
@@ -21,6 +25,10 @@
             }
             else if (!scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
             {
+                if (animationIndex != "LEDGE_1" && animationIndex != "LEDGE_2")
+                {
+                    scrPlaySound(choose(voiceline[11], voiceline[12]), global.volumeVoice, 1, false);
+                }
                 switch (animationDirection)
                 {
                     case 1:

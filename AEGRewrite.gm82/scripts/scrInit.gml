@@ -14,14 +14,14 @@
     global.screenSize = 1; // -- Screen size multiplier
 
     global.gamepad = joystick_count();
+
     // -- Volume variables
     global.volumeSounds = 1; // -- Sounds volume
     global.volumeMusic = 1; // -- Music volume
-
+    global.volumeVoice = 1; // -- Voicelines volume
 
     // -- Music variables
     global.bgmSound = -1; // -- Background music sound ID
-
 
     // -- Player variables
     global.player = 0; // -- Whether the player exists
@@ -29,7 +29,6 @@
     global.playerCheckTime = 0; // -- Level time after player getting a checkpoint
     global.playerCheckX = 0; // -- Player X position if respawned at checkpoint
     global.playerCheckY = 0; // -- Player Y position if respawned at checkpoint
-
 
     // -- Others
     global.debug = false; // -- Debug flag
@@ -45,7 +44,6 @@
     instance_create(0, 0, objControllerMusic);
     instance_create(0, 0, objControllerRoom);
 
-
     // -- Load configurations
     with (objControllerRoom)
     {
@@ -57,6 +55,7 @@
     ini_open("configf.ini");
     global.volumeSounds = ini_read_real("config", "sfxvolume", 1);
     global.volumeMusic = ini_read_real("config", "bgmvolume", 1);
+    global.volumeVoice = ini_read_real("config", "voicevolume", 1);
     ini_close();
 
     // -- Finish initialization and start the rest of the game

@@ -25,7 +25,7 @@
             shield = 0;
             action = actionHurt;
             scrAnimationApply("HURT_FALL");
-            scrPlaySound(voiceline[5], global.volumeSounds, 1, false);
+            scrPlaySound(voiceline[5], global.volumeVoice, 1, false);
         }
         else
         {
@@ -36,7 +36,7 @@
                 global.playerRings = 0;
                 action             = actionHurt;
                 scrAnimationApply("HURT_FALL");
-                scrPlaySound(voiceline[5], global.volumeSounds, 1, false);
+                scrPlaySound(voiceline[5], global.volumeVoice, 1, false);
             }
             //Die
             else
@@ -48,7 +48,7 @@
                 global.playerRings = 0;
 
                 objControllerMusic.fadeOut = true;
-                scrPlaySound(voiceline[4], global.volumeSounds, 1, false);
+                scrPlaySound(voiceline[4], global.volumeVoice, 1, false);
                 with (instance_create(x, y, objPlayerDead))
                 {
                     sprite_index = other.animationSprite;

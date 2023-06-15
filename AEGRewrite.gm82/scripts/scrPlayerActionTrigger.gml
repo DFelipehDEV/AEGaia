@@ -13,7 +13,7 @@
             if (keyActionPressed == true && instance_exists(objPlayerTarget))
             {
                 scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, 0.5, 0.6, point_direction(x, y, homeNear.x, homeNear.y));
-                scrPlaySound(choose("sndNoone", voiceline[0]), global.volumeSounds, 1, false);
+                scrPlaySound(choose("sndNoone", voiceline[0]), global.volumeVoice, 1, false);
                 homingTimer = 0;
                 action = actionHoming;
                 scrPlayerAirdashReset();
@@ -99,7 +99,7 @@
                 // -- Trigger boost dash
                 if (keySpecial1Pressed == true && boost == false)
                 {
-                    scrPlaySound(choose("sndNoone", voiceline[0], voiceline[1]), global.volumeSounds, 1, false);
+                    scrPlaySound(choose("sndNoone", voiceline[0], voiceline[1]), global.volumeVoice, 1, false);
                     scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
                     scrDummyEffectCreate(x, y, sprVFXDustDash, 0.35, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
 
@@ -178,7 +178,7 @@
                         scalespeed = 0.2;
                     }
                     objControllerStage.hudShakeTimer = 30;
-                    scrPlaySound(voiceline[2], global.volumeSounds, 1, false);
+                    scrPlaySound(voiceline[2], global.volumeVoice, 1, false);
                 }
             }
         }
