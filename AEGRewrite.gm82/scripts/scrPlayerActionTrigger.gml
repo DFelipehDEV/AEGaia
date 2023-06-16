@@ -39,7 +39,6 @@
         ySpeed  =   angleCos*(jumpStrength/2) - angleSin * xSpeed/1.8;
         xSpeed  =   angleCos*xSpeed + angleSin*jumpStrength;
 
-
         scrPlayerAngleSet(0);
         scrPlayerAirdashReset();
         action          =   actionJump;

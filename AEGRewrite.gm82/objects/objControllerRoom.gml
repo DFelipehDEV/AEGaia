@@ -15,7 +15,6 @@ applies_to=self
 */
 /// -- Center window
 
-
     window_center();
 #define Step_2
 /*"/*'/**//* YYD ACTION
@@ -57,7 +56,6 @@ applies_to=self
         window_set_size(screenWidth, screenHeight);
         window_set_fullscreen(true);
     }
-
 
     // -- Center window
     alarm[0] = 2;

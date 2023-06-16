@@ -1,8 +1,8 @@
 rmTest
 rmInit
 rmPoweredBy
-rmBGTEST
+
 rmTitleScreen
 rmTemplate
 
-rmEnd
+rmRestart

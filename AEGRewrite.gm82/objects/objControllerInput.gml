@@ -103,6 +103,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+/// -- Reset input
+
     inputLeft                 = 0
     inputRight                = 0
     inputUp                   = 0

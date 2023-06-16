@@ -110,7 +110,7 @@ applies_to=self
     // -- Speedlines
     if (instance_exists(objVFXBoost) == true)
     {
-        draw_sprite_ext(sprHUDSpeedlines, (global.gameTime div 40), view_xview[0], view_yview[0], 1, 1, 0, c_white, (objVFXBoost.image_alpha / 1.8))
+        draw_sprite_ext(sprHUDSpeedlines, global.gameTime div 40, view_xview[0], view_yview[0], 1, 1, 0, c_white, (objVFXBoost.image_alpha / 1.8))
     }
     draw_set_font(global.fontHUD);
     draw_set_color(c_white);
@@ -118,16 +118,16 @@ applies_to=self
 
     // -- Draw time
     draw_sprite(sprHUDTime, 0, view_xview[0] - hudOffset, view_yview[0] + 8);
-    draw_text((view_xview[0] - hudOffset) + 100, view_yview[0] + 16, string(string(floor(global.gameTime/60000))+":"+scrStringNumberFormat(floor(global.gameTime/1000) mod 60,2)+":"+scrStringNumberFormat(floor(global.gameTime/10) mod 100,2)));
+    draw_text((view_xview[0] - hudOffset) + 100, view_yview[0] + 16, string(floor(global.gameTime/60000)) + ":" + scrStringNumberFormat(floor(global.gameTime/1000) mod 60,2) + ":" + scrStringNumberFormat(floor(global.gameTime/10) mod 100,2));
 
     // -- Draw rings
     draw_set_halign(fa_left);
     draw_sprite(sprHUDRings, 0, (view_xview[0] - hudOffset), view_yview[0] + 32);
-    draw_text((view_xview[0] - hudOffset) + 37, view_yview[0] + 40, string(string(global.playerRings)));
+    draw_text((view_xview[0] - hudOffset) + 37, view_yview[0] + 40, string(global.playerRings));
     // -- Red counter
     if (global.playerRings == 0)
     {
-        draw_text_color((view_xview[0] - hudOffset) + 37, view_yview[0] + 40, string(string(global.playerRings)), c_red, c_red, c_red, c_red, min(cos(global.gameTime/200), 1));
+        draw_text_color((view_xview[0] - hudOffset) + 37, view_yview[0] + 40, string(global.playerRings), c_red, c_red, c_red, c_red, min(cos(global.gameTime/200), 1));
     }
     draw_set_halign(fa_right);
 

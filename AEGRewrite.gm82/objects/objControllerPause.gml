@@ -28,7 +28,6 @@ applies_to=self
     {
         titleScale = lerp(titleScale, 1, 0.2);
 
-
         switch (pauseOption)
         {
             case 1:
@@ -166,11 +165,9 @@ applies_to=self
 */
 /// -- Draw pause
 
-
     if (pauseActive)
     {
         draw_background_ext(gamescreen, view_xview[0], view_yview[0], 1, 1, 0, c_gray, 1)
-
 
         switch (pauseOption)
         {

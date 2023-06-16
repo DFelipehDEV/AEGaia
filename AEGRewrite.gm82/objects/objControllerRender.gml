@@ -6,7 +6,6 @@ applies_to=self
 */
 /// -- Variables
 
-
     delay = 0;
 #define Step_0
 /*"/*'/**//* YYD ACTION

@@ -58,7 +58,6 @@ applies_to=self
         }
     }
 
-
     if (mouse_check_button(mb_right))
     {
         if (global.player == true)

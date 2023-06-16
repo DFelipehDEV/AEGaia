@@ -116,9 +116,9 @@
 	|scrCameraShakeY
 +Sound
 	|scrPlaySound
-	|scrLoadSounds
 	|scrPlayMusic
 	|scrMusicSetFade
+	|scrLoadSounds
 +Parallax
 	|scrParallaxAddNode
 +Level
