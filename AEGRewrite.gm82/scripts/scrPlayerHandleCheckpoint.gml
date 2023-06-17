@@ -1,10 +1,8 @@
 /// scrPlayerHandleCheckpoint()
  //Handle checkpoint collision
 
-
     var checkpoint;
     checkpoint = scrPlayerCollisionHitbox(x, y, objCheckpoint);
-
 
     //Check if the player is meeting the checkpoint
     if (checkpoint != noone)

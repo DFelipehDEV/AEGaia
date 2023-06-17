@@ -1,10 +1,8 @@
 /// scrPlayerHandleBalloons()
  // -- Handle balloons collision
 
-
     var balloon;
     balloon  =   scrPlayerCollisionHitbox(x, y, objBalloon);
-
 
     // -- Check if is meeting the balloon
     if (balloon != noone)

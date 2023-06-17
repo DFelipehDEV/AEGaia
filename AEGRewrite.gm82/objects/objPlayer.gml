@@ -1218,18 +1218,18 @@ applies_to=self
     if (global.debugIsAThing == true)
     {
         // -- Draw main masks
-        draw_sprite_ext(maskEdge, 0, floor(x + angleSin * 11), floor(y + angleCos * 11), 1, 1, 0, c_white, 0.6);
-        draw_sprite_ext(maskHitbox, 0, floor(x), floor(y), image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskMain, 0, floor(x), floor(y), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskEdge, 0, floor(x + angleSin * 11), floor(y + angleCos * 11), 1, 1, 0, c_white, 0.8);
+        draw_sprite_ext(maskHitbox, 0, floor(x), floor(y), image_xscale, image_yscale, 0, c_white, 0.8);
+        draw_sprite_ext(maskMain, 0, floor(x), floor(y), image_xscale, image_yscale, 0, c_white, 0.8);
 
         // -- Draw sensor masks
-        draw_sprite_ext(maskBig, 0, floor(x + angleSin * sensorBottomDistance), floor(y + angleCos * sensorBottomDistance), image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskMid, 0, floor(x + angleSin * 22), floor(y + angleCos * 22), image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, floor(x - angleSin * sensorTopDistance), floor(y - angleCos * sensorTopDistance), image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, floor(x - angleCos * sensorLeftDistance), floor(y + angleSin * sensorLeftDistance), image_xscale, image_yscale, 0, c_white, 1);
-        draw_sprite_ext(maskBig, 0, floor(x + angleCos * sensorRightDistance), floor(y - angleSin * sensorRightDistance), image_xscale, image_yscale, 0, c_white, 1);
+        draw_sprite_ext(maskBig, 0, floor(x + angleSin * sensorBottomDistance), floor(y + angleCos * sensorBottomDistance), image_xscale, image_yscale, 0, c_white, 0.8);
+        draw_sprite_ext(maskMid, 0, floor(x + angleSin * 22), floor(y + angleCos * 22), image_xscale, image_yscale, 0, c_white, 0.8);
+        draw_sprite_ext(maskBig, 0, floor(x - angleSin * sensorTopDistance), floor(y - angleCos * sensorTopDistance), image_xscale, image_yscale, 0, c_white, 0.8);
+        draw_sprite_ext(maskBig, 0, floor(x - angleCos * sensorLeftDistance), floor(y + angleSin * sensorLeftDistance), image_xscale, image_yscale, 0, c_white, 0.8);
+        draw_sprite_ext(maskBig, 0, floor(x + angleCos * sensorRightDistance), floor(y - angleSin * sensorRightDistance), image_xscale, image_yscale, 0, c_white, 0.8);
 
         // -- Draw lines masks
-        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistance), floor(y + angleSin * 8 + angleCos * sensorLeftDistance), 1, 1, 0, c_white, 1);
-        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistance), floor(y - angleSin * 8 + angleCos * sensorRightDistance), 1, 1, 0, c_white, 1);
+        draw_sprite_ext(maskLines, floor(angle), floor(x - angleCos * 8 + angleSin * sensorLeftDistance), floor(y + angleSin * 8 + angleCos * sensorLeftDistance), 1, 1, 0, c_white, 0.8);
+        draw_sprite_ext(maskLines, floor(angle), floor(x + angleCos * 8 + angleSin * sensorRightDistance), floor(y - angleSin * 8 + angleCos * sensorRightDistance), 1, 1, 0, c_white, 0.8);
     }

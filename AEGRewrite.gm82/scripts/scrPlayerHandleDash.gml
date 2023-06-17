@@ -3,9 +3,9 @@
 
     // -- Dash pads
     var dashPad, dashRing, dashRamp, dashRail;
-    dashPad  = scrPlayerCollisionObjectMain(x, y, parDashPad);
-    if (dashPad != noone)
+    if (collision_check_fast(parDashPad))
     {
+        dashPad  = instance_nearest(x, y, parDashPad);
         if (dashPad.dashAllow == true)
         {
             if (terrainPushing && ground == false)

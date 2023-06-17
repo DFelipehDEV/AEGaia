@@ -1,10 +1,8 @@
 /// scrPlayerHandleProjectile()
  // -- Handle collison with projectiles
 
-
     var projectile;
     projectile = scrPlayerCollisionHitbox(x, y, parProjectile);
-
 
     //Check if is meeting the projectile
     if (projectile != noone)
