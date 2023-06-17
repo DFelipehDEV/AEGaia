@@ -86,22 +86,25 @@
         }
     }
 
-    // -- Check if the player is not meeting a wall
-    if (animationDirection == 1 && (!scrPlayerCollisionRight(x,y, angle, maskBig))
-    || animationDirection == -1 && (!scrPlayerCollisionLeft(x, y, angle, maskBig)))
+    // -- Check if the player is not colliding with a wall
+    if (!terrainPushing)
     {
         if (action == actionNormal || action == actionCorkscrew || action == actionGrind || action == actionJump)
         {
-            // -- Check if the player can boost
+            // -- Check if the player has enough energy to boost
             if (energyAmount > 0)
             {
                 // -- Trigger boost dash
                 if (keySpecial1Pressed == true && boost == false)
                 {
+                    // -- Play sound effects
                     scrPlaySound(choose("sndNoone", voiceline[0], voiceline[1]), global.volumeVoice, 1, false);
-                    scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
-                    scrDummyEffectCreate(x, y, sprVFXDustDash, 0.35, 0, -0.1, bm_normal, 1, animationDirection, 1, animationAngle);
+                    scrPlaySound("sndPlayerBoostStart", global.volumeSounds, 1, false)
 
+                    // -- Boost wave VFX
+                    scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, animationDirection, 1, animationAngle);
+
+                    // -- Decrease energy gauge
                     scrPlayerEnergyAdd(-1.5);
 
                     // -- Speed up the player
@@ -110,14 +113,12 @@
                         xSpeed = boostSpeed * animationDirection;
                     }
 
+                    // -- Lag and shake the camera
                     scrCameraLag(20);
                     scrCameraShakeY(20);
 
-                    // -- Create shockwave
+                    // -- Create shockwave effect
                     instance_create(x, y, objVFXBoostShockwave);
-
-                    scrPlaySound("sndPlayerBoostStart", global.volumeSounds, 1, false)
-
 
                     // -- Check if the player is in the air
                     if (ground == false && (action == actionNormal || action == actionJump))
@@ -125,19 +126,23 @@
                         // -- Air boost dash
                         boost = true;
                         action = actionBoostAir;
-                        scrAnimationApply("LAUNCH");
                         boostAir = 40;
                         boostPossible = true;
 
                         if (instance_exists(objVFXBoost) == false)
                         {
-                            var boostVFX;
-                            boostVFX             = instance_create(x, y, objVFXBoost);
-                            boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
-                            boostVFX.playerID    = id;
-                            boostVFX.image_alpha = 0.7;
+                            // -- Create boost aura
+                            with (instance_create(x, y, objVFXBoost))
+                            {
+                                image_angle = point_direction(other.xprevious, other.yprevious, x, y);
+                                playerID    = other.id;
+                                image_alpha = 0.7;
+                            }
                         }
+                        // -- Update player's physics to the boost physics
                         scrPlayerPhysicsSonic();
+                        
+                        scrAnimationApply("LAUNCH");
                     }
                     else
                     {
@@ -155,17 +160,21 @@
                     // -- Create boost aura
                     if (instance_exists(objVFXBoost) == false)
                     {
-                        var boostVFX;
-                        boostVFX             = instance_create(x, y, objVFXBoost);
-                        boostVFX.image_angle = point_direction(xprevious, yprevious, boostVFX.x, boostVFX.y);
-                        boostVFX.playerID    = id;
+                        with (instance_create(x, y, objVFXBoost))
+                        {
+                            image_angle = point_direction(other.xprevious, other.yprevious, x, y);
+                            playerID    = other.id;
+                        }
                     }
-
+                    // -- Decrease energy gauge    
                     scrPlayerEnergyAdd(-0.35);
+                    
+                    // -- Update player's physics to the boost physics
                     scrPlayerPhysicsSonic();
                 }
             }
             else
+            // -- Alert the player that he can't boost
             {
                 if (keySpecial1Pressed == true && boost == false)
                 {
@@ -176,6 +185,7 @@
                         image_yscale = 0.0006;
                         scalespeed = 0.2;
                     }
+                    // -- Shake the energy gauge
                     objControllerStage.hudShakeTimer = 30;
                     scrPlaySound(voiceline[2], global.volumeVoice, 1, false);
                 }

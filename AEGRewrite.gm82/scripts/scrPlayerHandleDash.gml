@@ -32,10 +32,10 @@
     }
 
     // -- Dash ring
-    dashRing = scrPlayerCollisionHitbox(x, y, parDashRing);
     // -- Check if the player is meeting the dash ring
-    if (dashRing != noone)
+    if (collision_check_fast(parDashRing))
     {
+        dashRing = instance_nearest(x, y, parDashRing);
         if (dashRing.dashAllow == true)
         {
             ground = false

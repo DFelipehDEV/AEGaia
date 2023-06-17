@@ -2,13 +2,13 @@
  // -- Changes layers
 
     // -- Layer 0
-    if (collision_check_fast(objLayer0))
+    if (place_meeting(x, y, objLayer0))
     {
         layerIndex   =   0;
     }
 
     // -- Layer switch
-    if (collision_check_fast(objLayerSwitch) && ground == true)
+    if (place_meeting(x, y, objLayerSwitch) && ground == true)
     {
         // -- Switch to layer 1
         if (xSpeed > 0)
@@ -24,7 +24,7 @@
     }
 
     // -- Layer 1
-    if (collision_check_fast(objLayer1))
+    if (place_meeting(x, y, objLayer1))
     {
         layerIndex   =   1;
     }
