@@ -19,7 +19,7 @@
 
     // -- Check if it is colliding with the ground
     // -- Now, perform the checking. Push down the two points in order to touch the floor
-    repeat(20)
+    repeat (20)
     {
         if (scrPlayerCollision(floor(pointLeftX), floor(pointLeftY), layerIndex) == false)
         {

@@ -6,6 +6,13 @@ applies_to=self
 */
 /// -- Variables
 
+    // -- Destroy while in GMdebug mode
+    if (debug_mode)
+    {
+        instance_destroy();
+        exit;
+    }
+
     cardZoneScale  = 1;            //Scale of the zone card (when it starts to fade it it starts to split)
 
     cardCenterX    = screenWidthMid;          //X screen center
@@ -19,7 +26,6 @@ applies_to=self
 
     cardTimer      = 230;                           //Frames to end
 
-
     cardCharX      = 0;                             //Character pose speed
     cardCharSpeed  = 1;                             //Character pose speed
     cardCharAlpha  = 1;
@@ -31,7 +37,6 @@ applies_to=self
 
     cardShape2X    = cardCenterX;                   //Top Shape x
     cardShape2Y    = cardCenterY;                   //Top Shape y
-
 
     cardReturnOffset = 0;
     cardResultOffset = 0;
@@ -45,7 +50,6 @@ action_id=603
 applies_to=self
 */
 /// -- Disable player input
-
 
     if (delay == 29)
     {
@@ -70,7 +74,6 @@ applies_to=self
     // -- Exit while waiting for delay
     if (delay) exit;
     cardCharX += cardCharSpeed;
-
 
     // -- While far of the center of the screen, keep going fast
     if (cardCharX < cardCenterX - 157)
@@ -110,7 +113,6 @@ applies_to=self
 
     cardTimer -= 1;
 
-
     if (cardTimer < 30)
     {
         if (cardTimer < 5)
@@ -125,7 +127,6 @@ applies_to=self
             }
         }
 
-
         if (cardZoneScale > 0)
         {
             cardZoneScale -= 12;
@@ -138,8 +139,6 @@ applies_to=self
             instance_destroy();
         }
     }
-
-
 
     // -- Fade background
     if (cardTimer < 25)
@@ -155,12 +154,9 @@ applies_to=self
         }
     }
 
-
     // -- Shapes
     if (cardTimer < 230 && cardTimer > 120)
     {
-
-
         var time;
         time = 90;
 
@@ -186,7 +182,6 @@ applies_to=self
 */
 /// -- Draw title card
 
-
     // -- Draw background left
     draw_sprite_ext(sprTitleCardBG, 0, (view_xview[0] - cardResultOffset*8), view_yview[0], 1, 1, 0, c_white, cardBackAlpha);
 
@@ -195,7 +190,6 @@ applies_to=self
 
     // -- Draw character
     draw_sprite_ext(sprTitleCardChar, 0, view_xview[0] + cardCharX + cardResultOffset*9, (view_yview[0] + dsin(current_time/6)*8) + cardCenterY, 1 + cardResultOffset/12, 1 + cardResultOffset/12, 0, c_white, cardCharAlpha);
-
 
     draw_set_alpha(cardLineAlpha);
 
@@ -208,7 +202,6 @@ applies_to=self
         draw_sprite_ext(sprTitleCardDash, 0, view_xview[0] + cardDashX, view_yview[0] + cardCenterY, 1, 1, 0, c_white, cardLineAlpha);
     }
 
-
     // -- Draw text
     draw_set_font(global.fontTitleCard);
     draw_set_halign(fa_center);
@@ -216,21 +209,16 @@ applies_to=self
     draw_set_halign(-1);
     draw_set_font(1);
 
-
     // -- Draw bottom shape
     draw_sprite_ext(sprTitleCardShapes, 0, (view_xview[0] + cardResultOffset) + cardShape1X, view_yview[0] + cardResultOffset, 1, 1, 0, c_white, cardLineAlpha);
-
 
     // -- Draw top shape
     draw_sprite_ext(sprTitleCardShapes, 1, (view_xview[0] - cardResultOffset) + cardShape2X, view_yview[0] - cardResultOffset, 1, 1, 0, c_white, cardLineAlpha);
 
-
     // -- Draw a line in the top
     draw_rectangle_color(view_xview[0], view_yview[0], view_xview[0] + cardCenterX*2, (view_yview[0] - cardResultOffset*2.5) + 10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
 
-
     // -- Draw a line in the bottom
     draw_rectangle_color(view_xview[0], view_yview[0] + cardCenterY*2, view_xview[0] + cardCenterX*2, (view_yview[0] + cardResultOffset*2.5) + (cardCenterY*2)-10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
-
 
     draw_set_alpha(1);

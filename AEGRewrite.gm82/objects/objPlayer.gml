@@ -1043,7 +1043,7 @@ applies_to=self
     // -- AfterImage
     if abs(xSpeed) >= 11 || abs(ySpeed) >= 11 || action == actionTricks || action == actionLightspeed || action == actionHoming
     {
-        if (global.roomTime mod 6 == 1)
+        if (round(global.roomTime*global.deltaMultiplier) mod 6 == 1)
         {
             instance_create(x, y, objPlayerAfterimage)
         }

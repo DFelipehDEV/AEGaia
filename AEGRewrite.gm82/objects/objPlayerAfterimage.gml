@@ -37,7 +37,7 @@ applies_to=self
     }
 
     // -- Fade
-    image_alpha -= 0.12;
+    image_alpha -= 0.12 * global.deltaMultiplier;
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
