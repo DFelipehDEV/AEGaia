@@ -40,7 +40,6 @@
     global.stageRank[rankS] = 8500; // -- Minimum score for S rank
 
     // -- Create permanent controllers
-    instance_create(0, 0, objControllerRender);
     instance_create(0, 0, objControllerMusic);
     instance_create(0, 0, objControllerRoom);
 

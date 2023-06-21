@@ -16,7 +16,7 @@ applies_to=self
     fadeOut         = false;
     soundIndex = -1;
     playTempMusic   = "A";
-#define Step_2
+#define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -25,13 +25,15 @@ applies_to=self
 /// -- Fade music
 
     // -- Fade out music
-    if (fadeIn == true && musicVolumeReal < global.volumeMusic)
+    if (fadeIn == true)
     {
-        musicVolumeReal += 0.02;
+        if (musicVolumeReal < global.volumeMusic)
+        {
+            musicVolumeReal += 0.02;
+        }
     }
-
-    // -- Fade out music
-    if (fadeOut == true && musicVolumeReal >= 0)
+    else // -- Fade out music
+    if (fadeOut == true)
     {
         musicVolumeReal = inch(musicVolumeReal, 0, 0.02);
     }

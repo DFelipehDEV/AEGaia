@@ -16,7 +16,7 @@ applies_to=self
 /// -- Center window
 
     window_center();
-#define Step_2
+#define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603

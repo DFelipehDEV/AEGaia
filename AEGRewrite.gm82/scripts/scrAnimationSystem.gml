@@ -4,7 +4,6 @@
     //Increase timer since the animation started
     animationTime += 1;
 
-
     //Check if the animation has not ended
     if (animationFinished == false)
     {

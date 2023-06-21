@@ -43,8 +43,25 @@ applies_to=self
 */
 /// -- Variable updating
 
+    delay += 1;
     global.player = instance_exists(objPlayer);
-    global.gamepad = joystick_count() == 1;
+
+    if (delay == 90)
+    {
+        global.gamepad = joystick_count() == 1;
+    }
+#define Step_2
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Reset delay
+
+    if (delay == 100)
+    {
+        delay = 0;
+    }
 #define Other_5
 /*"/*'/**//* YYD ACTION
 lib_id=1

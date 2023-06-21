@@ -63,6 +63,7 @@
 		|scrPlayerActionQTEKeys
 		|scrPlayerActionHurt
 		|scrPlayerActionTrigger
+		|scrPlayerActionDead
 	+Handles
 		|scrPlayerHandleLayers
 		|scrPlayerHandleSprings

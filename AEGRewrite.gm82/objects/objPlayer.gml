@@ -204,26 +204,6 @@ applies_to=self
 */
 /// -- Death handle
 
-    if (action == actionDead)
-    {
-        xSpeed = 0;
-        ySpeed = 0;
-        global.playerRings = 0;
-        visible = false;
-        invincibilityTimer = 300;
-        invincibility = invincibilityHurt;
-
-        // -- Decrease restart time
-        if (deadTimer > 0)
-        {
-            deadTimer -= 1;
-        }
-        else
-        {
-            room_restart();
-        }
-    }
-
     if (action == actionDead) exit;
 
     // -- Die if the player is on the room bottom
@@ -258,10 +238,9 @@ applies_to=self
     x += (angleCos * xSpeed) * global.deltaMultiplier;
     y -= (angleSin * xSpeed) * global.deltaMultiplier;
 
-    var repFactor;
     repFactor = 1;
 
-    if (abs(xSpeed) > 9)
+    if (abs(xSpeed) > 11)
     {
         repFactor = round(abs(xSpeed)/9)
     }
@@ -767,6 +746,11 @@ applies_to=self
         case actionHurt:
             scrPlayerActionHurt();
         break;
+
+        // -- Dead routine
+        case actionDead:
+            scrPlayerActionDead();
+        break;
     }
 
     // -- Trigger actions
@@ -1009,32 +993,43 @@ applies_to=self
 */
 /// -- Footsteps
 
-    if (animationIndex == "WALK_1" || animationIndex == "WALK_2" || animationIndex == "JOG_1" || animationIndex == "JOG_2"
-    || animationIndex == "RUN") && (floor(animationFrame) == 3 || floor(animationFrame) == 7)
+    switch (animationIndex)
     {
-        if (footstep == false)
-        {
-            scrPlayerTerrainSndUpdate();
-            footstep = true;
-            // -- Create water splash if the player is running in the water
-            if (terrainType == "WATER" && scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon))
+        case "WALK_1":
+        case "WALK_2":
+        case "JOG_1":
+        case "JOG_2":
+        case "RUN":
+            if(floor(animationFrame) == 3 || floor(animationFrame) == 7)
             {
-                scrDummyEffectCreate(x, y, sprVFXWaterSplash, 0.45, 0, 1, bm_add, 1, animationDirection, 1, 0);
-            }
+                if (footstep == false)
+                {
+                    scrPlayerTerrainSndUpdate();
+                    // -- Create water splash if the player is running in the water
+                    if (scrPlayerCollisionObjectBottom(x, y, angle, maskBig, objWaterHorizon))
+                    {
+                        scrDummyEffectCreate(x, y, sprVFXWaterSplash, 0.45, 0, 1, bm_add, 1, animationDirection, 1, 0);
+                    }
 
-            // -- Create dust effect
-            if (terrainType != "WATER" && alarm[0] == -1)
-            {
-                alarm[0] = 1;
+                    // -- Create dust effect
+                    if (terrainType != "WATER" && alarm[0] == -1)
+                    {
+                        alarm[0] = 1;
+                    }
+                    sound_stop(terrainSound[terFootstep1])
+                    sound_stop(terrainSound[terFootstep2])
+                    scrPlaySound(choose(terrainSound[terFootstep1],terrainSound[terFootstep2]), global.volumeSounds, 1, false);
+                    footstep = true;
+                }
             }
-            sound_stop(terrainSound[terFootstep1])
-            sound_stop(terrainSound[terFootstep2])
-            scrPlaySound(choose(terrainSound[terFootstep1],terrainSound[terFootstep2]), global.volumeSounds, 1, false);
-        }
-    }
-    else
-    {
-        footstep = false;
+            else
+            {
+                footstep = false;
+            }
+        break;
+
+        default:
+            footstep = false;
     }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -1046,7 +1041,7 @@ applies_to=self
     trailTimer -= 1;
     trailAlpha = lerp(trailAlpha, trailTimer/110, 0.08);
     // -- AfterImage
-    if abs(xSpeed) >= 11 || action == actionTricks || action == actionStomp || action == actionLightspeed || action == actionAirdash || action == actionHoming
+    if abs(xSpeed) >= 11 || abs(ySpeed) >= 11 || action == actionTricks || action == actionLightspeed || action == actionHoming
     {
         if (global.roomTime mod 6 == 1)
         {
@@ -1058,7 +1053,7 @@ applies_to=self
     scrTrailUpdate(
     floor(x)+dcos(angle+90)+angleCos*xSpeed,
     floor(y)-dsin(angle+90)+ySpeed-angleSin*xSpeed,
-    trailAlpha > 0
+    trailAlpha > 0.1
     )
 
     starTimer = max(starTimer - 1, 0);
@@ -1165,13 +1160,16 @@ applies_to=self
 /// -- Draw character and debug
 
     //trailAlpha = 1;
-    draw_set_blend_mode(bm_add)
-    draw_set_color(trailColor)
-    draw_set_alpha(trailAlpha)
-    scrDrawTrail(sprVFXTrail, 20, 1);
-    draw_set_alpha(1)
-    draw_set_color(c_white)
-    draw_set_blend_mode(bm_normal)
+    if (trailAlpha > 0.1)
+    {
+        draw_set_blend_mode(bm_add)
+        draw_set_color(trailColor)
+        draw_set_alpha(trailAlpha)
+        scrDrawTrail(sprVFXTrail, 20, 1);
+        draw_set_alpha(1)
+        draw_set_color(c_white)
+        draw_set_blend_mode(bm_normal)
+    }
 
     // -- Draw grind effect
     if (action == actionGrind)

@@ -115,3 +115,4 @@ scrSetupSpring
 scrPlayerEnergyAdd
 scrPlayerTerrainSndUpdate
 
+scrPlayerActionDead
