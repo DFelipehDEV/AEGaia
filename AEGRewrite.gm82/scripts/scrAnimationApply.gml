@@ -1,19 +1,19 @@
 /// scrAnimationApply(Animation)
 
-    //Check if the animation is not playing
+    // -- Check if the animation is not playing
     if (animationIndex != argument0)
     {
-        //Keep the last animation in track
+        // -- Keep the last animation in track
         animationIndexPrevious = animationIndex;
 
         animationIndex = argument0;
-        //Update animation
+        // -- Update animation
         scrAnimationUpdate();
         if (animationFrameReset == true)
         {
             animationFrame = animationFrameStart;
         }
-        //Set animation
+        // -- Set animation
         animationFinished = false;
         animationTime = 0;
     }

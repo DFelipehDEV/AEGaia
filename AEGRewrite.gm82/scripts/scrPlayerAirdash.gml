@@ -1,5 +1,5 @@
 /// scrPlayerAirdash()
- // -- Add this to a action script when you want a airdash to be performed
+ // -- Add this to a action script when you want airdash to be able to be performed
 
     // -- Air dash
     if (keyActionPressed == true && ground == false && airdash == true && homingPossible == false)

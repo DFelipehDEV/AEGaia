@@ -1,18 +1,18 @@
 /// scrAnimationSystem()
- //Animation system
+ // -- Animation system
 
-    //Increase timer since the animation started
+    // -- Increase timer since the animation started
     animationTime += 1;
 
-    //Check if the animation has not ended
+    // -- Check if the animation has not ended
     if (animationFinished == false)
     {
-        //Change the frame depending on the animation speed
+        // -- Change the frame depending on the animation speed
         animationFrame += animationFrameSpeed * global.deltaMultiplier;
 
         if (floor(animationFrame) > animationFrameEnd)
         {
-            //Repeat animation
+            // -- Repeat animation
             if(animationFrameRepeat == true && (animationFrameRepeatTimes > 0 || animationFrameRepeatTimes == -1))
             {
                 animationFrame             = animationFrameLoop;
@@ -22,7 +22,7 @@
                 }
             }
             else
-            //Stop animation
+            // -- Stop animation
             {
                 if (animationLinkedTo == "")
                 {

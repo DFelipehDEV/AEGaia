@@ -95,17 +95,17 @@ applies_to=self
         case 6:
             with (objPlayer)
             {
-                scrPlayerShieldSet("NORMAL");
+                scrPlayerShieldSet(shieldNormal);
                 scrPlaySound("sndShieldMonitor", global.volumeSounds, 1, false);
             }
         break;
 
 
-        // -- Electro shield
+        // -- Electricity shield
         case 7:
             with (objPlayer)
             {
-                scrPlayerShieldSet("ELECTRICITY");
+                scrPlayerShieldSet(shieldElectricity);
                 scrPlaySound("sndShieldMonitor", global.volumeSounds, 1.1, false);
             }
         break;

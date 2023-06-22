@@ -1,5 +1,5 @@
 /// scrAnimationInit()
-// Animation variables
+ // -- Animation variables
 
     animationIndex            =   "";     //Current animation
     animationIndexPrevious    =   "";     //Last animation

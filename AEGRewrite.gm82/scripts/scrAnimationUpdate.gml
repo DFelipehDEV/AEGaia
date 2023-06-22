@@ -1,4 +1,4 @@
-/// @description  scrAnimationUpdate()
+/// scrAnimationUpdate()
 
-    //Update animations
+    // -- Update animations
     scrAnimationIndexSonic();

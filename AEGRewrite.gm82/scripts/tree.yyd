@@ -6,8 +6,8 @@
 			|scrPlayerCollisionObjectTop
 		+Left
 			|scrPlayerCollisionLeft
-			|scrPlayerCollisionLeftEdge
 			|scrPlayerCollisionObjectLeft
+			|scrPlayerCollisionLeftEdge
 		+Right
 			|scrPlayerCollisionRight
 			|scrPlayerCollisionObjectRight
@@ -17,6 +17,7 @@
 			|scrPlayerCollisionObjectBottom
 		+Hitbox
 			|scrPlayerCollisionHitbox
+			|scrPlayerCollisionHitboxFast
 		+Main
 			|scrPlayerCollisionMain
 			|scrPlayerCollisionObjectMain

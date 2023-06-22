@@ -1,7 +1,6 @@
 /// scrPlayerHandleRails()
  // -- Handle rails collision
 
-
     var railNormal, railLayer0, railLayer1;
     railNormal =   scrPlayerCollisionObjectBottom(x, y, 0, maskBig, parRail);
     railLayer0  =   scrPlayerCollisionObjectBottom(x, y, 0, maskBig, parRailLayer0);

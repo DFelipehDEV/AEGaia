@@ -1,14 +1,12 @@
 /// scrPlayerHandleSprings()
  //Handle springs collision
 
-    var spring;
-    spring  =   instance_nearest(x, y, parSpring);
-
-    //Check if the spring exists
-    if (spring != noone)
+    // -- Check spring collision
+    if (scrPlayerCollisionHitboxFast(x, y, parSpring))
     {
-        //Check if the spring is on the normal action
-        if (spring.image_speed = 0 && scrPlayerCollisionHitbox(x, y, spring))
+        var spring;
+        spring = instance_nearest(x, y, parSpring);
+        if (spring.image_speed = 0)
         {
             scrPlayerAngleSet(0);
             scrPlaySound("sndSpring", global.volumeSounds, 1, false);

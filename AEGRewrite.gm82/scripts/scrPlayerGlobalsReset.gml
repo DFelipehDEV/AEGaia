@@ -1,5 +1,5 @@
 /// -- scrGlobalsReset()
-// -- Reset global player variables
+ // -- Reset global player variables
 
     global.playerCheckTime    = 0;
     global.playerCheckX       = 0;

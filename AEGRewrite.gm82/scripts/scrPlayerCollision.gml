@@ -1,5 +1,5 @@
 /// scrPlayerCollision(x, y, layerIndex)
-    // -- Check for common solids
+ // -- Check for terrain
 
     if (place_meeting(argument0, argument1, parSolid))
     {
@@ -7,15 +7,12 @@
         return true;
     }
 
-
     // -- Check for platform
     if (place_meeting(argument0, argument1, parPlatform) && ground == true)
     {
         terrainPlatform = 1;
         return true;
     }
-
-
 
     switch (argument2)
     {
@@ -28,7 +25,6 @@
             }
         break;
 
-
         // -- Check for high layer
         case 1:
             if (place_meeting(argument0, argument1, parLayer1))
@@ -38,7 +34,6 @@
             }
         break;
     }
-
 
     // -- Check for water run
     if (place_meeting(argument0, argument1, objWaterHorizon) && angle == 0 && abs(xSpeed) > 10)

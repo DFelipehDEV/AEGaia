@@ -1,4 +1,4 @@
-/// scrPlayerCollisionHitbox(x, y, object);
+/// scrPlayerCollisionHitboxFast(x, y, object);
  // -- This functions returns if the hitbox sensor has collided a specified object
 
     // -- Store the actual mask for setting it up later
@@ -6,7 +6,7 @@
     mask_index = maskHitbox;
 
     // -- Test collision
-    collisionTest = instance_place(floor(argument0), floor(argument1), argument2);
+    collisionTest = place_meeting(floor(argument0), floor(argument1), argument2);
 
     // -- Set to the old mask
     mask_index = maskTemp;

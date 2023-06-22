@@ -1,5 +1,5 @@
 /// scrPlayerAngleSet(Angle)
+ // -- Set player angle
 
-    //Set player angle
-    angle          = argument0;
+    angle = argument0;
     scrPlayerAngleLocals();

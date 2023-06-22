@@ -231,7 +231,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Main movement
+/// -- Movement
 
     scrPlayerAngleLocals();
 
@@ -385,13 +385,8 @@ applies_to=self
     {   
         scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
     }
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Horizontal movement
-
+    
+    // -- Horizontal movement
     // -- Accelerations/Deceleration
     if (ground == true || action == actionCorkscrew)
     {
@@ -424,7 +419,6 @@ applies_to=self
                     xSpeed -= xAccTemp;
                 }
 
-
                 // -- Friction
                 if xSpeed > 0
                 {
@@ -439,7 +433,6 @@ applies_to=self
                 {
                     xSpeed += xAccTemp;
                 }
-
 
                 // -- Friction
                 if xSpeed < 0
@@ -496,25 +489,20 @@ applies_to=self
     // -- Stop when meet a wall/slide pass and isnt sliding
     if ((xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))) || (xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
-       xSpeed = 0;
-       terrainPushing = true;
+        xSpeed = 0;
+        terrainPushing = true;
     }
     else if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
-       xSpeed = 0;
-       terrainPushing = true;
+        xSpeed = 0;
+        terrainPushing = true;
     }
     else
     {
         terrainPushing = false;
     }
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Vertical Movement
-
+    
+    // -- Vertical Movement
     // -- Land
     if (ground == true)
     {
@@ -549,12 +537,14 @@ applies_to=self
             }
 
             xSpeed -= angleSin * ySpeed;
+            
             // -- Play landing sound effect
             if (abs(ySpeed) > 2)
             {
                 scrPlayerTerrainSndUpdate();
                 scrPlaySound(terrainSound[terLand], global.volumeSounds, 1, false);
             }
+            
             ySpeed = 0;
             ground = true;
         }
@@ -565,7 +555,7 @@ applies_to=self
             ySpeed = 0;
         }
     }
-    
+
     // -- Decrease gravity freeze timer
     if (yStuckTimer > 0)
     {
@@ -912,7 +902,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Goal
+/// -- Goal ring
 
 
     if (goal == true)
@@ -931,7 +921,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Normal animations and direction
+/// -- Animation and rotation
  // -- Handle animations and direction
 
     // -- Check if the player is not doing any of these actions
@@ -949,21 +939,9 @@ applies_to=self
     {
         scrPlayerAnimationNormal()
     }
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Animation system
 
     // -- Animation system
     scrAnimationSystem();
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Animation angle
 
     // -- Rotate Sprites
     if (xSpeed == 0 && ground == true
@@ -1067,7 +1045,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Sound managment
+/// -- Sound canceling
 
     // -- Stop grinding sound
     if (action != actionGrind && sound_isplaying("sndPlayerGrindContinue"))
@@ -1157,7 +1135,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Draw character and debug
+/// -- Draw character
 
     //trailAlpha = 1;
     if (trailAlpha > 0.1)
@@ -1181,19 +1159,22 @@ applies_to=self
     if (invincibility != invincibilityBlink || (invincibility == invincibilityBlink && ((global.gameTime div 60) mod 3)))
     {
         // -- Draw character
-        draw_sprite_ext(animationSprite, floor(animationFrame), floor(x), floor(y), animationDirection , image_yscale, animationAngle, image_blend, image_alpha);
+        draw_sprite_ext(animationSprite, floor(animationFrame), floor(x), floor(y), animationDirection, image_yscale, animationAngle, image_blend, image_alpha);
     }
 
-    // -- Spindash normal dust
-    if (animationIndex == "SPINDASH")
+    if (action == actionSpindash)
     {
-        draw_sprite_ext(sprVFXSpindashLow, global.gameTime div 40, floor(x), floor(y), animationDirection , image_yscale, animationAngle, c_white, image_alpha);
-    }
+        // -- Spindash normal dust
+        if (animationIndex == "SPINDASH")
+        {
+            draw_sprite_ext(sprVFXSpindashLow, global.gameTime div 40, floor(x), floor(y), animationDirection , image_yscale, animationAngle, c_white, image_alpha);
+        }
 
-    // -- Spindash charging dust
-    if (animationIndex == "SPINDASH_CHARGE")
-    {
-        draw_sprite_ext(sprVFXSpindashHigh, global.gameTime div 40, floor(x), floor(y), animationDirection , image_yscale, animationAngle, c_white, image_alpha);
+        // -- Spindash charging dust
+        if (animationIndex == "SPINDASH_CHARGE")
+        {
+            draw_sprite_ext(sprVFXSpindashHigh, global.gameTime div 40, floor(x), floor(y), animationDirection , image_yscale, animationAngle, c_white, image_alpha);
+        }
     }
 
     // -- Check if the player is underwater
@@ -1211,7 +1192,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- DEBUG
+/// -- DEBUG SENSORS
 
     if (global.debugIsAThing == true)
     {

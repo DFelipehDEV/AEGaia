@@ -1,6 +1,5 @@
 /// scrPlayerHandleBox()
-// Handle collision with boxes
-
+ // -- Handle collision with boxes
 
     var box1;
     box1 = scrPlayerCollisionObjectBottom(x, y + floor(ySpeed), 0, maskBig, objBox1);

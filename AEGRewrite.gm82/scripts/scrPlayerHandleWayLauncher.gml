@@ -1,7 +1,6 @@
 /// scrPlayerHandleWayLauncher()
  // -- Handles collision with way launchers
 
-
     var waylauncher;
     waylauncher = scrPlayerCollisionHitbox(x, y, objWayLauncher)
 

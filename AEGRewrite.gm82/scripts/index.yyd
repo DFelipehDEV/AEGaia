@@ -116,3 +116,4 @@ scrPlayerEnergyAdd
 scrPlayerTerrainSndUpdate
 
 scrPlayerActionDead
+scrPlayerCollisionHitboxFast

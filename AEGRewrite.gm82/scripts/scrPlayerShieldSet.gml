@@ -1,29 +1,28 @@
 /// scrPlayerShieldSet(shield)
  // -- Gives player a shield
 
-
-    // -- Normal shield
-    if (argument0 == "NORMAL")
+    // -- Check if the shield is different from the current shield
+    if (shield != argument0)
     {
-        if (shield != shieldNormal)
+        // -- Check the type of shield
+        switch (argument0)
         {
-            shield    = shieldNormal;
-            with(instance_create(x, y, objPlayerShieldNormal))
-            {
-                playerID = other.id;
-            }
-        }
-    }
+            case shieldNormal:
+                shield    = shieldNormal;
+                // -- Create a normal shield object
+                with(instance_create(x, y, objPlayerShieldNormal))
+                {
+                    playerID = other.id; // -- Assign player ID to the shield
+                }
+            break;
 
-    // -- Electricity shield
-    if (argument0 == "ELECTRICITY")
-    {
-        if (shield != shieldElectricity)
-        {
-            shield    = shieldElectricity;
-            with (instance_create(x, y, objPlayerShieldElectricity))
-            {
-                playerID = other.id;
-            }
+            case shieldElectricity:
+                shield    = shieldElectricity;
+                // -- Create an electricity shield object
+                with (instance_create(x, y, objPlayerShieldElectricity))
+                {
+                    playerID = other.id; // -- Assign player ID to the shield
+                }
+            break;
         }
     }

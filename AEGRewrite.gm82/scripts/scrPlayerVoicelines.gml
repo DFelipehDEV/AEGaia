@@ -1,5 +1,5 @@
 /// scrPlayerVoicelines("Character")
-// Sets the character's variables to their specific voicelines
+ // -- Sets the character's variables to their specific voicelines
 
     switch (argument0)
     {

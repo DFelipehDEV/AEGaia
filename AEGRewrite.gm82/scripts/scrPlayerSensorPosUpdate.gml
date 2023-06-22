@@ -1,5 +1,5 @@
 /// scrPlayerSensorPosUpdate()
- //Update sensor position
+ // -- Update sensor position
 
 
     sensorLeftDistance = 8;   //Left sensor distance from the player

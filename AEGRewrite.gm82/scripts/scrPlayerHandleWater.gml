@@ -1,13 +1,9 @@
 /// scrPlayerHandleWater()
  // -- Handle water collision
 
-
-    var waterHorizon;
+    var waterHorizon, waterTrigger;
     waterHorizon    = scrPlayerCollisionObjectBottom(x, y, 0, maskMain, objWaterHorizon);
-
-    var waterTrigger;
     waterTrigger   = scrPlayerCollisionObjectBottom(x, y, 0, maskMain, objWater);
-
 
     //Water mode
     if (waterHorizon != noone)

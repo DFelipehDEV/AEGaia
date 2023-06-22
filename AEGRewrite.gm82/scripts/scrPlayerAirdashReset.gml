@@ -1,4 +1,4 @@
 /// scrPlayerAirdashReset()
- // Resets the player's airdash
+ // -- Resets the player's airdash
  
     airdash = true;

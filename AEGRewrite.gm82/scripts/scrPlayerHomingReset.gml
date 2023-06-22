@@ -1,4 +1,5 @@
 /// scrPlayerHomingReset(action, xSpeed, ySpeed, invincibilityTimer, x, y)
+ // -- Resets player from a homing state
 
     if (action == actionHoming)
     {
