@@ -24,7 +24,7 @@
     global.bgmSound = -1; // -- Background music sound ID
 
     // -- Player variables
-    global.player = 0; // -- Whether the player exists
+    global.player = false; // -- Whether the player exists
     global.playerRings = 0; // -- Player rings count
     global.playerCheckTime = 0; // -- Level time after player getting a checkpoint
     global.playerCheckX = 0; // -- Player X position if respawned at checkpoint

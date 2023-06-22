@@ -2,7 +2,6 @@
  // -- Detects the angle using two points that approach the ground.
 
     // -- Store temporary values
-    var maskTemp;
     maskTemp = mask_index
     mask_index = maskDot;
 
@@ -15,7 +14,6 @@
 
     pointRightX = floor(argument0) + dcos(argument2) * 8;
     pointRightY = floor(argument1) - dsin(argument2) * 8;
-
 
     // -- Check if it is colliding with the ground
     // -- Now, perform the checking. Push down the two points in order to touch the floor

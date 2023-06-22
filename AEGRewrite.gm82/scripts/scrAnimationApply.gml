@@ -9,7 +9,7 @@
         animationIndex = argument0;
         // -- Update animation
         scrAnimationUpdate();
-        if (animationFrameReset == true)
+        if (animationFrameReset)
         {
             animationFrame = animationFrameStart;
         }
