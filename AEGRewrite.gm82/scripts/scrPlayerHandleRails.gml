@@ -12,6 +12,7 @@
         //Play sounds
         if (action != actionGrind)
         {
+            grindsnd = 0;
             scrPlaySound("sndPlayerGrindStart", global.volumeSounds, 1, false);
         }
         action = actionGrind;
@@ -24,6 +25,7 @@
         //Play sounds
         if (action != actionGrind)
         {
+            grindsnd = 0;
             scrPlaySound("sndPlayerGrindStart", global.volumeSounds, 1, false);
         }
         action = actionGrind;
@@ -36,6 +38,7 @@
         //Play sounds
         if (action != actionGrind)
         {
+            grindsnd = 0;
             scrPlaySound("sndPlayerGrindStart", global.volumeSounds, 1, false);
         }
         action = actionGrind;

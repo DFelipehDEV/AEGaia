@@ -20,18 +20,21 @@
         }
     }
 
-    var grindsnd;
-    grindsnd = "sndPlayerGrindContinue";
-    // -- Play sounds
-    if (!sound_isplaying("sndPlayerGrindContinue"))
+    if (grindsnd == 0)
     {
-        grindsnd = scrPlaySound("sndPlayerGrindContinue", global.volumeSounds, max(0.6, abs(xSpeed)/8), true);
+        if (!sound_isplaying("sndPlayerGrindContinue"))
+        {
+            grindsnd = scrPlaySound("sndPlayerGrindContinue", global.volumeSounds, max(0.6, abs(xSpeed)/8), false);
+        }
     }
     else
     {
         sound_pitch(grindsnd, max(0.6, abs(xSpeed)/8));
+        if (!sound_isplaying("sndPlayerGrindContinue"))
+        {
+            grindsnd = scrPlaySound("sndPlayerGrindContinue", global.volumeSounds, max(0.6, abs(xSpeed)/8), false);
+        }
     }
-
     // -- Stop grinding if the player is not colliding with a rail
     if (!scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parRail) && !scrPlayerCollisionObjectMain(x, y, parRail)
     && !scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parRailLayer0) && !scrPlayerCollisionObjectMain(x, y, parRailLayer0)

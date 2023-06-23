@@ -176,6 +176,9 @@ applies_to=self
 
     // -- Stars
     starTimer = 0;
+
+    // -- Sound
+    grindsnd = 0;
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -185,17 +188,6 @@ applies_to=self
 /// -- Create dust effect
 
     scrDummyEffectCreate(x, y, sprVFXDust1, 0.3, 0, -1, bm_normal, 1, 1, 1, animationAngle);
-#define Alarm_1
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-/// -- Reset player speed
-
-    xSpeed = 0;
-    ySpeed = 0;
-    alarm[1] = 1;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -907,12 +899,10 @@ applies_to=self
 
     if (goal == true)
     {
-        if scrViewIn(id) == false
+        if scrViewInOffset(id, 32) == false
         {
-            if (alarm[1] == -1)
-            {
-                alarm[1] = 60;
-            }
+            xSpeed = 0;
+            ySpeed = 0;
         }
     }
 #define Step_2
