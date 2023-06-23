@@ -18,7 +18,7 @@ applies_to=self
 */
 /// -- Destroy
 
-    if (!scrViewInOffset(id, 32))
+    if (!scrViewInOffset(id, 128))
     {
         instance_destroy();
     }

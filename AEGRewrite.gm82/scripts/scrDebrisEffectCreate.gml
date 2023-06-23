@@ -1,7 +1,7 @@
 /// scrDebrisEffectCreate(x, y, depth, sprite, frame, animSpeed, xscale, yscale, rotate, hspeed, vspeed, gravity)
  // -- Creates a debris effect
 
-    with (instance_create_depth(argument0, argument1, argument2, objDestructiveWall))
+    with (instance_create_depth(argument0, argument1, argument2, objDebris))
     {
         sprite_index = argument3;
         image_index = argument4;
