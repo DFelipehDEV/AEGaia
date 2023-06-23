@@ -1,5 +1,5 @@
 /// scrDummyEffectCreate(x, y, sprite, animation speed, repeat times, depth, blend mode, alpha, xscale, yscale, angle)
- // Creates a dummy effect
+ // -- Creates a dummy effect
 
     with (instance_create(argument0, argument1, objDummy))
     {

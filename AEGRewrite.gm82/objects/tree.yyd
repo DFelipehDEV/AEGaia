@@ -122,6 +122,8 @@
 		+Hazards
 			|objProjectileBuzzer
 			|objSpinnerShock
+		+Destructive
+			|objDestructiveWall
 	+Layers
 		|objLayer0
 		|objLayerSwitch
@@ -160,6 +162,7 @@
 	|objVFXSpindashCharge
 	|objVFXRing
 	|objVFXRainbow
+	|objDebris
 +Collision
 	+Main
 		|objSolidMask01

@@ -262,20 +262,20 @@ applies_to=self
         {
             if (scrPlayerCollisionMain(x, y) && scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
             {
-                while (scrPlayerCollisionMain(x, y))
+                do
                 {
                     x -= angleSin;
                     y -= angleCos;
-                }
+                }until(!scrPlayerCollisionMain(x, y))
             }
 
             if (scrPlayerCollisionSlope(x, y, angle, maskMid) && !scrPlayerCollisionMain(x, y))
             {
-                while(!scrPlayerCollisionMain(x, y))
+                do
                 {
                     x += angleSin;
                     y += angleCos;
-                }
+                }until(scrPlayerCollisionMain(x, y))
             }
         }
 
@@ -614,6 +614,9 @@ applies_to=self
 
     // -- Box
     scrPlayerHandleBox();
+
+    // -- Destructive
+    scrPlayerHandleDestructive();
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -895,7 +898,6 @@ action_id=603
 applies_to=self
 */
 /// -- Goal ring
-
 
     if (goal == true)
     {

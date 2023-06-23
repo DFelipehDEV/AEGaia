@@ -84,6 +84,7 @@
 		|scrPlayerHandleFling
 		|scrPlayerHandleGimmicks
 		|scrPlayerHandleBox
+		|scrPlayerHandleDestructive
 +Animation
 	+Lists
 		|scrAnimationIndexSonic
@@ -99,6 +100,7 @@
 	|scrAngleTowards
 	|scrAngleWrap
 	|scrDummyEffectCreate
+	|scrDebrisEffectCreate
 	|scrEasings
 	|scrViewIn
 	|scrViewInOffset
