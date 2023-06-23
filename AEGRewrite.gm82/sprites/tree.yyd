@@ -193,6 +193,8 @@
 		|sprNavigator
 	+Level Specific
 		|sprTestFlower
+		|sprTestWall1
+		|sprTestWall2
 +VFX
 	|sprVFXBoost
 	|sprVFXBoostShockwave
@@ -220,7 +222,6 @@
 	|sprVFXWaterDrop
 	|sprVFXWaterSplash
 	|sprVFXTrail
-	|sprVFXDebrisTest
 +Solids
 	+Main
 		|sprSolidMask01
