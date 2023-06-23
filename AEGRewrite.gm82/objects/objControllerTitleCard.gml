@@ -216,7 +216,7 @@ applies_to=self
     draw_sprite_ext(sprTitleCardShapes, 1, (view_xview[0] - cardResultOffset) + cardShape2X, view_yview[0] - cardResultOffset, 1, 1, 0, c_white, cardLineAlpha);
 
     // -- Draw a line in the top
-    draw_rectangle_color(view_xview[0], view_yview[0], view_xview[0] + cardCenterX*2, (view_yview[0] - cardResultOffset*2.5) + 10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
+    draw_rectangle_color(view_xview[0], view_yview[0] - 1, view_xview[0] + cardCenterX*2, (view_yview[0] - cardResultOffset*2.5) + 10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
 
     // -- Draw a line in the bottom
     draw_rectangle_color(view_xview[0], view_yview[0] + cardCenterY*2, view_xview[0] + cardCenterX*2, (view_yview[0] + cardResultOffset*2.5) + (cardCenterY*2)-10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
