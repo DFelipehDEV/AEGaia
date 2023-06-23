@@ -19,6 +19,7 @@
     global.volumeSounds = 1; // -- Sounds volume
     global.volumeMusic = 1; // -- Music volume
     global.volumeVoice = 1; // -- Voicelines volume
+    global.volumeAmbient = 1; // -- Ambient volume(footsteps)
 
     // -- Music variables
     global.bgmSound = -1; // -- Background music sound ID
@@ -55,6 +56,7 @@
     global.volumeSounds = ini_read_real("config", "sfxvolume", 1);
     global.volumeMusic = ini_read_real("config", "bgmvolume", 1);
     global.volumeVoice = ini_read_real("config", "voicevolume", 1);
+    global.volumeAmbient = ini_read_real("config", "ambientvolume", 1);
     ini_close();
 
     // -- Finish initialization and start the rest of the game

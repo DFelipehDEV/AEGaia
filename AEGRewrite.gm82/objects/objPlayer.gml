@@ -988,7 +988,7 @@ applies_to=self
                     }
                     sound_stop(terrainSound[terFootstep1])
                     sound_stop(terrainSound[terFootstep2])
-                    scrPlaySound(choose(terrainSound[terFootstep1],terrainSound[terFootstep2]), global.volumeSounds, 1, false);
+                    scrPlaySound(choose(terrainSound[terFootstep1],terrainSound[terFootstep2]), global.volumeAmbient, 1, false);
                     footstep = true;
                 }
             }
