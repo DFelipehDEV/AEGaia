@@ -483,11 +483,21 @@ applies_to=self
     {
         xSpeed = 0;
         terrainPushing = true;
+        if (ground && action != actionPush)
+        {
+            action = actionPush;
+            scrAnimationApply("PUSH");
+        }
     }
     else if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
     {
         xSpeed = 0;
         terrainPushing = true;
+        if (ground && action != actionPush)
+        {
+            action = actionPush;
+            scrAnimationApply("PUSH");
+        }
     }
     else
     {
@@ -725,6 +735,11 @@ applies_to=self
         // -- QTEKeys routine
         case actionQTEKeys:
             scrPlayerActionQTEKeys();
+        break;
+
+        // -- Push routine
+        case actionPush:
+            scrPlayerActionPush();
         break;
 
         // -- Hurt routine

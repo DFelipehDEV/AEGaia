@@ -26,6 +26,7 @@ actionTransform=22
 actionGrab=23
 actionWalljump=24
 actionQTEKeys=25
+actionPush=26
 shieldNormal=1
 shieldElectricity=2
 invincibilityNoone=0

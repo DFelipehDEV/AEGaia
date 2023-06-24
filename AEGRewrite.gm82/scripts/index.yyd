@@ -119,3 +119,4 @@ scrPlayerActionDead
 scrPlayerCollisionHitboxFast
 scrDebrisEffectCreate
 scrPlayerHandleDestructive
+scrPlayerActionPush

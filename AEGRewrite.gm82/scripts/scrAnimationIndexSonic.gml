@@ -8,6 +8,11 @@
             scrAnimationSet(sprSonicWallJump, 0, -1, -1, 0, 1, 1, -1, "");
         break;
 
+        // -- Push animation
+        case "PUSH":
+            scrAnimationSet(sprSonicPush, 0, -1, 1, 0.15, 1, 1, -1, "");
+        break;
+
         // -- Idle animation
         case "IDLE":
             scrAnimationSet(sprSonicIdle, 0, -1, -1, 0.17, 1, 1, -1, "");
