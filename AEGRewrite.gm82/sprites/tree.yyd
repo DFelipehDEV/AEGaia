@@ -79,6 +79,7 @@
 			|sprTitleCardDash
 			|sprTitleCardShapes
 			|sprTitleCardZoneCard
+			|sprTitleCardBar
 		+Gameplay
 			|sprHUDEnergy
 			|sprHUDRings

@@ -485,6 +485,7 @@ applies_to=self
         terrainPushing = true;
         if (ground && action != actionPush)
         {
+            animationDirection = 1;
             action = actionPush;
             scrAnimationApply("PUSH");
         }
@@ -495,6 +496,7 @@ applies_to=self
         terrainPushing = true;
         if (ground && action != actionPush)
         {
+            animationDirection = -1;
             action = actionPush;
             scrAnimationApply("PUSH");
         }

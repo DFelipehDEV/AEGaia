@@ -94,9 +94,8 @@ applies_to=self
         // -- Dash sign position
         cardDashX += 6;
 
-
         // -- Back to the start if it has reached the screen limit
-        if (cardDashX > (cardCenterX*2) + sprite_get_width(sprTitleCardDash))
+        if (cardDashX > (screenWidth) + sprite_get_width(sprTitleCardDash))
         {
             cardDashX = -sprite_get_width(sprTitleCardDash);
         }
@@ -134,14 +133,14 @@ applies_to=self
 
 
         // -- Destroy card
-        if (cardTimer < -60)
+        if (cardTimer < -50)
         {
             instance_destroy();
         }
     }
 
     // -- Fade background
-    if (cardTimer < 25)
+    if (cardTimer < 40)
     {
         if (cardBackAlpha > 0)
         {
@@ -216,9 +215,8 @@ applies_to=self
     draw_sprite_ext(sprTitleCardShapes, 1, (view_xview[0] - cardResultOffset) + cardShape2X, view_yview[0] - cardResultOffset, 1, 1, 0, c_white, cardLineAlpha);
 
     // -- Draw a line in the top
-    draw_rectangle_color(view_xview[0], view_yview[0] - 1, view_xview[0] + cardCenterX*2, (view_yview[0] - cardResultOffset*2.5) + 10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
+    draw_sprite(sprTitleCardBar, 0, view_xview[0], view_yview[0] - cardResultOffset*2.5);
 
     // -- Draw a line in the bottom
-    draw_rectangle_color(view_xview[0], view_yview[0] + cardCenterY*2, view_xview[0] + cardCenterX*2, (view_yview[0] + cardResultOffset*2.5) + (cardCenterY*2)-10, cardColor2, cardColor2, cardColor2, cardColor2, 0);
-
+    draw_sprite(sprTitleCardBar, 0, view_xview[0], (view_yview[0] + screenHeight-11) + cardResultOffset*2.5);
     draw_set_alpha(1);

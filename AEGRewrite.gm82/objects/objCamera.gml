@@ -6,7 +6,6 @@ applies_to=self
 */
 /// -- Variables
 
-
     view_object[0] = id;
     view_hborder[0] = screenWidthMid;
     view_vborder[0] = screenHeightMid;
@@ -33,7 +32,6 @@ action_id=603
 applies_to=self
 */
 /// -- Shake
-
 
     // -- Horizontal Shake
     if (camXShakeTimer > 0)
@@ -69,7 +67,6 @@ action_id=603
 applies_to=self
 */
 /// -- Decrease lag timer
-
 
     // -- Check if the camera is stuck
     if (camLagTimer > 0 && camStuck == true)
