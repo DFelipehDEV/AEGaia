@@ -1165,7 +1165,7 @@ applies_to=self
     }
 
     // -- Draw character if the player is not hurt. Blink when hurt
-    if (invincibility != invincibilityBlink || (invincibility == invincibilityBlink && ((global.gameTime div 60) mod 3)))
+    if (invincibility != invincibilityBlink || (invincibility == invincibilityBlink && (invincibilityTimer div 1.5) mod 3 == 1))
     {
         // -- Draw character
         draw_sprite_ext(animationSprite, floor(animationFrame), floor(x), floor(y), animationDirection, image_yscale, animationAngle, image_blend, image_alpha);

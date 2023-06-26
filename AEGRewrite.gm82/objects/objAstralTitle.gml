@@ -234,10 +234,8 @@ applies_to=self
     // -- Draw card
     draw_sprite_ext(sprTitleCardZoneCard, 0, cardX, cardY, cardXScale, cardYScale, 0, image_blend, image_alpha);
 
-
     // -- Draw dash sign
     draw_sprite_ext(sprTitleCardDash, 0, view_xview + cardDashX, cardDashY, 1, 1, 0, image_blend, image_alpha);
-
 
     // -- Draw press start text
     draw_sprite_ext(sprPressStart, 0, view_xview+ screenWidthMid, view_yview + 10 + screenHeight - 65, 1, 1, 0, c_white, startAlpha);
@@ -260,7 +258,6 @@ applies_to=self
     // -- Draw logo
     draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, image_blend, logoAlpha);
 
-
     // -- Draw glow
     draw_set_blend_mode(bm_add)
     draw_sprite_ext(sprite_index, 1, floor(x), titleY, titleNameScale, titleNameScale, image_angle, c_white, (abs(sin(current_time/340)*0.3))*logoAlpha);
@@ -274,13 +271,12 @@ applies_to=self
         // -- Draw dash sign
         draw_sprite_ext(sprTitleCardDash, 0, view_xview + cardDashX, cardDashY, 1, 1, 0, image_blend, image_alpha);
 
-
         draw_set_alpha(optionMainAlpha)
         draw_set_font(global.fontTitleCard)
         draw_set_halign(fa_center);
         // -- Draw options
         draw_text(screenWidthMid, optionY[0], "START");
-        draw_text(screenWidthMid, optionY[1], "OPTIONS");
+        draw_text(screenWidthMid, optionY[1], "SETTINGS");
         draw_text(screenWidthMid, optionY[2], "EXIT");
         draw_set_halign(-1);
         draw_set_font(1)

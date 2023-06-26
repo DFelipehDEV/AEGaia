@@ -12,6 +12,7 @@
 
     // -- Screen variables
     global.screenSize = 1; // -- Screen size multiplier
+    global.screenVSync = true; // -- VSync
 
     global.gamepad = joystick_count();
 
@@ -43,21 +44,3 @@
     // -- Create permanent controllers
     instance_create(0, 0, objControllerMusic);
     instance_create(0, 0, objControllerRoom);
-
-    // -- Load configurations
-    with (objControllerRoom)
-    {
-        ini_open("configf.ini");
-        global.screenSize = ini_read_real("config", "screen", 1);
-        event_user(0);
-        ini_close();
-    }
-    ini_open("configf.ini");
-    global.volumeSounds = ini_read_real("config", "sfxvolume", 1);
-    global.volumeMusic = ini_read_real("config", "bgmvolume", 1);
-    global.volumeVoice = ini_read_real("config", "voicevolume", 1);
-    global.volumeAmbient = ini_read_real("config", "ambientvolume", 1);
-    ini_close();
-
-    // -- Finish initialization and start the rest of the game
-    room_goto_next();

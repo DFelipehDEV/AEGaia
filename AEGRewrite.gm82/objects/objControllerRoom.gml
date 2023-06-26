@@ -55,6 +55,7 @@ applies_to=self
     {
         window_set_size(screenWidth, screenHeight);
         window_set_fullscreen(true);
+        //window_set_fullscreen_ext(true);
     }
 
     // -- Center window
