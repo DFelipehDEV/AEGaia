@@ -2,7 +2,7 @@
  // -- Add this to a action script when you want airdash to be able to be performed
 
     // -- Air dash
-    if (keyActionPressed == true && ground == false && airdash == true && homingPossible == false)
+    if (keyActionPressed == true && ground == false && airdash == true && !instance_exists(objPlayerTarget))
     {
         airdash = false;
         airdashTimer = airdashTimerCommon;
