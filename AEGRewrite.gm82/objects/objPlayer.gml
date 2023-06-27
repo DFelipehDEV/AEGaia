@@ -158,6 +158,8 @@ applies_to=self
 
     // -- Sensor position
     scrPlayerSensorPosUpdate();
+    bottomCollision = false;
+    edgeCollision = false;
 
     // -- Sonic physics
     scrPlayerPhysicsSonic();
@@ -255,12 +257,15 @@ applies_to=self
         }
     }
 
+    // -- Cache collision
+    scrPlayerCollisionCache();
+
     // -- Check if the player is on the ground
     if (ground == true)
     {
         repeat (repFactor)
         {
-            if (scrPlayerCollisionMain(x, y) && scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
+            if (scrPlayerCollisionMain(x, y) && edgeCollision)
             {
                 do
                 {
@@ -292,7 +297,7 @@ applies_to=self
         }
 
         // -- Fall off the ground if the edges aren't colliding
-        if (angle != 0 && (scrPlayerCollisionLeftEdge(x, y, angle) == false || scrPlayerCollisionRightEdge(x, y, angle) == false))
+        if (angle != 0 && !edgeCollision)
         {
             ySpeed = -angleSin*xSpeed;
             xSpeed = angleCos*xSpeed;
@@ -301,7 +306,7 @@ applies_to=self
         } 
         
         // -- Get new angle
-        if (scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
+        if (edgeCollision)
         {
             // -- Store the new angle
             angleHolder   =   scrPlayerAngleGet(x, y, angle);
@@ -319,14 +324,19 @@ applies_to=self
         else
         {
             scrPlayerAngleSet(0);
-        }                                      
+        }
+        
+        scrPlayerCollisionCache();                                
     }                   
 
     // -- Vertical movement        
-    if (ground == false)
+    if (!ground)
     {                   
         y += ySpeed * global.deltaMultiplier;
-            
+        
+        // -- Cache collision
+        scrPlayerCollisionCache();
+        
         // -- Ceiling
         if (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskBig))
         {
@@ -338,7 +348,8 @@ applies_to=self
                 {
                     xSpeed = -angleSin * (ySpeed*1.5);
                     ySpeed = 0;     
-                    ground = true;               
+                    ground = true;  
+                    scrPlayerCollisionCache();             
                 }
                 // -- Reset angle
                 else
@@ -370,12 +381,6 @@ applies_to=self
             x += angleCos;
             y -= angleSin;
         }
-    }
- 
-    // -- Get new angle
-    if (scrPlayerCollisionLeftEdge(x, y, angle) == true && scrPlayerCollisionRightEdge(x, y, angle) == true && ground == true)
-    {   
-        scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
     }
     
     // -- Horizontal movement
@@ -517,7 +522,7 @@ applies_to=self
         }
 
         // -- Leave the ground
-        if (scrPlayerCollisionBottom(x, y, angle, maskBig) == false)
+        if (!bottomCollision)
         {
             ground = false;
             scrPlayerAngleSet(0);
@@ -533,11 +538,12 @@ applies_to=self
         }
 
         // -- Land
-        if (ySpeed >= 0 && (scrPlayerCollisionBottom(x, y, 0, maskBig)))
+        if (ySpeed >= 0 && bottomCollision)
         {
-            if (scrPlayerCollisionLeftEdge(x, y, 0) && scrPlayerCollisionRightEdge(x, y, 0))
+            if (edgeCollision)
             {
                 scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
+                scrPlayerCollisionCache();
             }
 
             xSpeed -= angleSin * ySpeed;

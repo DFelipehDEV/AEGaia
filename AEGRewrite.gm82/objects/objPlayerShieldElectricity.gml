@@ -35,7 +35,7 @@ applies_to=self
     }
     else
     {
-        depth = 1;
+        depth = 0;
     }
 #define Draw_0
 /*"/*'/**//* YYD ACTION

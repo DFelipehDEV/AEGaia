@@ -5,57 +5,62 @@
         // -- Idle animation
         if (xSpeed == 0)
         {
-            // -- Check if we are in the edge of a solid
-            if (scrPlayerCollisionLeftEdge(x, y, angle) && !scrPlayerCollisionRightEdge(x, y, angle))
+            switch (edgeCollision)
             {
-                if (animationIndex != "LEDGE_1" && animationIndex != "LEDGE_2")
-                {
-                    scrPlaySound(choose(voiceline[11], voiceline[12], "sndNoone"), global.volumeVoice, 1, false);
-                }
-                switch (animationDirection)
-                {
-                    case 1:
-                        scrAnimationApply("LEDGE_1");
-                    break;
-
-                    case -1:
-                        scrAnimationApply("LEDGE_2");
-                    break;
-                }
-            }
-            else if (!scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
-            {
-                if (animationIndex != "LEDGE_1" && animationIndex != "LEDGE_2")
-                {
-                    scrPlaySound(choose(voiceline[11], voiceline[12]), global.volumeVoice, 1, false);
-                }
-                switch (animationDirection)
-                {
-                    case 1:
-                        scrAnimationApply("LEDGE_2");
-                    break;
-
-                    case -1:
-                        scrAnimationApply("LEDGE_1");
-                    break;
-                }
-            }
-            else // -- We are not in the edge of a solid
-            {
-                if (animationIndex != "IDLE_WAIT")
-                {
-                    // -- Check if its not been waiting for a long time
-                    if (animationTime < 300)
+                case false:
+                    // -- Check if we are in the edge of a solid
+                    if (scrPlayerCollisionLeftEdge(x, y, angle) && !scrPlayerCollisionRightEdge(x, y, angle))
                     {
-                        // -- Idle animation
-                        scrAnimationApply("IDLE");
+                        if (animationIndex != "LEDGE_1" && animationIndex != "LEDGE_2")
+                        {
+                            scrPlaySound(choose(voiceline[11], voiceline[12], "sndNoone"), global.volumeVoice, 1, false);
+                        }
+                        switch (animationDirection)
+                        {
+                            case 1:
+                                scrAnimationApply("LEDGE_1");
+                            break;
+
+                            case -1:
+                                scrAnimationApply("LEDGE_2");
+                            break;
+                        }
                     }
-                    else
+                    else if (!scrPlayerCollisionLeftEdge(x, y, angle) && scrPlayerCollisionRightEdge(x, y, angle))
                     {
-                        // -- Idle waiting animation
-                        scrAnimationApply("IDLE_WAIT");
+                        if (animationIndex != "LEDGE_1" && animationIndex != "LEDGE_2")
+                        {
+                            scrPlaySound(choose(voiceline[11], voiceline[12]), global.volumeVoice, 1, false);
+                        }
+                        switch (animationDirection)
+                        {
+                            case 1:
+                                scrAnimationApply("LEDGE_2");
+                            break;
+
+                            case -1:
+                                scrAnimationApply("LEDGE_1");
+                            break;
+                        }
                     }
-                }
+                break;
+
+                case true:
+                    if (animationIndex != "IDLE_WAIT")
+                    {
+                        // -- Check if its not been waiting for a long time
+                        if (animationTime < 300)
+                        {
+                            // -- Idle animation
+                            scrAnimationApply("IDLE");
+                        }
+                        else
+                        {
+                            // -- Idle waiting animation
+                            scrAnimationApply("IDLE_WAIT");
+                        }
+                    }
+                break;
             }
         }
 

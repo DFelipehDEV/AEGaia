@@ -120,3 +120,4 @@ scrPlayerCollisionHitboxFast
 scrDebrisEffectCreate
 scrPlayerHandleDestructive
 scrPlayerActionPush
+scrPlayerCollisionCache

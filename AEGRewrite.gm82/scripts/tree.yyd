@@ -38,6 +38,7 @@
 		|scrPlayerAirdashReset
 		|scrPlayerEnergyAdd
 		|scrPlayerTerrainSndUpdate
+		|scrPlayerCollisionCache
 	+Angle
 		|scrPlayerAngleGet
 		|scrPlayerAngleSet
