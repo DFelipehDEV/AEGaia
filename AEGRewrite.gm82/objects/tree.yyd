@@ -158,12 +158,12 @@
 			|objTestFlower
 +VFX
 	|objDummy
+	|objDebris
 	|objVFXBoost
 	|objVFXBoostShockwave
 	|objVFXSpindashCharge
 	|objVFXRing
 	|objVFXRainbow
-	|objDebris
 +Collision
 	+Main
 		|objSolidMask01

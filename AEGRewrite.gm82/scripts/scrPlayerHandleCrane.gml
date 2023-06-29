@@ -19,4 +19,5 @@
 
         action = actionGrab;
         scrAnimationApply("HANG_1")
+        movementAllow = false;
     }

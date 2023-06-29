@@ -92,6 +92,7 @@ applies_to=self
     angleCos = 0;
     angleSin = 0;
     layerIndex = 0;             // -- Current terrain layer
+    movementAllow = true;       // -- Whether the player moves or not
 
     // -- Interaction
     physicMode = 0;             // -- 0 - Normal physics   1 - Underwater physics
@@ -228,6 +229,8 @@ applies_to=self
 /// -- Movement
 
     scrPlayerAngleLocals();
+
+    if (movementAllow == false) exit;
 
     x += (angleCos * xSpeed) * global.deltaMultiplier;
     y -= (angleSin * xSpeed) * global.deltaMultiplier;
@@ -940,7 +943,7 @@ applies_to=self
  // -- Handle animations and direction
 
     // -- Check if the player is not doing any of these actions
-    if (action != actionJump && action != actionAirdash && action != actionTurn && animationIndex != "LAUNCH" && animationIndex != "SPRING" && animationIndex != "LANDING")
+    if (action != actionJump && action != actionTurn && animationIndex != "LAUNCH" && animationIndex != "SPRING" && animationIndex != "LANDING")
     {
         // -- Change direction based on the speed direction
         if (sign(xSpeed) != 0)

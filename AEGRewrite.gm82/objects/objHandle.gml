@@ -29,6 +29,9 @@ applies_to=self
                 scrPlaySound("sndPlayerJump", global.volumeSounds, 1.1, false);
             }
             sound_stop("sndHandleMove");
+            playerID.y -= 16;
+            playerID.movementAllow = true;
+            exit;
         }
         else
         {

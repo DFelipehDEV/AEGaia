@@ -62,10 +62,21 @@ applies_to=self
     {
         if (global.player == true)
         {
-            objPlayer.x = lerp(objPlayer.x, mouse_x, 0.2);
-            objPlayer.y = lerp(objPlayer.y, mouse_y, 0.2);
+            objPlayer.x = lerp(objPlayer.x, mouse_x, 0.15);
+            objPlayer.y = lerp(objPlayer.y, mouse_y, 0.15);
             objPlayer.xSpeed = 0;
             objPlayer.ySpeed = 0;
+            objPlayer.movementAllow = false;
+            objCamera.x = objPlayer.x;
+            objCamera.y = objPlayer.y;
+        }
+    }
+
+    if (mouse_check_button_released(mb_right))
+    {
+        if (global.player == true)
+        {
+            objPlayer.movementAllow = true;
         }
     }
 #define Draw_0
