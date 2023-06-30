@@ -1,6 +1,6 @@
 /// scrPlayerActionGrind()
 
-    animationFrameSpeed = 0.2 + abs(xSpeed)/18;
+    animationFrameSpeed = 0.18 + abs(xSpeed)/20;
     // -- Acceleration
     // -- Accelerate to the left
     if (keyLeft == true && keyRight == false)
