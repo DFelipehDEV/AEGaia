@@ -328,7 +328,20 @@ applies_to=self
             scrPlayerAngleSet(0);
         }
         
-        scrPlayerCollisionCache();                                
+        scrPlayerCollisionCache();    
+        
+        // -- Back to the normal action while doing those actions and the player landed
+        if (action == actionBoostAir)
+        {
+            action = actionNormal;
+        }
+
+        // -- Leave the ground
+        if (!bottomCollision)
+        {
+            ground = false;
+            scrPlayerAngleSet(0);
+        }                            
     }                   
 
     // -- Vertical movement        
@@ -383,8 +396,43 @@ applies_to=self
             x += angleCos;
             y -= angleSin;
         }
+        
+        // -- Add gravity
+        if (yStuckTimer == 0 && action != actionCorkscrew && action != actionAirdash
+        && action != actionWayLauncher)
+        {
+            ySpeed += yAcc * global.deltaMultiplier;
+        }
+
+        // -- Land
+        if (ySpeed >= 0 && bottomCollision)
+        {
+            if (edgeCollision)
+            {
+                scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
+                scrPlayerCollisionCache();
+            }
+
+            xSpeed -= angleSin * ySpeed;
+            
+            // -- Play landing sound effect
+            if (abs(ySpeed) > 2)
+            {
+                scrPlayerTerrainSndUpdate();
+                scrPlaySound(terrainSound[terLand], global.volumeSounds, 1, false);
+            }
+            
+            ySpeed = 0;
+            ground = true;
+        }
+
+        // -- Check if we're on the air but we collided with the ceiling
+        if (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskBig))
+        {
+            ySpeed = 0;
+        }
     }
-    
+
     // -- Horizontal movement
     // -- Accelerations/Deceleration
     if (ground == true || action == actionCorkscrew)
@@ -438,7 +486,7 @@ applies_to=self
                 {
                     xSpeed += xFricTemp;
                 }
-            }            
+            }
             else // -- Decelerate when you are not pressing the right or left key
             {
                 xSpeed = inch(xSpeed, 0, xDecTemp);
@@ -490,61 +538,6 @@ applies_to=self
     else
     {
         terrainPushing = false;
-    }
-    
-    // -- Vertical Movement
-    // -- Land
-    if (ground == true)
-    {
-        // -- Back to the normal action while doing those actions and the player landed
-        if (action == actionJump || action == actionSpring || action == actionSkydive || action == actionBoostAir)
-        {
-            action = actionNormal;
-        }
-
-        // -- Leave the ground
-        if (!bottomCollision)
-        {
-            ground = false;
-            scrPlayerAngleSet(0);
-        }
-    }
-    else
-    {
-        // -- Add gravity
-        if (yStuckTimer == 0 && action != actionSkydive && action != actionCorkscrew && action != actionAirdash
-        && action != actionHoming && action != actionWayLauncher)
-        {
-            ySpeed += yAcc * global.deltaMultiplier;
-        }
-
-        // -- Land
-        if (ySpeed >= 0 && bottomCollision)
-        {
-            if (edgeCollision)
-            {
-                scrPlayerAngleSet(scrPlayerAngleGet(x, y, angle));
-                scrPlayerCollisionCache();
-            }
-
-            xSpeed -= angleSin * ySpeed;
-            
-            // -- Play landing sound effect
-            if (abs(ySpeed) > 2)
-            {
-                scrPlayerTerrainSndUpdate();
-                scrPlaySound(terrainSound[terLand], global.volumeSounds, 1, false);
-            }
-            
-            ySpeed = 0;
-            ground = true;
-        }
-
-        // -- Check if we're on the air but we collided with the ceiling
-        if (ySpeed < 0 && scrPlayerCollisionTop(x, y, 0, maskBig))
-        {
-            ySpeed = 0;
-        }
     }
 
     // -- Decrease gravity freeze timer
