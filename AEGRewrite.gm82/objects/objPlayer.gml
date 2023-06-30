@@ -262,7 +262,6 @@ applies_to=self
 
     // -- Cache collision
     scrPlayerCollisionCache();
-
     // -- Check if the player is on the ground
     if (ground == true)
     {
@@ -372,7 +371,7 @@ applies_to=self
             y -= 1;
         }            
 
-        // -- Wall collision (yeah, again, we should perform that since the y axys has recently changed)
+        // -- Wall collision (needs to be performed because y axis has recently changed)
         while (scrPlayerCollisionRight(x, y, angle, maskMid) == true)
         {
             x -= angleCos;
@@ -412,7 +411,7 @@ applies_to=self
         case actionBoostAir:
             // -- Acceleration
             // -- Accelerate to the left
-            if (keyLeft == true && keyRight == false)
+            if (keyLeft && !keyRight)
             {
                 if xSpeed > -xSpeedTop
                 {
@@ -427,7 +426,7 @@ applies_to=self
             }
             // -- Accelerate to the right
             else
-            if (keyRight == true && keyLeft == false)
+            if (keyRight && !keyLeft)
             {
                 if xSpeed < xSpeedTop
                 {
@@ -439,31 +438,10 @@ applies_to=self
                 {
                     xSpeed += xFricTemp;
                 }
-            }
-            // -- Decelerate when you are not pressing the right or left key
-            else
+            }            
+            else // -- Decelerate when you are not pressing the right or left key
             {
-                if xSpeed < 0
-                {
-                    xSpeed += xDecTemp;
-
-                    // -- Set to 0 when we stop
-                    if xSpeed > 0
-                    {
-                        xSpeed = 0;
-                    }
-                }
-
-                if xSpeed > 0
-                {
-                    xSpeed -= xDecTemp;
-
-                    // -- Set to 0 when we stop
-                    if xSpeed < 0
-                    {
-                        xSpeed = 0;
-                    }
-                }
+                xSpeed = inch(xSpeed, 0, xDecTemp);
             }
         break;
     }
