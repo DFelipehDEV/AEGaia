@@ -18,7 +18,7 @@ applies_to=self
 */
 /// -- Fade and go to the room
 
-    image_alpha += 0.05;
+    image_alpha += 0.03;
 
     if (image_alpha >= 1.5)
     {

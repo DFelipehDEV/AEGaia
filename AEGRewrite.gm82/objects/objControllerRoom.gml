@@ -51,7 +51,7 @@ applies_to=self
 
     window_set_size(screenWidth * global.screenSize, screenHeight * global.screenSize);
     window_set_region_size(screenWidth, screenHeight, 1);
-    window_resize_buffer(screenWidth,screenHeight)
+
     // -- Fullscreen
     if (global.screenSize == 3)
     {

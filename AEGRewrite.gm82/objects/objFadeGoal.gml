@@ -14,9 +14,9 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// @description  Fade and create results
+/// -- Fade and create results
 
-    image_alpha += 0.05;
+    image_alpha += 0.03;
 
     if (image_alpha >= 1)
     {
