@@ -1,7 +1,8 @@
 /// scrPlayerHandleDestructive()
 // -- Handle collision with destructive objects
 
-    if (boost || action == actionRoll || action == actionAirdash)
+    // -- Check if we are in a state that we can destroy the wall
+    if (attackPossible && ground)
     {
         if (scrPlayerCollisionObjectRight(x + xSpeed, y, angle, maskBig, objDestructiveWall) != noone || scrPlayerCollisionObjectLeft(x + xSpeed, y, angle, maskBig, objDestructiveWall) != noone) // -- Check if the instance has not been marked as destroyed
         {

@@ -8,6 +8,7 @@ applies_to=self
 
     // -- Actions
     action = 0;
+    attackPossible = false;
 
     // -- Jump
     jumpStrength = -6.5;        // -- Jump strength
@@ -550,70 +551,6 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// -- Object handle
- // -- Handle collisions with objects
-
-    // -- Launch sensor
-    scrPlayerHandleLaunch();
-
-    // -- Layers
-    scrPlayerHandleLayers();
-
-    // -- Rings
-    scrPlayerHandleRings();
-
-    // -- Enemies
-    scrPlayerHandleEnemy();
-
-    // -- Projectiles
-    scrPlayerHandleProjectile();
-
-    // -- Checkpoint
-    scrPlayerHandleCheckpoint();
-
-    // -- Balloons
-    scrPlayerHandleBalloons();
-
-    // -- Springs
-    scrPlayerHandleSprings();
-
-    // -- Spikes
-    scrPlayerHandleSpikes();
-
-    // -- Dash (Pads, rings and ramps)
-    scrPlayerHandleDash();
-
-    // -- Rails
-    scrPlayerHandleRails();
-
-    // -- Way launcher
-    scrPlayerHandleWayLauncher();
-
-    // -- Water
-    scrPlayerHandleWater();
-
-    // -- Fling ramp
-    scrPlayerHandleFling();
-
-    // -- Gimmicks
-    scrPlayerHandleGimmicks();
-
-    // -- Crane
-    scrPlayerHandleCrane();
-
-    // -- Walljump
-    scrPlayerHandleWallJump();
-
-    // -- Box
-    scrPlayerHandleBox();
-
-    // -- Destructive
-    scrPlayerHandleDestructive();
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
 /// -- Actions
 
     // -- Execute the appropriate action function based on the current action/state
@@ -737,6 +674,79 @@ applies_to=self
 
     // -- Trigger actions
     scrPlayerActionTrigger();
+
+    attackPossible = boost ||
+        invincibility == invincibilityMonitor ||
+        action == actionJump ||
+        action == actionRoll ||
+        action == actionAirdash ||
+        action == actionHoming ||
+        action == actionStomp ||
+        action == actionSlide
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/// -- Object handle
+ // -- Handle collisions with objects
+
+    // -- Launch sensor
+    scrPlayerHandleLaunch();
+
+    // -- Layers
+    scrPlayerHandleLayers();
+
+    // -- Rings
+    scrPlayerHandleRings();
+
+    // -- Enemies
+    scrPlayerHandleEnemy();
+
+    // -- Projectiles
+    scrPlayerHandleProjectile();
+
+    // -- Checkpoint
+    scrPlayerHandleCheckpoint();
+
+    // -- Balloons
+    scrPlayerHandleBalloons();
+
+    // -- Springs
+    scrPlayerHandleSprings();
+
+    // -- Spikes
+    scrPlayerHandleSpikes();
+
+    // -- Dash (Pads, rings and ramps)
+    scrPlayerHandleDash();
+
+    // -- Rails
+    scrPlayerHandleRails();
+
+    // -- Way launcher
+    scrPlayerHandleWayLauncher();
+
+    // -- Water
+    scrPlayerHandleWater();
+
+    // -- Fling ramp
+    scrPlayerHandleFling();
+
+    // -- Gimmicks
+    scrPlayerHandleGimmicks();
+
+    // -- Crane
+    scrPlayerHandleCrane();
+
+    // -- Walljump
+    scrPlayerHandleWallJump();
+
+    // -- Box
+    scrPlayerHandleBox();
+
+    // -- Destructive
+    scrPlayerHandleDestructive();
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603

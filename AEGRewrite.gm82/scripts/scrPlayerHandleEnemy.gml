@@ -1,7 +1,6 @@
 /// scrPlayerHandleEnemy()
  // -- Handle enemies collision
 
-
     var enemy;
     enemy = scrPlayerCollisionHitbox(x, y, parEnemy);
 
@@ -9,14 +8,7 @@
     if (enemy != noone)
     {
         // -- Check if the player is doing any of these actions
-        if (boost == true ||
-        invincibility == invincibilityMonitor ||
-        action == actionJump ||
-        action == actionRoll ||
-        action == actionAirdash ||
-        action == actionHoming ||
-        action == actionStomp ||
-        action == actionSlide)
+        if (attackPossible)
         {
             // -- Check if the enemy does not have invincibility frames
             if (enemy.enemyBlinkTimer == 0)
@@ -96,10 +88,8 @@
                     }
                 }
 
-
                 // -- Stop homing if the player was homing
                 scrPlayerHomingReset(actionNormal, 0, -6.7, 35, enemyX, enemyY);
-
 
                 // -- Bounce on the enemy
                 if (action == actionJump && ySpeed >= 0)
@@ -115,7 +105,6 @@
                         ySpeed = -ySpeed * 0.99;
                     }
                 }
-
 
                 scrCameraShakeY(17);
 
