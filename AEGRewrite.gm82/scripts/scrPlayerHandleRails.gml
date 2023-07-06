@@ -14,9 +14,9 @@
         {
             grindsnd = 0;
             scrPlaySound("sndPlayerGrindStart", global.volumeSounds, 1, false);
+            scrAnimationApply("GRIND_1");
         }
         action = actionGrind;
-        scrAnimationApply("GRIND");
     }
 
     //Layer 0 rail
@@ -27,9 +27,9 @@
         {
             grindsnd = 0;
             scrPlaySound("sndPlayerGrindStart", global.volumeSounds, 1, false);
+            scrAnimationApply("GRIND_1");
         }
         action = actionGrind;
-        scrAnimationApply("GRIND");
     }
 
     //Layer 1 rail
@@ -40,7 +40,7 @@
         {
             grindsnd = 0;
             scrPlaySound("sndPlayerGrindStart", global.volumeSounds, 1, false);
+            scrAnimationApply("GRIND_1");
         }
         action = actionGrind;
-        scrAnimationApply("GRIND");
     }

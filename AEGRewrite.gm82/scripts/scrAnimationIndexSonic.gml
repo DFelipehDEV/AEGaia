@@ -94,8 +94,13 @@
         break;
 
         // -- Grind animation
-        case "GRIND":
+        case "GRIND_1":
             scrAnimationSet(sprSonicGrind, 0, -1, -1, 0.3, 1, 1, -1, "");
+        break;
+
+        // -- Grind 2 animation
+        case "GRIND_2":
+            scrAnimationSet(sprSonicGrind2, 0, -1, 1, 0.3, 1, 1, -1, "");
         break;
 
         // -- Stomp animation
