@@ -171,9 +171,6 @@ applies_to=self
 
     if (camStuck == true || instance_exists(camTarget) == false) exit;
 
-    x = clamp(x, camBorderLeft + screenWidthMid, camBorderRight + screenWidthMid);
-    y = clamp(y, camBorderTop + screenHeightMid, camBorderBottom - screenHeightMid);
-
     if (camTarget != objPlayer)
     {
         // -- Shift to the target position
@@ -191,3 +188,6 @@ applies_to=self
             y = floor(lerp(y, camTarget.y + camYShift, 0.2)); //0.16
         }
     }
+
+    x = clamp(x, camBorderLeft + screenWidthMid, camBorderRight + screenWidthMid);
+    y = clamp(y, camBorderTop + screenHeightMid, camBorderBottom - screenHeightMid);
