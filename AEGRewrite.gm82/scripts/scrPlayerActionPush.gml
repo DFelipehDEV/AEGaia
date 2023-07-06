@@ -1,6 +1,6 @@
 /// scrPlayerActionPush()
 
-    if (!keyLeft && scrPlayerCollisionLeft(x, y, angle, maskBig) || !keyRight && scrPlayerCollisionRight(x, y, angle, maskBig) || !keyLeft && !keyRight)
+    if (!keyLeft && !keyRight || (keyRight && !scrPlayerCollisionRight(x, y, angle, maskBig) || keyLeft && !scrPlayerCollisionLeft(x, y, angle, maskBig)))
     {
         action = actionNormal;
     }

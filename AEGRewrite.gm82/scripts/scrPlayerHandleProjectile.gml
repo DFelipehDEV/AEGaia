@@ -20,7 +20,7 @@
         // -- Otherwise, if there is no shield
         else
         {
-            //Hurt the player
+            // -- Hurt the player
             scrPlayerHurtSet();
         }
     }
