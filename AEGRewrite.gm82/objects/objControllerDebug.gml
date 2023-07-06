@@ -96,22 +96,19 @@ applies_to=self
             draw_set_font(fontDebug)
             draw_set_halign(fa_left)
             draw_set_color(c_aqua)
-            draw_text(view_xview[0] + 333, view_yview[0] + 1, "TAB:TOGGLE OVERLAY");
-            draw_text(view_xview[0] + 333, view_yview[0] + 11, "MOUSE RIGHT:LERP PLAYER POSITION");
-            draw_text(view_xview[0] + 333, view_yview[0] + 21, "R:RESTART ROOM");
-            draw_text(view_xview[0] + 333, view_yview[0] + 31, "PGUP:NEXT ROOM");
-            draw_text(view_xview[0] + 333, view_yview[0] + 41, "PGDN:PREVIOUS ROOM");
-            draw_text(view_xview[0] + 333, view_yview[0] + 51, "PAUSE:STOP AUDIO");
+
+            // -- Button guide
+            draw_text(view_xview[0] + 333, view_yview[0] + 1, "TAB:TOGGLE OVERLAY#MOUSE RIGHT:LERP PLAYER POSITION#R:RESTART ROOM#PGUP:NEXT ROOM#PGDN:PREVIOUS ROOM#PAUSE:STOP AUDIO");
             draw_set_color(c_white)
-            draw_text(view_xview[0] + 403, view_yview[0] + 57+48, string(string(floor(objPlayer.x))))
-            draw_text(view_xview[0] + 403, view_yview[0] + 67+48, string(string(floor(objPlayer.y))))
-            draw_text(view_xview[0] + 403, view_yview[0] + 77+48, string(objPlayer.terrainPlatform))
-            draw_text(view_xview[0] + 333, view_yview[0] + 57+48, string("XSPEED " + string(objPlayer.xSpeed)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 67+48, string("YSPEED " + string(objPlayer.ySpeed)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 77+48, string("GROUND " + string(objPlayer.ground)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 87+48, string("DIR " + string(objPlayer.animationDirection)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 97+48, string("ACTION " + string(objPlayer.action)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 107+48, string("ANGLE " + string(objPlayer.angle) + "  " + string(objPlayer.angleCos) + "  " + string(objPlayer.angleSin)))
-            draw_text(view_xview[0] + 333, view_yview[0] + 117+48, string("FPS " + string(fps) + "  " + string(fps_real)))
+
+            // -- Debug overlay
+            draw_text(view_xview[0] + 333, view_yview[0] + 57+48,
+              string("XSPEED " + string(objPlayer.xSpeed)) + " " + string(floor(objPlayer.x))
+            + string("#YSPEED " + string(objPlayer.ySpeed)) + " " + string(floor(objPlayer.y))
+            + string("#GROUND " + string(objPlayer.ground))
+            + string("#DIR " + string(objPlayer.animationDirection))
+            + string("#ACTION " + string(objPlayer.action))
+            + string("#ANGLE " + string(objPlayer.angle) + "  " + string(objPlayer.angleCos) + "  " + string(objPlayer.angleSin))
+            + string("#FPS " + string(fps) + " " + string(fps_real)))
         }
     }
