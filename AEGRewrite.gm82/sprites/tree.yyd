@@ -161,6 +161,8 @@
 		+Corkscrew
 			|sprCorkscrew
 			|sprCorkscrewDepth
+		+Bridge
+			|sprBridgeLog
 	+Obstacles
 		+Spikes
 			|sprSpikeUp

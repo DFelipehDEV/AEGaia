@@ -153,6 +153,9 @@
 	+Gimmicks
 		|objCorkscrew
 		|objCorkscrewDepth
+		|objBridge
+		+Don't use
+			|objBridgeLog
 	+Level Specific
 		+Decoration
 			|objTestFlower

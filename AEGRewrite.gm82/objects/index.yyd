@@ -175,3 +175,5 @@ objDebris
 objDestructiveWall
 
 objControllerInit
+objBridge
+objBridgeLog

@@ -7,8 +7,8 @@ applies_to=self
 /// -- Variables
 
     view_object[0] = id;
-    view_hborder[0] = screenWidthMid;
-    view_vborder[0] = screenHeightMid;
+    view_hborder[0] = screenWidthMid*0.99;
+    view_vborder[0] = screenHeightMid*0.98;
 
     camTarget       =   objPlayer;      // -- Camera target to follow the object
     camStuck        =   0;              // -- Check if the camera is "stuck" or not

@@ -121,3 +121,4 @@ scrDebrisEffectCreate
 scrPlayerHandleDestructive
 scrPlayerActionPush
 scrPlayerCollisionCache
+scrSafeDivision

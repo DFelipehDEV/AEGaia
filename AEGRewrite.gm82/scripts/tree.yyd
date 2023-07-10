@@ -116,6 +116,7 @@
 	|scrStringNumberFormat
 	|scrTrailUpdate
 	|scrEnemyInvincibility
+	|scrSafeDivision
 +Camera
 	|scrCameraLag
 	|scrCameraShakeX
