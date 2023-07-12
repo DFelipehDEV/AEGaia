@@ -11,7 +11,6 @@ applies_to=self
     view_vborder[0] = screenHeightMid*0.98;
 
     camTarget       =   objPlayer;      // -- Camera target to follow the object
-    camStuck        =   0;              // -- Check if the camera is "stuck" or not
     camLagTimer     =   0;              // -- Size in frames of how long the lag remains
 
     camXShift       =   0;              // -- Horizontal position shift
@@ -69,15 +68,9 @@ applies_to=self
 /// -- Decrease lag timer
 
     // -- Check if the camera is stuck
-    if (camLagTimer > 0 && camStuck == true)
+    if (camLagTimer > 0)
     {
         camLagTimer -=  1;
-    }
-
-    // -- "Free" the camera
-    if (camLagTimer == 0 && camStuck == true)
-    {
-        camStuck   =   false;
     }
 #define Step_2
 /*"/*'/**//* YYD ACTION
@@ -169,7 +162,7 @@ applies_to=self
 */
 /// -- Shift to the target position
 
-    if (camStuck == true || instance_exists(camTarget) == false) exit;
+    if (camLagTimer > 0 || instance_exists(camTarget) == false) exit;
 
     if (camTarget != objPlayer)
     {

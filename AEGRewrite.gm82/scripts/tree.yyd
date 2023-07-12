@@ -96,9 +96,20 @@
 	|scrAnimationSystem
 	|scrAnimationUpdate
 +Utils
-	+Non player collision
+	+Collision
 		|scrCollisionMovementBasic
 		|scrCollisionCheckBasic
+	+Camera
+		|scrCameraLag
+		|scrCameraShakeX
+		|scrCameraShakeY
+	+Sound
+		|scrPlaySound
+		|scrPlayMusic
+		|scrMusicSetFade
+		|scrLoadSounds
+	+Parallax
+		|scrParallaxAddNode
 	|scrAngleTowards
 	|scrAngleWrap
 	|scrDummyEffectCreate
@@ -117,17 +128,6 @@
 	|scrTrailUpdate
 	|scrEnemyInvincibility
 	|scrSafeDivision
-+Camera
-	|scrCameraLag
-	|scrCameraShakeX
-	|scrCameraShakeY
-+Sound
-	|scrPlaySound
-	|scrPlayMusic
-	|scrMusicSetFade
-	|scrLoadSounds
-+Parallax
-	|scrParallaxAddNode
 +Level
 	|scrSetupDashRing
 	|scrSetupDashPad

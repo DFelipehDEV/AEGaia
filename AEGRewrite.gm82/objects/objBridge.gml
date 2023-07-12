@@ -32,15 +32,18 @@ applies_to=self
     // -- Find out the logs height depending on the player objects
     if (collision_rectangle(x, y - 16, x + bridgeWidth, y + bridgeTension * 0.8, objPlayer, true, false))
     {
+        var _playerPosition;
+        _playerPosition = round(objPlayer.x/bridgeLogWidth)*bridgeLogWidth;
+
         // -- Find tension point and calculate left and right and their gradients
-        bridgeTensionNum  = min(max(floor((objPlayer.x - x)/bridgeLogWidth),0),bridgeLogs-1);
+        bridgeTensionNum  = min(max(floor((_playerPosition - x)/bridgeLogWidth),0),bridgeLogs-1);
         leftGrad  = scrSafeDivision(pi*0.5, bridgeTensionNum);
         rightGrad = scrSafeDivision(pi*0.5, bridgeLogs - bridgeTensionNum)
         left           = 0;
         right          = pi;
 
         // -- Calculate distance from center
-        distanceHalfWidth = bridgeTension * (1-(abs(floor(objPlayer.x - x-bridgeWidthHalf)/bridgeWidthHalf)));
+        distanceHalfWidth = bridgeTension * (1-(abs(floor(_playerPosition - x-bridgeWidthHalf)/bridgeWidthHalf)));
 
         // -- Reposition all bridge logs
         for (j=0; j <= bridgeTensionNum; j+=1)
