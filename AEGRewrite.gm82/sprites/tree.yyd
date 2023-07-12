@@ -101,6 +101,7 @@
 		|sprTrigger
 		|sprPlatformAngle
 		|sprEnemyTurn
+		|sprLaunchSensor
 		|sprFlingSensor
 	+Miscellaneous
 		|sprEmpty

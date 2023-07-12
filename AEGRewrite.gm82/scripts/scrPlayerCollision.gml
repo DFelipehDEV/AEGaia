@@ -34,10 +34,3 @@
             }
         break;
     }
-
-    // -- Check for water run
-    if (place_meeting(argument0, argument1, objWaterHorizon) && angle == 0 && abs(xSpeed) > 10)
-    {
-        terrainPlatform = 0;
-        return true;
-    }

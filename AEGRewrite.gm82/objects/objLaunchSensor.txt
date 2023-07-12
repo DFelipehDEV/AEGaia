@@ -1,4 +1,4 @@
-sprite=maskBig
+sprite=sprLaunchSensor
 visible=0
 solid=0
 persistent=0

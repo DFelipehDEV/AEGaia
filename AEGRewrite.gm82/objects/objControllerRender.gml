@@ -19,10 +19,11 @@ applies_to=self
     // -- Deactivate all objects
     instance_deactivate_all(true);
 
-    // -- Activate the main objects
+    // -- Activate objects within the deactive all expection
     instance_activate_object(parActivate);
     instance_activate_object(parPlatformMove);
     instance_activate_object(objHandle);
+    instance_activate_object(objWaterSolid);
     instance_activate_object(gm82core_object)
 
     // -- Activate deactivated objects if they are in the view

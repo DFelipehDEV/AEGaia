@@ -52,6 +52,7 @@
 			|objPlayerTarget
 			|objPlayerAfterimage
 			|objPlayerDead
+			|objWaterSolid
 	+Splash
 		|objAstralPowered
 		|objAstralTitle

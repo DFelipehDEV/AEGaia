@@ -97,12 +97,15 @@ applies_to=self
 
     // -- Interaction
     physicMode = 0;             // -- 0 - Normal physics   1 - Underwater physics
-    underwaterDrownFrame = 0;   // -- Frame index to drown timer
-    underwaterAir = 600;        // -- Time to be able to breath underwater
     invincibility = 0;          // -- Checks whether the player is invincible or not
     invincibilityTimer = 0;     // -- Size in frames of how long the invincibility remains
     shield = 0;                 // -- Check which shield the player has
     goal = false;
+
+    // -- Water
+    waterrunSolid = noone;
+    underwaterDrownFrame = 0;   // -- Frame index to drown timer
+    underwaterAir = 600;        // -- Time to be able to breath underwater
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -285,6 +288,24 @@ applies_to=self
                     y += angleCos;
                 }until(scrPlayerCollisionMain(x, y))
             }
+        }
+
+        // -- Water running
+        if (scrPlayerCollisionObjectBottom(x, y, 0, maskBig, objWaterHorizon) && angle == 0 && abs(xSpeed) > 10)
+        {
+            if (waterrunSolid == noone)
+            {
+                waterrunSolid = instance_create(x, bbox_bottom, objWaterSolid);
+            }
+            else
+            {
+                waterrunSolid.x = x;
+            }
+        }
+        else
+        {
+            instance_destroy_id(waterrunSolid);
+            waterrunSolid = noone;
         }
 
         // -- Fall if there is not enough speed.
