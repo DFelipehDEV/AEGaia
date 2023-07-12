@@ -304,8 +304,11 @@ applies_to=self
         }
         else
         {
-            instance_destroy_id(waterrunSolid);
-            waterrunSolid = noone;
+            if (waterrunSolid != noone)
+            {
+                instance_destroy_id(waterrunSolid);
+                waterrunSolid = noone;
+            }
         }
 
         // -- Fall if there is not enough speed.
