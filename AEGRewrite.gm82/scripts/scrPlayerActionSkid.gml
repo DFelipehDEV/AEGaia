@@ -8,7 +8,7 @@
         // -- Back to the normal action if the player stopped or is not in the ground anymore or is not holding the key anymore
         if (xSpeed >= 0 || keyRight == false || ground == false)
         {
-            action = actionNormal;
+            action = ActionNormal;
         }
     }
     // -- Decelerate while going to the right
@@ -20,14 +20,14 @@
         // -- Back to the normal action if the player stopped or is not in the ground anymore or is not holding the key anymore
         if (xSpeed <= 0 || keyLeft == false || ground == false)
         {
-            action = actionNormal;
+            action = ActionNormal;
         }
     }
 
     // -- Stop if the speed is 0
     if (xSpeed == 0)
     {
-        action = actionNormal;
+        action = ActionNormal;
     }
 
     // -- Create dust effect

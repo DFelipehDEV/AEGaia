@@ -10,11 +10,11 @@ applies_to=self
     shiftApproach = 0.88;
     image_speed = 0.1;
 
-    // Space
-    scrParallaxAddNode(parallaxBGHorizontal, bgTZBG2, 1, 0.1, 0, 0, 0, shiftApproach, 0, 0, -69, 0, 0, 0, 512, 288);
+    // -- Space
+    scrParallaxAddNode(ParallaxBGHorizontal, bgTZBG2, 1, 0.1, 0, 0, 0, shiftApproach, 0, 0, -69, 0, 0, 0, 512, 288);
 
-    // Earth
-    scrParallaxAddNode(parallaxBGHorizontal, bgTZBG1, 1, 0.1, 0, 0, 0, shiftApproach, 0, 0, 111, 0, 0, 0, 240, 64);
+    // -- Earth
+    scrParallaxAddNode(ParallaxBGHorizontal, bgTZBG1, 1, 0.1, 0, 0, 0, shiftApproach, 0, 0, 111, 0, 0, 0, 240, 64);
 
-    // Metal walls
-    scrParallaxAddNode(parallaxSpriteHorizontal, sprTZBG1, 0.94, 0, 0, 0, 0, shiftApproach, 0, 0, 175, 0, 0, 0, 512, 328);
+    // -- Metal walls
+    scrParallaxAddNode(ParallaxSpriteHorizontal, sprTZBG1, 0.94, 0, 0, 0, 0, shiftApproach, 0, 0, 175, 0, 0, 0, 512, 328);

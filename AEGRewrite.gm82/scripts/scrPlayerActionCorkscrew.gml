@@ -4,7 +4,7 @@
 
     if (abs(xSpeed) < 4 || corkscrewObject == noone)
     {
-        action = actionNormal;
+        action = ActionNormal;
     }
     else
     {

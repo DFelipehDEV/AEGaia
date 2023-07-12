@@ -6,7 +6,6 @@ applies_to=self
 */
 /// -- Variables
 
-
     timer = 0;
     // -- Background
     backX = 0;
@@ -19,9 +18,8 @@ applies_to=self
 
     sonicScale = 0;
 
-
     // -- Foreground
-    logoY = screenHeight + 200;
+    logoY = ScreenHeight + 200;
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -41,7 +39,7 @@ applies_to=self
     backX = lerp(backX, dcos(current_time/backSpeed)*backOffset, 0.02)
     backY = lerp(backY, dsin(current_time/backSpeed)*backOffset, 0.02);
 
-    logoY = lerp(logoY, screenHeight/1.9, 0.1)
+    logoY = lerp(logoY, ScreenHeight/1.9, 0.1)
 
     if (timer > 10)
     {
@@ -75,13 +73,13 @@ applies_to=self
 /// -- Draw
 
     // -- Sonic
-    draw_sprite_ext(sprAstralLogo, 3, screenWidthMid, 70, sonicScale, sonicScale, dcos(current_time/14)*18, c_white, 1);
+    draw_sprite_ext(sprAstralLogo, 3, ScreenWidthHalf, 70, sonicScale, sonicScale, dcos(current_time/14)*18, c_white, 1);
 
     // -- Outline
-    draw_sprite_ext(sprAstralLogo, 1, screenWidthMid, logoY - dsin(current_time/9)*6, outlineScale, outlineScale, 0, c_white, 1);
+    draw_sprite_ext(sprAstralLogo, 1, ScreenWidthHalf, logoY - dsin(current_time/9)*6, outlineScale, outlineScale, 0, c_white, 1);
 
     // -- Gaia text
-    draw_sprite_ext(sprAstralLogo, 2, screenWidthMid, logoY - dsin(current_time/9)*6, outlineScale, outlineScale, 0, c_white, gaiaAlpha);
+    draw_sprite_ext(sprAstralLogo, 2, ScreenWidthHalf, logoY - dsin(current_time/9)*6, outlineScale, outlineScale, 0, c_white, gaiaAlpha);
 
     // -- Logo
-    draw_sprite_ext(sprAstralLogo, 0, screenWidthMid, logoY - dsin(current_time/9)*6, 0.6, 0.6, 0, c_white, 1);
+    draw_sprite_ext(sprAstralLogo, 0, ScreenWidthHalf, logoY - dsin(current_time/9)*6, 0.6, 0.6, 0, c_white, 1);

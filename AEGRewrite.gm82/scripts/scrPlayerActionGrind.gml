@@ -64,5 +64,5 @@
     && !scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parRailLayer0) && !scrPlayerCollisionObjectMain(x, y, parRailLayer0)
     && !scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parRailLayer1) && !scrPlayerCollisionObjectMain(x, y, parRailLayer1))
     {
-        action = actionNormal;
+        action = ActionNormal;
     }

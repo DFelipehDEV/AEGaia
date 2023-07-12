@@ -36,10 +36,10 @@
     global.debug = false; // -- Debug flag
     global.debugIsAThing = false; // -- Activates the debug mode
     global.deltaMultiplier = 1; // -- Time movement multiplier, lower values make objects move slower, higher values make objects move faster, used for slow motion
-    global.stageRank[rankC] = 2500; // -- Minimum score for C rank
-    global.stageRank[rankB] = 4000; // -- Minimum score for B rank
-    global.stageRank[rankA] = 6000; // -- Minimum score for A rank
-    global.stageRank[rankS] = 8500; // -- Minimum score for S rank
+    global.stageRank[RankC] = 2500; // -- Minimum score for C rank
+    global.stageRank[RankB] = 4000; // -- Minimum score for B rank
+    global.stageRank[RankA] = 6000; // -- Minimum score for A rank
+    global.stageRank[RankS] = 8500; // -- Minimum score for S rank
 
     // -- Create permanent controllers
     instance_create(0, 0, objControllerMusic);

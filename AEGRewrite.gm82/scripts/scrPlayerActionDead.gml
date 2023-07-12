@@ -5,7 +5,7 @@
     global.playerRings = 0;
     visible = false;
     invincibilityTimer = 300;
-    invincibility = invincibilityHurt;
+    invincibility = InvincibilityHurt;
 
     // -- Decrease restart time
     if (deadTimer > 0)

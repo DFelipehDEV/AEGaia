@@ -45,7 +45,7 @@
         scrPlayerEnergyAdd(21);
         scrAnimationApply("SPRING_TRICK_HORIZONTAL");
 
-        action         = actionSpring;
+        action         = ActionSpring;
         global.deltaMultiplier = 1;
         scrPlaySound("sndTrick", global.volumeSounds, 1, 0);
     }
@@ -54,6 +54,6 @@
     if (ground == true)
     {
         global.deltaMultiplier = 1;
-        action        = actionNormal;
+        action        = ActionNormal;
         allowKeyTimer = 0;
     }

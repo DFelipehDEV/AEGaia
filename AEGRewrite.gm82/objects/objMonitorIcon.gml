@@ -95,7 +95,7 @@ applies_to=self
         case 6:
             with (objPlayer)
             {
-                scrPlayerShieldSet(shieldNormal);
+                scrPlayerShieldSet(ShieldNormal);
                 scrPlaySound("sndShieldMonitor", global.volumeSounds, 1, false);
             }
         break;
@@ -105,7 +105,7 @@ applies_to=self
         case 7:
             with (objPlayer)
             {
-                scrPlayerShieldSet(shieldElectricity);
+                scrPlayerShieldSet(ShieldElectricity);
                 scrPlaySound("sndShieldMonitor", global.volumeSounds, 1.1, false);
             }
         break;
@@ -114,7 +114,7 @@ applies_to=self
         case 9:
             with (objPlayer)
             {
-                invincibility = invincibilityMonitor;
+                invincibility = InvincibilityMonitor;
                 invincibilityTimer = 1150;
                 starTimer = 1130;
             }

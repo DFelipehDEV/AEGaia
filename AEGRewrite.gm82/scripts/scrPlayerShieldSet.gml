@@ -7,8 +7,8 @@
         // -- Check the type of shield
         switch (argument0)
         {
-            case shieldNormal:
-                shield    = shieldNormal;
+            case ShieldNormal:
+                shield = ShieldNormal;
                 // -- Create a normal shield object
                 with(instance_create(x, y, objPlayerShieldNormal))
                 {
@@ -16,8 +16,8 @@
                 }
             break;
 
-            case shieldElectricity:
-                shield    = shieldElectricity;
+            case ShieldElectricity:
+                shield = ShieldElectricity;
                 // -- Create an electricity shield object
                 with (instance_create(x, y, objPlayerShieldElectricity))
                 {

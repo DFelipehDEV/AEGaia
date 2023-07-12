@@ -5,7 +5,7 @@
     {
         // -- Back to the normal action
         xSpeed = 0;
-        invincibility      = invincibilityBlink;
+        invincibility      = InvincibilityBlink;
         invincibilityTimer = 170;
-        action             = actionNormal;
+        action             = ActionNormal;
     }

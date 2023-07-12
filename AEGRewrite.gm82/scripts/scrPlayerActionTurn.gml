@@ -3,5 +3,5 @@
     if (animationFinished)
     {
         animationDirection = -animationDirection;
-        action = actionNormal;
+        action = ActionNormal;
     }

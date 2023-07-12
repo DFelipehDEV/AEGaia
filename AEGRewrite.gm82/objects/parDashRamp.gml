@@ -9,7 +9,7 @@ applies_to=self
     dashXStrength  = 0;           //X Strength
     dashYStrength  = 0;           //Y Strength
 
-    dashRampPAct   = actionNormal; //Player action when he meets the dash ramp
+    dashRampPAct   = ActionNormal; //Player action when he meets the dash ramp
 
     dashAllow      = true;        //Checks if the player can dash into the dash
     dashAllowTimer = 0;           //Checks how remains to be able to dash again

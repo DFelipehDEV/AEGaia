@@ -12,6 +12,6 @@
 
         if (floor(animationFrame) == 0)
         {
-            action = actionNormal;
+            action = ActionNormal;
         }
     }

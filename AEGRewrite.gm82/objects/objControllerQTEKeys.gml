@@ -66,7 +66,7 @@ applies_to=self
             }
             if (image_alpha <= 0.1)
             {
-                objPlayer.action = actionNormal;
+                objPlayer.action = ActionNormal;
                 objPlayer.xSpeed = qteFailedXSpeed;
                 objPlayer.ySpeed = qteFailedYSpeed;
                 objPlayer.allowKeyTimer = 50;
@@ -92,11 +92,10 @@ applies_to=self
 */
 /// -- Inputs
 
-
-    //Check if we didn't won the event yet
+    // -- Check if we haven't won the event yet
     if (qteWon == 0 && image_alpha > 0.7)
     {
-        //Which input you are currently on
+        // -- Which input you are currently on
         switch (hudInputCounter)
         {
             case 0:
@@ -188,7 +187,7 @@ applies_to=self
                             
                             with (objPlayer)
                             {
-                                action = actionNormal;
+                                action = ActionNormal;
                                 scrAnimationApply("HOMED_1");
                                 allowKeyTimer = 60;
                             }
@@ -209,7 +208,7 @@ applies_to=self
                             
                             with (objPlayer)
                             {
-                                action = actionNormal;
+                                action = ActionNormal;
                                 scrAnimationApply("HOMED_1");
                                 allowKeyTimer = 60;
                             }
@@ -230,7 +229,7 @@ applies_to=self
                             
                             with (objPlayer)
                             {
-                                action = actionNormal;
+                                action = ActionNormal;
                                 scrAnimationApply("HOMED_1");
                                 allowKeyTimer = 60;
                             }
@@ -251,16 +250,14 @@ applies_to=self
 */
 /// -- Draw
 
-
     // -- Draw underlay
     draw_set_alpha(image_alpha);
-    draw_rectangle_color(view_xview[0], view_yview[0], view_xview[0] + screenWidth, view_yview[0] + screenHeight, c_black, c_black, c_black, c_black, 0);
+    draw_rectangle_color(view_xview[0], view_yview[0], view_xview[0] + ScreenWidth, view_yview[0] + ScreenHeight, c_black, c_black, c_black, c_black, 0);
 
-
-    draw_sprite_ext(sprQTEKeysBack, 0, view_xview[0] + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudBackScale, hudBackScale, 0, c_white, image_alpha);
-    draw_rectangle_color((view_xview[0] + screenWidthMid) - 100, (view_yview[0] + screenHeightMid) - 11, (view_xview[0] + screenWidthMid) + hudTimer, (view_yview[0] + screenHeightMid) + 11, hudTimerColor, hudTimerColor, hudTimerColor, hudTimerColor, 0)
+    draw_sprite_ext(sprQTEKeysBack, 0, view_xview[0] + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudBackScale, hudBackScale, 0, c_white, image_alpha);
+    draw_rectangle_color((view_xview[0] + ScreenWidthHalf) - 100, (view_yview[0] + ScreenHeightHalf) - 11, (view_xview[0] + ScreenWidthHalf) + hudTimer, (view_yview[0] + ScreenHeightHalf) + 11, hudTimerColor, hudTimerColor, hudTimerColor, hudTimerColor, 0)
     draw_set_alpha(1);
-    draw_sprite_ext(sprQTETimer, 0, view_xview[0] + screenWidthMid, (view_yview[0] + screenHeightMid), hudBackScale, hudBackScale, 0, c_white, image_alpha);
+    draw_sprite_ext(sprQTETimer, 0, view_xview[0] + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf), hudBackScale, hudBackScale, 0, c_white, image_alpha);
 
     // -- ass written code but it works
     for (i = 0; i < 3; i += 1)
@@ -270,33 +267,33 @@ applies_to=self
             case 0:
                 if (global.gamepad == false)
                 {
-                    draw_sprite_ext(sprKeyboardKeys, 0, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
+                    draw_sprite_ext(sprKeyboardKeys, 0, (view_xview[0] - (24 - i*24)) + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
                 else
                 {
-                    draw_sprite_ext(sprGamepadKeys, 0, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
+                    draw_sprite_ext(sprGamepadKeys, 0, (view_xview[0] - (24 - i*24)) + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
             break;
 
             case 1:
                 if (global.gamepad == false)
                 {
-                    draw_sprite_ext(sprKeyboardKeys, 18, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
+                    draw_sprite_ext(sprKeyboardKeys, 18, (view_xview[0] - (24 - i*24)) + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
                 else
                 {
-                    draw_sprite_ext(sprGamepadKeys, 2, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
+                    draw_sprite_ext(sprGamepadKeys, 2, (view_xview[0] - (24 - i*24)) + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
             break;
 
             case 2:
                 if (global.gamepad == false)
                 {
-                    draw_sprite_ext(sprKeyboardKeys, 3, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
+                    draw_sprite_ext(sprKeyboardKeys, 3, (view_xview[0] - (24 - i*24)) + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
                 else
                 {
-                    draw_sprite_ext(sprGamepadKeys, 1, (view_xview[0] - (24 - i*24)) + screenWidthMid, (view_yview[0] + screenHeightMid) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
+                    draw_sprite_ext(sprGamepadKeys, 1, (view_xview[0] - (24 - i*24)) + ScreenWidthHalf, (view_yview[0] + ScreenHeightHalf) - 30, hudInputScale[i + 1], hudInputScale[i + 1], 0, c_white, 1)
                 }
             break;
         }

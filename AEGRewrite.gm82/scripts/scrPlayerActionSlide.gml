@@ -26,7 +26,7 @@
         // -- Back to the normal action if the player stopped or is not in the ground anymore
         if (ground == false || floor(xSpeed) == 0 || keyDown == false && slideResetTimer == 0)
         {
-            action = actionNormal;
+            action = ActionNormal;
         }
     }
     else

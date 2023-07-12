@@ -9,6 +9,6 @@ applies_to=self
     event_inherited();             //Get parent variables
     dashStrength   = 10;            //X Strength
     dashRingType   = "RAINBOW";     //Dash ring type  "NORMAL" - Normal dash ring  "RAINBOW" - Rainbow dash ring
-    dashRingPAct   = actionSpring; //Player action when he meets the dash ring
+    dashRingPAct   = ActionSpring; //Player action when he meets the dash ring
 
     image_speed    = 0.3;          //Dash animation speed

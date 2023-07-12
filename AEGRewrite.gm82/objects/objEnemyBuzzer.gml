@@ -9,7 +9,7 @@ applies_to=self
     event_inherited();
     turnTimer     = 20;           //How long it takes to turn
     turnTimerTemp = turnTimer;    //Keep the original value on track
-    action        = actionNormal;
+    action        = ActionNormal;
     nearPlayer    = 0;            //Checks if the player is near of the enemy
 
     enemyBust     = true;
@@ -48,7 +48,7 @@ applies_to=self
 /// -- Shoot
 
     // -- Release projectile
-    if (action == actionNormal)
+    if (action == ActionNormal)
     {
         xSpeed     = 0;
 
@@ -77,7 +77,7 @@ applies_to=self
         event_inherited();
     }
 
-    if (action == actionNormal && place_meeting(x, y, objEnemyTurn) == false && global.player == true)
+    if (action == ActionNormal && place_meeting(x, y, objEnemyTurn) == false && global.player == true)
     {
         playerID = instance_nearest(x, y, objPlayer);
         xSpeed     = 2 * image_xscale;
@@ -113,7 +113,7 @@ applies_to=self
 
     // -- Turn
     // -- Check if the enemy is coliding the turn sensor
-    if (place_meeting(x, y, objEnemyTurn) && action == actionNormal)
+    if (place_meeting(x, y, objEnemyTurn) && action == ActionNormal)
     {
         // -- Turn
         if (turnTimer > 0)
@@ -125,7 +125,7 @@ applies_to=self
         {
             if (alarm[0] == -1)
             {
-                action    = actionTurn;
+                action    = ActionTurn;
             }
         }
     }
@@ -150,7 +150,7 @@ applies_to=self
 
     // -- Animations
     // -- Move animation
-    if (action == actionNormal)
+    if (action == ActionNormal)
     {
         sprite_index = sprEnemyBuzzerMove;
         image_speed  = 0.32;
@@ -158,7 +158,7 @@ applies_to=self
 
 
     // -- Attack animation
-    if (action == actionNormal && alarm[2] < 30 && alarm[2] > 0)
+    if (action == ActionNormal && alarm[2] < 30 && alarm[2] > 0)
     {
         sprite_index = sprEnemyBuzzerAttack;
         image_speed  = 0.15;
@@ -166,7 +166,7 @@ applies_to=self
 
 
     // -- Turn animation
-    if (action == actionTurn)
+    if (action == ActionTurn)
     {
         sprite_index = sprEnemyBuzzerTurn;
         image_speed  = 0.25;
@@ -188,10 +188,10 @@ applies_to=self
 /// -- Back to the normal action
 
 
-    if (action == actionTurn)
+    if (action == ActionTurn)
     {
         image_xscale = -image_xscale;
-        action       = actionNormal;
+        action       = ActionNormal;
         xSpeed       = 2.2 * image_xscale;
         if (alarm[0] == -1)
         {

@@ -27,7 +27,7 @@
             if (xSpeed <= 0)
             {
                 xSpeed = 0;
-                action = actionNormal;
+                action = ActionNormal;
             }
         }
         // -- Check if is going to the left
@@ -71,18 +71,18 @@
     // -- Stop rolling
     if (floor(xSpeed) == 0)
     {
-        action = actionNormal;
+        action = ActionNormal;
     }
 
     if (keySpecial1Pressed == true)
     {
-        action = actionNormal;
+        action = ActionNormal;
     }
 
 
     // -- Set the jump action if is not in the ground anymore
     if (ground == false)
     {
-        action     = actionJump;
+        action = ActionJump;
         scrPlayerAirdashReset();
     }

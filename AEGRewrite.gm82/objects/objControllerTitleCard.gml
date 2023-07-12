@@ -15,8 +15,8 @@ applies_to=self
 
     cardZoneScale  = 1;            //Scale of the zone card (when it starts to fade it it starts to split)
 
-    cardCenterX    = screenWidthMid;          //X screen center
-    cardCenterY    = screenHeightMid;         //Y screen center
+    cardCenterX    = ScreenWidthHalf;          //X screen center
+    cardCenterY    = ScreenHeightHalf;         //Y screen center
 
     cardColor1     = make_color_rgb(21,153,224);   //Main color used
     cardColor2     = make_color_rgb(120,228,225);  //Second main color used
@@ -95,7 +95,7 @@ applies_to=self
         cardDashX += 6;
 
         // -- Back to the start if it has reached the screen limit
-        if (cardDashX > (screenWidth) + sprite_get_width(sprTitleCardDash))
+        if (cardDashX > (ScreenWidth) + sprite_get_width(sprTitleCardDash))
         {
             cardDashX = -sprite_get_width(sprTitleCardDash);
         }
@@ -161,12 +161,12 @@ applies_to=self
 
         shapeTimer = min(shapeTimer + 1, time);
         //Approach to the borders of the screen
-        cardShape1X = scrEasings(shapeTimer, cardCenterX, (screenWidth+25)-cardCenterX, time, "easeOutExpo");
+        cardShape1X = scrEasings(shapeTimer, cardCenterX, (ScreenWidth+25)-cardCenterX, time, "easeOutExpo");
 
-        cardShape2X = scrEasings(shapeTimer, cardCenterX, cardCenterX - (screenWidth), time, "easeOutExpo");
+        cardShape2X = scrEasings(shapeTimer, cardCenterX, cardCenterX - (ScreenWidth), time, "easeOutExpo");
 
 
-        cardZoneScale = min(cardZoneScale + 12, screenWidth);
+        cardZoneScale = min(cardZoneScale + 12, ScreenWidth);
     }
 
     if (cardTimer < 9)
@@ -218,5 +218,5 @@ applies_to=self
     draw_sprite(sprTitleCardBar, 0, view_xview[0], view_yview[0] - cardResultOffset*2.5);
 
     // -- Draw a line in the bottom
-    draw_sprite(sprTitleCardBar, 0, view_xview[0], (view_yview[0] + screenHeight-11) + cardResultOffset*2.5);
+    draw_sprite(sprTitleCardBar, 0, view_xview[0], (view_yview[0] + ScreenHeight-11) + cardResultOffset*2.5);
     draw_set_alpha(1);

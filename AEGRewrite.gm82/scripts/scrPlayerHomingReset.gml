@@ -1,7 +1,7 @@
 /// scrPlayerHomingReset(action, xSpeed, ySpeed, invincibilityTimer, x, y)
  // -- Resets player from a homing state
 
-    if (action == actionHoming)
+    if (action == ActionHoming)
     {
         // -- Give player invincibility to avoid death after homing
         if (invincibilityTimer < argument3)

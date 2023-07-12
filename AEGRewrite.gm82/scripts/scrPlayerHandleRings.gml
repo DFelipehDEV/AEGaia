@@ -20,7 +20,7 @@
         }
         global.playerRings += 1;
 
-        if (action != actionLightspeed)
+        if (action != ActionLightspeed)
         {
             // -- Get energy
             scrPlayerEnergyAdd(4);
@@ -29,7 +29,7 @@
 
 
     // -- Collect dropped ring
-    if (ringDrop != noone && (action != actionHurt && invincibilityTimer < 100))
+    if (ringDrop != noone && (action != ActionHurt && invincibilityTimer < 100))
     {
         // -- Destroy ring and create effect
         with (ringDrop)

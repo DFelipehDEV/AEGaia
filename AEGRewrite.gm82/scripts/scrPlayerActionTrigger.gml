@@ -2,7 +2,7 @@
  // -- Start actions
 
     // -- Homing attack!
-    if ((action == actionJump || action == actionSpring || action == actionNormal) && distance_to_object(parHome) <= homingDistance
+    if ((action == ActionJump || action == ActionSpring || action == ActionNormal) && distance_to_object(parHome) <= homingDistance
     && ground == false)
     {
         var homeNear;
@@ -15,7 +15,7 @@
                 scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.4, 0, -0.01, bm_normal, 1, 0.5, 0.6, point_direction(x, y, homeNear.x, homeNear.y));
                 scrPlaySound(choose("sndNoone", voiceline[0]), global.volumeVoice, 1, false);
                 homingTimer = 0;
-                action = actionHoming;
+                action = ActionHoming;
                 scrPlayerAirdashReset();
                 scrAnimationApply("JUMP");
                 trailTimer = 80;
@@ -33,7 +33,7 @@
     }
 
     // -- Jump!
-    if ((ground == true || action == actionCorkscrew) && !scrPlayerCollisionTop(x, y, angle, maskBig) && keyActionPressed == true && action != actionCrouch && action != actionSpindash && action != actionHurt)
+    if ((ground == true || action == ActionCorkscrew) && !scrPlayerCollisionTop(x, y, angle, maskBig) && keyActionPressed == true && action != ActionCrouch && action != ActionSpindash && action != ActionHurt)
     {
         // -- Set speed depending on the angle
         ySpeed  =   angleCos*(jumpStrength/2) - angleSin * xSpeed/1.8;
@@ -41,7 +41,7 @@
 
         scrPlayerAngleSet(0);
         scrPlayerAirdashReset();
-        action          =   actionJump;
+        action          =   ActionJump;
         scrAnimationApply("JUMP");
 
         ground          =   false;
@@ -52,10 +52,10 @@
     }
 
     // -- Stomp!
-    if (keyDown == true && ground == false && (action == actionJump|| action == actionBoostAir || action == actionNormal || action == actionSpring && ySpeed > -2))
+    if (keyDown == true && ground == false && (action == ActionJump|| action == ActionBoostAir || action == ActionNormal || action == ActionSpring && ySpeed > -2))
     {
         scrDummyEffectCreate(x, y, sprVFXBoostWave, 0.6, 0, -0.01, bm_normal, 1, 0.6, 0.6, 270);
-        action = actionStomp;
+        action = ActionStomp;
         scrAnimationApply("STOMP");
         ySpeed = 13;
 
@@ -68,7 +68,7 @@
 
     // -- Boost!
     // -- Stop boosting
-    if (keySpecial1 == false || energyAmount <= 0 || abs(xSpeed) < 2.2 || action == actionRoll || animationIndex == "FLING" || (boostAir == 0 && ground = false)) && boost == true
+    if (keySpecial1 == false || energyAmount <= 0 || abs(xSpeed) < 2.2 || action == ActionRoll || animationIndex == "FLING" || (boostAir == 0 && ground = false)) && boost == true
     {
         boost = false;
         boostPossible = false;
@@ -79,7 +79,7 @@
     {
         if (ground = false)
         {
-            if (action != actionCorkscrew)
+            if (action != ActionCorkscrew)
             {
                 boostAir -= 1;
             }
@@ -89,7 +89,7 @@
     // -- Check if the player is not colliding with a wall
     if (!terrainPushing)
     {
-        if (action == actionNormal || action == actionCorkscrew || action == actionGrind || action == actionJump)
+        if (action == ActionNormal || action == ActionCorkscrew || action == ActionGrind || action == ActionJump)
         {
             // -- Check if the player has enough energy to boost
             if (energyAmount > 0)
@@ -121,11 +121,11 @@
                     instance_create(x, y, objVFXBoostShockwave);
 
                     // -- Check if the player is in the air
-                    if (ground == false && (action == actionNormal || action == actionJump))
+                    if (ground == false && (action == ActionNormal || action == ActionJump))
                     {
                         // -- Air boost dash
                         boost = true;
-                        action = actionBoostAir;
+                        action = ActionBoostAir;
                         boostAir = 40;
                         boostPossible = true;
 
@@ -198,6 +198,6 @@
     {
         ySpeed              = -1;
         ground              = false;
-        action              = actionLightspeed;
+        action              = ActionLightspeed;
         scrAnimationApply("SPRING");
     }

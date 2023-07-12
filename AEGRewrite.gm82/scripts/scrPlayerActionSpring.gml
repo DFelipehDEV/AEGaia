@@ -62,5 +62,5 @@
     // -- Reset after touching the ground
     if (ground == true)
     {
-        action = actionNormal;
+        action = ActionNormal;
     }

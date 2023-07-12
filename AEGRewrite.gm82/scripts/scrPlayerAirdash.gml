@@ -6,7 +6,7 @@
     {
         airdash = false;
         airdashTimer = airdashTimerCommon;
-        action  = actionAirdash;
+        action = ActionAirdash;
         scrAnimationApply("JUMP");
 
         if (keyLeft)

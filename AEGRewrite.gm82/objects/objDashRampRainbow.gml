@@ -11,7 +11,7 @@ applies_to=self
     dashXStrength  = 14;            //X Strength
     dashYStrength  = -14;           //Y Strength
 
-    dashRampPAct   = actionQTEKeys; //Player action when he meets the dash ramp
+    dashRampPAct   = ActionQTEKeys; //Player action when he meets the dash ramp
 
     dashRampQTEFailedXSpeed = 6;
     dashRampQTEFailedYSpeed = -3;

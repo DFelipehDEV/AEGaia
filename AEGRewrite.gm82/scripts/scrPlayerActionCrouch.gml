@@ -7,7 +7,7 @@
         animationFrameSpeed = 0;
         if (animationFrame <= 0.25)
         {
-            action = actionNormal;
+            action = ActionNormal;
         }
     }
     else
@@ -15,7 +15,7 @@
         // -- Spindash!
         if (keyActionPressed == true)
         {
-            action           =  actionSpindash;
+            action           =  ActionSpindash;
 
             // -- Reset strength
             spindashStrength =  0;

@@ -1,1 +1,1 @@
-scrSetupDashRing(30, actionSpring)
+scrSetupDashRing(30, ActionSpring)

@@ -81,10 +81,10 @@ applies_to=self
     // -- Terrain
     ground = false;             // -- Checks whether the player is on the ground or not
     terrainType = "";            // -- Type of terrain the player is landed
-    terrainSound[terFootstep1] = "sndPlayerFootstepStone1"; // -- Footstep sound depending on the terrain
-    terrainSound[terFootstep2] = "sndPlayerFootstepStone2"; // -- Footstep sound depending on the terrain
-    terrainSound[terLand] = "scrPlayerLand"; // -- Land sound effect on a certain terrain
-    terrainSound[terSkid] = "sndPlayerSkidStone"; // -- Land sound effect on a certain terrain
+    terrainSound[TerFootstep1] = "sndPlayerFootstepStone1"; // -- Footstep sound depending on the terrain
+    terrainSound[TerFootstep2] = "sndPlayerFootstepStone2"; // -- Footstep sound depending on the terrain
+    terrainSound[TerLand] = "scrPlayerLand"; // -- Land sound effect on a certain terrain
+    terrainSound[TerSkid] = "sndPlayerSkidStone"; // -- Land sound effect on a certain terrain
     terrainPlatform = 0;
     terrainPushing = false;     // -- Whether the player is pushing into a wall or not
     footstep = 0;               // -- Checks if the footstep sound can play
@@ -200,7 +200,7 @@ applies_to=self
 */
 /// -- Death handle
 
-    if (action == actionDead) exit;
+    if (action == ActionDead) exit;
 
     // -- Die if the player is on the room bottom
     if (y >= room_height)
@@ -208,7 +208,7 @@ applies_to=self
         ground = false;
         scrAnimationApply("DEAD");
         scrAnimationUpdate()
-        action = actionDead;
+        action = ActionDead;
 
         objControllerMusic.fadeOut = true;
         scrPlaySound("sndPlayerHurt", global.volumeSounds, 1, false);
@@ -290,7 +290,7 @@ applies_to=self
         // -- Fall if there is not enough speed.
         if (angle >= 75 && angle <= 285 && abs(xSpeed) < 4)
         {
-            if (action != actionGrind)
+            if (action != ActionGrind)
             {
                 ySpeed = -angleSin*xSpeed;
                 xSpeed = angleCos*xSpeed;
@@ -332,9 +332,9 @@ applies_to=self
         scrPlayerCollisionCache();    
         
         // -- Back to the normal action while doing those actions and the player landed
-        if (action == actionBoostAir)
+        if (action == ActionBoostAir)
         {
-            action = actionNormal;
+            action = ActionNormal;
         }
 
         // -- Leave the ground
@@ -399,8 +399,8 @@ applies_to=self
         }
         
         // -- Add gravity
-        if (yStuckTimer == 0 && action != actionCorkscrew && action != actionAirdash
-        && action != actionWayLauncher)
+        if (yStuckTimer == 0 && action != ActionCorkscrew && action != ActionAirdash
+        && action != ActionWayLauncher)
         {
             ySpeed += yAcc * global.deltaMultiplier;
         }
@@ -420,7 +420,7 @@ applies_to=self
             if (abs(ySpeed) > 2)
             {
                 scrPlayerTerrainSndUpdate();
-                scrPlaySound(terrainSound[terLand], global.volumeSounds, 1, false);
+                scrPlaySound(terrainSound[TerLand], global.volumeSounds, 1, false);
             }
             
             ySpeed = 0;
@@ -436,7 +436,7 @@ applies_to=self
 
     // -- Horizontal movement
     // -- Accelerations/Deceleration
-    if (ground == true || action == actionCorkscrew)
+    if (ground == true || action == ActionCorkscrew)
     {
         xAccTemp = xAcc * global.deltaMultiplier;
         xDecTemp = xDec * global.deltaMultiplier;
@@ -451,13 +451,13 @@ applies_to=self
     // -- Only allow normal control while in these actions
     switch (action)
     {
-        case actionNormal:
-        case actionTurn:
-        case actionJump:
-        case actionSpring:
-        case actionCorkscrew:
-        case actionSkydive:
-        case actionBoostAir:
+        case ActionNormal:
+        case ActionTurn:
+        case ActionJump:
+        case ActionSpring:
+        case ActionCorkscrew:
+        case ActionSkydive:
+        case ActionBoostAir:
             // -- Acceleration
             // -- Accelerate to the left
             if (keyLeft && !keyRight)
@@ -501,7 +501,7 @@ applies_to=self
         xSpeed -= (xDecTemp * 1.2) * sign(xSpeed);
     }
 
-    if (action != actionRoll)
+    if (action != ActionRoll)
     {
         // -- Acceleration and deceleration on slopes
         if (ground == true && angle > 35 && angle < 325)
@@ -514,25 +514,25 @@ applies_to=self
     }
 
     // -- Stop when meet a wall/slide pass and isnt sliding
-    if ((xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))) || (xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
+    if ((xSpeed > 0 && (scrPlayerCollisionRight(x, y, angle, maskBig))) || (xSpeed > 0 && scrPlayerCollisionObjectRight(x, y, angle, maskBig, objSlidepassSensor) && action != ActionSlide && action != ActionRoll))
     {
         xSpeed = 0;
         terrainPushing = true;
-        if (ground && action != actionPush)
+        if (ground && action != ActionPush)
         {
             animationDirection = 1;
-            action = actionPush;
+            action = ActionPush;
             scrAnimationApply("PUSH");
         }
     }
-    else if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != actionSlide && action != actionRoll))
+    else if ((xSpeed < 0 && (scrPlayerCollisionLeft(x, y, angle, maskBig))) || (xSpeed < 0 && scrPlayerCollisionObjectLeft(x, y, angle, maskBig, objSlidepassSensor) && action != ActionSlide && action != ActionRoll))
     {
         xSpeed = 0;
         terrainPushing = true;
-        if (ground && action != actionPush)
+        if (ground && action != ActionPush)
         {
             animationDirection = -1;
-            action = actionPush;
+            action = ActionPush;
             scrAnimationApply("PUSH");
         }
     }
@@ -557,117 +557,117 @@ applies_to=self
     switch(action)
     {
         // -- Normal routine
-        case actionNormal:
+        case ActionNormal:
             scrPlayerActionNormal();
         break;
 
         // -- Spring routine
-        case actionSpring:
+        case ActionSpring:
             scrPlayerActionSpring();
         break;
 
         // -- Turn routine
-        case actionTurn:
+        case ActionTurn:
             scrPlayerActionTurn();
         break;
 
         // -- Jump routine
-        case actionJump:
+        case ActionJump:
             scrPlayerActionJump();
         break;
 
         // -- Air dash routine
-        case actionAirdash:
+        case ActionAirdash:
             scrPlayerActionAirdash();
         break;
 
         // -- Roll routine
-        case actionRoll:
+        case ActionRoll:
             scrPlayerActionRoll();
         break;
 
         // -- Crouch routine
-        case actionCrouch:
+        case ActionCrouch:
             scrPlayerActionCrouch();
         break;
 
         // -- Look up routine
-        case actionLookUp:
+        case ActionLookUp:
             scrPlayerActionLookup();
         break;
 
         // -- Spindash routine
-        case actionSpindash:
+        case ActionSpindash:
             scrPlayerActionSpindash();
         break;
 
         // -- Skid routine
-        case actionSkid:
+        case ActionSkid:
             scrPlayerActionSkid();
         break;
 
         // -- Homing attack routine
-        case actionHoming:
+        case ActionHoming:
             scrPlayerActionHomingAttack();
         break;
 
         // -- Walljump routine
-        case actionWalljump:
+        case ActionWalljump:
             scrPlayerActionWalljump();
         break;
 
         // -- Grind routine
-        case actionGrind:
+        case ActionGrind:
             scrPlayerActionGrind();
         break;
 
         // -- Slide routine
-        case actionSlide:
+        case ActionSlide:
             scrPlayerActionSlide();
         break;
 
         // -- Stomp routine
-        case actionStomp:
+        case ActionStomp:
             scrPlayerActionStomp();
         break;
 
         // -- Stomp land routine
-        case actionStompLand:
+        case ActionStompLand:
             scrPlayerActionStompLand();
         break;
 
         // -- Corkscrew routine
-        case actionCorkscrew:
+        case ActionCorkscrew:
             scrPlayerActionCorkscrew();
         break;
 
         // -- Lightspeed dash routine
-        case actionLightspeed:
+        case ActionLightspeed:
             scrPlayerActionLightspeed();
         break;
 
         // -- Tricks routine
-        case actionTricks:
+        case ActionTricks:
             scrPlayerActionTricks();
         break;
 
         // -- QTEKeys routine
-        case actionQTEKeys:
+        case ActionQTEKeys:
             scrPlayerActionQTEKeys();
         break;
 
         // -- Push routine
-        case actionPush:
+        case ActionPush:
             scrPlayerActionPush();
         break;
 
         // -- Hurt routine
-        case actionHurt:
+        case ActionHurt:
             scrPlayerActionHurt();
         break;
 
         // -- Dead routine
-        case actionDead:
+        case ActionDead:
             scrPlayerActionDead();
         break;
     }
@@ -676,13 +676,13 @@ applies_to=self
     scrPlayerActionTrigger();
 
     attackPossible = boost ||
-        invincibility == invincibilityMonitor ||
-        action == actionJump ||
-        action == actionRoll ||
-        action == actionAirdash ||
-        action == actionHoming ||
-        action == actionStomp ||
-        action == actionSlide
+        invincibility == InvincibilityMonitor ||
+        action == ActionJump ||
+        action == ActionRoll ||
+        action == ActionAirdash ||
+        action == ActionHoming ||
+        action == ActionStomp ||
+        action == ActionSlide
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -870,7 +870,7 @@ applies_to=self
             underwaterDrownFrame += 0.009;
 
             // -- Play sound effect until you drown
-            if (!sound_isplaying("sndPlayerLossingAir") && action != actionDead)
+            if (!sound_isplaying("sndPlayerLossingAir") && action != ActionDead)
             {
                 scrPlaySound("sndPlayerLossingAir", global.volumeSounds, 1, false);
             }
@@ -878,7 +878,7 @@ applies_to=self
             // -- Check if we have drowned
             if (underwaterDrownFrame >= 5.9 && !sound_isplaying("sndPlayerDrown"))
             {
-                action = actionDead;
+                action = ActionDead;
                 scrAnimationApply("DEAD");
                 global.playerRings = 0;
 
@@ -924,7 +924,7 @@ applies_to=self
  // -- Handle animations and direction
 
     // -- Check if the player is not doing any of these actions
-    if (action != actionJump && action != actionTurn && animationIndex != "LAUNCH" && animationIndex != "SPRING" && animationIndex != "LANDING")
+    if (action != ActionJump && action != ActionTurn && animationIndex != "LAUNCH" && animationIndex != "SPRING" && animationIndex != "LANDING")
     {
         // -- Change direction based on the speed direction
         if (sign(xSpeed) != 0)
@@ -934,7 +934,7 @@ applies_to=self
     }
 
     // -- Normal action animations
-    if (action == actionNormal)
+    if (action == ActionNormal)
     {
         scrPlayerAnimationNormal()
     }
@@ -946,7 +946,7 @@ applies_to=self
     if (xSpeed == 0 && ground == true
     || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parSolidNoAngle) || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parPlatformNoAngle)
     || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parLayer0NoAngle) || scrPlayerCollisionObjectBottom(x, y, angle, maskBig, parLayer1NoAngle)
-    || action == actionRoll)
+    || action == ActionRoll)
     {
         animationAngle = 0;
     }
@@ -993,9 +993,9 @@ applies_to=self
                     {
                         alarm[0] = 1;
                     }
-                    sound_stop(terrainSound[terFootstep1])
-                    sound_stop(terrainSound[terFootstep2])
-                    scrPlaySound(choose(terrainSound[terFootstep1],terrainSound[terFootstep2]), global.volumeAmbient, 1, false);
+                    sound_stop(terrainSound[TerFootstep1])
+                    sound_stop(terrainSound[TerFootstep2])
+                    scrPlaySound(choose(terrainSound[TerFootstep1],terrainSound[TerFootstep2]), global.volumeAmbient, 1, false);
                     footstep = true;
                 }
             }
@@ -1018,7 +1018,7 @@ applies_to=self
     trailTimer -= 1;
     trailAlpha = lerp(trailAlpha, trailTimer/110, 0.08);
     // -- AfterImage
-    if abs(xSpeed) >= 11 || abs(ySpeed) >= 11 || action == actionTricks || action == actionLightspeed || action == actionHoming
+    if abs(xSpeed) >= 11 || abs(ySpeed) >= 11 || action == ActionTricks || action == ActionLightspeed || action == ActionHoming
     {
         if (round(global.roomTime*global.deltaMultiplier) mod 6 == 1)
         {
@@ -1047,13 +1047,13 @@ applies_to=self
 /// -- Sound canceling
 
     // -- Stop grinding sound
-    if (action != actionGrind && sound_isplaying("sndPlayerGrindContinue"))
+    if (action != ActionGrind && sound_isplaying("sndPlayerGrindContinue"))
     {
         sound_stop("sndPlayerGrindContinue");
     }
 
     // -- Stop sliding sound
-    if (action != actionSlide && sound_isplaying("sndPlayerSlide"))
+    if (action != ActionSlide && sound_isplaying("sndPlayerSlide"))
     {
         sound_stop("sndPlayerSlide");
     }
@@ -1065,7 +1065,7 @@ applies_to=self
 /// -- Invincibility
 
     // -- Decrease invincibility time
-    if (invincibility != invincibilityHurt)
+    if (invincibility != InvincibilityHurt)
     {
         if (invincibilityTimer > 0)
         {
@@ -1074,7 +1074,7 @@ applies_to=self
         // -- End invincibility
         else
         {
-            if (invincibility == invincibilityMonitor)
+            if (invincibility == InvincibilityMonitor)
             {
                 if (instance_exists(objControllerMusic))
                 {
@@ -1086,15 +1086,15 @@ applies_to=self
                 }
                 scrMusicSetFade(false);
             }
-            invincibility = invincibilityNoone;
+            invincibility = InvincibilityNoone;
 
         }
     }
     else
     {
-        if (action != actionHurt)
+        if (action != ActionHurt)
         {
-            invincibility = invincibilityNoone;
+            invincibility = InvincibilityNoone;
         }
     }
 /*"/*'/**//* YYD ACTION
@@ -1104,7 +1104,7 @@ applies_to=self
 */
 /// -- Shields
 
-    if (shield == shieldElectricity)
+    if (shield == ShieldElectricity)
     {
         if (physicMode == 1)
         {
@@ -1121,7 +1121,7 @@ applies_to=self
     var nearRing;
     nearRing = instance_nearest(x, y, objRing);
 
-    if ((distance_to_object(nearRing) < 32 && boost == true) || (distance_to_object(nearRing) < 65 && shield == shieldElectricity))
+    if ((distance_to_object(nearRing) < 32 && boost == true) || (distance_to_object(nearRing) < 65 && shield == ShieldElectricity))
     {
         with (nearRing)
         {
@@ -1149,19 +1149,19 @@ applies_to=self
     }
 
     // -- Draw grind effect
-    if (action == actionGrind)
+    if (action == ActionGrind)
     {
         draw_sprite_ext(sprVFXGrind, global.gameTime div 30, floor(x), floor(y), animationDirection, image_yscale, animationAngle, c_white, image_alpha);
     }
 
     // -- Draw character if the player is not hurt. Blink when hurt
-    if (invincibility != invincibilityBlink || (invincibility == invincibilityBlink && (invincibilityTimer div 1.5) mod 3 == 1))
+    if (invincibility != InvincibilityBlink || (invincibility == InvincibilityBlink && (invincibilityTimer div 1.5) mod 3 == 1))
     {
         // -- Draw character
         draw_sprite_ext(animationSprite, floor(animationFrame), floor(x), floor(y), animationDirection, image_yscale, animationAngle, image_blend, image_alpha);
     }
 
-    if (action == actionSpindash)
+    if (action == ActionSpindash)
     {
         // -- Spindash normal dust
         if (animationIndex == "SPINDASH")
@@ -1180,7 +1180,7 @@ applies_to=self
     if (physicMode == 1)
     {
         // -- Check if the player is drowning
-        if (underwaterAir < 120 && action != actionDead)
+        if (underwaterAir < 120 && action != ActionDead)
         {
             // -- If drowning, show time till you drown
             draw_sprite(sprDrownTimer, floor(underwaterDrownFrame), floor(x) + 16, floor(y) - 12);

@@ -2,7 +2,7 @@
  // -- Set hurt action
 
     // -- Check if the player is not invincible
-    if (invincibilityTimer == 0 && invincibility != invincibilityHurt)
+    if (invincibilityTimer == 0 && invincibility != InvincibilityHurt)
     {
         // -- Set player to its opposite direction
         if (sign(xSpeed) != 0)
@@ -14,7 +14,7 @@
         {
             xSpeed = -2.7 * animationDirection;
         }
-        invincibility = invincibilityHurt;
+        invincibility = InvincibilityHurt;
 
         ySpeed = -4;
         ground = false;
@@ -23,7 +23,7 @@
         if (shield)
         {
             shield = 0;
-            action = actionHurt;
+            action = ActionHurt;
             scrAnimationApply("HURT_FALL");
             scrPlaySound(voiceline[5], global.volumeVoice, 1, false);
         }
@@ -45,7 +45,7 @@
                     global.playerRings = floor(global.playerRings*0.4);
                 }
 
-                action             = actionHurt;
+                action = ActionHurt;
                 scrAnimationApply("HURT_FALL");
                 scrPlaySound(voiceline[5], global.volumeVoice, 1, false);
             }
@@ -54,7 +54,7 @@
                 ground = false;
                 scrAnimationApply("DEAD");
                 scrAnimationUpdate()
-                action = actionDead;
+                action = ActionDead;
                 global.playerRings = 0;
 
                 objControllerMusic.fadeOut = true;

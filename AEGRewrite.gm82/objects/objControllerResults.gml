@@ -6,27 +6,25 @@ applies_to=self
 */
 /// -- Variables
 
-    //Stop the game time from progressing
+    // -- Stop the game time from progressing
     global.gameTimeAllow = false
 
-    //Play victory music
+    // -- Play victory music
     scrPlaySound("bgmVictory", global.volumeMusic, 1, false);
 
-    //Stop music
+    // -- Stop music
     if (instance_exists(objControllerMusic))
     {
         objControllerMusic.fadeOut = true;
     }
 
-
     overlaysHeight = 0;                 //Overlays sprite height being drawn
     resultsTimer = 0;                   //Overall timer for everything on this results code
-    characterX = screenWidth + 240;     //Character position
+    characterX = ScreenWidth + 240;     //Character position
     resultsBarScale = 0;                //Width scale of results/rank bar
 
     scorebarX = -400;
     scoreTextYOffset = 0;
-
 
     // -- Set all score text X position
     for (i = 0; i < 5; i += 1)
@@ -40,19 +38,18 @@ applies_to=self
         color = c_white;
     }
 
-
-    //Score
+    // -- Score
     scoreBonusTime = 0;                 //Amount of score that you got by your time
     scoreBonusRing = 0;                 //Amount of score that you got by rings
 
-    //Score Values
+    // -- Score Values
     scoreValueTime = 8000-floor(global.gameTime/50000)*4500;
     scoreValueRing = global.playerRings*35;
 
     scoreFinished  = 0;                 //Check if the score has reached its value
 
-    //Rank
-    rankIndex = "";                     //Index of the rank you got dependent on your score
+    // -- Rank
+    rankIndex = -1;                     //Index of the rank you got dependent on your score
     rankScale = 24;                     //Rank scale on screen when it shows up
     rankTime = 0;                       //Used for rank animation when it pops up
 #define Step_0
@@ -75,10 +72,10 @@ applies_to=self
     if (resultsTimer > 80)
     {
         // -- Interpolate the player character to the right side of the screen
-        characterX = lerp(characterX, screenWidth - 120, 0.08);
+        characterX = lerp(characterX, ScreenWidth - 120, 0.08);
 
         // -- Increase the score/rank line width
-        resultsBarScale = inch(resultsBarScale, screenWidth, 16)
+        resultsBarScale = inch(resultsBarScale, ScreenWidth, 16)
     }
 
     // -- Score bars
@@ -103,10 +100,8 @@ applies_to=self
             sound_stop("sndResultsScoreCount")
         }
 
-
         // -- Show the score bar underlay on the screen
         scorebarX = lerp(scorebarX, 0, 0.1);
-
 
         // -- Scores animations
         if (resultsTimer > 130)
@@ -133,7 +128,6 @@ applies_to=self
             {
                 scoreTextX[4] = lerp(scoreTextX[4], 8, 0.1);
             }
-
 
             if (resultsTimer > 230)
             {
@@ -177,33 +171,30 @@ applies_to=self
                 && scoreFinished == true)
                 {
                     // -- Check if the rank has not been given
-                    if (rankIndex == "")
+                    if (rankIndex == -1)
                     {
                         // -- C Rank
-                        if (scoreBonusTime + scoreBonusRing < global.stageRank[rankB])
+                        if (scoreBonusTime + scoreBonusRing < global.stageRank[RankB])
                         {
-                            rankIndex = "C"
+                            rankIndex = RankC;
                         }
-
 
                         // -- B Rank
-                        if (scoreBonusTime + scoreBonusRing >= global.stageRank[rankB] && scoreBonusTime + scoreBonusRing < global.stageRank[rankA])
+                        if (scoreBonusTime + scoreBonusRing >= global.stageRank[RankB] && scoreBonusTime + scoreBonusRing < global.stageRank[RankA])
                         {
-                            rankIndex = "B"
+                            rankIndex = RankB;
                         }
-
 
                         // -- A Rank
-                        if (scoreBonusTime + scoreBonusRing >= global.stageRank[rankA] && scoreBonusTime + scoreBonusRing < global.stageRank[rankS])
+                        if (scoreBonusTime + scoreBonusRing >= global.stageRank[RankA] && scoreBonusTime + scoreBonusRing < global.stageRank[RankS])
                         {
-                            rankIndex = "A"
+                            rankIndex = RankA;
                         }
 
-
                         // -- S Rank
-                        if (scoreBonusTime + scoreBonusRing >= global.stageRank[rankS])
+                        if (scoreBonusTime + scoreBonusRing >= global.stageRank[RankS])
                         {
-                            rankIndex = "S"
+                            rankIndex = RankS;
                         }
                     }
                     else
@@ -212,14 +203,11 @@ applies_to=self
                         rankTime = min(rankTime + 1, 60);
                         rankScale = abs(scrEasings(rankTime, 24, -23, 60, "easeOutBounce"))
 
-
                         // -- Check if you got a S Rank and then spawn stars particles on the rank visual
-                        if (rankIndex == "S" && resultsTimer mod 8 == 4 && rankScale < 5)
+                        if (rankIndex == RankS && resultsTimer mod 8 == 4 && rankScale < 5)
                         {
                             scrDummyEffectCreate(view_xview[0] + 280 + random_range(-20, 20), view_yview[0] + 221 + random_range(-20, 20), sprVFXStar1, 0.2, 0, -999999991, bm_normal, 1, 1, 1, 0);
                         }
-
-
 
                         // -- Check if the rank animation is near ended
                         if (rankTime == 50)
@@ -227,22 +215,22 @@ applies_to=self
                             // -- Play different voicelines for each rank
                             switch (rankIndex)
                             {
-                               case "S":
+                               case RankS:
                                    scrPlaySound("sndResultsRanked", global.volumeSounds, 1, false);
                                    scrPlaySound(choose("sndVoiceSonic6", "sndVoiceSonic7"), global.volumeSounds, 1, false);
                                break;
 
-                               case "A":
+                               case RankA:
                                    scrPlaySound("sndResultsRanked", global.volumeSounds, 1, false);
                                    scrPlaySound("sndVoiceSonic8", global.volumeSounds, 1, false);
                                break;
 
-                               case "B":
+                               case RankB:
                                    scrPlaySound("sndResultsRanked", global.volumeSounds, 1, false);
                                    scrPlaySound("sndVoiceSonic9", global.volumeSounds, 1, false);
                                break;
 
-                               case "C":
+                               case RankC:
                                    scrPlaySound("sndResultsRanked", global.volumeSounds, 1, false);
                                    scrPlaySound("sndVoiceSonic10", global.volumeSounds, 1, false);
                                break;
@@ -293,13 +281,13 @@ applies_to=self
         // -- Draw main character
         draw_sprite_ext(sprTitleCardChar, 0, view_xview[0] + characterX, view_yview[0] + 130, 1, 1, -dsin(current_time/11)*20, c_white, 1)
 
-        draw_sprite_ext(sprTitleCardZoneCard, 0, view_xview[0], view_yview[0] + screenHeight - 80, resultsBarScale, 0.7, 0, c_white, 1)
+        draw_sprite_ext(sprTitleCardZoneCard, 0, view_xview[0], view_yview[0] + ScreenHeight - 80, resultsBarScale, 0.7, 0, c_white, 1)
     }
     // -- Draw top overlay
     draw_sprite_part(sprResultsOverlays, 0, 0, 0, 512, overlaysHeight, view_xview[0], view_yview[0]);
 
     // -- Draw bottom overlay
-    draw_sprite_part_ext(sprResultsOverlays, 1, 0, 0, 512, overlaysHeight, view_xview[0], view_yview[0] + screenHeight, 1, -1, c_white, 1);
+    draw_sprite_part_ext(sprResultsOverlays, 1, 0, 0, 512, overlaysHeight, view_xview[0], view_yview[0] + ScreenHeight, 1, -1, c_white, 1);
 
 
     // -- Draw score text after a certain amount of time has passed
@@ -336,19 +324,19 @@ applies_to=self
     {
         switch (rankIndex)
         {
-            case "S":
+            case RankS:
                 draw_sprite_ext(sprResultsRanks, 0, view_xview[0] + 280, view_yview[0] + 221, rankScale, rankScale, 0, c_white, 1);
             break;
 
-            case "A":
+            case RankA:
                 draw_sprite_ext(sprResultsRanks, 1, view_xview[0] + 280, view_yview[0] + 221, rankScale, rankScale, 0, c_white, 1);
             break;
 
-            case "B":
+            case RankB:
                 draw_sprite_ext(sprResultsRanks, 2, view_xview[0] + 280, view_yview[0] + 221, rankScale, rankScale, 0, c_white, 1);
             break;
 
-            case "C":
+            case RankC:
                 draw_sprite_ext(sprResultsRanks, 3, view_xview[0] + 280, view_yview[0] + 221, rankScale, rankScale, 0, c_white, 1);
             break;
         }

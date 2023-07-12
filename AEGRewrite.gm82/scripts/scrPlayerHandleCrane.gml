@@ -7,7 +7,7 @@
     //Check if is meeting the fling sensor
     if (handle != noone && ySpeed >= 0)
     {
-        if (action != actionGrab)
+        if (action != ActionGrab)
         {
             scrPlaySound("sndPlayerGrab", global.volumeSounds, 1, false);
         }
@@ -17,7 +17,7 @@
         xSpeed = 0;
         ySpeed = 0;
 
-        action = actionGrab;
+        action = ActionGrab;
         scrAnimationApply("HANG_1")
         movementAllow = false;
     }

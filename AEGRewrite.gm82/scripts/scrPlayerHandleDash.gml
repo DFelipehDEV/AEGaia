@@ -54,7 +54,7 @@
             animationAngle     = -dashRing.image_angle;
 
             // -- Set slow motion
-            if (dashRing.dashRingPAct == actionTricks)
+            if (dashRing.dashRingPAct == ActionTricks)
             {
                 global.deltaMultiplier = 0.4;
                 trickCombo     = 0;
@@ -106,7 +106,7 @@
             }
 
             action         = dashRamp.dashRampPAct;
-            if (dashRamp.dashRampPAct == actionQTEKeys)
+            if (dashRamp.dashRampPAct == ActionQTEKeys)
             {
                 dashrnear = instance_nearest(x, y + 1, parDashRamp);
                 with(instance_create(0, 0, objControllerQTEKeys))
@@ -135,7 +135,7 @@
 
     // -- Dash rail
     dashRail = scrPlayerCollisionHitbox(x, y, parDashRail);
-    if (dashRail != noone && ground == true && action == actionGrind)
+    if (dashRail != noone && ground == true && action == ActionGrind)
     {
         if (dashRail.dashAllow == true)
         {

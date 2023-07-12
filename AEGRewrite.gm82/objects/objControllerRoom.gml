@@ -49,13 +49,13 @@ applies_to=self
         window_set_fullscreen(false);
     }
 
-    window_set_size(screenWidth * global.screenSize, screenHeight * global.screenSize);
-    window_set_region_size(screenWidth, screenHeight, 1);
+    window_set_size(ScreenWidth * global.screenSize, ScreenHeight * global.screenSize);
+    window_set_region_size(ScreenWidth, ScreenHeight, 1);
 
     // -- Fullscreen
     if (global.screenSize == 3)
     {
-        window_set_size(screenWidth, screenHeight);
+        window_set_size(ScreenWidth, ScreenHeight);
         window_set_fullscreen(true);
         //window_set_fullscreen_ext(true);
     }

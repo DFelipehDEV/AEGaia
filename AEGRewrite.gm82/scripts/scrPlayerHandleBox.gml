@@ -8,7 +8,7 @@
     {
         if (attackPossible)
         {
-            if (action != actionJump)
+            if (action != ActionJump)
             {
                 with (box1)
                 {

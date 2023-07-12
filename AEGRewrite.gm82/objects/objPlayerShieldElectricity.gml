@@ -23,7 +23,7 @@ applies_to=self
     image_angle = playerID.animationAngle;
 
     // -- Check if the player has other shield
-    if (playerID.shield != shieldElectricity)
+    if (playerID.shield != ShieldElectricity)
     {
         instance_destroy();
     }

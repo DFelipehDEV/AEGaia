@@ -21,7 +21,7 @@ applies_to=self
 
 
     // -- Check if is colliding with the player
-    if (objPlayer.action == actionWayLauncher && place_meeting(x, y, objPlayer) == true)
+    if (objPlayer.action == ActionWayLauncher && place_meeting(x, y, objPlayer) == true)
     {
         if (timerExit < 140)
         {
@@ -31,7 +31,7 @@ applies_to=self
         {
             with (objPlayer)
             {
-                action  = actionHurt;
+                action  = ActionHurt;
                 scrAnimationApply("HURT_FALL");
                 visible = true;
             }
@@ -64,7 +64,7 @@ applies_to=self
                 {
                     with (objPlayer)
                     {
-                        action = actionSpring;
+                        action = ActionSpring;
                         ySpeed = -9.5;
                         visible = true;
                         starTimer = 50;
@@ -104,7 +104,7 @@ applies_to=self
                 {
                     with (objPlayer)
                     {
-                        action = actionNormal;
+                        action = ActionNormal;
                         ySpeed = 9.5;
                         visible = true;
                         starTimer = 50;
@@ -144,7 +144,7 @@ applies_to=self
                 {
                     with (objPlayer)
                     {
-                        action             = actionNormal;
+                        action             = ActionNormal;
                         animationDirection = -1;
                         scrAnimationApply("LAUNCH");
                         yStuckTimer        = 16;
@@ -187,7 +187,7 @@ applies_to=self
                 {
                     with (objPlayer)
                     {
-                        action             = actionNormal;
+                        action             = ActionNormal;
                         animationDirection = 1;
                         scrAnimationApply("LAUNCH");
                         yStuckTimer        = 16;
@@ -216,7 +216,7 @@ applies_to=self
     //Check if it has released the specific direction key
     if (objPlayer.keyDown == false && objPlayer.keyUp == false && objPlayer.keyLeft == false && objPlayer.keyRight == false
     && (sprite_index == sprWayLauncherUp || sprite_index == sprWayLauncherDown || sprite_index == sprWayLauncherLeft || sprite_index == sprWayLauncherRight)
-    || objPlayer.action != actionWayLauncher)
+    || objPlayer.action != ActionWayLauncher)
     {
         if (floor(image_index) == 0)
         {

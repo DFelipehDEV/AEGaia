@@ -6,7 +6,6 @@ applies_to=self
 */
 /// -- Variables
 
-
     active = false;
     speedval = 4.131999
 
@@ -77,7 +76,7 @@ applies_to=self
         {
             allowKeys = false;
             keyRight = true;
-            action = actionNormal;
+            action = ActionNormal;
             goal = true;
         }
 

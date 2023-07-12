@@ -1,1 +1,1 @@
-    scrSetupDashRing(12, actionTricks)
+    scrSetupDashRing(12, ActionTricks)

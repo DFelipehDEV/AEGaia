@@ -18,7 +18,7 @@
                 keyRight = false;
                 keyLeft = false;
                 xSpeed = 0;
-                action = actionTurn;
+                action = ActionTurn;
                 scrAnimationApply("TURN");
             }
         }
@@ -30,7 +30,7 @@
             if (keyUp == true && keyDown == false)
             {
                 scrCameraLag(20)
-                action     = actionLookUp;
+                action = ActionLookUp;
                 scrAnimationApply("LOOK_UP");
             }
 
@@ -38,7 +38,7 @@
             if (keyDown == true && keyUp == false)
             {
                 scrCameraLag(20)
-                action     = actionCrouch;
+                action = ActionCrouch;
                 scrAnimationApply("CROUCH");
             }
         }
@@ -47,8 +47,8 @@
         if ((xSpeed >= skidSpeed && keyLeft == true) || (xSpeed <= -skidSpeed && keyRight == true))
         {
             scrPlayerTerrainSndUpdate();
-            action = actionSkid;
-            scrPlaySound(terrainSound[terSkid], global.volumeSounds, 1, false);
+            action = ActionSkid;
+            scrPlaySound(terrainSound[TerSkid], global.volumeSounds, 1, false);
             scrAnimationApply("SKID");
         }
 
@@ -57,7 +57,7 @@
         {
             scrPlaySound(choose(voiceline[3], voiceline[2]), global.volumeVoice, 1, false);
             slideResetTimer = 35;
-            action          = actionSlide;
+            action = ActionSlide;
             trailTimer = 30;
 
             scrAnimationApply("SLIDE");

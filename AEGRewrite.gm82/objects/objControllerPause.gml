@@ -135,7 +135,7 @@ applies_to=self
         if (keyboard_check_pressed(vk_enter)) || joystick_check_button_pressed(0, 7)
         {
             // -- Create a "print screen" of the screen before pausing
-            gamescreen = background_create_from_screen(0, 0, screenWidth, screenHeight, 0, 0);
+            gamescreen = background_create_from_screen(0, 0, ScreenWidth, ScreenHeight, 0, 0);
 
             // -- Stop all objects
             instance_deactivate_all(1)
@@ -173,33 +173,33 @@ applies_to=self
         {
             case 1:
                 // -- Draw black outline
-                draw_sprite_ext(sprPauseOptions, 3, (view_xview[0] + 3) + screenWidth/2, ((view_yview[0] + 3) - 10) + screenHeight/2, pauseOptionOutlineScale, pauseOptionOutlineScale, 0, c_white, 1);
+                draw_sprite_ext(sprPauseOptions, 3, (view_xview[0] + 3) + ScreenWidthHalf, ((view_yview[0] + 3) - 10) + ScreenHeightHalf, pauseOptionOutlineScale, pauseOptionOutlineScale, 0, c_white, 1);
 
 
                 // -- Draw options
-                draw_sprite_ext(sprPauseOptions, 0, view_xview[0] + screenWidth/2, (view_yview[0] - 10) + screenHeight/2, titleScale, titleScale, 0, c_white, 1);
-                draw_sprite_ext(sprPauseOptions, 1, view_xview[0] + screenWidth/2, (view_yview[0] + 10) + screenHeight/2, titleScale, titleScale, 0, c_gray, 1);
-                draw_sprite_ext(sprPauseOptions, 2, view_xview[0] + screenWidth/2, (view_yview[0] + 30) + screenHeight/2, titleScale, titleScale, 0, c_gray, 1);
+                draw_sprite_ext(sprPauseOptions, 0, view_xview[0] + ScreenWidthHalf, (view_yview[0] - 10) + ScreenHeightHalf, titleScale, titleScale, 0, c_white, 1);
+                draw_sprite_ext(sprPauseOptions, 1, view_xview[0] + ScreenWidthHalf, (view_yview[0] + 10) + ScreenHeightHalf, titleScale, titleScale, 0, c_gray, 1);
+                draw_sprite_ext(sprPauseOptions, 2, view_xview[0] + ScreenWidthHalf, (view_yview[0] + 30) + ScreenHeightHalf, titleScale, titleScale, 0, c_gray, 1);
             break;
 
             case 2:
-                draw_sprite_ext(sprPauseOptions, 3, (view_xview[0] + 3) + screenWidth/2, ((view_yview[0] + 3) + 10) + screenHeight/2, pauseOptionOutlineScale, pauseOptionOutlineScale, 0, c_white, 1);
+                draw_sprite_ext(sprPauseOptions, 3, (view_xview[0] + 3) + ScreenWidthHalf, ((view_yview[0] + 3) + 10) + ScreenHeightHalf, pauseOptionOutlineScale, pauseOptionOutlineScale, 0, c_white, 1);
 
                 // -- Draw options
-                draw_sprite_ext(sprPauseOptions, 0, view_xview[0] + screenWidth/2, (view_yview[0] - 10) + screenHeight/2, titleScale, titleScale, 0, c_gray, 1);
-                draw_sprite_ext(sprPauseOptions, 1, view_xview[0] + screenWidth/2, (view_yview[0] + 10) + screenHeight/2, titleScale, titleScale, 0, c_white, 1);
-                draw_sprite_ext(sprPauseOptions, 2, view_xview[0] + screenWidth/2, (view_yview[0] + 30) + screenHeight/2, titleScale, titleScale, 0, c_gray, 1);
+                draw_sprite_ext(sprPauseOptions, 0, view_xview[0] + ScreenWidthHalf, (view_yview[0] - 10) + ScreenHeightHalf, titleScale, titleScale, 0, c_gray, 1);
+                draw_sprite_ext(sprPauseOptions, 1, view_xview[0] + ScreenWidthHalf, (view_yview[0] + 10) + ScreenHeightHalf, titleScale, titleScale, 0, c_white, 1);
+                draw_sprite_ext(sprPauseOptions, 2, view_xview[0] + ScreenWidthHalf, (view_yview[0] + 30) + ScreenHeightHalf, titleScale, titleScale, 0, c_gray, 1);
             break;
 
             case 3:
                 // -- Draw black outline
-                draw_sprite_ext(sprPauseOptions, 3, (view_xview[0] + 3) + screenWidth/2, ((view_yview[0] + 3) + 30) + screenHeight/2, pauseOptionOutlineScale, pauseOptionOutlineScale, 0, c_white, 1);
+                draw_sprite_ext(sprPauseOptions, 3, (view_xview[0] + 3) + ScreenWidthHalf, ((view_yview[0] + 3) + 30) + ScreenHeightHalf, pauseOptionOutlineScale, pauseOptionOutlineScale, 0, c_white, 1);
 
                 // -- Draw options
-                draw_sprite_ext(sprPauseOptions, 0, view_xview[0] + screenWidth/2, (view_yview[0] - 10) + screenHeight/2, titleScale, titleScale, 0, c_gray, 1);
-                draw_sprite_ext(sprPauseOptions, 1, view_xview[0] + screenWidth/2, (view_yview[0] + 10) + screenHeight/2, titleScale, titleScale, 0, c_gray, 1);
-                draw_sprite_ext(sprPauseOptions, 2, view_xview[0] + screenWidth/2, (view_yview[0] + 30) + screenHeight/2, titleScale, titleScale, 0, c_white, 1);
+                draw_sprite_ext(sprPauseOptions, 0, view_xview[0] + ScreenWidthHalf, (view_yview[0] - 10) + ScreenHeightHalf, titleScale, titleScale, 0, c_gray, 1);
+                draw_sprite_ext(sprPauseOptions, 1, view_xview[0] + ScreenWidthHalf, (view_yview[0] + 10) + ScreenHeightHalf, titleScale, titleScale, 0, c_gray, 1);
+                draw_sprite_ext(sprPauseOptions, 2, view_xview[0] + ScreenWidthHalf, (view_yview[0] + 30) + ScreenHeightHalf, titleScale, titleScale, 0, c_white, 1);
             break;
         }
     }
-    draw_sprite_ext(sprPauseTitle, 0, view_xview[0] + screenWidth/2, (view_yview[0] - 40) + screenHeight/2, round(titleScale/0.2)*0.2, round(titleScale/0.2)*0.2, 0, c_white, 1);
+    draw_sprite_ext(sprPauseTitle, 0, view_xview[0] + ScreenWidthHalf, (view_yview[0] - 40) + ScreenHeightHalf, round(titleScale/0.2)*0.2, round(titleScale/0.2)*0.2, 0, c_white, 1);

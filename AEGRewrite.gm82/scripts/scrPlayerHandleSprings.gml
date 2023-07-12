@@ -12,7 +12,7 @@
             scrPlaySound("sndSpring", global.volumeSounds, 1, false);
             xSpeed = spring.springStrength * dcos(spring.image_angle + 90);
             ySpeed = -spring.springStrength * dsin(spring.image_angle + 90);
-            action = actionSpring;
+            action = ActionSpring;
             ground = false;
             spring.image_speed = 0.3;
             scrAnimationApply("SPRING");

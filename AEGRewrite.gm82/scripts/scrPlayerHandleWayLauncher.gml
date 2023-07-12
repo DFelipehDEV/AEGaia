@@ -6,7 +6,7 @@
 
     if (waylauncher != noone)
     {
-        if (waylauncher.sprite_index == sprWayLauncher && action != actionWayLauncher && action != actionHurt && ground == false)
+        if (waylauncher.sprite_index == sprWayLauncher && action != ActionWayLauncher && action != ActionHurt && ground == false)
         {
             x      = waylauncher.x;
             y      = waylauncher.y;
@@ -14,7 +14,7 @@
 
             xSpeed = 0;
             ySpeed = 0;
-            action = actionWayLauncher;
+            action = ActionWayLauncher;
             scrAnimationApply("");
 
             with(waylauncher)

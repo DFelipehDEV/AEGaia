@@ -89,10 +89,10 @@
                 }
 
                 // -- Stop homing if the player was homing
-                scrPlayerHomingReset(actionNormal, 0, -6.7, 35, enemyX, enemyY);
+                scrPlayerHomingReset(ActionNormal, 0, -6.7, 35, enemyX, enemyY);
 
                 // -- Bounce on the enemy
-                if (action == actionJump && ySpeed >= 0)
+                if (action == ActionJump && ySpeed >= 0)
                 {
                     // -- Check if the player is holding the jump key
                     if (keyAction == true)

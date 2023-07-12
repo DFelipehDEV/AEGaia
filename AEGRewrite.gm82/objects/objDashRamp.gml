@@ -12,7 +12,7 @@ applies_to=self
     dashXStrength  = 11;            // -- X Strength
     dashYStrength  = -11;           // -- Y Strength
 
-    dashRampPAct   = actionNormal; // -- Player action when he meets the dash ramp
+    dashRampPAct   = ActionNormal; // -- Player action when he meets the dash ramp
 
 
     image_speed    = 0.35;          // -- Dash animation speed

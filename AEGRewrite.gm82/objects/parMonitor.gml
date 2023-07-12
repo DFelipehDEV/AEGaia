@@ -9,7 +9,7 @@ applies_to=self
     image_speed = 0;
 
     playerID = 0;
-    icon     = -1;     //Current icon
+    icon = -1;     // -- Current icon
 #define Collision_objPlayer
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -18,18 +18,17 @@ applies_to=self
 */
 /// -- Destroy
 
+    monIcon = instance_create(x, y, objMonitorIcon);
+    monIcon.playerID = other.id;
+    monIcon.icon = icon;
 
-    monIcon             = instance_create(x, y, objMonitorIcon);
-    monIcon.playerID    = other.id;
-    monIcon.icon        = icon;
-
-    if (other.action == actionJump && other.ySpeed > 0)
+    if (other.action == ActionJump && other.ySpeed > 0)
     {
         other.ySpeed *= -0.9;
     }
     with (other)
     {
-        scrPlayerHomingReset(actionNormal, 0, -5.8, 0, x, y);
+        scrPlayerHomingReset(ActionNormal, 0, -5.8, 0, x, y);
     }
 
     // -- Create explosion

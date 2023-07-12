@@ -38,7 +38,7 @@ applies_to=self
         optionX[i] = lerp(optionX[i], 30, 0.2);
     }
 
-    scale = inch(scale, screenWidth, 8);
+    scale = inch(scale, ScreenWidth, 8);
     delay = max(delay - 1, 0);
 
     // -- Options
@@ -307,18 +307,18 @@ applies_to=self
                 shift       = 0;
 
                 cardDashX   = 0;
-                cardDashY   = view_yview + screenHeight - 75;
+                cardDashY   = view_yview + ScreenHeight - 75;
 
 
                 // Go to the center of the room
                 x = room_width / 2;
                 y = room_height / 2;
 
-                cardXScale = screenWidth;
+                cardXScale = ScreenWidth;
                 cardYScale = 1;
 
                 cardX = view_xview;
-                cardY = view_yview + screenHeight - 75;
+                cardY = view_yview + ScreenHeight - 75;
 
                 menu = 0;
 
@@ -337,9 +337,9 @@ applies_to=self
                 delay = 0;
                 logoAlpha = 1;
                 returnDelay = 50;
-                optionY[0] = screenHeight;
-                optionY[1] = screenHeight + 32;
-                optionY[2] = screenHeight + 64;
+                optionY[0] = ScreenHeight;
+                optionY[1] = ScreenHeight + 32;
+                optionY[2] = ScreenHeight + 64;
 
                 optionMainAlpha = 1;
             }
@@ -353,7 +353,7 @@ applies_to=self
 */
 /// -- Draw options
 
-    draw_sprite_ext(sprTrigger, 0, view_xview, view_yview, screenWidth, screenHeight, 0, c_blue, image_alpha);
+    draw_sprite_ext(sprTrigger, 0, view_xview, view_yview, ScreenWidth, ScreenHeight, 0, c_blue, image_alpha);
 
     // -- Draw options
     var volMusic, volSound, volVoice, volAmbient;

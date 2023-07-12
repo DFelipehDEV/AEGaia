@@ -102,35 +102,35 @@ applies_to=self
         // Draw
         switch(tileDir)
         {
-            case parallaxSpritePart:
+            case ParallaxSpritePart:
                 draw_sprite_part(backg, frame, Left, Top, Width, Height, xFinal, yFinal);
             break;
 
-            case parallaxSpriteHorizontal:
+            case ParallaxSpriteHorizontal:
                 scrDrawSpriteTiledHorizontalPart(backg, frame, Left, Top, Width, Height, xFinal, yFinal, xSeparation);
             break;
 
-            case parallaxSpriteVertical:
+            case ParallaxSpriteVertical:
                 scrDrawSpriteTiledVerticalPart(backg, frame, Left, Top, Width, Height, xFinal, yFinal, ySeparation);
             break;
 
-            case parallaxSpriteTiled:
+            case ParallaxSpriteTiled:
                 scrDrawSpriteTiledPart(backg, Left, Top, Width, Height, xFinal, yFinal, xSeparation, ySeparation);
             break;
 
-            case parallaxSprite:
+            case ParallaxSprite:
                 draw_sprite(backg, frame, xFinal, yFinal);
             break;
 
-            case parallaxBGHorizontal:
+            case ParallaxBGHorizontal:
                 scrDrawBackgroundRepeatHorizontal(backg, xFinal, yFinal, 1, 1, xSeparation, Width);
             break;
 
-            case parallaxBGVertical:
+            case ParallaxBGVertical:
                 scrDrawBackgroundRepeatVertical(backg, xFinal, yFinal, 1, 1, ySeparation, Height);
             break;
 
-            case parallaxBG:
+            case ParallaxBG:
                 draw_background(backg, xFinal, yFinal);
             break;
         }

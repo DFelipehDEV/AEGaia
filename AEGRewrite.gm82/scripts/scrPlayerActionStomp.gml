@@ -6,7 +6,7 @@
     // -- Land
     if (ground == true)
     {
-        action         = actionStompLand;
+        action         = ActionStompLand;
         scrAnimationApply("STOMP_LAND");
 
         scrPlaySound("sndPlayerStompLand", global.volumeSounds, 1, false);

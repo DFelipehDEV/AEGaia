@@ -23,7 +23,7 @@ applies_to=self
             pull = 0;
             vspeed = 0;
             playerID.ySpeed = -6;
-            playerID.action = actionSpring;
+            playerID.action = ActionSpring;
             if (sound_isplaying("sndPlayerJump") == false)
             {
                 scrPlaySound("sndPlayerJump", global.volumeSounds, 1.1, false);

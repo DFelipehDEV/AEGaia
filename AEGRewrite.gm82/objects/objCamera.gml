@@ -7,8 +7,8 @@ applies_to=self
 /// -- Variables
 
     view_object[0] = id;
-    view_hborder[0] = screenWidthMid*0.99;
-    view_vborder[0] = screenHeightMid*0.98;
+    view_hborder[0] = ScreenWidthHalf*0.99;
+    view_vborder[0] = ScreenHeightHalf*0.98;
 
     camTarget       =   objPlayer;      // -- Camera target to follow the object
     camLagTimer     =   0;              // -- Size in frames of how long the lag remains
@@ -89,7 +89,7 @@ applies_to=self
         switch(camTarget.action)
         {
             // -- Shift the camera in the direction you are pressing while in a way launcher
-            case actionWayLauncher:
+            case ActionWayLauncher:
                 if (camTarget.keyLeft == true)
                 {
                     camXShift = inch(camXShift, -80, 10);
@@ -116,17 +116,17 @@ applies_to=self
         switch(camTarget.action)
         {
             // -- Shift the camera up while looking up
-            case actionLookUp:                
+            case ActionLookUp:                
                 camYShift = inch(camYShift, -90, 3);
             break;
             
             // -- Shift the camera down while crouching
-            case actionCrouch:                
+            case ActionCrouch:                
                 camYShift = inch(camYShift, 90, 3);
             break;
             
             // -- Shift the camera in the direction you are pressing while in a way launcher
-            case actionWayLauncher:
+            case ActionWayLauncher:
                 if (camTarget.keyUp == true)
                 {
                     camYShift = inch(camYShift, -80, 10);
@@ -141,7 +141,7 @@ applies_to=self
                 }
             break;
             
-            case actionStomp:
+            case ActionStomp:
                 camYShift = inch(camYShift, 210, 3);
             break;
             
@@ -173,7 +173,7 @@ applies_to=self
     // -- Follow the player
     else
     {
-        if (camTarget.action != actionDead)
+        if (camTarget.action != ActionDead)
         {
             // -- Shift to the player position
             // -- I could just have used lerp
@@ -182,5 +182,5 @@ applies_to=self
         }
     }
 
-    x = clamp(x, camBorderLeft + screenWidthMid, camBorderRight + screenWidthMid);
-    y = clamp(y, camBorderTop + screenHeightMid, camBorderBottom - screenHeightMid);
+    x = clamp(x, camBorderLeft + ScreenWidthHalf, camBorderRight + ScreenWidthHalf);
+    y = clamp(y, camBorderTop + ScreenHeightHalf, camBorderBottom - ScreenHeightHalf);

@@ -4,24 +4,24 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-/// Variables
+/// -- Variables
 
     image_speed = 0.2;
     shift       = 0;
 
     cardDashX   = 0;
-    cardDashY   = view_yview + screenHeight - 75;
+    cardDashY   = view_yview + ScreenHeight - 75;
 
 
     // Go to the center of the room
     x = room_width / 2;
     y = room_height / 2;
 
-    cardXScale = screenWidth;
+    cardXScale = ScreenWidth;
     cardYScale = 1;
 
     cardX = view_xview;
-    cardY = view_yview + screenHeight - 75;
+    cardY = view_yview + ScreenHeight - 75;
 
     menu = 0;
 
@@ -47,9 +47,9 @@ applies_to=self
 */
 /// -- Menu variables
 
-    optionY[0] = screenHeight;
-    optionY[1] = screenHeight + 32;
-    optionY[2] = screenHeight + 64;
+    optionY[0] = ScreenHeight;
+    optionY[1] = ScreenHeight + 32;
+    optionY[2] = ScreenHeight + 64;
 
     optionMainAlpha = 1;
 #define Step_0
@@ -98,10 +98,10 @@ applies_to=self
                 // -- Shrink options
                 if (menuTimer > 90)
                 {
-                    //cardX = lerp(cardX, (screenWidthMid)-32, 0.2);
+                    //cardX = lerp(cardX, (ScreenWidthHalf)-32, 0.2);
                     //cardXScale = lerp(cardXScale, 128, 0.2);
                     cardYScale = lerp(cardYScale, 4, 0.05);
-                    cardY = inch(cardY, view_yview + screenHeight - 120, 2);
+                    cardY = inch(cardY, view_yview + ScreenHeight - 120, 2);
                 }
             }
 
@@ -110,14 +110,14 @@ applies_to=self
             {
                 delay = max(delay - 1, 0);
 
-                optionY[0] = lerp(optionY[0], screenHeight - 110, 0.1);
-                optionY[1] = lerp(optionY[1], screenHeight - 70, 0.1);
-                optionY[2] = lerp(optionY[2], screenHeight - 30, 0.1);
+                optionY[0] = lerp(optionY[0], ScreenHeight - 110, 0.1);
+                optionY[1] = lerp(optionY[1], ScreenHeight - 70, 0.1);
+                optionY[2] = lerp(optionY[2], ScreenHeight - 30, 0.1);
                 switch (menuOption)
                 {
                     // -- Start option
                     case 1:
-                        cardDashY = lerp(cardDashY, view_yview + screenHeight - 120, 0.1);
+                        cardDashY = lerp(cardDashY, view_yview + ScreenHeight - 120, 0.1);
 
                         if (delay == 0)
                         {
@@ -143,7 +143,7 @@ applies_to=self
 
                     // -- Options option
                     case 2:
-                        cardDashY = lerp(cardDashY, view_yview + screenHeight - 80, 0.1);
+                        cardDashY = lerp(cardDashY, view_yview + ScreenHeight - 80, 0.1);
 
                         if (delay == 0)
                         {
@@ -173,7 +173,7 @@ applies_to=self
 
                     // -- Exit option
                     case 3:
-                        cardDashY = lerp(cardDashY, view_yview + screenHeight - 40, 0.1);
+                        cardDashY = lerp(cardDashY, view_yview + ScreenHeight - 40, 0.1);
 
                         if (delay == 0)
                         {
@@ -218,7 +218,7 @@ applies_to=self
     cardDashX += 6;
 
     // Back to the start if it has reached the screen limit
-    if (cardDashX > (screenWidth) + sprite_get_width(sprTitleCardDash))
+    if (cardDashX > (ScreenWidth) + sprite_get_width(sprTitleCardDash))
     {
         cardDashX = -sprite_get_width(sprTitleCardDash);
     }
@@ -238,10 +238,10 @@ applies_to=self
     draw_sprite_ext(sprTitleCardDash, 0, view_xview + cardDashX, cardDashY, 1, 1, 0, image_blend, image_alpha);
 
     // -- Draw press start text
-    draw_sprite_ext(sprPressStart, 0, view_xview+ screenWidthMid, view_yview + 10 + screenHeight - 65, 1, 1, 0, c_white, startAlpha);
+    draw_sprite_ext(sprPressStart, 0, view_xview+ ScreenWidthHalf, view_yview + 10 + ScreenHeight - 65, 1, 1, 0, c_white, startAlpha);
 
     // -- Selected press start text echo
-    draw_sprite_ext(sprPressStart, 0, view_xview + screenWidthMid, view_yview + 10 + screenHeight - 65, echoScale, echoScale, 0, c_gray, echoAlpha);
+    draw_sprite_ext(sprPressStart, 0, view_xview + ScreenWidthHalf, view_yview + 10 + ScreenHeight - 65, echoScale, echoScale, 0, c_gray, echoAlpha);
 
     // -- Draw earth
     draw_sprite_ext(sprAstralTitleBG, 0, view_xview + titleOffset, view_yview + titleOffset, 1, 1, 0, image_blend, image_alpha);
@@ -266,7 +266,7 @@ applies_to=self
     if (menu > 0 && menuTimer > 180)
     {
         // -- Draw card
-        draw_sprite_ext(sprTitleCardZoneCard, 0, 0, optionY[menuOption - 1] - 6, screenWidth, 0.8, 0, make_color_rgb(120, 228, 228), image_alpha);
+        draw_sprite_ext(sprTitleCardZoneCard, 0, 0, optionY[menuOption - 1] - 6, ScreenWidth, 0.8, 0, make_color_rgb(120, 228, 228), image_alpha);
 
         // -- Draw dash sign
         draw_sprite_ext(sprTitleCardDash, 0, view_xview + cardDashX, cardDashY, 1, 1, 0, image_blend, image_alpha);
@@ -275,9 +275,9 @@ applies_to=self
         draw_set_font(global.fontTitleCard)
         draw_set_halign(fa_center);
         // -- Draw options
-        draw_text(screenWidthMid, optionY[0], "START");
-        draw_text(screenWidthMid, optionY[1], "SETTINGS");
-        draw_text(screenWidthMid, optionY[2], "EXIT");
+        draw_text(ScreenWidthHalf, optionY[0], "START");
+        draw_text(ScreenWidthHalf, optionY[1], "SETTINGS");
+        draw_text(ScreenWidthHalf, optionY[2], "EXIT");
         draw_set_halign(-1);
         draw_set_font(1)
         draw_set_alpha(1)

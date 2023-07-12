@@ -22,13 +22,11 @@ applies_to=self
     x = floor(playerID.x);
     y = floor(playerID.y);
 
-
     // -- Rotate
     image_angle = playerID.animationAngle;
 
-
     // -- Check if the player has other shield
-    if (playerID.shield != shieldNormal)
+    if (playerID.shield != ShieldNormal)
     {
         instance_destroy();
     }

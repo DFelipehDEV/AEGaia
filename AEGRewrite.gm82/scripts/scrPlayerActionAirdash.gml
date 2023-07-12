@@ -7,5 +7,5 @@
     {
         xSpeed = 5 * animationDirection;
         airdashTimer = airdashTimerCommon;
-        action       = actionJump;
+        action       = ActionJump;
     }

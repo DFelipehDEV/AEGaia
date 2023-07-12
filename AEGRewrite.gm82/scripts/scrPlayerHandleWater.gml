@@ -5,10 +5,10 @@
     waterHorizon    = scrPlayerCollisionObjectBottom(x, y, 0, maskMain, objWaterHorizon);
     waterTrigger   = scrPlayerCollisionObjectBottom(x, y, 0, maskMain, objWater);
 
-    //Water mode
+    // -- Water mode
     if (waterHorizon != noone)
     {
-        //Enter in water mode
+        // -- Enter in water mode
         if (y > waterHorizon.y && yprevious < waterHorizon.y && scrPlayerCollisionObjectMain(x, y, objWater))
         {
             physicMode = 1;
@@ -38,10 +38,10 @@
     }
     else
     {
-        //Water mode
+        // -- Water mode
         if (waterTrigger != noone && !waterHorizon)
         {
-            //Enter in water mode
+            // -- Enter in water mode
             physicMode = 1;
 
             scrPlayerPhysicsSonic();

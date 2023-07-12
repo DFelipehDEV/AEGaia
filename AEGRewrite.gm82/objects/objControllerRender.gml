@@ -18,13 +18,15 @@ applies_to=self
 
     // -- Deactivate all objects
     instance_deactivate_all(true);
+
     // -- Activate the main objects
     instance_activate_object(parActivate);
     instance_activate_object(parPlatformMove);
     instance_activate_object(objHandle);
     instance_activate_object(gm82core_object)
+
     // -- Activate deactivated objects if they are in the view
-    instance_activate_region(view_xview[0] - 64, view_yview[0] - 64, screenWidth + 128, screenHeight + 128, 1);
+    instance_activate_region(view_xview[0] - 64, view_yview[0] - 64, ScreenWidth + 128, ScreenHeight + 128, 1);
 
     if (instance_exists(objRingDrop))
     {
